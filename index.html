@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="dark">
+	<head>
+		<style>
+			html.dark {
+				background-color: black;
+				color: white;
+			}
+		</style>
+		<meta charset="utf-8" />
+		<link rel="icon" href="./favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		
+		<link rel="modulepreload" href="./_app/immutable/entry/start.Ciqk1bXk.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.C4XJbBa1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/runtime.BnEbjdTR.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.HOw5gNI8.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/render.CFD7MDSB.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/disclose-version.DPTkQdTO.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/store.BSWeR5W7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index-client.BAo9JMaC.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">
+			<script>
+				{
+					__sveltekit_bxwr6a = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						assets: "/exle-svelte"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("./_app/immutable/entry/start.Ciqk1bXk.js"),
+						import("./_app/immutable/entry/app.HOw5gNI8.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
