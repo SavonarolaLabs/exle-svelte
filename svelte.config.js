@@ -4,11 +4,7 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
 	preprocess: vitePreprocess(),
 	kit: {
-		adapter: adapter({
-			pages: 'build',
-			assets: 'build',
-			strict: false
-		}),
+		adapter: adapter({}),
 		paths: {
 			base: process.env.NODE_ENV === 'production' ? '/exle-svelte' : ''
 		}
