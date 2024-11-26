@@ -1,34 +1,24 @@
 <script>
-	import { onMount } from 'svelte';
-
-	let isDarkMode = localStorage.getItem('theme') === 'dark';
-
-	const toggleTheme = () => {
-		isDarkMode = !isDarkMode;
-		document.documentElement.classList.toggle('dark', isDarkMode);
-		localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-	};
-
-	// Ensure theme persists on page load
-	onMount(() => {
-		if (isDarkMode) {
-			document.documentElement.classList.add('dark');
-		}
-	});
+	import Button from '../components/Button.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<section class="flex flex-col items-center space-y-8 py-16 text-center">
+	<h1
+		class="bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-2 text-6xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd"
+	>
+		Borrow and lend money<br /> globally on Ergo chain
+	</h1>
 
-<button on:click={toggleTheme}>
-	{isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-</button>
+	<p class="text-md">
+		A person-to-person (P2P) lending platform with easy-to-use<br /> tools to borrow and lend money on
+		the Ergo blockchain.
+	</p>
+	<div class="flex space-x-4">
+		<Button href="/create-loan" label="Create loan" variant="primary" />
+		<Button href="/learn-more" label="Learn more" variant="secondary" />
+	</div>
+</section>
 
-<style lang="postcss">
-	:global(html) {
-		@apply bg-white text-black transition-colors;
-	}
-	:global(html.dark) {
-		@apply bg-black text-white;
-	}
+<style>
+	/* Optional local styles */
 </style>
