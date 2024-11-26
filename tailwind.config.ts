@@ -10,30 +10,28 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				// Light Mode Colors
 				light: {
-					background: '#FFFFFF', // Light mode background
-					text: '#000000', // Light mode text
-					accent: '#5054dd', // Button and interactive elements
-					secondary: '#4E4E50', // Subtle text or border
-					gradientStart: '#171622', // Gradient start for light mode
-					gradientEnd: '#202482' // Gradient end for light mode
+					background: '#FFFFFF',
+					text: '#000000',
+					accent: '#5054dd',
+					secondary: '#4E4E50',
+					gradientStart: '#171622',
+					gradientEnd: '#202482'
 				},
-				// Dark Mode Colors
 				dark: {
-					background: '#16151f', // Dark mode background
-					text: '#fdfdfd', // Dark mode text
-					accent: '#5054dd', // Button and interactive elements
-					secondary: '#4E4E50', // Subtle text or border
-					gradientStart: '#fdfcfd', // Gradient start for dark mode
-					gradientEnd: '#7e7f92' // Gradient end for dark mode
+					background: '#16151f',
+					text: '#fdfdfd',
+					accent: '#5054dd',
+					secondary: '#4E4E50',
+					gradientStart: '#fdfcfd',
+					gradientEnd: '#7e7f92'
 				}
 			},
 			fontWeight: {
-				default: '300' // Light weight
+				default: '300'
 			},
 			letterSpacing: {
-				default: '0.025em' // Slightly wide by default
+				default: '0.025em'
 			}
 		}
 	},
