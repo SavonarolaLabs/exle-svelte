@@ -12,7 +12,7 @@ export interface Loan {
 	creator: string;
 }
 
-export const loans = [
+export const loans: Loan[] = [
 	{
 		loanId: '545271...2067cc',
 		loanType: 'Crowdloan',

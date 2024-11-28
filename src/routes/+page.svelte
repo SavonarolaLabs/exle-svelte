@@ -1,4 +1,6 @@
 <script>
+	import { base } from '$app/paths';
+
 	import Button from '../components/Button.svelte';
 </script>
 
@@ -14,8 +16,8 @@
 		the Ergo blockchain.
 	</p>
 	<div class="flex space-x-4">
-		<Button href="/create-loan" label="Create loan" variant="primary" />
-		<Button href="/learn-more" label="Learn more" variant="secondary" />
+		<Button href="{base}/loans/create" label="Create loan" variant="primary" />
+		<Button href="{base}/learn-more" label="Learn more" variant="secondary" />
 	</div>
 </section>
 
