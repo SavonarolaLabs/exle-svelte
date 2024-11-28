@@ -42,7 +42,7 @@
 	}
 </script>
 
-<div class="mx-auto max-w-2xl rounded-lg bg-white p-6 shadow">
+<div class="mx-auto max-w-2xl rounded-lg p-6">
 	{#if currentStep === 1}
 		<!-- Step 1 Content -->
 		<div>
@@ -59,7 +59,7 @@
 						class={`w-full rounded-lg border p-4 transition ${
 							selectedLoanType === 'Crowdloan'
 								? 'border-blue-500 bg-blue-500 text-white'
-								: 'border-gray-300 bg-white text-gray-700 hover:bg-gray-100'
+								: 'hover: border-gray-300 bg-white text-gray-700'
 						}`}
 						on:click={() => (selectedLoanType = 'Crowdloan')}
 					>
@@ -71,7 +71,7 @@
 						class={`w-full rounded-lg border p-4 transition ${
 							selectedLoanType === 'Solofund loan'
 								? 'border-blue-500 bg-blue-500 text-white'
-								: 'border-gray-300 bg-white text-gray-700 hover:bg-gray-100'
+								: 'hover: border-gray-300 bg-white text-gray-700'
 						}`}
 						on:click={() => (selectedLoanType = 'Solofund loan')}
 					>
@@ -107,7 +107,7 @@
 			<div class="flex justify-between">
 				<button
 					type="button"
-					class="rounded border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Cancel
 				</button>
@@ -159,7 +159,7 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
@@ -211,7 +211,7 @@
 						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 bg-gray-100 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
 					>
 						$
 					</span>
@@ -231,7 +231,7 @@
 						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 bg-gray-100 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
 					>
 						Months
 					</span>
@@ -251,7 +251,7 @@
 						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 bg-gray-100 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
 					>
 						%
 					</span>
@@ -271,7 +271,7 @@
 						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 bg-gray-100 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
 					>
 						Months
 					</span>
@@ -282,7 +282,7 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
@@ -347,7 +347,7 @@
 			</div>
 
 			<div class="mb-6">
-				<div class="rounded-lg border bg-gray-100 p-4 text-sm text-gray-700">
+				<div class="rounded-lg border p-4 text-sm text-gray-700">
 					<ul class="list-disc space-y-2 pl-6">
 						<li>Creating or participating in loans is not illegal in your country.</li>
 						<li>
@@ -383,7 +383,7 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
@@ -414,7 +414,7 @@
 				</p>
 			</div>
 
-			<div class="mb-6 rounded-lg border bg-gray-100 p-6 text-center">
+			<div class="mb-6 rounded-lg border p-6 text-center">
 				<img src="/nautilus-logo.png" alt="Nautilus Wallet" class="mx-auto mb-4 h-20 w-20" />
 				<p class="mb-2 text-sm font-medium text-gray-700">Nautilus Wallet</p>
 				<p class="text-sm text-gray-500">Pay via browser wallet</p>
@@ -424,7 +424,7 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Cancel
 				</button>
