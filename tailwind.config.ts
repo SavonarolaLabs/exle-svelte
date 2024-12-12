@@ -17,7 +17,7 @@ export default {
 					background: '#FFFFFF',
 					text: '#000000',
 					accent: '#5054dd',
-					secondary: '#4E4E50',
+					secondary: '#4E54E5',
 					gradientStart: '#171622',
 					gradientEnd: '#202482'
 				},
@@ -25,7 +25,7 @@ export default {
 					background: '#16151f',
 					text: '#fdfdfd',
 					accent: '#5054dd',
-					secondary: '#4E4E50',
+					secondary: '#4E54E5',
 					gradientStart: '#fdfcfd',
 					gradientEnd: '#7e7f92'
 				}
