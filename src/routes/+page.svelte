@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 
 	import Button from '../components/Button.svelte';
+	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 </script>
 
 <section>
@@ -27,6 +28,9 @@
 			How Does it work?
 		</h2>
 	</div>
+</section>
+<section>
+	<HowItWorksSteps></HowItWorksSteps>
 </section>
 
 <style lang="postcss">
