@@ -8,6 +8,9 @@ export default {
 	darkMode: 'class',
 
 	theme: {
+		screens: {
+			lg: '848px'
+		},
 		extend: {
 			colors: {
 				light: {
@@ -28,7 +31,7 @@ export default {
 				}
 			},
 			fontWeight: {
-				default: '300'
+				default: '400'
 			},
 			letterSpacing: {
 				default: '0.025em'
