@@ -1,1 +1,0 @@
-import{t as e,a as o}from"../chunks/disclose-version.BRsbfjln.js";import"../chunks/legacy.BAwEDsVC.js";import{ai as p}from"../chunks/runtime.BhW16s-O.js";function i(t){p();var a=e("Repayments");o(t,a)}export{i as component};
