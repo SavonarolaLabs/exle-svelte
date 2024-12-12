@@ -1,14 +1,19 @@
 <script>
-	let isDark = true;
+	import { isDark } from '$lib/themeStore';
 
 	function toggleTheme() {
-		isDark = !isDark;
-		document.documentElement.classList.toggle('dark', isDark);
+		isDark.update((value) => {
+			const newValue = !value;
+			document.documentElement.classList.toggle('dark', newValue);
+			return newValue;
+		});
 	}
+
+	$: document.documentElement.classList.toggle('dark', $isDark);
 </script>
 
 <button on:click={toggleTheme} class="text-2xl">
-	{#if isDark}
+	{#if $isDark}
 		<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<circle cx="15.5" cy="15.5" r="15.5" fill="#292837" />
 			<path
@@ -27,7 +32,16 @@
 			/>
 		</svg>
 	{/if}
-	{#if !isDark}
-		☀️
+	{#if !$isDark}
+		<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="15.5" cy="15.5" r="15.5" fill="#F5F6FB" />
+			<path
+				d="M15.7967 7.00711C15.9111 7.00711 16.0246 7.00711 16.1372 7.00711C15.0241 8.06818 14.3086 9.49586 14.1151 11.042C13.9216 12.5881 14.2623 14.1549 15.0781 15.47C15.8939 16.7851 17.1332 17.7654 18.5805 18.2404C20.0277 18.7155 21.5915 18.6552 23 18.0702C22.4582 19.4075 21.5727 20.5689 20.4379 21.4305C19.3031 22.292 17.9616 22.8214 16.5566 22.9621C15.1515 23.1029 13.7355 22.8497 12.4597 22.2297C11.1839 21.6096 10.096 20.646 9.31226 19.4414C8.52848 18.2369 8.07814 16.8367 8.00928 15.3902C7.94043 13.9437 8.25563 12.5052 8.92127 11.228C9.58692 9.95087 10.578 8.88304 11.7889 8.13843C12.9998 7.39382 14.3849 7.00035 15.7967 7V7.00711Z"
+				stroke="#0C0D2D"
+				stroke-width="1.5"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</svg>
 	{/if}
 </button>

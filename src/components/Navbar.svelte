@@ -1,6 +1,7 @@
 <script lang="ts">
 	import ThemeToggle from './ThemeToggle.svelte';
 	import { base } from '$app/paths';
+	import { isDark } from '$lib/themeStore';
 
 	const links = [
 		{ name: 'Loans', href: `${base}/loans` },
@@ -8,7 +9,7 @@
 	];
 </script>
 
-<nav class="fon-medium w-full text-xs">
+<nav class="w-full text-xs font-medium" class:border-dark={$isDark} class:border-light={!$isDark}>
 	<div class="mx-auto flex max-w-screen-lg items-center justify-between py-4">
 		<div class="flex items-center space-x-8">
 			<!-- <img src={`${base}/logo.png`} alt="Logo" class="h-8 w-8" /> -->
@@ -45,7 +46,10 @@
 </nav>
 
 <style>
-	nav {
+	.border-dark {
 		border-bottom: 1.5px solid #292837;
+	}
+	.border-light {
+		border-bottom: 1.5px solid #f6f6fb;
 	}
 </style>
