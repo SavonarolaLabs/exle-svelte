@@ -20,5 +20,8 @@
 		font-size: 14px;
 		font-weight: 600;
 		line-height: 17.64px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 </style>

@@ -3,7 +3,10 @@
 
 	import Button from '../components/Button.svelte';
 	import ErgoManifesto from '../components/ErgoManifesto.svelte';
+	import ExlePartners from '../components/ExlePartners.svelte';
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
+	import Roadmap from '../components/Roadmap.svelte';
+	import WhatDistinguishesExle from '../components/WhatDistinguishesExle.svelte';
 </script>
 
 <section class="space-y-8">
@@ -33,7 +36,14 @@
 	<HowItWorksSteps></HowItWorksSteps>
 	<div class="my-20"></div>
 	<ErgoManifesto></ErgoManifesto>
+	<div class="my-20"></div>
+	<WhatDistinguishesExle></WhatDistinguishesExle>
+	<div class="my-20"></div>
+	<ExlePartners></ExlePartners>
+	<div class="my-20"></div>
+	<Roadmap></Roadmap>
 </section>
+<div style="margin-bottom: 100vh"></div>
 
 <style lang="postcss">
 	/* Optional local styles */
