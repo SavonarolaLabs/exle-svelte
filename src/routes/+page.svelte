@@ -2,6 +2,7 @@
 	import { base } from '$app/paths';
 
 	import Button from '../components/Button.svelte';
+	import CommunityTestimonial from '../components/CommunityTestimonial.svelte';
 	import ErgoManifesto from '../components/ErgoManifesto.svelte';
 	import ExlePartners from '../components/ExlePartners.svelte';
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
@@ -38,6 +39,8 @@
 	<ErgoManifesto></ErgoManifesto>
 	<div class="my-20"></div>
 	<WhatDistinguishesExle></WhatDistinguishesExle>
+	<div class="my-20"></div>
+	<CommunityTestimonial></CommunityTestimonial>
 	<div class="my-20"></div>
 	<ExlePartners></ExlePartners>
 	<div class="my-20"></div>
