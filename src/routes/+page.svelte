@@ -22,9 +22,7 @@
 	</div>
 	<div class="relative" style="max-width:522px;">
 		<img class="mt-4" src="{base}/globe.png" alt="" />
-		<h2
-			class="absolute bottom-0 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-4xl font-bold"
-		>
+		<h2 class="absolute bottom-0 left-1/2 -translate-x-1/2 transform whitespace-nowrap">
 			How does it work?
 		</h2>
 	</div>

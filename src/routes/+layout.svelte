@@ -21,4 +21,7 @@
 	:global(html.dark) {
 		@apply bg-dark-background text-dark-text;
 	}
+	:global(h2) {
+		@apply text-4xl font-bold;
+	}
 </style>
