@@ -6,7 +6,7 @@
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 </script>
 
-<section class=" space-y-8">
+<section class="space-y-8">
 	<h1
 		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-5xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd"
 	>
