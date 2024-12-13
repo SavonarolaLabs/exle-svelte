@@ -5,7 +5,7 @@
 </script>
 
 <Navbar />
-<main class="mx-auto max-w-screen-xl px-6">
+<main class="mx-auto max-w-screen-lg px-6 text-xs">
 	{@render children()}
 </main>
 

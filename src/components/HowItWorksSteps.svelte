@@ -25,15 +25,25 @@
 	];
 </script>
 
-<div class="md:flex justify-center gap-8 p-6">
+<div class="flex w-full flex-wrap justify-center justify-between text-left">
 	{#each steps as step}
-		<div class="flex max-w-sm flex-col items-start gap-2">
-			<div class="flex items-center gap-4">
-				<img src="{base}/{step.gif}" alt="" class="w-9 dark:invert" />
-				<span class="text-6xl font-bold text-gray-200">{step.number}</span>
+		<div class="relative" style="max-width: 240px;">
+			<span
+				class="absolute left-0 top-8 -z-10 text-[7rem] font-bold text-light-neutral dark:text-dark-neutral"
+			>
+				{step.number}
+			</span>
+			<div
+				class="flex flex-col gap-2"
+				class:pl-6={step.number == '1'}
+				class:pl-9={step.number == '2' || step.number == '3'}
+			>
+				<div class="flex items-center gap-4" style="margin-left:-3px;">
+					<img src="{base}/{step.gif}" alt="" class="w-8 dark:invert" />
+				</div>
+				<h3 class="text-lg font-bold" style="max-width: 190px;">{step.title}</h3>
+				<p>{step.description}</p>
 			</div>
-			<h3 class="text-lg font-bold">{step.title}</h3>
-			<p class="text-gray-600">{step.description}</p>
 		</div>
 	{/each}
 </div>

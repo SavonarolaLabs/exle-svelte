@@ -19,7 +19,8 @@ export default {
 					accent: '#5054dd',
 					secondary: '#4E54E5',
 					gradientStart: '#171622',
-					gradientEnd: '#202482'
+					gradientEnd: '#202482',
+					neutral: '#EBECFF'
 				},
 				dark: {
 					background: '#16151f',
@@ -27,7 +28,8 @@ export default {
 					accent: '#5054dd',
 					secondary: '#4E54E5',
 					gradientStart: '#fdfcfd',
-					gradientEnd: '#7e7f92'
+					gradientEnd: '#7e7f92',
+					neutral: '#1F2131'
 				}
 			},
 			fontWeight: {
@@ -35,6 +37,11 @@ export default {
 			},
 			letterSpacing: {
 				default: '0.025em'
+			},
+			fontSize: {
+				base: ['12px', '18px'],
+				xs: ['12px', '18px'],
+				lg: ['16px', '1.5em']
 			}
 		}
 	},

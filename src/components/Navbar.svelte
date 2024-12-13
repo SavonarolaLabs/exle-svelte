@@ -36,7 +36,7 @@
 		<div class="flex items-center space-x-3">
 			<ThemeToggle />
 			<button
-				class="rounded-full bg-dark-accent px-3 text-white hover:opacity-90"
+				class="rounded-full bg-dark-accent px-4 text-white hover:opacity-90"
 				style="height:31px"
 			>
 				Connect wallet

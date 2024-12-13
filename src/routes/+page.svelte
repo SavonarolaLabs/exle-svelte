@@ -25,17 +25,19 @@
 		<h2
 			class="absolute bottom-0 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-4xl font-bold"
 		>
-			How Does it work?
+			How does it work?
 		</h2>
 	</div>
 </section>
 <section>
+	<div class="mt-20"></div>
 	<HowItWorksSteps></HowItWorksSteps>
 </section>
+<div class="mb-96"></div>
 
 <style lang="postcss">
 	/* Optional local styles */
 	section {
-		@apply flex flex-col items-center space-y-8 text-center text-xs;
+		@apply flex flex-col items-center space-y-8 text-center;
 	}
 </style>
