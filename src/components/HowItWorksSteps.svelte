@@ -41,7 +41,7 @@
 				<div class="flex items-center gap-4" style="margin-left:-3px;">
 					<img src="{base}/{step.gif}" alt="" class="w-8 dark:invert" />
 				</div>
-				<h3 class="text-lg font-bold" style="max-width: 190px;">{step.title}</h3>
+				<h4 class="text-lg font-bold" style="max-width: 190px;">{step.title}</h4>
 				<p>{step.description}</p>
 			</div>
 		</div>

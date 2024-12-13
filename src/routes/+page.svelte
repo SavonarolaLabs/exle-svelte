@@ -2,10 +2,11 @@
 	import { base } from '$app/paths';
 
 	import Button from '../components/Button.svelte';
+	import ErgoManifesto from '../components/ErgoManifesto.svelte';
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 </script>
 
-<section>
+<section class=" space-y-8">
 	<h1
 		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-5xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd"
 	>
@@ -30,12 +31,13 @@
 <section>
 	<div class="mt-20"></div>
 	<HowItWorksSteps></HowItWorksSteps>
+	<div class="my-20"></div>
+	<ErgoManifesto></ErgoManifesto>
 </section>
-<div class="mb-96"></div>
 
 <style lang="postcss">
 	/* Optional local styles */
 	section {
-		@apply flex flex-col items-center space-y-8 text-center;
+		@apply flex w-full flex-col items-center text-center;
 	}
 </style>
