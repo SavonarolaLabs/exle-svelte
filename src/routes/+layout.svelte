@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/Navbar.svelte';
 	let { children } = $props();
 </script>
@@ -8,6 +9,7 @@
 <main class="mx-auto max-w-screen-lg text-xs">
 	{@render children()}
 </main>
+<Footer></Footer>
 
 <style lang="postcss">
 	/* Light Mode (default) */

@@ -20,7 +20,8 @@ export default {
 					secondary: '#4E54E5',
 					gradientStart: '#171622',
 					gradientEnd: '#202482',
-					neutral: '#EBECFF'
+					neutral: '#EBECFF',
+					textNeutral: '#777899'
 				},
 				dark: {
 					background: '#16151f',

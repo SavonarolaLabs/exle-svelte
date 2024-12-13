@@ -83,16 +83,16 @@
 </script>
 
 <h2>Project Roadmap</h2>
-<p class="my-10" style="max-width: 415px;">
+<p class="mt-10" style="max-width: 415px;">
 	EXLE started for the ErgoHack 2 hackathon as 'Ergo-Lend' and we just kept going! We hope to help
 	overcome some issues for the billions of unbanked people around the world. This is some of what we
 	have in various stages of implementation.
 </p>
 
-<div class="relative ml-8 text-left">
+<div class="relative ml-8 mt-16 text-left">
 	<!-- Vertical Line -->
 	<div
-		class="absolute bottom-8 left-7 top-0 w-0.5 border-l-2 border-dashed border-dark-gray"
+		class="absolute bottom-8 left-7 top-0 w-0.5 border-l-2 border-dashed border-light-neutral dark:border-dark-gray"
 		style="height: calc(100% - 3rem);"
 	></div>
 
@@ -102,7 +102,7 @@
 			<div
 				class="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-light-neutral font-bold dark:bg-dark-gray dark:text-dark-textNeutral"
 			>
-				<div class="flex flex-col items-center text-2xl leading-none">
+				<div class="flex flex-col items-center text-2xl leading-none text-dark-textNeutral">
 					<span>{item.year.slice(0, 2)}</span>
 					<span>{item.year.slice(2, 4)}</span>
 				</div>
@@ -111,7 +111,7 @@
 			<!-- Content -->
 			<div class="ml-4">
 				<h3 class="mb-1 text-lg font-bold">{item.quarter} | {item.title}</h3>
-				<p>{item.description}</p>
+				<p style="max-width:432px">{item.description}</p>
 			</div>
 		</div>
 	{/each}

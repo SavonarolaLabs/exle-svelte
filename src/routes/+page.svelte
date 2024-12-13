@@ -43,7 +43,6 @@
 	<div class="my-20"></div>
 	<Roadmap></Roadmap>
 </section>
-<div style="margin-bottom: 100vh"></div>
 
 <style lang="postcss">
 	section {
