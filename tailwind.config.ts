@@ -29,7 +29,9 @@ export default {
 					secondary: '#4E54E5',
 					gradientStart: '#fdfcfd',
 					gradientEnd: '#7e7f92',
-					neutral: '#1F2131'
+					neutral: '#1F2131',
+					gray: '#2B293B',
+					textNeutral: '#777899'
 				}
 			},
 			fontWeight: {

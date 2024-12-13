@@ -46,7 +46,6 @@
 <div style="margin-bottom: 100vh"></div>
 
 <style lang="postcss">
-	/* Optional local styles */
 	section {
 		@apply flex w-full flex-col items-center text-center;
 	}
