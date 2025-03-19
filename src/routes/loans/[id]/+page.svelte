@@ -1,9 +1,19 @@
-<script lang="ts">
-	import type { Loan } from '../data/DummyLoans';
-	export let loan: Loan;
+<script>
+	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import { loans } from '../../../data/DummyLoans';
+
+	let loan = {};
+	let loanId;
+
+	$: loanId = $page.params.id;
+
+	onMount(() => {
+		loan = loans.find((l) => l.loanId == loanId);
+	});
 </script>
 
-<a href="/loans/{loan.loanId}">
+{#if loan}
 	<div class="loan-widget rounded-lg border border-gray-300 bg-[var(--bg-color)] p-6 shadow">
 		<div class="mb-2 flex items-center justify-between">
 			<span class="text-sm text-gray-500">{loan.loanId}</span>
@@ -52,6 +62,9 @@
 				<span class="text-gray-600">{loan.daysLeft} Days Left</span>
 			</div>
 		</div>
-		<p class="text-sm text-gray-500">Created by: {loan.creator}</p>
+		<p class="text-sm text-gray-500">Borrower: {loan.creator}</p>
 	</div>
-</a>
+
+	<div>FUND THIS LOAN</div>
+	<p>You can help fund this loan partially or fully.</p>
+{/if}

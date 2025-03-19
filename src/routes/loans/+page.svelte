@@ -63,7 +63,7 @@
 		<p class="text-center text-gray-500">No loans found. Try a different search term.</p>
 	{:else}
 		<p class="mb-4 text-sm text-gray-500">{filteredLoans.length} Active Loans</p>
-		<div id="loans-grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		<div id="loans-grid" class="sm:grid-cols-2 grid grid-cols-1 gap-4 lg:grid-cols-3">
 			{#each filteredLoans as loan}
 				<LoanWidget {loan} />
 			{/each}
