@@ -62,12 +62,30 @@
 
 	<!-- Navigation Buttons -->
 	<div class="mt-6 flex items-center justify-center gap-4">
-		<button
-			on:click={prev}
-			class="rounded-full border border-gray-300 p-2 hover:bg-gray-200"
-			aria-label="Previous"
-		>
-			&#8592;
+		<button on:click={prev} class="" aria-label="Previous">
+			<svg
+				width="32"
+				height="32"
+				viewBox="0 0 32 32"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M15.9993 29.3332C23.3631 29.3332 29.3327 23.3636 29.3327 15.9998C29.3327 8.63604 23.3631 2.6665 15.9993 2.6665C8.63555 2.6665 2.66602 8.63604 2.66602 15.9998C2.66602 23.3636 8.63555 29.3332 15.9993 29.3332Z"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M17.6797 20.7068L12.9863 16.0001L17.6797 11.2935"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
 		</button>
 
 		{#each testimonials as _, index}
@@ -80,12 +98,30 @@
 			/>
 		{/each}
 
-		<button
-			on:click={next}
-			class="rounded-full border border-gray-300 p-2 hover:bg-gray-200"
-			aria-label="Next"
-		>
-			&#8594;
+		<button on:click={next} class="" aria-label="Next">
+			<svg
+				width="32"
+				height="32"
+				viewBox="0 0 32 32"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M16.0007 29.3332C8.63686 29.3332 2.66732 23.3636 2.66732 15.9998C2.66732 8.63604 8.63686 2.6665 16.0007 2.6665C23.3644 2.6665 29.334 8.63604 29.334 15.9998C29.334 23.3636 23.3644 29.3332 16.0007 29.3332Z"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-miterlimit="10"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+				<path
+					d="M14.3203 20.7068L19.0137 16.0001L14.3203 11.2935"
+					stroke="currentColor"
+					stroke-width="1.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
 		</button>
 	</div>
 </div>
