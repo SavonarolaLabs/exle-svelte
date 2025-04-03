@@ -1,12 +1,8 @@
-<script>
-	import Dropdown from '../components/Dropdown.svelte';
-	import DropdownCss from '../components/DropdownCss.svelte';
+<script lang="ts">
 	import Landing from '../pages/Landing.svelte';
 </script>
 
-<!-- <Landing></Landing> -->
-<!-- <Dropdown></Dropdown> -->
-<!-- <DropdownCss></DropdownCss> -->
+<Landing></Landing>
 
 <style>
 </style>

@@ -3,6 +3,9 @@
 	import { base } from '$app/paths';
 	import { isDark } from '$lib/themeStore';
 	import ExleSvg from './ExleSvg.svelte';
+	import { connected_wallet } from '../stores/ui';
+	import MyAccountButton from './account/MyAccountButton.svelte';
+	import ConnectWalletButton from './navbar/ConnectWalletButton.svelte';
 
 	const links = [
 		{ name: 'Loans', href: `${base}/loans` },
@@ -25,12 +28,12 @@
 		</div>
 		<div class="flex items-center space-x-3">
 			<ThemeToggle />
-			<button
-				class="rounded-full bg-dark-accent px-4 text-white hover:opacity-90"
-				style="height:31px"
-			>
-				Connect wallet
-			</button>
+
+			{#if $connected_wallet}
+				<MyAccountButton></MyAccountButton>
+			{:else}
+				<ConnectWalletButton></ConnectWalletButton>
+			{/if}
 		</div>
 	</div>
 </nav>
