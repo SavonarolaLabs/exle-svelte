@@ -10,7 +10,7 @@
 	];
 </script>
 
-<footer class="mt-20 w-full text-xs font-medium">
+<footer class="mt-20 w-full text-xs font-medium max-md:px-8">
 	<div
 		class="mx-auto flex max-w-screen-lg items-center justify-between py-6"
 		class:border-dark={$is_dark}
@@ -22,16 +22,16 @@
 				EXLE</a
 			>
 			{#each links as link}
-				<a href={link.href} class="hover:text-secondary">{link.name}</a>
+				<a href={link.href} class="hover:text-secondary max-md:hidden">{link.name}</a>
 			{/each}
 		</div>
 
-		<div class="flex items-center space-x-4">
+		<div class="flex items-center space-x-6 max-md:text-lg md:space-x-4">
 			<!-- Social Media Icons Placeholder -->
 			<a href="#" class="hover:text-secondary dark:invert">
 				<svg
-					width="16"
-					height="16"
+					width="1.5em"
+					height="1.5em"
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -44,15 +44,15 @@
 					</g>
 					<defs>
 						<clipPath id="clip0_3129_2934">
-							<rect width="16" height="16" fill="white" />
+							<rect width="1.5em" height="1.5em" fill="white" />
 						</clipPath>
 					</defs>
 				</svg>
 			</a>
 			<a href="#" class="hover:text-secondary dark:invert"
 				><svg
-					width="16"
-					height="14"
+					width="1.5em"
+					height="1.5em"
 					viewBox="0 0 16 14"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +65,8 @@
 			</a>
 			<a href="#" class="hover:text-secondary dark:invert"
 				><svg
-					width="16"
-					height="16"
+					width="1.5em"
+					height="1.5em"
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
@@ -83,12 +83,17 @@
 					</g>
 					<defs>
 						<clipPath id="clip0_3129_2939">
-							<rect width="16" height="16" fill="white" />
+							<rect width="1.5em" height="1.5em" fill="white" />
 						</clipPath>
 					</defs>
 				</svg>
 			</a>
 		</div>
+	</div>
+	<div class="mb-10 flex flex-col gap-4 text-md font-light md:hidden">
+		{#each links as link}
+			<a href={link.href} class="hover:text-secondary">{link.name}</a>
+		{/each}
 	</div>
 </footer>
 

@@ -22,7 +22,7 @@
 </script>
 
 <Navbar />
-<main class="mx-auto max-w-screen-lg px-4 text-xs md:px-0">
+<main class="mx-auto max-w-screen-lg px-4 text-lg font-light md:px-0 md:text-xs">
 	{@render children()}
 </main>
 <Footer></Footer>

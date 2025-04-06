@@ -1,8 +1,8 @@
-<h2>EXLE Partners</h2>
+<h2 class="max-md:text-3xl">EXLE Partners</h2>
 <p class="my-10" style="max-width: 370px;">
 	Empowering financial futures through collaborative partnerships with our trusted allies.
 </p>
-<div class="flex w-full items-center justify-between">
+<div class="flex w-full items-center justify-between max-md:flex-col max-md:gap-8">
 	<svg width="157" height="16" viewBox="0 0 157 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g clip-path="url(#clip0_947_10341)">
 			<path

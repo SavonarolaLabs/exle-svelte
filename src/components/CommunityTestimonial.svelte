@@ -39,15 +39,27 @@
 </script>
 
 <div class="relative mx-auto max-w-screen-lg p-8 text-left">
+	<div class="relative mb-6 block flex-1 md:hidden">
+		<div class="h-80 w-full overflow-hidden rounded-lg bg-gray-200">
+			<!-- Placeholder for Image -->
+			<div class="h-full w-full bg-gray-300"></div>
+		</div>
+
+		<!-- Placeholder for SVG Overlay -->
+		<div class="absolute bottom-0 right-0 h-40 w-40">
+			<!-- Insert your SVG overlay here -->
+		</div>
+	</div>
+
 	<div class="flex flex-col gap-8 lg:flex-row">
 		<div class="flex-1">
-			<h2 class="mb-4 text-4xl font-bold">{testimonials[currentIndex].title}</h2>
-			<p class="whitespace-pre-line leading-relaxed text-gray-600">
+			<h2 class="mb-4 text-3xl font-bold md:text-4xl">{testimonials[currentIndex].title}</h2>
+			<p class="whitespace-pre-line leading-relaxed text-gray-600 max-md:text-sm">
 				{testimonials[currentIndex].description}
 			</p>
 		</div>
 
-		<div class="relative flex-1">
+		<div class="relative hidden flex-1 md:block">
 			<div class="h-80 w-full overflow-hidden rounded-lg bg-gray-200">
 				<!-- Placeholder for Image -->
 				<div class="h-full w-full bg-gray-300"></div>
@@ -61,7 +73,7 @@
 	</div>
 
 	<!-- Navigation Buttons -->
-	<div class="mt-6 flex items-center justify-center gap-4">
+	<div class="mt-6 flex items-center justify-center max-md:justify-between md:gap-4">
 		<button on:click={prev} class="" aria-label="Previous">
 			<svg
 				width="32"
@@ -88,15 +100,17 @@
 			</svg>
 		</button>
 
-		{#each testimonials as _, index}
-			<button
-				on:click={() => goTo(index)}
-				class="h-3 w-3 rounded-full"
-				class:active={currentIndex === index}
-				aria-label={`Go to slide ${index + 1}`}
-				style="background-color: {currentIndex === index ? '#6366F1' : '#E5E7EB'}"
-			/>
-		{/each}
+		<div class="flex items-center gap-4">
+			{#each testimonials as _, index}
+				<button
+					on:click={() => goTo(index)}
+					class="h-3 w-3 rounded-full"
+					class:active={currentIndex === index}
+					aria-label={`Go to slide ${index + 1}`}
+					style="background-color: {currentIndex === index ? '#6366F1' : '#E5E7EB'}"
+				/>
+			{/each}
+		</div>
 
 		<button on:click={next} class="" aria-label="Next">
 			<svg

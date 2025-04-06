@@ -82,15 +82,14 @@
 	];
 </script>
 
-<h2>Project Roadmap</h2>
-<p class="mt-10" style="max-width: 415px;">
+<h2 class="max-md:text-3xl">Project Roadmap</h2>
+<p class="mt-10 max-md:text-sm" style="max-width: 415px;">
 	EXLE started for the ErgoHack 2 hackathon as 'Ergo-Lend' and we just kept going! We hope to help
 	overcome some issues for the billions of unbanked people around the world. This is some of what we
 	have in various stages of implementation.
 </p>
 
 <div class="relative ml-8 mt-16 text-left">
-	<!-- Vertical Line -->
 	<div
 		class="absolute bottom-8 left-7 top-0 w-0.5 border-l-2 border-dashed border-light-neutral dark:border-dark-gray"
 		style="height: calc(100% - 3rem);"
@@ -98,7 +97,6 @@
 
 	{#each roadmap.reverse() as item, index}
 		<div class="relative mb-8 flex items-start">
-			<!-- Year Badge -->
 			<div
 				class="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-light-neutral font-bold dark:bg-dark-gray dark:text-dark-textNeutral"
 			>
@@ -108,10 +106,9 @@
 				</div>
 			</div>
 
-			<!-- Content -->
 			<div class="ml-4">
 				<h3 class="mb-1 text-lg font-bold">{item.quarter} | {item.title}</h3>
-				<p style="max-width:432px">{item.description}</p>
+				<p style="max-width:432px" class=" max-md:text-sm">{item.description}</p>
 			</div>
 		</div>
 	{/each}

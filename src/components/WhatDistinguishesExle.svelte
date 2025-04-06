@@ -143,9 +143,9 @@
 	];
 </script>
 
-<h2 class="">What distinguishes EXLE?</h2>
+<h2 class="max-md:text-3xl">What distinguishes EXLE?</h2>
 
-<div class="mt-10 grid grid-cols-2 gap-x-16 gap-y-12 p-6 text-left">
+<div class="mt-10 grid grid-cols-1 gap-x-16 gap-y-12 p-6 text-left md:grid-cols-2">
 	{#each features as feature}
 		<div class="flex flex-col items-start gap-4">
 			<div class="h-12 w-12">
@@ -155,8 +155,8 @@
 					{@html feature.iconLight}
 				{/if}
 			</div>
-			<div class="flex-1">
-				<h3 class="mb-2 text-lg font-bold">{feature.title}</h3>
+			<div class="flex-1 text-left">
+				<h3 class="mb-2 text-xl font-bold md:text-lg">{feature.title}</h3>
 				<p>{feature.description}</p>
 			</div>
 		</div>

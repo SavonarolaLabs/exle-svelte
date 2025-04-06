@@ -25,9 +25,11 @@
 	];
 </script>
 
-<div class="flex w-full flex-wrap justify-center justify-between text-left">
+<div
+	class="flex w-full flex-wrap justify-center justify-between space-y-10 text-left max-md:flex-col max-md:items-center md:space-y-0"
+>
 	{#each steps as step}
-		<div class="relative" style="max-width: 240px;">
+		<div class="relative max-w-[290px] md:max-w-[240px]">
 			<span
 				class="absolute left-0 top-8 -z-10 text-[7rem] font-bold text-light-neutral dark:text-dark-neutral"
 			>
@@ -41,7 +43,7 @@
 				<div class="flex items-center gap-4" style="margin-left:-3px;">
 					<img src="{base}/{step.gif}" alt="" class="w-8 dark:invert" />
 				</div>
-				<h4 class="text-lg font-bold" style="max-width: 190px;">{step.title}</h4>
+				<h4 class="md:max-w[190px] text-xl font-bold md:text-lg">{step.title}</h4>
 				<p>{step.description}</p>
 			</div>
 		</div>

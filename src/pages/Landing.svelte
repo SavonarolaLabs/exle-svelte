@@ -4,42 +4,56 @@
 	import Button from '../components/Button.svelte';
 	import CommunityTestimonial from '../components/CommunityTestimonial.svelte';
 	import ErgoManifesto from '../components/ErgoManifesto.svelte';
+	import ErgoManifestoMobile from '../components/ErgoManifestoMobile.svelte';
 	import ExlePartners from '../components/ExlePartners.svelte';
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 	import Roadmap from '../components/Roadmap.svelte';
 	import WhatDistinguishesExle from '../components/WhatDistinguishesExle.svelte';
 </script>
 
-<section class="space-y-8">
+<section class="space-y-6 md:space-y-8">
+	<img class="absolute mt-4 w-[85%] max-w-[350px] md:hidden" src="{base}/globe.png" alt="" />
+	<div class="h-[180px]"></div>
 	<h1
-		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-5xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd"
+		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-4xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd md:text-5xl"
 	>
-		Borrow and lend money<br /> globally on Ergo chain
+		Borrow and lend money<br class="hidden md:block" /> globally on Ergo chain
 	</h1>
 
-	<p>
-		A person-to-person (P2P) lending platform with easy-to-use<br /> tools to borrow and lend money on
-		the Ergo blockchain.
+	<p class="px-4 max-md:text-sm md:px-0">
+		A person-to-person (P2P) lending platform with easy-to-use<br class="hidden md:block" /> tools to
+		borrow and lend money on the Ergo blockchain.
 	</p>
-	<div class="flex space-x-4">
+	<div
+		class="flex w-full flex-col justify-center space-y-4 px-3 md:flex-row md:space-x-4 md:space-y-0 md:px-0"
+	>
 		<Button href="{base}/loans/create" label="Create loan" variant="primary" />
 		<Button href="{base}/learn-more" label="Learn more" variant="secondary" />
 	</div>
+
 	<div class="relative" style="max-width:522px;">
-		<img class="mt-4" src="{base}/globe.png" alt="" />
-		<h2 class="absolute bottom-0 left-1/2 -translate-x-1/2 transform whitespace-nowrap">
+		<img class="mt-4 hidden md:block" src="{base}/globe.png" alt="" />
+		<div class="block h-[100px] md:hidden"></div>
+		<h2
+			class="absolute bottom-0 left-1/2 -translate-x-1/2 transform whitespace-nowrap text-3xl md:text-4xl"
+		>
 			How does it work?
 		</h2>
 	</div>
 </section>
-<section>
-	<div class="mt-20"></div>
+<section class="">
+	<div class="mt-10 md:mt-20"></div>
 	<HowItWorksSteps></HowItWorksSteps>
 	<div class="my-20"></div>
-	<ErgoManifesto></ErgoManifesto>
+	<div class="hidden md:block">
+		<ErgoManifesto></ErgoManifesto>
+	</div>
+	<div class="block md:hidden">
+		<ErgoManifestoMobile></ErgoManifestoMobile>
+	</div>
 	<div class="my-20"></div>
 	<WhatDistinguishesExle></WhatDistinguishesExle>
-	<div class="my-20"></div>
+	<div class="my-12 md:my-20"></div>
 	<CommunityTestimonial></CommunityTestimonial>
 	<div class="my-20"></div>
 	<ExlePartners></ExlePartners>

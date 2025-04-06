@@ -47,6 +47,7 @@ export default {
 			fontSize: {
 				base: ['12px', '18px'],
 				xs: ['12px', '18px'],
+				md: ['14px', '1.25em'],
 				lg: ['16px', '1.5em']
 			}
 		}
