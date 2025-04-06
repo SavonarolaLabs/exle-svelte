@@ -1,12 +1,28 @@
 <script lang="ts">
+	import { onMount, onDestroy } from 'svelte';
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
-	import Navbar from '../components/Navbar.svelte';
+	import Navbar from '../components/navbar/Navbar.svelte';
+	import { initTheme, is_dark } from '../stores/ui';
+
 	let { children } = $props();
+
+	let unsubscribe: () => void;
+
+	onMount(() => {
+		initTheme();
+		unsubscribe = is_dark.subscribe((value) => {
+			localStorage.setItem('theme', value ? 'dark' : 'light');
+		});
+	});
+
+	onDestroy(() => {
+		unsubscribe?.();
+	});
 </script>
 
 <Navbar />
-<main class="mx-auto max-w-screen-lg text-xs">
+<main class="mx-auto max-w-screen-lg px-4 text-xs md:px-0">
 	{@render children()}
 </main>
 <Footer></Footer>

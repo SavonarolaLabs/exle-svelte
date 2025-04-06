@@ -1,6 +1,15 @@
 import { writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
+export const is_mobile_menu_open: Writable<boolean> = writable(false);
+
+export function toggleMobileMenu() {
+	is_mobile_menu_open.update((value) => !value);
+}
+
+export function closeMobileMenu() {
+	is_mobile_menu_open.set(false);
+}
 
 export function logout() {
 	connected_wallet.set('');
@@ -8,4 +17,20 @@ export function logout() {
 
 export function connectWallet() {
 	connected_wallet.set('nautilus');
+}
+
+export const is_dark: Writable<boolean> = writable(true);
+
+export function initTheme() {
+	const storedTheme = localStorage.getItem('theme') === 'dark';
+	is_dark.set(storedTheme);
+	document.documentElement.classList.toggle('dark', storedTheme);
+}
+
+export function toggleTheme() {
+	is_dark.update((value) => {
+		const newValue = !value;
+		document.documentElement.classList.toggle('dark', newValue);
+		return newValue;
+	});
 }

@@ -1,5 +1,5 @@
 <script>
-	import { isDark } from '$lib/themeStore';
+	import { is_dark } from '../stores/ui';
 	import ErgoRippleEffectDark from './ErgoRippleEffectDark.svelte';
 	import ErgoRippleEffectLight from './ErgoRippleEffectLight.svelte';
 </script>
@@ -8,7 +8,7 @@
 	class="flex w-full items-start gap-8 overflow-hidden rounded-2xl border border-light-neutral text-left dark:border-dark-neutral"
 >
 	<div style="width:324px;height:324px;">
-		{#if $isDark}
+		{#if $is_dark}
 			<ErgoRippleEffectDark />
 		{:else}
 			<ErgoRippleEffectLight />
@@ -60,7 +60,7 @@
 				fill-rule="evenodd"
 				clip-rule="evenodd"
 				d="M176.177 157.372L69.6514 275.711H239V328H0V275.711L106.526 157.372L0 45.9132V-5H239V45.9132H72.3828L176.177 157.372Z"
-				fill={$isDark ? '#1F2131' : '#EBECFF'}
+				fill={$is_dark ? '#1F2131' : '#EBECFF'}
 			/>
 		</svg>
 	</div>

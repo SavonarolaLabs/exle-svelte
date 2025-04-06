@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { isDark } from '$lib/themeStore';
+	import { is_dark } from '../stores/ui';
 
 	export const features = [
 		{
@@ -149,7 +149,7 @@
 	{#each features as feature}
 		<div class="flex flex-col items-start gap-4">
 			<div class="h-12 w-12">
-				{#if $isDark}
+				{#if $is_dark}
 					{@html feature.iconDark}
 				{:else}
 					{@html feature.iconLight}

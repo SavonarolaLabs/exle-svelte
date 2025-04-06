@@ -1,11 +1,11 @@
 <script lang="ts">
-	import ThemeToggle from './ThemeToggle.svelte';
+	import ThemeToggle from '../ThemeToggle.svelte';
 	import { base } from '$app/paths';
-	import { isDark } from '$lib/themeStore';
-	import ExleSvg from './ExleSvg.svelte';
-	import { connected_wallet } from '../stores/ui';
-	import MyAccountButton from './account/MyAccountButton.svelte';
-	import ConnectWalletButton from './navbar/ConnectWalletButton.svelte';
+	import ExleSvg from '../ExleSvg.svelte';
+	import { connected_wallet, is_dark } from '../../stores/ui';
+	import MyAccountButton from './MyAccountButton.svelte';
+	import ConnectWalletButton from './ConnectWalletButton.svelte';
+	import Hamburger from './Hamburger.svelte';
 
 	const links = [
 		{ name: 'Loans', href: `${base}/loans` },
@@ -13,8 +13,8 @@
 	];
 </script>
 
-<nav class="w-full text-xs font-medium" class:border-dark={$isDark} class:border-light={!$isDark}>
-	<div class="mx-auto flex max-w-screen-lg items-center justify-between py-4">
+<nav class="w-full text-xs font-medium" class:border-dark={$is_dark} class:border-light={!$is_dark}>
+	<div class="mx-auto flex max-w-screen-lg items-center justify-between p-4 md:px-0">
 		<div class="flex items-center space-x-8">
 			<!-- <img src={`${base}/logo.png`} alt="Logo" class="h-8 w-8" /> -->
 
@@ -23,12 +23,14 @@
 				EXLE</a
 			>
 			{#each links as link}
-				<a href={link.href} class="hover:text-secondary">{link.name}</a>
+				<a href={link.href} class="hover:text-secondary hidden md:block">{link.name}</a>
 			{/each}
 		</div>
-		<div class="flex items-center space-x-3">
+		<div class="flex items-center md:hidden">
+			<Hamburger></Hamburger>
+		</div>
+		<div class="hidden items-center space-x-3 md:flex">
 			<ThemeToggle />
-
 			{#if $connected_wallet}
 				<MyAccountButton></MyAccountButton>
 			{:else}

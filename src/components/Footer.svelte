@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { base } from '$app/paths';
-	import { isDark } from '$lib/themeStore';
+	import { is_dark } from '../stores/ui';
 	import ExleSvg from './ExleSvg.svelte';
 
 	const links = [
@@ -13,8 +13,8 @@
 <footer class="mt-20 w-full text-xs font-medium">
 	<div
 		class="mx-auto flex max-w-screen-lg items-center justify-between py-6"
-		class:border-dark={$isDark}
-		class:border-light={!$isDark}
+		class:border-dark={$is_dark}
+		class:border-light={!$is_dark}
 	>
 		<div class="flex items-center space-x-8">
 			<a href="{base}/" class="flex items-center gap-1">

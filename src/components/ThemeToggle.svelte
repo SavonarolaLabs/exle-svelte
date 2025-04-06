@@ -1,19 +1,9 @@
 <script>
-	import { isDark } from '$lib/themeStore';
-
-	function toggleTheme() {
-		isDark.update((value) => {
-			const newValue = !value;
-			document.documentElement.classList.toggle('dark', newValue);
-			return newValue;
-		});
-	}
-
-	$: document.documentElement.classList.toggle('dark', $isDark);
+	import { is_dark, toggleTheme } from '../stores/ui';
 </script>
 
 <button on:click={toggleTheme} class="text-2xl">
-	{#if $isDark}
+	{#if $is_dark}
 		<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<circle cx="15.5" cy="15.5" r="15.5" fill="#292837" />
 			<path
@@ -32,7 +22,7 @@
 			/>
 		</svg>
 	{/if}
-	{#if !$isDark}
+	{#if !$is_dark}
 		<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<circle cx="15.5" cy="15.5" r="15.5" fill="#F5F6FB" />
 			<path
