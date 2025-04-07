@@ -2,7 +2,7 @@
 	import ThemeToggle from '../ThemeToggle.svelte';
 	import { base } from '$app/paths';
 	import ExleSvg from '../ExleSvg.svelte';
-	import { connected_wallet, is_dark } from '../../stores/ui';
+	import { closeMobileMenu, connected_wallet, is_dark } from '../../stores/ui';
 	import MyAccountButton from './MyAccountButton.svelte';
 	import ConnectWalletButton from './ConnectWalletButton.svelte';
 	import Hamburger from './Hamburger.svelte';
@@ -18,7 +18,7 @@
 		<div class="flex items-center space-x-8">
 			<!-- <img src={`${base}/logo.png`} alt="Logo" class="h-8 w-8" /> -->
 
-			<a href="{base}/" class="flex items-center gap-1">
+			<a href="{base}/" on:click={closeMobileMenu} class="flex items-center gap-1">
 				<ExleSvg></ExleSvg>
 				EXLE</a
 			>
