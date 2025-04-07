@@ -23,7 +23,9 @@
 
 <div class="flex min-h-screen flex-col">
 	<Navbar />
-	<main class="mx-auto max-w-screen-lg flex-grow px-4 text-lg font-light md:px-0 md:text-xs">
+	<main
+		class="mx-auto flex w-full max-w-screen-lg flex-grow flex-col px-4 text-lg font-light md:px-0 md:text-xs"
+	>
 		{@render children()}
 	</main>
 	<Footer></Footer>
