@@ -15,12 +15,12 @@
 	<img class="absolute mt-4 w-[85%] max-w-[350px] md:hidden" src="{base}/globe.png" alt="" />
 	<div class="h-[180px] md:h-[50px]"></div>
 	<h1
-		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-4xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd md:text-5xl"
+		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-4xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd md:py-2 md:text-5xl"
 	>
 		Borrow and lend money<br class="hidden md:block" /> globally on Ergo chain
 	</h1>
 
-	<p class="px-4 max-md:text-sm md:px-0">
+	<p class="mt-1 px-4 max-md:text-sm md:px-0">
 		A person-to-person (P2P) lending platform with easy-to-use<br class="hidden md:block" /> tools to
 		borrow and lend money on the Ergo blockchain.
 	</p>
