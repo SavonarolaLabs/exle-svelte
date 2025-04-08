@@ -291,45 +291,45 @@
 			<Header {currentStep}></Header>
 
 			<div class="mb-6 space-y-4">
-				<p>
-					<strong>Loan Title:</strong>
+				<div>
+					<div class="opacity-50">Loan Title:</div>
 					{loanTitle}
-				</p>
-				<p>
-					<strong>Loan Description:</strong>
+				</div>
+				<div>
+					<div class="opacity-50">Loan Description:</div>
 					{loanDescription}
-				</p>
-				<p>
-					<strong>Borrower’s Address:</strong>
-					<span class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
+				</div>
+				<div>
+					<div class="opacity-50">Borrower’s Address:</div>
+					<div class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
 						9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
-					</span>
-				</p>
-				<p>
-					<strong>Funding Goal:</strong>
+					</div>
+				</div>
+				<div>
+					<div class="opacity-50">Funding Goal:</div>
 					{fundingGoal}
 					{loanToken}
-				</p>
-				<p>
-					<strong>Loan Type:</strong>
+				</div>
+				<div>
+					<div class="opacity-50">Loan Type:</div>
 					{selectedLoanType}
-				</p>
-				<p>
-					<strong>Funding Deadline:</strong> Around {fundingDeadline} days /
-					{+fundingDeadline * 1000} Blocks (Time is based on block)
-				</p>
-				<p>
-					<strong>Interest Rate:</strong>
+				</div>
+				<div>
+					<div class="opacity-50">Funding Deadline:</div>
+					Around {fundingDeadline} days / {+fundingDeadline * 1000} Blocks (Time is based on block)
+				</div>
+				<div>
+					<div class="opacity-50">Interest Rate:</div>
 					{interestRate}%
-				</p>
-				<p>
-					<strong>Repayment Period:</strong> Around {repaymentPeriod} days /
-					{+repaymentPeriod * 1000} Blocks (Time is based on block)
-				</p>
+				</div>
+				<div>
+					<div class="opacity-50">Repayment Period:</div>
+					Around {repaymentPeriod} days / {+repaymentPeriod * 1000} Blocks (Time is based on block)
+				</div>
 			</div>
 
 			<div class="mb-6">
-				<div class="rounded-lg border p-4">
+				<div class="rounded-lg border-2 border-light-border p-4 dark:border-dark-border">
 					<ul class="list-disc space-y-2 pl-6">
 						<li>Creating or participating in loans is not illegal in your country.</li>
 						<li>
@@ -362,21 +362,14 @@
 			</div>
 
 			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
-				<button
-					type="button"
-					on:click={handleGoBack}
-					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
-				>
-					Go back
-				</button>
-				<button
-					type="button"
-					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+				<Button onClick={handleGoBack} label="Go back" variant="secondary" />
+
+				<Button
+					onClick={handleContinue}
+					label="Continue"
+					variant="primary"
 					disabled={!termsAccepted}
-				>
-					Continue
-				</button>
+				/>
 			</div>
 		</div>
 	{/if}
