@@ -12,6 +12,8 @@
 	import { slide } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import { connected_wallet } from '../../stores/ui';
+	import ExleSvg from '../ExleSvg.svelte';
+	import { base } from '$app/paths';
 
 	function handleLogout() {
 		logout();
@@ -35,10 +37,28 @@
 
 <!-- Mobile Menu -->
 {#if $is_mobile_menu_open}
+	<!-- svelte-ignore a11y_click_events_have_key_events -->
+	<!-- svelte-ignore a11y_no_static_element_interactions -->
+	<div on:click={closeMobileMenu} class="fixed inset-0 z-40 bg-black bg-opacity-40"></div>
+
 	<div
 		transition:slide={{ duration: 300 }}
-		class="fixed inset-0 top-[55px] z-50 bg-white px-4 pt-1 dark:bg-dark-background"
+		style="height:fit-content"
+		class="fixed inset-0 top-0 z-50 bg-white px-4 pb-4 pt-1 text-sm font-normal dark:bg-dark-background"
 	>
+		<div class="mx-auto flex max-w-screen-lg items-center justify-between py-4 md:px-0">
+			<a href="{base}/" on:click={closeMobileMenu} class="flex items-center gap-1 text-xs">
+				<ExleSvg />
+				EXLE
+			</a>
+			<button on:click={toggleMobileMenu} class="">
+				{#if $is_mobile_menu_open}
+					<X size={24} />
+				{:else}
+					<Menu size={24} />
+				{/if}
+			</button>
+		</div>
 		<nav class="flex flex-col space-y-4">
 			<a href="/loans" on:click={closeMobileMenu} class="">Loans</a>
 			<a href="/repayments" on:click={closeMobileMenu} class="">Repayments</a>
