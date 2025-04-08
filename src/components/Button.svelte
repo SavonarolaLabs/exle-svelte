@@ -10,7 +10,8 @@
 
 {#if disabled}
 	<button
-		class="btn w-full rounded-xl border-2 border-gray-400 bg-gray-400 px-6 py-3 text-md font-medium text-gray-800 opacity-[0.4] transition md:w-[170px]"
+		class="btn w-full rounded-xl border-gray-400 bg-gray-400 px-6 py-3 text-md font-medium text-gray-800 opacity-[0.4] transition md:w-[170px]"
+		class:border-2={variant != 'primary'}
 		disabled={true}>{label}</button
 	>
 {:else if href != '#'}

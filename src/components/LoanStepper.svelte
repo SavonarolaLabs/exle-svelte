@@ -10,7 +10,7 @@
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	let currentStep = 3;
+	let currentStep = 4;
 	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';
@@ -61,7 +61,7 @@
 
 			<div class="mb-8">
 				<p class="mb-4">What type of loan do you want to take?</p>
-				<div class="flex space-x-4">
+				<div class="flex gap-4 max-md:flex-col">
 					<!-- Crowdloan Button -->
 					<button
 						type="button"
@@ -95,17 +95,21 @@
 			</div>
 
 			<div class="mb-8">
-				<label class="flex items-start space-x-2 max-md:flex-col">
+				<label class="flex items-start space-x-2">
 					<input
 						type="checkbox"
 						bind:checked={isWalletConfirmed}
 						class="h-4 w-4 rounded border-gray-300 text-blue-600"
 					/>
-					<span>
-						I confirm this is my wallet address:<br />
-						<span class="font-bold">9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL</span><br /> (Loaned
-						funds will be sent to this address)
-					</span>
+					<div class="max-w-full">
+						<span>
+							I confirm this is my wallet address:<br />
+							<div class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap font-bold">
+								9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
+							</div>
+							(Loaned funds will be sent to this address)
+						</span>
+					</div>
 				</label>
 			</div>
 
@@ -125,7 +129,7 @@
 				<Button
 					onClick={handleContinue}
 					label="Continue"
-					variant="secondary"
+					variant="primary"
 					disabled={!selectedLoanType || !isWalletConfirmed}
 				/>
 			</div>
@@ -144,7 +148,7 @@
 					type="text"
 					bind:value={loanTitle}
 					placeholder="Give your loan a meaningful title "
-					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
+					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 text-sm dark:border-dark-border"
 				/>
 			</div>
 
@@ -154,7 +158,7 @@
 					id="loan-description"
 					bind:value={loanDescription}
 					placeholder="Provide some details and description for your loan..."
-					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
+					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 text-sm dark:border-dark-border"
 					rows="4"
 				></textarea>
 			</div>
@@ -189,101 +193,94 @@
 						<option value="OtherToken">Other Token</option>
 					</select>
 				</div>
-				<p class="mt-1 text-gray-500">(Token to borrow for this loan)</p>
+				<p class="mt-1 opacity-50 max-md:text-xs">(Token to borrow for this loan)</p>
 			</div>
 
 			<div class="mb-6">
 				<label for="funding-goal" class="block font-medium"> Funding Goal </label>
 				<div class="mt-2 flex">
-					<input
-						id="funding-goal"
-						type="number"
-						bind:value={fundingGoal}
-						placeholder="Amount to be raised for this loan"
-						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
-					/>
-					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
-					>
-						$
-					</span>
+					<div class="relative w-full">
+						<input
+							id="funding-goal"
+							type="number"
+							bind:value={fundingGoal}
+							placeholder="Amount to be raised for this loan"
+							class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 pr-12 text-sm placeholder:text-sm placeholder:opacity-0 dark:border-dark-border md:placeholder:opacity-100"
+						/>
+						<span class="absolute inset-y-0 right-0 flex items-center px-4"> $ </span>
+					</div>
 				</div>
+				<div class="mt-1 text-xs opacity-50 md:hidden">Amount to be raised for this loan</div>
 			</div>
 
 			<div class="mb-6">
 				<label for="funding-deadline" class="block font-medium"> Funding Deadline </label>
 				<div class="mt-2 flex">
-					<input
-						id="funding-deadline"
-						type="number"
-						bind:value={fundingDeadline}
-						placeholder="Provide a deadline for this loan to be funded"
-						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
-					/>
-					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
-					>
-						Months
-					</span>
+					<div class="relative w-full">
+						<input
+							id="funding-deadline"
+							type="number"
+							bind:value={fundingDeadline}
+							placeholder="Provide a deadline for this loan to be funded"
+							class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 pr-12 text-sm placeholder:text-sm placeholder:opacity-0 dark:border-dark-border md:placeholder:opacity-100"
+						/>
+						<span class="absolute inset-y-0 right-0 flex items-center px-4">Months</span>
+					</div>
+				</div>
+				<div class="mt-1 text-xs opacity-50 md:hidden">
+					Provide a deadline for this loan to be funded
 				</div>
 			</div>
 
 			<div class="mb-6">
 				<label for="interest-rate" class="block font-medium"> Interest Rate </label>
 				<div class="mt-2 flex">
-					<input
-						id="interest-rate"
-						type="number"
-						bind:value={interestRate}
-						placeholder="Enter the interest rate for this loan"
-						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
-					/>
-					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
-					>
-						%
-					</span>
+					<div class="relative w-full">
+						<input
+							id="interest-rate"
+							type="number"
+							bind:value={interestRate}
+							placeholder="Enter the interest rate for this loan"
+							class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 pr-12 text-sm placeholder:text-sm placeholder:opacity-0 dark:border-dark-border md:placeholder:opacity-100"
+						/>
+						<span class="absolute inset-y-0 right-0 flex items-center px-4">%</span>
+					</div>
 				</div>
+				<div class="mt-1 text-xs opacity-50 md:hidden">Enter the interest rate for this loan</div>
 			</div>
 
 			<div class="mb-6">
 				<label for="repayment-period" class="block font-medium"> Repayment Period </label>
 				<div class="mt-2 flex">
-					<input
-						id="repayment-period"
-						type="number"
-						bind:value={repaymentPeriod}
-						placeholder="Provide a repayment period for this loan"
-						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
-					/>
-					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
-					>
-						Months
-					</span>
+					<div class="relative w-full">
+						<input
+							id="repayment-period"
+							type="number"
+							bind:value={repaymentPeriod}
+							placeholder="Provide a repayment period for this loan"
+							class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 pr-12 text-sm placeholder:text-sm placeholder:opacity-0 dark:border-dark-border md:placeholder:opacity-100"
+						/>
+						<span class="absolute inset-y-0 right-0 flex items-center px-4">Months</span>
+					</div>
+				</div>
+				<div class="mt-1 text-xs opacity-50 md:hidden">
+					Provide a repayment period for this loan
 				</div>
 			</div>
 
 			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
-				<button
-					type="button"
-					on:click={handleGoBack}
-					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
-				>
-					Go back
-				</button>
-				<button
-					type="button"
-					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+				<Button onClick={handleGoBack} label="Go back" variant="secondary" />
+
+				<Button
+					onClick={handleContinue}
+					label="Continue"
+					variant="primary"
 					disabled={!loanToken ||
 						!fundingGoal ||
 						!fundingDeadline ||
 						!interestRate ||
 						!repaymentPeriod}
-				>
-					Continue
-				</button>
+				/>
 			</div>
 		</div>
 	{/if}
@@ -304,7 +301,9 @@
 				</p>
 				<p>
 					<strong>Borrower’s Address:</strong>
-					9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
+					<span class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
+						9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
+					</span>
 				</p>
 				<p>
 					<strong>Funding Goal:</strong>
