@@ -13,7 +13,7 @@
 
 <section class="space-y-6 md:space-y-8">
 	<img class="absolute mt-4 w-[85%] max-w-[350px] md:hidden" src="{base}/globe.png" alt="" />
-	<div class="h-[180px]"></div>
+	<div class="h-[180px] md:h-[50px]"></div>
 	<h1
 		class="mt-24 bg-gradient-to-r from-light-gradientStart to-light-gradientEnd bg-clip-text py-1 text-4xl font-bold leading-[1.2] text-transparent dark:from-dark-gradientStart dark:to-dark-gradientEnd md:text-5xl"
 	>
