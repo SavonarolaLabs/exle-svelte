@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { ChevronDown } from 'lucide-svelte';
 	import LogOut from '../../icons/LogOut.svelte';
-	import { logout } from '../../stores/ui';
+	import { is_dark, logout } from '../../stores/ui';
 </script>
 
 <div class="group relative w-[120px]">
 	<button
-		class="flex items-center gap-1 rounded-full bg-dark-accent px-4 pl-5 text-white hover:opacity-90"
-		style="height:31px"
+		class="flex items-center gap-1 rounded-full bg-dark-accent px-4 pl-5 hover:opacity-90"
+		style="background-color: {$is_dark ? '#292837' : '#F5F6FB'}; height: 31px;"
 	>
 		My Account <ChevronDown size="1em" />
 	</button>
