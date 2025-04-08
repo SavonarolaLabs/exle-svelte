@@ -13,38 +13,33 @@
 	];
 </script>
 
-<nav class="w-full text-xs font-medium" class:border-dark={$is_dark} class:border-light={!$is_dark}>
+<nav
+	class="w-full border-b text-xs font-medium"
+	class:border-dark-border={$is_dark}
+	class:border-light-border={!$is_dark}
+>
 	<div class="mx-auto flex max-w-screen-lg items-center justify-between p-4 md:px-0">
 		<div class="flex items-center space-x-8">
-			<!-- <img src={`${base}/logo.png`} alt="Logo" class="h-8 w-8" /> -->
-
 			<a href="{base}/" on:click={closeMobileMenu} class="flex items-center gap-1">
-				<ExleSvg></ExleSvg>
-				EXLE</a
-			>
+				<ExleSvg />
+				EXLE
+			</a>
 			{#each links as link}
 				<a href={link.href} class="hover:text-secondary hidden md:block">{link.name}</a>
 			{/each}
 		</div>
 		<div class="flex items-center md:hidden">
-			<Hamburger></Hamburger>
+			<Hamburger />
 		</div>
 		<div class="hidden items-center space-x-3 md:flex">
 			<ThemeToggle />
 			{#if $connected_wallet}
-				<MyAccountButton></MyAccountButton>
+				<MyAccountButton />
 			{:else}
-				<ConnectWalletButton></ConnectWalletButton>
+				<ConnectWalletButton />
 			{/if}
 		</div>
 	</div>
 </nav>
 
-<style>
-	.border-dark {
-		border-bottom: 1.5px solid #292837;
-	}
-	.border-light {
-		border-bottom: 1.5px solid #f6f6fb;
-	}
-</style>
+<style></style>

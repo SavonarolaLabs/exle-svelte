@@ -1,6 +1,14 @@
 <script lang="ts">
 	import { Info } from 'lucide-svelte';
 	import Header from './loan/create/Header.svelte';
+	import { is_dark } from '../stores/ui';
+	import Button from './Button.svelte';
+	import { base } from '$app/paths';
+	import { goto } from '$app/navigation';
+
+	function goBack() {
+		history.length > 1 ? history.back() : goto('/');
+	}
 
 	let currentStep = 1;
 	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
@@ -54,29 +62,34 @@
 			<div class="mb-8">
 				<p class="mb-4 text-xs">What type of loan do you want to take?</p>
 				<div class="flex space-x-4">
+					<!-- Crowdloan Button -->
 					<button
 						type="button"
-						class={`w-full rounded-lg border p-4 text-left transition ${
-							selectedLoanType === 'Crowdloan'
-								? 'border-dark-accent bg-dark-accent text-white'
-								: 'border-gray-300'
-						}`}
+						class="w-full rounded-lg border p-4 text-left transition"
+						class:border-dark-accent={selectedLoanType === 'Crowdloan'}
+						class:bg-dark-accent={selectedLoanType === 'Crowdloan'}
+						class:text-white={selectedLoanType === 'Crowdloan'}
+						class:border-dark-border={$is_dark && selectedLoanType !== 'Crowdloan'}
+						class:border-light-border={!$is_dark && selectedLoanType !== 'Crowdloan'}
 						on:click={() => (selectedLoanType = 'Crowdloan')}
 					>
 						<p class="mb-4 text-md font-semibold">Crowdloan</p>
-						<p class="">Multiple people can contribute to fund a crowdloan.</p>
+						<p>Multiple people can contribute to fund a crowdloan.</p>
 					</button>
+
+					<!-- Solofund Button -->
 					<button
 						type="button"
-						class={`w-full rounded-lg border p-4 transition ${
-							selectedLoanType === 'Solofund loan'
-								? 'border-dark-accent bg-dark-accent text-white'
-								: 'border-gray-300'
-						}`}
+						class="w-full rounded-lg border p-4 text-left transition"
+						class:border-dark-accent={selectedLoanType === 'Solofund loan'}
+						class:bg-dark-accent={selectedLoanType === 'Solofund loan'}
+						class:text-white={selectedLoanType === 'Solofund loan'}
+						class:border-dark-border={$is_dark && selectedLoanType !== 'Solofund loan'}
+						class:border-light-border={!$is_dark && selectedLoanType !== 'Solofund loan'}
 						on:click={() => (selectedLoanType = 'Solofund loan')}
 					>
 						<p class="font-medium">Solofund loan</p>
-						<p class="">Only one person can contribute to fund a solofund loan.</p>
+						<p>Only one person can contribute to fund a solofund loan.</p>
 					</button>
 				</div>
 			</div>
@@ -107,20 +120,14 @@
 			</div>
 
 			<div class="flex justify-between">
-				<button
-					type="button"
-					class="rounded-md border border-gray-300 px-8 py-2 font-medium text-gray-700 hover:bg-gray-200"
-				>
-					Cancel
-				</button>
-				<button
-					type="button"
-					on:click={handleContinue}
-					class="rounded-md bg-blue-600 px-8 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+				<Button onClick={goBack} label="Cancel" variant="secondary" />
+
+				<Button
+					onClick={handleContinue}
+					label="Continue"
+					variant="secondary"
 					disabled={!selectedLoanType || !isWalletConfirmed}
-				>
-					Continue
-				</button>
+				/>
 			</div>
 		</div>
 	{/if}
