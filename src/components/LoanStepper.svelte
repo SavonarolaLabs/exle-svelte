@@ -10,7 +10,7 @@
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	let currentStep = 1;
+	let currentStep = 3;
 	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';
@@ -53,19 +53,19 @@
 	}
 </script>
 
-<div class="mx-auto w-full max-w-2xl rounded-lg p-6 pt-8">
+<div class="mx-auto w-full max-w-2xl rounded-lg p-6 pt-8 text-sm">
 	{#if currentStep === 1}
 		<!-- Step 1 Content -->
 		<div>
 			<Header {currentStep}></Header>
 
 			<div class="mb-8">
-				<p class="mb-4 text-xs">What type of loan do you want to take?</p>
+				<p class="mb-4">What type of loan do you want to take?</p>
 				<div class="flex space-x-4">
 					<!-- Crowdloan Button -->
 					<button
 						type="button"
-						class="w-full rounded-lg border p-4 text-left transition"
+						class="w-full rounded-lg border-2 p-4 text-left transition"
 						class:border-dark-accent={selectedLoanType === 'Crowdloan'}
 						class:bg-dark-accent={selectedLoanType === 'Crowdloan'}
 						class:text-white={selectedLoanType === 'Crowdloan'}
@@ -80,7 +80,7 @@
 					<!-- Solofund Button -->
 					<button
 						type="button"
-						class="w-full rounded-lg border p-4 text-left transition"
+						class="w-full rounded-lg border-2 p-4 text-left transition"
 						class:border-dark-accent={selectedLoanType === 'Solofund loan'}
 						class:bg-dark-accent={selectedLoanType === 'Solofund loan'}
 						class:text-white={selectedLoanType === 'Solofund loan'}
@@ -88,14 +88,14 @@
 						class:border-light-border={!$is_dark && selectedLoanType !== 'Solofund loan'}
 						on:click={() => (selectedLoanType = 'Solofund loan')}
 					>
-						<p class="font-medium">Solofund loan</p>
+						<p class="mb-4 text-md font-semibold">Solofund loan</p>
 						<p>Only one person can contribute to fund a solofund loan.</p>
 					</button>
 				</div>
 			</div>
 
 			<div class="mb-8">
-				<label class="flex items-start space-x-2">
+				<label class="flex items-start space-x-2 max-md:flex-col">
 					<input
 						type="checkbox"
 						bind:checked={isWalletConfirmed}
@@ -119,7 +119,7 @@
 				</div>
 			</div>
 
-			<div class="flex justify-between">
+			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
 				<Button onClick={goBack} label="Cancel" variant="secondary" />
 
 				<Button
@@ -138,45 +138,36 @@
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<label for="loan-title" class="block font-medium text-gray-700"> Loan Title </label>
+				<label for="loan-title" class="block text-sm font-medium"> Loan Title </label>
 				<input
 					id="loan-title"
 					type="text"
 					bind:value={loanTitle}
-					placeholder="Give your loan a meaningful title"
-					class="mt-2 w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+					placeholder="Give your loan a meaningful title "
+					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 				/>
 			</div>
 
 			<div class="mb-6">
-				<label for="loan-description" class="block font-medium text-gray-700">
-					Loan Description
-				</label>
+				<label for="loan-description" class="block text-sm font-medium"> Loan Description </label>
 				<textarea
 					id="loan-description"
 					bind:value={loanDescription}
 					placeholder="Provide some details and description for your loan..."
-					class="mt-2 w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+					class="mt-2 w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					rows="4"
 				></textarea>
 			</div>
 
-			<div class="flex justify-between">
-				<button
-					type="button"
-					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
-				>
-					Go back
-				</button>
-				<button
-					type="button"
-					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
+				<Button onClick={handleGoBack} label="Go back" variant="secondary" />
+
+				<Button
+					onClick={handleContinue}
+					label="Continue"
+					variant="secondary"
 					disabled={!loanTitle || !loanDescription}
-				>
-					Continue
-				</button>
+				/>
 			</div>
 		</div>
 	{/if}
@@ -187,12 +178,12 @@
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<label for="loan-token" class="block font-medium text-gray-700"> Loan Token </label>
+				<label for="loan-token" class="block font-medium"> Loan Token </label>
 				<div class="relative mt-2">
 					<select
 						id="loan-token"
 						bind:value={loanToken}
-						class="w-full rounded-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+						class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					>
 						<option value="SigUSD">SigUSD</option>
 						<option value="OtherToken">Other Token</option>
@@ -202,17 +193,17 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="funding-goal" class="block font-medium text-gray-700"> Funding Goal </label>
+				<label for="funding-goal" class="block font-medium"> Funding Goal </label>
 				<div class="mt-2 flex">
 					<input
 						id="funding-goal"
 						type="number"
 						bind:value={fundingGoal}
 						placeholder="Amount to be raised for this loan"
-						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
 					>
 						$
 					</span>
@@ -220,19 +211,17 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="funding-deadline" class="block font-medium text-gray-700">
-					Funding Deadline
-				</label>
+				<label for="funding-deadline" class="block font-medium"> Funding Deadline </label>
 				<div class="mt-2 flex">
 					<input
 						id="funding-deadline"
 						type="number"
 						bind:value={fundingDeadline}
 						placeholder="Provide a deadline for this loan to be funded"
-						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
 					>
 						Months
 					</span>
@@ -240,17 +229,17 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="interest-rate" class="block font-medium text-gray-700"> Interest Rate </label>
+				<label for="interest-rate" class="block font-medium"> Interest Rate </label>
 				<div class="mt-2 flex">
 					<input
 						id="interest-rate"
 						type="number"
 						bind:value={interestRate}
 						placeholder="Enter the interest rate for this loan"
-						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
 					>
 						%
 					</span>
@@ -258,30 +247,28 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="repayment-period" class="block font-medium text-gray-700">
-					Repayment Period
-				</label>
+				<label for="repayment-period" class="block font-medium"> Repayment Period </label>
 				<div class="mt-2 flex">
 					<input
 						id="repayment-period"
 						type="number"
 						bind:value={repaymentPeriod}
 						placeholder="Provide a repayment period for this loan"
-						class="w-full rounded-l-lg border border-gray-300 p-3 focus:border-blue-500 focus:ring-blue-500"
+						class="w-full rounded-l-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					/>
 					<span
-						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4 text-gray-700"
+						class="flex items-center rounded-r-lg border-b border-r border-t border-gray-300 px-4"
 					>
 						Months
 					</span>
 				</div>
 			</div>
 
-			<div class="flex justify-between">
+			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
 				>
 					Go back
 				</button>
@@ -343,7 +330,7 @@
 			</div>
 
 			<div class="mb-6">
-				<div class="rounded-lg border p-4 text-gray-700">
+				<div class="rounded-lg border p-4">
 					<ul class="list-disc space-y-2 pl-6">
 						<li>Creating or participating in loans is not illegal in your country.</li>
 						<li>
@@ -375,11 +362,11 @@
 				</div>
 			</div>
 
-			<div class="flex justify-between">
+			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
 				>
 					Go back
 				</button>
@@ -401,7 +388,7 @@
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<p class="text-gray-700">
+				<p class="">
 					In order to finalize your loan, you need to make a 0.1 ERGO ($0.15) payment on your
 					wallet. Your loan will be created after the payment transaction has finalized.
 				</p>
@@ -409,15 +396,15 @@
 
 			<div class="mb-6 rounded-lg border p-6 text-center">
 				<img src="/nautilus-logo.png" alt="Nautilus Wallet" class="mx-auto mb-4 h-20 w-20" />
-				<p class="mb-2 font-medium text-gray-700">Nautilus Wallet</p>
+				<p class="mb-2 font-medium">Nautilus Wallet</p>
 				<p class=" text-gray-500">Pay via browser wallet</p>
 			</div>
 
-			<div class="flex justify-between">
+			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
 				>
 					Cancel
 				</button>
@@ -454,7 +441,7 @@
 						/>
 					</svg>
 				</div>
-				<p class="text-gray-700">
+				<p class="">
 					Your transaction has been confirmed and your loan is created. You can view it by clicking
 					on the button below:
 				</p>
