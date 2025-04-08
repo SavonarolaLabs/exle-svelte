@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { Info } from 'lucide-svelte';
+	import Header from './loan/create/Header.svelte';
+
 	let currentStep = 1;
 	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
 	let isWalletConfirmed = false;
@@ -42,79 +45,78 @@
 	}
 </script>
 
-<div class="mx-auto max-w-2xl rounded-lg p-6">
+<div class="mx-auto w-full max-w-2xl rounded-lg p-6 pt-8">
 	{#if currentStep === 1}
 		<!-- Step 1 Content -->
 		<div>
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 1/5</h2>
-				<p class="text-gray-600">Choose Loan Type</p>
-			</div>
+			<Header {currentStep}></Header>
 
-			<div class="mb-6">
-				<p class="mb-4 text-sm text-gray-700">What type of loan do you want to take?</p>
+			<div class="mb-8">
+				<p class="mb-4 text-xs">What type of loan do you want to take?</p>
 				<div class="flex space-x-4">
 					<button
 						type="button"
-						class={`w-full rounded-lg border p-4 transition ${
+						class={`w-full rounded-lg border p-4 text-left transition ${
 							selectedLoanType === 'Crowdloan'
-								? 'border-blue-500 bg-blue-500 text-white'
-								: 'hover: border-gray-300 bg-white text-gray-700'
+								? 'border-dark-accent bg-dark-accent text-white'
+								: 'border-gray-300'
 						}`}
 						on:click={() => (selectedLoanType = 'Crowdloan')}
 					>
-						<p class="font-medium">Crowdloan</p>
-						<p class="text-sm">Multiple people can contribute to fund a crowdloan.</p>
+						<p class="mb-4 text-md font-semibold">Crowdloan</p>
+						<p class="">Multiple people can contribute to fund a crowdloan.</p>
 					</button>
 					<button
 						type="button"
 						class={`w-full rounded-lg border p-4 transition ${
 							selectedLoanType === 'Solofund loan'
-								? 'border-blue-500 bg-blue-500 text-white'
-								: 'hover: border-gray-300 bg-white text-gray-700'
+								? 'border-dark-accent bg-dark-accent text-white'
+								: 'border-gray-300'
 						}`}
 						on:click={() => (selectedLoanType = 'Solofund loan')}
 					>
 						<p class="font-medium">Solofund loan</p>
-						<p class="text-sm">Only one person can contribute to fund a solofund loan.</p>
+						<p class="">Only one person can contribute to fund a solofund loan.</p>
 					</button>
 				</div>
 			</div>
 
-			<div class="mb-6">
-				<label class="flex items-start space-x-2 text-sm">
+			<div class="mb-8">
+				<label class="flex items-start space-x-2">
 					<input
 						type="checkbox"
 						bind:checked={isWalletConfirmed}
-						class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+						class="h-4 w-4 rounded border-gray-300 text-blue-600"
 					/>
 					<span>
-						I confirm this is my wallet address:
-						<strong>9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL</strong> (Loaned funds will be
-						sent to this address)
+						I confirm this is my wallet address:<br />
+						<span class="font-bold">9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL</span><br /> (Loaned
+						funds will be sent to this address)
 					</span>
 				</label>
 			</div>
 
-			<div class="mb-6">
-				<p class="flex items-center text-sm text-gray-500">
-					<span class="mr-2">ℹ️</span>
-					Loan creation fee
-					<span class="ml-2">There’s a 0.1 ERGO fee ($0.15) for creating your loan</span>
-				</p>
+			<div class="mb-10 flex gap-2">
+				<div>
+					<Info size="18px"></Info>
+				</div>
+				<div>
+					<span class="font-semibold">Loan creation fee</span> <br />
+					There’s a 0.1 ERG fee for creating your loan.
+				</div>
 			</div>
 
 			<div class="flex justify-between">
 				<button
 					type="button"
-					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded-md border border-gray-300 px-8 py-2 font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Cancel
 				</button>
 				<button
 					type="button"
 					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+					class="rounded-md bg-blue-600 px-8 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
 					disabled={!selectedLoanType || !isWalletConfirmed}
 				>
 					Continue
@@ -126,13 +128,10 @@
 	{#if currentStep === 2}
 		<!-- Step 2 Content -->
 		<div>
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 2/5</h2>
-				<p class="text-gray-600">Basic Loan Info</p>
-			</div>
+			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<label for="loan-title" class="block text-sm font-medium text-gray-700"> Loan Title </label>
+				<label for="loan-title" class="block font-medium text-gray-700"> Loan Title </label>
 				<input
 					id="loan-title"
 					type="text"
@@ -143,7 +142,7 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="loan-description" class="block text-sm font-medium text-gray-700">
+				<label for="loan-description" class="block font-medium text-gray-700">
 					Loan Description
 				</label>
 				<textarea
@@ -159,14 +158,14 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
 				<button
 					type="button"
 					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
 					disabled={!loanTitle || !loanDescription}
 				>
 					Continue
@@ -178,13 +177,10 @@
 	{#if currentStep === 3}
 		<!-- Step 3 Content -->
 		<div>
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 3/5</h2>
-				<p class="text-gray-600">Loan Funding Details</p>
-			</div>
+			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<label for="loan-token" class="block text-sm font-medium text-gray-700"> Loan Token </label>
+				<label for="loan-token" class="block font-medium text-gray-700"> Loan Token </label>
 				<div class="relative mt-2">
 					<select
 						id="loan-token"
@@ -195,13 +191,11 @@
 						<option value="OtherToken">Other Token</option>
 					</select>
 				</div>
-				<p class="mt-1 text-sm text-gray-500">(Token to borrow for this loan)</p>
+				<p class="mt-1 text-gray-500">(Token to borrow for this loan)</p>
 			</div>
 
 			<div class="mb-6">
-				<label for="funding-goal" class="block text-sm font-medium text-gray-700">
-					Funding Goal
-				</label>
+				<label for="funding-goal" class="block font-medium text-gray-700"> Funding Goal </label>
 				<div class="mt-2 flex">
 					<input
 						id="funding-goal"
@@ -219,7 +213,7 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="funding-deadline" class="block text-sm font-medium text-gray-700">
+				<label for="funding-deadline" class="block font-medium text-gray-700">
 					Funding Deadline
 				</label>
 				<div class="mt-2 flex">
@@ -239,9 +233,7 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="interest-rate" class="block text-sm font-medium text-gray-700">
-					Interest Rate
-				</label>
+				<label for="interest-rate" class="block font-medium text-gray-700"> Interest Rate </label>
 				<div class="mt-2 flex">
 					<input
 						id="interest-rate"
@@ -259,7 +251,7 @@
 			</div>
 
 			<div class="mb-6">
-				<label for="repayment-period" class="block text-sm font-medium text-gray-700">
+				<label for="repayment-period" class="block font-medium text-gray-700">
 					Repayment Period
 				</label>
 				<div class="mt-2 flex">
@@ -282,14 +274,14 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
 				<button
 					type="button"
 					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
 					disabled={!loanToken ||
 						!fundingGoal ||
 						!fundingDeadline ||
@@ -305,10 +297,7 @@
 	{#if currentStep === 4}
 		<!-- Step 4 Content -->
 		<div>
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 4/5</h2>
-				<p class="text-gray-600">Review Loan</p>
-			</div>
+			<Header {currentStep}></Header>
 
 			<div class="mb-6 space-y-4">
 				<p>
@@ -347,7 +336,7 @@
 			</div>
 
 			<div class="mb-6">
-				<div class="rounded-lg border p-4 text-sm text-gray-700">
+				<div class="rounded-lg border p-4 text-gray-700">
 					<ul class="list-disc space-y-2 pl-6">
 						<li>Creating or participating in loans is not illegal in your country.</li>
 						<li>
@@ -368,7 +357,7 @@
 					</ul>
 				</div>
 				<div class="mt-4">
-					<label class="flex items-start space-x-2 text-sm">
+					<label class="flex items-start space-x-2">
 						<input
 							type="checkbox"
 							bind:checked={termsAccepted}
@@ -383,14 +372,14 @@
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Go back
 				</button>
 				<button
 					type="button"
 					on:click={handleContinue}
-					class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
+					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700 disabled:bg-gray-300"
 					disabled={!termsAccepted}
 				>
 					Continue
@@ -402,10 +391,7 @@
 	{#if currentStep === 5 && !paymentConfirmed}
 		<!-- Payment & Finalize -->
 		<div>
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 5/5</h2>
-				<p class="text-gray-600">Payment & Finalize</p>
-			</div>
+			<Header {currentStep}></Header>
 
 			<div class="mb-6">
 				<p class="text-gray-700">
@@ -416,22 +402,22 @@
 
 			<div class="mb-6 rounded-lg border p-6 text-center">
 				<img src="/nautilus-logo.png" alt="Nautilus Wallet" class="mx-auto mb-4 h-20 w-20" />
-				<p class="mb-2 text-sm font-medium text-gray-700">Nautilus Wallet</p>
-				<p class="text-sm text-gray-500">Pay via browser wallet</p>
+				<p class="mb-2 font-medium text-gray-700">Nautilus Wallet</p>
+				<p class=" text-gray-500">Pay via browser wallet</p>
 			</div>
 
 			<div class="flex justify-between">
 				<button
 					type="button"
 					on:click={handleGoBack}
-					class="rounded border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200"
+					class="rounded border border-gray-300 px-4 py-2 font-medium text-gray-700 hover:bg-gray-200"
 				>
 					Cancel
 				</button>
 				<button
 					type="button"
 					on:click={handleFinalizePayment}
-					class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
 				>
 					Pay via browser wallet
 				</button>
@@ -442,10 +428,7 @@
 	{#if currentStep === 5 && paymentConfirmed}
 		<!-- Payment Confirmation -->
 		<div class="text-center">
-			<div class="mb-4">
-				<h2 class="text-xl font-semibold">Step 5/5</h2>
-				<p class="text-gray-600">Payment & Finalize</p>
-			</div>
+			<Header {currentStep}></Header>
 
 			<div class="mb-6">
 				<div class="mb-4 flex justify-center">
@@ -472,7 +455,7 @@
 
 			<button
 				type="button"
-				class="rounded bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+				class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
 			>
 				Take me to the loan page
 			</button>
