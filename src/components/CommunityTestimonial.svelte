@@ -38,7 +38,7 @@
 	};
 </script>
 
-<div class="relative mx-auto max-w-screen-lg p-8 text-left">
+<div class="relative mx-auto max-w-screen-xl p-8 text-left">
 	<div class="relative mb-6 block flex-1 md:hidden">
 		<div class="h-80 w-full overflow-hidden rounded-lg bg-gray-200">
 			<!-- Placeholder for Image -->

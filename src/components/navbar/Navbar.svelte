@@ -14,11 +14,11 @@
 </script>
 
 <nav
-	class="w-full border-b text-xs font-medium"
+	class="w-full border-b text-sm font-light"
 	class:border-dark-border={$is_dark}
 	class:border-light-border={!$is_dark}
 >
-	<div class="mx-auto flex max-w-screen-lg items-center justify-between p-4 md:px-0">
+	<div class="mx-auto flex max-w-screen-xl items-center justify-between p-4 md:px-0">
 		<div class="flex items-center space-x-8">
 			<a href="{base}/" on:click={closeMobileMenu} class="flex items-center gap-1">
 				<ExleSvg />

@@ -3,7 +3,7 @@
 </script>
 
 <button
-	class="w-[120px] rounded-full bg-dark-accent px-4 text-white hover:opacity-90"
+	class="w-[150px] rounded-full bg-dark-accent px-4 text-white hover:opacity-90"
 	style="height:31px"
 	on:click={connectWallet}
 >

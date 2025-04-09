@@ -46,7 +46,7 @@
 		style="height:fit-content"
 		class="fixed inset-0 top-0 z-50 bg-white px-4 pb-4 pt-1 text-sm font-normal dark:bg-dark-background"
 	>
-		<div class="mx-auto flex max-w-screen-lg items-center justify-between py-4 md:px-0">
+		<div class="mx-auto flex max-w-screen-xl items-center justify-between py-4 md:px-0">
 			<a href="{base}/" on:click={closeMobileMenu} class="flex items-center gap-1 text-xs">
 				<ExleSvg />
 				EXLE

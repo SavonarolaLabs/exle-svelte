@@ -10,9 +10,9 @@
 	];
 </script>
 
-<footer class="mt-20 w-full text-xs font-medium max-md:px-8">
+<footer class="mt-20 w-full text-sm font-light max-md:px-8">
 	<div
-		class="mx-auto flex max-w-screen-lg items-center justify-between py-6"
+		class="mx-auto flex max-w-screen-xl items-center justify-between py-6"
 		class:border-dark={$is_dark}
 		class:border-light={!$is_dark}
 	>
