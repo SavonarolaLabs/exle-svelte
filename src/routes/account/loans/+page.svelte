@@ -9,9 +9,11 @@
 	let withdrawableLoans: Loan[] = [];
 	let activeLoanRequests: Loan[] = [];
 	onMount(() => {
-		withdrawableLoans = loans.filter((l) => l.isReadyForWithdrawal && l.creator == $change_address);
+		withdrawableLoans = loans.filter(
+			(l) => l.isReadyForWithdrawal && l.creator == $change_address && l.phase == 'loan'
+		);
 		activeLoanRequests = loans.filter(
-			(l) => !l.isReadyForWithdrawal && l.creator == $change_address
+			(l) => !l.isReadyForWithdrawal && l.creator == $change_address && l.phase == 'loan'
 		);
 	});
 </script>

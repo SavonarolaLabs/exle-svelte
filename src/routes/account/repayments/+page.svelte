@@ -1,5 +1,51 @@
-<script>
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { loans } from '../../../data/DummyLoans';
+	import LoanWidget from '../../../components/loan/LoanWidget.svelte';
+	import type { Loan } from '../../../data/DummyLoans';
+	import { change_address } from '../../../stores/ui';
 	import EmptyRepayments from '../../../components/loan/EmptyRepayments.svelte';
+
+	let activeRepayments: Loan[] = [];
+	let repaymentHistory: Loan[] = [];
+	onMount(() => {
+		activeRepayments = loans.filter(
+			(l) => l.daysLeft > 0 && !l.isRepayed && l.creator == $change_address && l.phase != 'loan'
+		);
+		repaymentHistory = loans.filter(
+			(l) => (l.daysLeft == 0 || l.isRepayed) && l.creator == $change_address && l.phase != 'loan'
+		);
+	});
 </script>
 
-<EmptyRepayments></EmptyRepayments>
+{#if activeRepayments.length > 0}
+	<div class="mb-4 flex items-center gap-1">
+		<span class="text-lg font-semibold">Active repayments</span>
+		<span class="text-sm font-thin opacity-70"
+			>({activeRepayments.length} loan{activeRepayments.length > 1 ? 's' : ''})</span
+		>
+	</div>
+	<div id="loans-grid" class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+		{#each activeRepayments as loan}
+			<LoanWidget {loan} showCreator={false} />
+		{/each}
+	</div>
+{/if}
+
+{#if repaymentHistory.length > 0}
+	<div class:mt-10={activeRepayments.length > 0} class="mb-4 flex items-center gap-1">
+		<span class="text-lg font-semibold">Repayment history</span>
+		<span class="text-sm font-thin opacity-70"
+			>({repaymentHistory.length} loan{repaymentHistory.length > 1 ? 's' : ''})</span
+		>
+	</div>
+	<div id="loans-grid" class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+		{#each repaymentHistory as loan}
+			<LoanWidget {loan} showCreator={false} />
+		{/each}
+	</div>
+{/if}
+
+{#if activeRepayments.length == 0 && repaymentHistory.length == 0}
+	<EmptyRepayments></EmptyRepayments>
+{/if}

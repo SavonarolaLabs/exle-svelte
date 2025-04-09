@@ -46,15 +46,17 @@
 			<div class="h-[10px] w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
 				<div
 					class="h-full"
-					class:bg-green-500={loan.phase == 'loan'}
-					class:bg-indigo-600={loan.phase == 'repayment'}
+					class:bg-gray-500={loan.daysLeft == 0 || loan.isRepayed}
+					class:bg-green-500={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
+					class:bg-indigo-600={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
 					style="width: {loan.fundedPercentage}%"
 				></div>
 			</div>
 			<div class="mt-2 flex items-center justify-between text-sm">
 				<span
-					class:text-green-500={loan.phase == 'loan'}
-					class:text-indigo-600={loan.phase == 'repayment'}
+					class:text-gray-500={loan.daysLeft == 0 || loan.isRepayed}
+					class:text-green-500={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
+					class:text-indigo-600={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
 					>{loan.fundedAmount}
 					{#if loan.phase == 'loan'}
 						funded

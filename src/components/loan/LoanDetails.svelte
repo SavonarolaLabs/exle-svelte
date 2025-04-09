@@ -124,7 +124,7 @@
 				onClick={onButtonClick}
 				label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
 				variant="primary"
-				disabled={!amount}
+				disabled={!amount || loan.daysLeft == 0}
 				w100={true}
 			/>
 		{/if}

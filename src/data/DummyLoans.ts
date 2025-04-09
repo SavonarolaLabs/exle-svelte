@@ -13,6 +13,7 @@ export interface Loan {
 	daysLeft: number;
 	creator: string;
 	isReadyForWithdrawal?: boolean;
+	isRepayed?: boolean;
 }
 
 export const loans: Loan[] = [
@@ -363,7 +364,7 @@ export const loans: Loan[] = [
 		fundedAmount: '$2,000',
 		fundedPercentage: 57,
 		daysLeft: 25,
-		creator: '1as3T...QWeer'
+		creator: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 	},
 	{
 		phase: 'repayment',
@@ -378,8 +379,8 @@ export const loans: Loan[] = [
 		fundingToken: 'SigUSD',
 		fundedAmount: '$5,500',
 		fundedPercentage: 73,
-		daysLeft: 42,
-		creator: '1lo8T...QJqqd'
+		daysLeft: 0,
+		creator: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 	},
 	{
 		phase: 'repayment',
@@ -392,9 +393,10 @@ export const loans: Loan[] = [
 		interestRate: '4.5%',
 		fundingGoal: '4,000.00',
 		fundingToken: 'SigUSD',
-		fundedAmount: '$3,000',
-		fundedPercentage: 75,
-		daysLeft: 30,
-		creator: '1lk6R...QWeew'
+		fundedAmount: '4,000.00',
+		fundedPercentage: 100,
+		daysLeft: 5,
+		isRepayed: true,
+		creator: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 	}
 ];
