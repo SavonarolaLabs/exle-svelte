@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { Loan } from '../data/DummyLoans';
-	import Clock from '../icons/Clock.svelte';
-	import InterestRate from '../icons/InterestRate.svelte';
+	import type { Loan } from '../../data/DummyLoans';
+	import Clock from '../../icons/Clock.svelte';
+	import InterestRate from '../../icons/InterestRate.svelte';
 	export let loan: Loan;
 </script>
 
@@ -38,7 +38,7 @@
 						Total Repayment:
 					{/if}
 				</span>
-				<span class="font-medium">{loan.fundingGoal}</span>
+				<span class="font-medium">{loan.fundingGoal} {loan.fundingToken}</span>
 			</div>
 			<div class="h-[10px] w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
 				<div

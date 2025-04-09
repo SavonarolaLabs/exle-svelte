@@ -6,16 +6,19 @@
 	export let variant = 'primary';
 	export let disabled = false;
 	export let onClick = () => {};
+	export let w100 = false;
 </script>
 
 {#if disabled}
 	<button
+		style={w100 ? 'width:100%' : ''}
 		class="btn w-full rounded-xl border-gray-400 bg-gray-400 px-6 py-3 text-md font-medium text-gray-800 opacity-[0.4] transition md:w-[220px]"
-		class:border-2={variant != 'primary'}
+		class:border-2={variant != 'pri mary'}
 		disabled={true}>{label}</button
 	>
 {:else if href != '#'}
 	<a
+		style={w100 ? 'width:100%' : ''}
 		{href}
 		on:click={onClick}
 		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[220px]"
@@ -29,6 +32,7 @@
 	</a>
 {:else}
 	<button
+		style={w100 ? 'width:100%' : ''}
 		on:click|preventDefault={onClick}
 		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[220px]"
 		class:primary={variant === 'primary'}

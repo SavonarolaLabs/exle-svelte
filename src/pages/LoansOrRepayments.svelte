@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
-	import LoanWidget from '../components/LoanWidget.svelte';
 	import { loans } from '../data/DummyLoans';
 	import type { Loan } from '../data/DummyLoans';
 	import { ChevronDown } from 'lucide-svelte';
 	import Sort from '../icons/Sort.svelte';
+	import LoanWidget from '../components/loan/LoanWidget.svelte';
 
 	export let phase = 'loan';
 

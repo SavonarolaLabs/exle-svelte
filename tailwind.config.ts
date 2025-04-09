@@ -24,6 +24,7 @@ export default {
 					gradientStart: '#171622',
 					gradientEnd: '#202482',
 					neutral: '#EBECFF',
+					gray: '#f6f6fb',
 					textNeutral: '#777899',
 					border: '#f8f8f8'
 				},
