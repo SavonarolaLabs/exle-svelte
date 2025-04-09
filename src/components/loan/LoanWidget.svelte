@@ -2,7 +2,9 @@
 	import type { Loan } from '../../data/DummyLoans';
 	import Clock from '../../icons/Clock.svelte';
 	import InterestRate from '../../icons/InterestRate.svelte';
+	import TickCircle from '../../icons/TickCircle.svelte';
 	export let loan: Loan;
+	export let showCreator: boolean = true;
 </script>
 
 <a href="/loans/{loan.loanId}">
@@ -29,7 +31,7 @@
 				<span class="text-thin text-xs">Interest Rate</span>
 			</li>
 		</ul>
-		<div class="mb-5">
+		<div class="">
 			<div class="mb-2 flex items-center justify-between text-sm">
 				<span class="font-thin">
 					{#if loan.phase == 'loan'}
@@ -43,7 +45,7 @@
 			<div class="h-[10px] w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
 				<div
 					class="h-full"
-					class:bg-green-400={loan.phase == 'loan'}
+					class:bg-green-500={loan.phase == 'loan'}
 					class:bg-indigo-600={loan.phase == 'repayment'}
 					style="width: {loan.fundedPercentage}%"
 				></div>
@@ -59,9 +61,18 @@
 						repaid
 					{/if}
 				</span>
-				<span class="font-normal">{loan.daysLeft} Days Left</span>
+				{#if loan.isReadyForWithdrawal}
+					<span class="flex items-center gap-1 text-xs font-semibold text-green-500">
+						<TickCircle></TickCircle>
+						Ready for withdrawal
+					</span>
+				{:else}
+					<span class="font-normal">{loan.daysLeft} Days Left</span>
+				{/if}
 			</div>
 		</div>
-		<p class="text-xs font-thin">Created by: {loan.creator}</p>
+		{#if showCreator}
+			<p class="mt-5 text-xs font-thin">Created by: {loan.creator}</p>
+		{/if}
 	</div>
 </a>

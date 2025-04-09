@@ -1,6 +1,9 @@
 import { writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
+export const change_address: Writable<string> = writable(
+	'9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
+);
 export const is_mobile_menu_open: Writable<boolean> = writable(false);
 
 export function toggleMobileMenu() {
