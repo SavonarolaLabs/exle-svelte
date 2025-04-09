@@ -22,7 +22,7 @@
 	<div class="mb-4 flex items-center gap-1">
 		<span class="text-lg font-semibold">Active repayments</span>
 		<span class="text-sm font-thin opacity-70"
-			>({activeRepayments.length} loan{activeRepayments.length > 1 ? 's' : ''})</span
+			>({activeRepayments.length} repayment{activeRepayments.length > 1 ? 's' : ''})</span
 		>
 	</div>
 	<div id="loans-grid" class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
@@ -36,7 +36,7 @@
 	<div class:mt-10={activeRepayments.length > 0} class="mb-4 flex items-center gap-1">
 		<span class="text-lg font-semibold">Repayment history</span>
 		<span class="text-sm font-thin opacity-70"
-			>({repaymentHistory.length} loan{repaymentHistory.length > 1 ? 's' : ''})</span
+			>({repaymentHistory.length} repayment{repaymentHistory.length > 1 ? 's' : ''})</span
 		>
 	</div>
 	<div id="loans-grid" class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
