@@ -23,7 +23,7 @@
 			<div class="text-sm text-gray-500">9eq6S...QXssg</div>
 		</div>
 		<div class="flex items-center gap-4">
-			<div class="text-gray-800">23.45 ERG</div>
+			<div class="whitespace-nowrap text-gray-800">23.45 ERG</div>
 			<Button href="{base}/loans/create" label="Create loan" variant="primary" class="px-6" />
 		</div>
 	</div>
