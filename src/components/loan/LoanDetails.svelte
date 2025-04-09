@@ -97,7 +97,7 @@
 				type="number"
 				placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
 				bind:value={amount}
-				class=" w-full rounded-xl border-2 border-[#e5e5eb] dark:border-dark-border"
+				class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
 			/>
 			<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
 		</div>
