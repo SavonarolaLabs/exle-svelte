@@ -10,7 +10,9 @@
 			<span class="text-sm font-semibold text-[var(--text-color)]">{loan.loanType}</span>
 		</div>
 		<h3 class="mb-2 text-lg font-semibold text-[var(--text-color)]">{loan.loanTitle}</h3>
-		<p class="mb-4 text-sm text-gray-600">{loan.loanDescription}</p>
+		<p class="mb-4 line-clamp-4 h-[80px] overflow-hidden text-sm text-gray-600">
+			{loan.loanDescription}
+		</p>
 		<ul class="mb-4 space-y-2 text-sm text-[var(--text-color)]">
 			<li class="flex items-center">
 				<svg
