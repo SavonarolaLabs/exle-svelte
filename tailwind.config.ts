@@ -25,7 +25,7 @@ export default {
 					gradientEnd: '#202482',
 					neutral: '#EBECFF',
 					textNeutral: '#777899',
-					border: '#e6e6eb'
+					border: '#f8f8f8'
 				},
 				dark: {
 					background: '#16151f',
@@ -38,11 +38,7 @@ export default {
 					gray: '#2B293B',
 					textNeutral: '#777899',
 					border: '#292837'
-				},
-				'light-border': '#e6e6eb',
-				'dark-border': '#292837',
-				'light-accent': '#5054dd',
-				'dark-accent': '#5054dd'
+				}
 			},
 			fontWeight: {
 				default: '400'

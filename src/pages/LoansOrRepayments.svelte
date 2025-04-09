@@ -6,7 +6,6 @@
 	import { ChevronDown } from 'lucide-svelte';
 	import Sort from '../icons/Sort.svelte';
 
-	//export let phase = "repayment";
 	export let phase = 'loan';
 
 	// Fuse.js configuration
@@ -28,24 +27,26 @@
 	const fuse = new Fuse(loans, fuseOptions);
 
 	let searchQuery = '';
-	let filteredLoans: Loan[] = loans;
+	let filteredLoans: Loan[] = [];
 
 	// Search function
 	function performSearch() {
 		if (!searchQuery || searchQuery.trim() === '') {
-			filteredLoans = loans;
+			filteredLoans = loans.filter((l) => l.phase === phase);
 			return;
 		}
 
 		// Perform fuzzy search
 		const searchResults = fuse.search(searchQuery);
 
-		// Map results to original loan objects
-		filteredLoans = searchResults.map((result) => result.item);
+		// Map results to original loan objects and filter by phase
+		filteredLoans = searchResults
+			.map((result) => result.item)
+			.filter((loan) => loan.phase === phase);
 	}
 
 	// Reactive statement to trigger search
-	$: searchQuery, performSearch();
+	$: searchQuery, phase, performSearch();
 </script>
 
 <div class="container mx-auto py-8">

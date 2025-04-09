@@ -7,17 +7,17 @@
 
 <a href="/loans/{loan.loanId}">
 	<div
-		class="loan-widget rounded-lg border-[1.5px] border-light-border p-6 dark:border-dark-border"
+		class="loan-widget rounded-2xl border-2 border-light-border p-6 px-5 dark:border-dark-border"
 	>
 		<div class="mb-2 flex items-center justify-between text-xs font-thin">
 			<span>Loan ID: {loan.loanId}</span>
 			<span>{loan.loanType}</span>
 		</div>
-		<h3 class="mb-2 text-lg font-medium">{loan.loanTitle}</h3>
-		<p class="mb-4 line-clamp-4 h-[80px] overflow-hidden text-sm">
+		<h3 class="mb-3 text-xl font-medium">{loan.loanTitle}</h3>
+		<p class="mb-5 line-clamp-4 h-[90px] overflow-hidden text-sm font-thin leading-relaxed">
 			{loan.loanDescription}
 		</p>
-		<ul class="mb-4 space-y-2 text-sm">
+		<ul class="mb-5 space-y-4 text-sm">
 			<li class="flex items-end gap-2">
 				<Clock></Clock>
 				<span class="font-medium">{loan.repaymentPeriod}</span>
@@ -29,16 +29,36 @@
 				<span class="text-thin text-xs">Interest Rate</span>
 			</li>
 		</ul>
-		<div class="mb-4">
-			<div class="mb-1 flex items-center justify-between text-sm">
-				<span class="font-thin">Funding Goal:</span>
+		<div class="mb-5">
+			<div class="mb-2 flex items-center justify-between text-sm">
+				<span class="font-thin">
+					{#if loan.phase == 'loan'}
+						Funding Goal:
+					{:else}
+						Total Repayment:
+					{/if}
+				</span>
 				<span class="font-medium">{loan.fundingGoal}</span>
 			</div>
-			<div class="h-2 w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
-				<div class="h-full bg-green-400" style="width: {loan.fundedPercentage}%"></div>
+			<div class="h-[10px] w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
+				<div
+					class="h-full"
+					class:bg-green-400={loan.phase == 'loan'}
+					class:bg-indigo-600={loan.phase == 'repayment'}
+					style="width: {loan.fundedPercentage}%"
+				></div>
 			</div>
-			<div class="mt-1 flex items-center justify-between text-sm">
-				<span class="text-green-500">{loan.fundedAmount} funded</span>
+			<div class="mt-2 flex items-center justify-between text-sm">
+				<span
+					class:text-green-500={loan.phase == 'loan'}
+					class:text-indigo-600={loan.phase == 'repayment'}
+					>{loan.fundedAmount}
+					{#if loan.phase == 'loan'}
+						funded
+					{:else}
+						repaid
+					{/if}
+				</span>
 				<span class="font-normal">{loan.daysLeft} Days Left</span>
 			</div>
 		</div>
