@@ -3,6 +3,8 @@
 	import LoanWidget from '../../components/LoanWidget.svelte';
 	import { loans } from '../../data/DummyLoans';
 	import type { Loan } from '../../data/DummyLoans';
+	import { ChevronDown, Filter, SortAsc, SortDesc } from 'lucide-svelte';
+	import Sort from '../../icons/Sort.svelte';
 
 	// Fuse.js configuration
 	const fuseOptions = {
@@ -46,15 +48,24 @@
 <div class="container mx-auto py-8">
 	<header class="mb-8 flex items-center justify-between">
 		<div>
-			<h1 class="text-2xl font-semibold">Loans on EXLE</h1>
-			<p class="text-sm">{filteredLoans.length} Active Loans</p>
+			<h1
+				class="bg-gradient-to-r from-green-400 to-blue-900 bg-clip-text text-2xl font-semibold text-transparent"
+			>
+				Loans on EXLE
+			</h1>
+			<p class="mt-2 text-sm">{filteredLoans.length} Active Loans</p>
 		</div>
 		<div class="flex items-center gap-4">
+			<div class="flex items-center gap-2 font-normal">
+				<Sort></Sort>
+				Date added (desc)
+				<ChevronDown size="1em" />
+			</div>
 			<input
 				type="text"
 				bind:value={searchQuery}
 				placeholder="Search in loans name, ID, details..."
-				class="w-80 rounded-md border bg-light-background px-4 py-2 dark:bg-dark-background"
+				class="w-80 rounded-md border-2 border-light-border px-4 py-2 text-sm dark:border-dark-border dark:bg-dark-background"
 			/>
 		</div>
 	</header>
@@ -62,7 +73,6 @@
 	{#if filteredLoans.length === 0}
 		<p class="text-center text-gray-500">No loans found. Try a different search term.</p>
 	{:else}
-		<p class="mb-4 text-sm text-gray-500">{filteredLoans.length} Active Loans</p>
 		<div id="loans-grid" class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
 			{#each filteredLoans as loan}
 				<LoanWidget {loan} />
