@@ -6,6 +6,7 @@
 	import Button from '../Button.svelte';
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
+	import TickCircle from '../../icons/TickCircle.svelte';
 	export let loan: Loan;
 
 	let amount = '';
@@ -82,36 +83,61 @@
 					repaid
 				{/if}
 			</span>
-			<span class="font-normal">{loan.daysLeft} Days Left</span>
+			{#if loan.isReadyForWithdrawal}
+				<span class="flex items-center gap-1 font-semibold text-green-500">
+					<TickCircle></TickCircle>
+					Ready for withdrawal
+				</span>
+			{:else}
+				<span class="font-normal">{loan.daysLeft} Days Left</span>
+			{/if}
 		</div>
-		<div class="mb-4 mt-10 text-xl font-medium">Fund this loan</div>
-		{#if loan.loanType == 'Solofund'}
-			<div>You can help fund this loan. Solofund loans can only be fully funded by one person.</div>
+		{#if loan.isReadyForWithdrawal}
+			<div class="mb-4 mt-10 text-xl font-medium">Withdraw funds</div>
+			<div class="mb-10">Your loan has been fully funded and you can withdraw it now.</div>
 		{:else}
-			<div>You can help fund this loan partially or fully.</div>
+			<div class="mb-4 mt-10 text-xl font-medium">Fund this loan</div>
+			{#if loan.loanType == 'Solofund'}
+				<div>
+					You can help fund this loan. Solofund loans can only be fully funded by one person.
+				</div>
+			{:else}
+				<div>You can help fund this loan partially or fully.</div>
+			{/if}
+			<div class="mb-2 mt-8">Amount</div>
+			<div class="relative mb-10 w-full">
+				<input
+					id="interest-rate"
+					type="number"
+					placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
+					bind:value={amount}
+					class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+				/>
+				<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
+			</div>
 		{/if}
-		<div class="mb-2 mt-8">Amount</div>
-		<div class="relative mb-10 w-full">
-			<input
-				id="interest-rate"
-				type="number"
-				placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
-				bind:value={amount}
-				class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+
+		{#if loan.isReadyForWithdrawal}
+			<Button onClick={onButtonClick} label={'Withdraw loan'} variant="primary" w100={true} />
+		{:else}
+			<Button
+				onClick={onButtonClick}
+				label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
+				variant="primary"
+				disabled={!amount}
+				w100={true}
 			/>
-			<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
-		</div>
-		<Button
-			onClick={onButtonClick}
-			label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
-			variant="primary"
-			disabled={!amount}
-			w100={true}
-		/>
+		{/if}
 		<div class="mt-6 text-xs font-thin">
-			By clicking on “Fund the loan” button, you agree to our <a href="{base}/tos" class="underline"
-				>terms of service</a
-			>.
+			By clicking on
+			{#if loan.isReadyForWithdrawal}
+				“Withdraw loan”
+			{:else if loan.phase == 'loan'}
+				“Fund the loan”
+			{:else}
+				“Repay the loan”
+			{/if}
+			button, you agree to our <a href="{base}/tos" class="underline">terms of service</a>.
 		</div>
 	</div>
 </div>
