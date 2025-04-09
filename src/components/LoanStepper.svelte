@@ -5,12 +5,14 @@
 	import Button from './Button.svelte';
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
+	import Nautilus from '../icons/Nautilus.svelte';
+	import Check from '../icons/Check.svelte';
 
 	function goBack() {
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	let currentStep = 4;
+	let currentStep = 5;
 	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';
@@ -21,7 +23,7 @@
 	let interestRate = '';
 	let repaymentPeriod = '';
 	let termsAccepted = false;
-	let paymentConfirmed = false;
+	let paymentConfirmed = true;
 
 	function handleContinue() {
 		if (currentStep === 1 && selectedLoanType && isWalletConfirmed) {
@@ -53,7 +55,7 @@
 	}
 </script>
 
-<div class="mx-auto w-full max-w-2xl rounded-lg p-6 pt-8 text-sm">
+<div class="mx-auto flex w-full max-w-2xl grow rounded-lg p-6 pt-8 text-sm">
 	{#if currentStep === 1}
 		<!-- Step 1 Content -->
 		<div>
@@ -380,71 +382,40 @@
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
-				<p class="">
-					In order to finalize your loan, you need to make a 0.1 ERGO ($0.15) payment on your
-					wallet. Your loan will be created after the payment transaction has finalized.
+				<p class="max-w-[400px]">
+					In order to finalize your loan, you need to make a 0.1 ERG payment on your wallet. Your
+					loan will be created after the payment transaction has finalized.
 				</p>
 			</div>
 
-			<div class="mb-6 rounded-lg border p-6 text-center">
-				<img src="/nautilus-logo.png" alt="Nautilus Wallet" class="mx-auto mb-4 h-20 w-20" />
-				<p class="mb-2 font-medium">Nautilus Wallet</p>
-				<p class=" text-gray-500">Pay via browser wallet</p>
+			<div class="mb-6 flex flex-col items-center rounded-lg border text-center">
+				<p class="my-6 font-medium">Pay via browser wallet</p>
+				<Nautilus></Nautilus>
+				<p class="mb-10 mt-2 text-lg font-medium">Nautilus Wallet</p>
 			</div>
 
 			<div class="flex justify-between gap-4 max-md:flex-col-reverse">
-				<button
-					type="button"
-					on:click={handleGoBack}
-					class="rounded border-2 border-light-border bg-transparent px-4 py-2 font-medium hover:bg-gray-200 dark:border-dark-border"
-				>
-					Cancel
-				</button>
-				<button
-					type="button"
-					on:click={handleFinalizePayment}
-					class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
-				>
-					Pay via browser wallet
-				</button>
+				<Button onClick={goBack} label="Cancel" variant="secondary" />
+
+				<Button onClick={handleFinalizePayment} label="Pay via browser wallet" variant="primary" />
 			</div>
 		</div>
 	{/if}
 
 	{#if currentStep === 5 && paymentConfirmed}
 		<!-- Payment Confirmation -->
-		<div class="text-center">
+		<div class="flex flex-grow flex-col text-center">
 			<Header {currentStep}></Header>
-
-			<div class="mb-6">
+			<div class="flex flex-grow flex-col items-center justify-center md:mb-20">
 				<div class="mb-4 flex justify-center">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-16 w-16 text-green-500"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M9 12l2 2l4 -4m-7 8a9 9 0 100-18 9 9 0 000 18z"
-						/>
-					</svg>
+					<Check></Check>
 				</div>
-				<p class="">
+				<p class="mb-8 max-w-[320px] text-xs">
 					Your transaction has been confirmed and your loan is created. You can view it by clicking
 					on the button below:
 				</p>
+				<Button href="{base}/loans" label="Take me to the loan page" variant="primary" />
 			</div>
-
-			<button
-				type="button"
-				class="rounded bg-blue-600 px-4 py-2 font-medium text-white hover:bg-blue-700"
-			>
-				Take me to the loan page
-			</button>
 		</div>
 	{/if}
 </div>

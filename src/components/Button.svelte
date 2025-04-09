@@ -10,7 +10,7 @@
 
 {#if disabled}
 	<button
-		class="btn w-full rounded-xl border-gray-400 bg-gray-400 px-6 py-3 text-md font-medium text-gray-800 opacity-[0.4] transition md:w-[170px]"
+		class="btn w-full rounded-xl border-gray-400 bg-gray-400 px-6 py-3 text-md font-medium text-gray-800 opacity-[0.4] transition md:w-[220px]"
 		class:border-2={variant != 'primary'}
 		disabled={true}>{label}</button
 	>
@@ -18,7 +18,7 @@
 	<a
 		{href}
 		on:click={onClick}
-		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[170px]"
+		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[220px]"
 		class:primary={variant === 'primary'}
 		class:primary-outline={variant === 'primary-outline'}
 		class:secondary={variant === 'secondary'}
@@ -30,7 +30,7 @@
 {:else}
 	<button
 		on:click|preventDefault={onClick}
-		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[170px]"
+		class="btn w-full rounded-xl px-6 py-3 text-md font-medium transition md:w-[220px]"
 		class:primary={variant === 'primary'}
 		class:primary-outline={variant === 'primary-outline'}
 		class:secondary={variant === 'secondary'}
