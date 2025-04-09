@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { shortenAddress } from '$lib/utils';
 	import type { Loan } from '../../data/DummyLoans';
 	import Clock from '../../icons/Clock.svelte';
 	import InterestRate from '../../icons/InterestRate.svelte';
@@ -72,7 +73,7 @@
 			</div>
 		</div>
 		{#if showCreator}
-			<p class="mt-5 text-xs font-thin">Created by: {loan.creator}</p>
+			<p class="mt-5 text-xs font-thin">Created by: {shortenAddress(loan.creator)}</p>
 		{/if}
 	</div>
 </a>
