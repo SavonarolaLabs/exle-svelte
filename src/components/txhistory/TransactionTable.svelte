@@ -36,36 +36,49 @@
 	<div>Time & Date</div>
 	<div class="text-center">Amount</div>
 </div>
-{#each transactions as tx}
-	<div class="hidden grid-cols-5 py-3 text-sm lg:grid">
-		<div>{tx.transactionType}</div>
-		<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.id)}>
-			{tx.id}
-			<Copy></Copy>
-		</button>
-		<div>{formatTimestamp(tx.timestamp)}</div>
-		<div class="flex justify-end gap-1">
-			{tx.amount} <span style="width:100px">{tx.token}</span>
-		</div>
-		<a href="https://explorer.ergoplatform.com/en/transactions/{tx.id}">
-			<div class="flex justify-end gap-1 text-light-accent dark:text-dark-accent">
-				<GlobalSearch></GlobalSearch> View on explorer
-			</div>
-		</a>
-	</div>
-	<div class="grid grid-cols-2 py-3 text-sm lg:hidden">
-		<div>
-			<div class="mb-1 font-medium">{tx.transactionType}</div>
-			<div class="text-xs opacity-[0.6]">
+<div class="rows">
+	{#each transactions as tx}
+		<div class="hidden grid-cols-5 py-3 text-sm lg:grid">
+			<div>{tx.transactionType}</div>
+			<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.id)}>
 				{tx.id}
+				<Copy></Copy>
+			</button>
+			<div>{formatTimestamp(tx.timestamp)}</div>
+			<div class="flex justify-end gap-1">
+				{tx.amount} <span style="width:100px">{tx.token}</span>
+			</div>
+			<a href="https://explorer.ergoplatform.com/en/transactions/{tx.id}">
+				<div class="flex justify-end gap-1 text-light-accent dark:text-dark-accent">
+					<GlobalSearch></GlobalSearch> View on explorer
+				</div>
+			</a>
+		</div>
+	{/each}
+</div>
+
+<div class="lg:hidden">
+	{#each transactions as tx}
+		<div class="grid grid-cols-2 py-3 text-sm">
+			<div>
+				<div class="mb-1 font-medium">{tx.transactionType}</div>
+				<div class="text-xs opacity-[0.6]">
+					{tx.id}
+				</div>
+			</div>
+			<div class="flex items-center">
+				<div class="flex-grow text-right">
+					<div class="mb-1 font-medium">{tx.amount} {tx.token}</div>
+					<div class="text-xs opacity-[0.6]">{formatTimestamp(tx.timestamp)}</div>
+				</div>
+				<button class="pl-4"><More></More></button>
 			</div>
 		</div>
-		<div class="flex items-center">
-			<div class="flex-grow text-right">
-				<div class="mb-1 font-medium">{tx.amount} {tx.token}</div>
-				<div class="text-xs opacity-[0.6]">{formatTimestamp(tx.timestamp)}</div>
-			</div>
-			<button class="pl-4"><More></More></button>
-		</div>
-	</div>
-{/each}
+	{/each}
+</div>
+
+<style lang="postcss">
+	.rows > *:not(:last-child) {
+		@apply border-b-2 border-light-border dark:border-dark-border;
+	}
+</style>
