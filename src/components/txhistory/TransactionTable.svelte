@@ -29,7 +29,7 @@
 </script>
 
 <div
-	class="grid hidden gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray xl:grid xl:grid-cols-5"
+	class="grid hidden grid-cols-5 gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray lg:grid"
 >
 	<div>Transaction Type</div>
 	<div>Transaction Hash</div>
