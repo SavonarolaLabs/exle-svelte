@@ -34,7 +34,7 @@
 	<div>Transaction Type</div>
 	<div>Transaction Hash</div>
 	<div>Time & Date</div>
-	<div>Amount</div>
+	<div class="text-center">Amount</div>
 </div>
 {#each transactions as tx}
 	<div class="hidden grid-cols-5 py-3 text-sm lg:grid">
@@ -44,7 +44,9 @@
 			<Copy></Copy>
 		</button>
 		<div>{formatTimestamp(tx.timestamp)}</div>
-		<div>{tx.amount} {tx.token}</div>
+		<div class="flex justify-end gap-1">
+			{tx.amount} <span style="width:100px">{tx.token}</span>
+		</div>
 		<a href="https://explorer.ergoplatform.com/en/transactions/{tx.id}">
 			<div class="flex justify-end gap-1 text-light-accent dark:text-dark-accent">
 				<GlobalSearch></GlobalSearch> View on explorer
