@@ -20,8 +20,8 @@
 
 {#if activeRepayments.length > 0}
 	<div class="mb-4 flex items-center gap-1">
-		<span class="text-lg font-semibold">Active repayments</span>
-		<span class="text-sm font-thin opacity-70"
+		<span class="text-lg font-medium">Active repayments</span>
+		<span class="ml-1 text-sm font-thin opacity-70"
 			>({activeRepayments.length} repayment{activeRepayments.length > 1 ? 's' : ''})</span
 		>
 	</div>

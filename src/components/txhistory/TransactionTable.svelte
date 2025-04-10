@@ -54,7 +54,9 @@
 </div>
 <div class="rows">
 	{#each transactions as tx}
-		<div class="hidden grid-cols-5 py-3 text-sm lg:grid">
+		<div
+			class="hidden grid-cols-5 border-light-border py-3 text-sm dark:border-dark-border lg:grid"
+		>
 			<div>{tx.transactionType}</div>
 			<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.id)}>
 				{tx.id}
@@ -99,6 +101,6 @@
 
 <style lang="postcss">
 	.rows > *:not(:last-child) {
-		@apply border-b-2 border-light-border dark:border-dark-border;
+		@apply border-b-2;
 	}
 </style>

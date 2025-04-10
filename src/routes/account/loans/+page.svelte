@@ -20,8 +20,8 @@
 
 {#if withdrawableLoans.length > 0}
 	<div class="mb-4 flex items-center gap-1">
-		<span class="text-lg font-semibold">Withdrawable loans</span>
-		<span class="text-sm font-thin opacity-70"
+		<span class="text-lg font-medium">Withdrawable loans</span>
+		<span class="ml-1 text-sm font-thin opacity-70"
 			>({withdrawableLoans.length} loan{withdrawableLoans.length > 1 ? 's' : ''})</span
 		>
 	</div>

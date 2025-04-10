@@ -25,7 +25,10 @@
 		</div>
 		<div class="flex items-center gap-4">
 			{#each $token_balance as token}
-				<div class="whitespace-nowrap">{token.amount / 10 ** token.decimals} {token.ticker}</div>
+				<div class="whitespace-nowrap font-normal">
+					{token.amount / 10 ** token.decimals}
+					{token.ticker}
+				</div>
 			{/each}
 			<Button href="{base}/loans/create" label="Create loan" variant="primary" class="px-6" />
 		</div>
