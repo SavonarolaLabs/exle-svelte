@@ -2,6 +2,7 @@
 	import { transactions } from '../../data/TxHistory';
 	import Copy from '../../icons/Copy.svelte';
 	import GlobalSearch from '../../icons/GlobalSearch.svelte';
+	import More from '../../icons/More.svelte';
 
 	// Format timestamp to "HH:MM | DD MMM YYYY"
 	function formatTimestamp(timestamp: string) {
@@ -15,12 +16,10 @@
 		return `${hours}:${minutes} | ${day} ${month} ${year}`;
 	}
 
-	// Function to copy transaction ID to clipboard
 	function copyToClipboard(text: string) {
 		navigator.clipboard
 			.writeText(text)
 			.then(() => {
-				// Optional: You could add a toast notification here
 				console.log('Transaction ID copied to clipboard');
 			})
 			.catch((err) => {
@@ -30,7 +29,7 @@
 </script>
 
 <div
-	class="grid grid-cols-5 gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray"
+	class="grid hidden gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray xl:grid xl:grid-cols-5"
 >
 	<div>Transaction Type</div>
 	<div>Transaction Hash</div>
@@ -38,7 +37,7 @@
 	<div>Amount</div>
 </div>
 {#each transactions as tx}
-	<div class="grid grid-cols-5 py-3 text-sm">
+	<div class="hidden grid-cols-5 py-3 text-sm lg:grid">
 		<div>{tx.transactionType}</div>
 		<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.id)}>
 			{tx.id}
@@ -47,9 +46,24 @@
 		<div>{formatTimestamp(tx.timestamp)}</div>
 		<div>{tx.amount} {tx.token}</div>
 		<a href="https://explorer.ergoplatform.com/en/transactions/{tx.id}">
-			<div class="flex gap-1 text-light-accent dark:text-dark-accent">
+			<div class="flex justify-end gap-1 text-light-accent dark:text-dark-accent">
 				<GlobalSearch></GlobalSearch> View on explorer
 			</div>
 		</a>
+	</div>
+	<div class="grid grid-cols-2 py-3 text-sm lg:hidden">
+		<div>
+			<div class="mb-1 font-medium">{tx.transactionType}</div>
+			<div class="text-xs opacity-[0.6]">
+				{tx.id}
+			</div>
+		</div>
+		<div class="flex items-center">
+			<div class="flex-grow text-right">
+				<div class="mb-1 font-medium">{tx.amount} {tx.token}</div>
+				<div class="text-xs opacity-[0.6]">{formatTimestamp(tx.timestamp)}</div>
+			</div>
+			<button class="pl-4"><More></More></button>
+		</div>
 	</div>
 {/each}
