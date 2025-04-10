@@ -81,10 +81,10 @@
 					</div>
 				</button>
 
-				<a href="/account/loans" on:click={closeMobileMenu} class="">My Loans</a>
-				<a href="/account/repayments" on:click={closeMobileMenu} class="">My Repayments</a>
-				<a href="/account/donations" on:click={closeMobileMenu} class="">My Donations</a>
-				<a href="/account/history" on:click={closeMobileMenu} class="">Transactions History</a>
+				<a href="{base}/account/loans" on:click={closeMobileMenu} class="">My Loans</a>
+				<a href="{base}/account/repayments" on:click={closeMobileMenu} class="">My Repayments</a>
+				<a href="{base}/account/donations" on:click={closeMobileMenu} class="">My Donations</a>
+				<a href="{base}/transactions" on:click={closeMobileMenu} class="">Transactions History</a>
 			{:else}
 				<button
 					on:click={handleConnect}

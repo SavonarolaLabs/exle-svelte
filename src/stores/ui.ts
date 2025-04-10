@@ -5,6 +5,18 @@ export const change_address: Writable<string> = writable(
 	'9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 );
 export const is_mobile_menu_open: Writable<boolean> = writable(false);
+export const token_balance: Writable<Object[]> = writable([
+	{
+		ticker: 'ERG',
+		amount: 23.45 * 10 ** 9,
+		decimals: 9
+	},
+	{
+		ticker: 'SigUSD',
+		amount: 10878,
+		decimals: 2
+	}
+]);
 
 export function toggleMobileMenu() {
 	is_mobile_menu_open.update((value) => !value);

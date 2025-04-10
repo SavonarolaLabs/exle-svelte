@@ -3,6 +3,7 @@
 	import Button from '../../components/Button.svelte';
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
+	import { token_balance } from '../../stores/ui';
 
 	let { children } = $props();
 
@@ -23,20 +24,41 @@
 			<div class="text-sm text-gray-500">9eq6S...QXssg</div>
 		</div>
 		<div class="flex items-center gap-4">
-			<div class="whitespace-nowrap text-gray-800">23.45 ERG</div>
+			{#each $token_balance as token}
+				<div class="whitespace-nowrap">{token.amount / 10 ** token.decimals} {token.ticker}</div>
+			{/each}
 			<Button href="{base}/loans/create" label="Create loan" variant="primary" class="px-6" />
 		</div>
 	</div>
 
-	<div class="mb-6 border-b">
+	<div class="mb-6 border-b-2 border-gray-200">
 		<div class="flex">
-			<a href="/account/loans" class="tab" class:tab-active={$activeTab === 'loans'}>Loans</a>
-			<a href="/account/repayments" class="tab" class:tab-active={$activeTab === 'repayments'}
-				>Repayments</a
-			>
-			<a href="/account/donations" class="tab" class:tab-active={$activeTab === 'donations'}
-				>Donations</a
-			>
+			<div class="relative">
+				<a href="{base}/account/loans" class="tab" class:tab-active={$activeTab === 'loans'}
+					>Loans</a
+				>
+				{#if $activeTab === 'loans'}
+					<div class="indicator"></div>
+				{/if}
+			</div>
+			<div class="relative">
+				<a
+					href="{base}/account/repayments"
+					class="tab"
+					class:tab-active={$activeTab === 'repayments'}>Repayments</a
+				>
+				{#if $activeTab === 'repayments'}
+					<div class="indicator"></div>
+				{/if}
+			</div>
+			<div class="relative">
+				<a href="{base}/account/donations" class="tab" class:tab-active={$activeTab === 'donations'}
+					>Donations</a
+				>
+				{#if $activeTab === 'donations'}
+					<div class="indicator"></div>
+				{/if}
+			</div>
 		</div>
 	</div>
 
@@ -45,10 +67,14 @@
 
 <style lang="postcss">
 	.tab {
-		@apply px-4 py-2 text-gray-600;
+		@apply block px-4 py-2 text-gray-600;
 	}
 
 	.tab-active {
-		@apply border-b-2 border-blue-600 font-medium text-blue-600;
+		@apply font-medium text-light-accent dark:text-dark-accent;
+	}
+
+	.indicator {
+		@apply absolute bottom-[-1] left-0 h-0.5 w-full bg-light-accent dark:bg-dark-accent;
 	}
 </style>

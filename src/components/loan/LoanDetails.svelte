@@ -67,15 +67,17 @@
 		<div class="h-[10px] w-full overflow-hidden rounded-full bg-[#0001] dark:bg-[#fff1]">
 			<div
 				class="h-full"
-				class:bg-green-400={loan.phase == 'loan'}
-				class:bg-indigo-600={loan.phase == 'repayment'}
+				class:bg-gray-500={loan.daysLeft == 0 || loan.isRepayed}
+				class:bg-green-400={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
+				class:bg-indigo-600={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
 				style="width: {loan.fundedPercentage}%"
 			></div>
 		</div>
 		<div class="mt-2 flex items-center justify-between text-sm">
 			<span
-				class:text-green-500={loan.phase == 'loan'}
-				class:text-indigo-600={loan.phase == 'repayment'}
+				class:text-gray-500={loan.daysLeft == 0 || loan.isRepayed}
+				class:text-green-500={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
+				class:text-indigo-600={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
 				>{loan.fundedAmount}
 				{#if loan.phase == 'loan'}
 					funded
@@ -92,52 +94,54 @@
 				<span class="font-normal">{loan.daysLeft} Days Left</span>
 			{/if}
 		</div>
-		{#if loan.isReadyForWithdrawal}
-			<div class="mb-4 mt-10 text-xl font-medium">Withdraw funds</div>
-			<div class="mb-10">Your loan has been fully funded and you can withdraw it now.</div>
-		{:else}
-			<div class="mb-4 mt-10 text-xl font-medium">Fund this loan</div>
-			{#if loan.loanType == 'Solofund'}
-				<div>
-					You can help fund this loan. Solofund loans can only be fully funded by one person.
-				</div>
+		{#if !loan.isRepayed && !(loan.phase == 'repayment' && loan.daysLeft == 0)}
+			{#if loan.isReadyForWithdrawal}
+				<div class="mb-4 mt-10 text-xl font-medium">Withdraw funds</div>
+				<div class="mb-10">Your loan has been fully funded and you can withdraw it now.</div>
 			{:else}
-				<div>You can help fund this loan partially or fully.</div>
+				<div class="mb-4 mt-10 text-xl font-medium">Fund this loan</div>
+				{#if loan.loanType == 'Solofund'}
+					<div>
+						You can help fund this loan. Solofund loans can only be fully funded by one person.
+					</div>
+				{:else}
+					<div>You can help fund this loan partially or fully.</div>
+				{/if}
+				<div class="mb-2 mt-8">Amount</div>
+				<div class="relative mb-10 w-full">
+					<input
+						id="interest-rate"
+						type="number"
+						placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
+						bind:value={amount}
+						class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+					/>
+					<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
+				</div>
 			{/if}
-			<div class="mb-2 mt-8">Amount</div>
-			<div class="relative mb-10 w-full">
-				<input
-					id="interest-rate"
-					type="number"
-					placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
-					bind:value={amount}
-					class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+
+			{#if loan.isReadyForWithdrawal}
+				<Button onClick={onButtonClick} label={'Withdraw loan'} variant="primary" w100={true} />
+			{:else}
+				<Button
+					onClick={onButtonClick}
+					label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
+					variant="primary"
+					disabled={!amount || loan.daysLeft == 0}
+					w100={true}
 				/>
-				<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
+			{/if}
+			<div class="mt-6 text-xs font-thin">
+				By clicking on
+				{#if loan.isReadyForWithdrawal}
+					“Withdraw loan”
+				{:else if loan.phase == 'loan'}
+					“Fund the loan”
+				{:else}
+					“Repay the loan”
+				{/if}
+				button, you agree to our <a href="{base}/tos" class="underline">terms of service</a>.
 			</div>
 		{/if}
-
-		{#if loan.isReadyForWithdrawal}
-			<Button onClick={onButtonClick} label={'Withdraw loan'} variant="primary" w100={true} />
-		{:else}
-			<Button
-				onClick={onButtonClick}
-				label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
-				variant="primary"
-				disabled={!amount || loan.daysLeft == 0}
-				w100={true}
-			/>
-		{/if}
-		<div class="mt-6 text-xs font-thin">
-			By clicking on
-			{#if loan.isReadyForWithdrawal}
-				“Withdraw loan”
-			{:else if loan.phase == 'loan'}
-				“Fund the loan”
-			{:else}
-				“Repay the loan”
-			{/if}
-			button, you agree to our <a href="{base}/tos" class="underline">terms of service</a>.
-		</div>
 	</div>
 </div>

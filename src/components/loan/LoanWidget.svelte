@@ -54,9 +54,22 @@
 			</div>
 			<div class="mt-2 flex items-center justify-between text-sm">
 				<span
+					class="dark:hidden"
 					class:text-gray-500={loan.daysLeft == 0 || loan.isRepayed}
 					class:text-green-500={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
 					class:text-indigo-600={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
+					>{loan.fundedAmount}
+					{#if loan.phase == 'loan'}
+						funded
+					{:else}
+						repaid
+					{/if}
+				</span>
+				<span
+					class="hidden dark:block"
+					class:text-gray-500={loan.daysLeft == 0 || loan.isRepayed}
+					class:text-green-500={loan.phase == 'loan' && loan.daysLeft > 0 && !loan.isRepayed}
+					class:text-indigo-400={loan.phase == 'repayment' && loan.daysLeft > 0 && !loan.isRepayed}
 					>{loan.fundedAmount}
 					{#if loan.phase == 'loan'}
 						funded

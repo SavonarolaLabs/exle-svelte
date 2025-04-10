@@ -2,6 +2,7 @@
 	import { ChevronDown } from 'lucide-svelte';
 	import LogOut from '../../icons/LogOut.svelte';
 	import { is_dark, logout } from '../../stores/ui';
+	import { base } from '$app/paths';
 </script>
 
 <div class="group relative w-[150px] text-sm">
@@ -17,25 +18,25 @@
 			class="accent-hover overflow-hidden rounded-md border-t border-[#0000000F] bg-white shadow-lg dark:bg-dark-background dark:shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
 		>
 			<a
-				href="/account/loans"
+				href="{base}/account/loans"
 				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
 			>
 				My Loans
 			</a>
 			<a
-				href="/account/donations"
+				href="{base}/account/donations"
 				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
 			>
 				My Donations
 			</a>
 			<a
-				href="/account/repayments"
+				href="{base}/account/repayments"
 				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
 			>
 				My Repayments
 			</a>
 			<a
-				href="/account/history"
+				href="{base}/transactions"
 				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
 			>
 				Transactions History
