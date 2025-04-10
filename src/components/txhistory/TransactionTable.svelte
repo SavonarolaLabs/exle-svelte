@@ -15,6 +15,22 @@
 
 		return `${hours}:${minutes} | ${day} ${month} ${year}`;
 	}
+	function formatTime(timestamp: string) {
+		const date = new Date(timestamp);
+		const hours = date.getHours().toString().padStart(2, '0');
+		const minutes = date.getMinutes().toString().padStart(2, '0');
+
+		return `${hours}:${minutes}`;
+	}
+
+	function formatDate(timestamp: string) {
+		const date = new Date(timestamp);
+		const day = date.getDate();
+		const month = date.toLocaleString('en-US', { month: 'short' });
+		const year = date.getFullYear();
+
+		return `${day} ${month} ${year}`;
+	}
 
 	function copyToClipboard(text: string) {
 		navigator.clipboard
@@ -44,7 +60,11 @@
 				{tx.id}
 				<Copy></Copy>
 			</button>
-			<div>{formatTimestamp(tx.timestamp)}</div>
+			<div class="flex justify-start gap-1">
+				<span class="w-[40px] text-right">{formatTime(tx.timestamp)}</span> | {formatDate(
+					tx.timestamp
+				)}
+			</div>
 			<div class="flex justify-end gap-1">
 				{tx.amount} <span style="width:100px">{tx.token}</span>
 			</div>
