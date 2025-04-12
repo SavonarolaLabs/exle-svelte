@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
-	import { loans } from '../data/DummyLoans';
 	import type { Loan } from '../data/DummyLoans';
 	import { ChevronDown } from 'lucide-svelte';
 	import Sort from '../icons/Sort.svelte';
 	import LoanWidget from '../components/loan/LoanWidget.svelte';
+	import { repayments } from '../stores/ui';
 
 	export let phase = 'loan';
 
@@ -23,8 +23,8 @@
 		]
 	};
 
-	// Create Fuse instance
-	const fuse = new Fuse(loans, fuseOptions);
+	// Create Fuse instance with the store value
+	$: fuse = new Fuse($repayments, fuseOptions);
 
 	let searchQuery = '';
 	let filteredLoans: Loan[] = [];
@@ -32,7 +32,7 @@
 	// Search function
 	function performSearch() {
 		if (!searchQuery || searchQuery.trim() === '') {
-			filteredLoans = loans.filter((l) => l.phase === phase);
+			filteredLoans = $repayments.filter((l) => l.phase === phase);
 			return;
 		}
 
@@ -46,7 +46,7 @@
 	}
 
 	// Reactive statement to trigger search
-	$: searchQuery, phase, performSearch();
+	$: searchQuery, phase, $repayments, performSearch();
 </script>
 
 <div class="container mx-auto py-8">

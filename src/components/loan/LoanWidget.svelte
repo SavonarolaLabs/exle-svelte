@@ -13,7 +13,7 @@
 		class="loan-widget rounded-2xl border-2 border-light-border p-6 px-5 dark:border-dark-border"
 	>
 		<div class="mb-2 flex items-center justify-between text-xs font-thin">
-			<span>Loan ID: {loan.loanId}</span>
+			<span>Loan ID: {shortenAddress(loan.loanId)}</span>
 			<span>{loan.loanType}</span>
 		</div>
 		<h3 class="mb-3 text-xl font-medium">{loan.loanTitle}</h3>

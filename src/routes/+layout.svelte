@@ -3,7 +3,7 @@
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/navbar/Navbar.svelte';
-	import { initTheme, is_dark } from '../stores/ui';
+	import { initTheme, is_dark, loadRepayments, repayments } from '../stores/ui';
 
 	let { children } = $props();
 
@@ -14,6 +14,7 @@
 		unsubscribe = is_dark.subscribe((value) => {
 			localStorage.setItem('theme', value ? 'dark' : 'light');
 		});
+		loadRepayments();
 	});
 
 	onDestroy(() => {

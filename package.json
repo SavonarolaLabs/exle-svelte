@@ -35,12 +35,14 @@
 		"vitest": "^3.1.1"
 	},
 	"dependencies": {
+		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
 		"@fleet-sdk/core": "^0.8.2",
 		"@fleet-sdk/serializer": "^0.8.2",
 		"@sveltejs/adapter-static": "^3.0.6",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
 		"@tailwindcss/typography": "^0.5.15",
+		"buffer": "^6.0.3",
 		"fuse.js": "^7.0.0",
 		"lucide-svelte": "^0.487.0"
 	}

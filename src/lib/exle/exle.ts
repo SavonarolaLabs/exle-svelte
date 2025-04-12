@@ -35,7 +35,38 @@ const EXLE_SLE_REPAYMENT_TOKEN_ID =
 //Exle: SLT CrowdFund Token V1.3 | This acts as a form of identification for SLT CrowdFundBox where lenders use to raise funds in a group.
 const EXLE_SLE_CROWD = '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9';
 
+const LENDING_TOKENS: TokenInfo[] = [
+	{
+		tokenId: '0000000000000000000000000000000000000000000000000000000000000000',
+		decimals: 9,
+		name: 'Ergo',
+		ticker: 'ERG',
+		project: 'Ergoplatform',
+		description: 'Ergoplatform native coin',
+		defaultAmount: 10_000_000_000n
+	},
+	{
+		tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+		decimals: 2,
+		name: 'SigmaUSD',
+		ticker: 'SigUSD',
+		project: 'Sigma USD',
+		description: 'Algorithmic stablecoin',
+		defaultAmount: 10_00n
+	}
+];
+
 // TYPES
+type TokenInfo = {
+	tokenId: string;
+	decimals: number;
+	name: string;
+	ticker: string;
+	project: string;
+	description: string;
+	defaultAmount: bigint;
+};
+
 export type UnconfirmedNodeBox = {
 	additionalRegisters: Record<string, string>;
 	assets: {
@@ -126,7 +157,112 @@ export function jsonParseBigInt(text: string) {
 	});
 }
 
+function blocksToDays(blocks: bigint): number {
+	if (blocks === 0n) return 0;
+	const blocksPerDay = 720n;
+	return Number((blocks + blocksPerDay - 1n) / blocksPerDay);
+}
+
+function isPK(checkString: string): boolean {
+	return ErgoAddress.fromErgoTree(checkString).getPublicKeys().length > 0;
+}
+
+export function parseLoanToken(box: NodeBox): TokenInfo | undefined {
+	const r7 = box.additionalRegisters.R7;
+	if (isPK(r7)) {
+		return LENDING_TOKENS.find((t) => t.ticker == 'ERG');
+	}
+	if (r7) {
+		const tokenId = Buffer.from(parse(r7)).toString('hex');
+		return LENDING_TOKENS.find((t) => t.tokenId == tokenId);
+	}
+}
 // utils end
+
+// fetch data start
+async function fetchUnspentBoxesByErgoTree(ergoTree: string): Promise<NodeBox[]> {
+	const baseUrl = 'http://213.239.193.208:9053';
+	const url = `${baseUrl}/blockchain/box/unspent/byErgoTree?offset=0&limit=100&sortDirection=desc&includeUnconfirmed=true&excludeMempoolSpent=true`;
+
+	try {
+		const response = await fetch(url, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(ergoTree)
+		});
+
+		if (!response.ok) {
+			const body = await response.text();
+			console.error(`[box/unspent/byErgoTree] HTTP Error ${response.status}: ${body}`);
+			return [];
+		}
+
+		const text = await response.text();
+		const data = jsonParseBigInt(text);
+		return Array.isArray(data) ? data : [];
+	} catch (error) {
+		console.error(`[box/unspent/byErgoTree] Request failed:`, error);
+		return [];
+	}
+}
+
+export function fetchRepayments() {
+	return fetchUnspentBoxesByErgoTree(EXLE_REPAYMENT_BOX_ERGOTREE);
+}
+
+// fetch data end
+
+export interface Loan {
+	phase: 'loan' | 'repayment';
+	loanId: string;
+	loanType: string;
+	loanTitle: string;
+	loanDescription: string;
+	repaymentPeriod: string;
+	interestRate: string;
+	fundingGoal: string;
+	fundingToken: string;
+	fundedAmount: string;
+	fundedPercentage: number;
+	daysLeft: number;
+	creator: string;
+	isReadyForWithdrawal?: boolean;
+	isRepayed?: boolean;
+}
+
+export function parseRepaymentBox(box: NodeBox): Loan | undefined {
+	if (box.assets.length < 2 || !box.additionalRegisters.R7) return;
+	const token = parseLoanToken(box);
+	if (!token) return;
+
+	const funding = decodeExleFundingInfo(box);
+	const project = decodeExleProjectDetails(box);
+	const repay = decodeExleRepaymentDetailsTokens(box);
+	const { repaymentLevel, lockedAmount } = getExleRepaymentTokensStatus(box);
+
+	const fundingGoal = Number(Number(funding.fundingGoal) / 10 ** token.decimals).toFixed(2);
+	const fundedAmount = Number(Number(repay.repaidAmount) / 10 ** token.decimals).toFixed(2);
+
+	const repayment = {
+		phase: 'repayment' as const,
+		loanId: box.assets[0].tokenId,
+		loanType: 'Crowdloan',
+		loanTitle: project[0],
+		loanDescription: project.slice(1).join('\n'),
+		repaymentPeriod: '' + blocksToDays(funding.repaymentHeightLength), // TODO: - height?
+		interestRate: `${(100 / Number(funding.interestRate)).toFixed(1)} %`,
+		fundingGoal: fundingGoal,
+		fundingToken: token.ticker,
+		fundedAmount: fundedAmount + ' ' + token.ticker,
+		fundedPercentage: Number(repaymentLevel),
+		daysLeft: blocksToDays(repay.repaymentDeadlineHeight), // TODO: - height
+		creator: decodeExleBorrower(box),
+		isReadyForWithdrawal: lockedAmount > 0n, // TODO: handle erg
+		isRepayed: repaymentLevel == 100n
+	};
+
+	return repayment;
+}
 
 export function exleHighLevelRecogniser(tx): string {
 	const inServiceBox = tx.inputs.find(isExleServiceBox);
@@ -150,7 +286,7 @@ export function exleHighLevelRecogniser(tx): string {
 		}
 		if (inLendBox && outRepaymentBox) {
 			label = 'Lend to Repayment';
-			if (inLendBox.additionalRegisters.R8) {
+			if (outRepaymentBox.additionalRegisters.R9) {
 				label = 'Lend to Repayment | Tokens';
 			} else {
 				label = 'Lend to Repayment | Erg';
@@ -159,24 +295,16 @@ export function exleHighLevelRecogniser(tx): string {
 	} else {
 		if (inLendBox && outLendBox) {
 			label = 'Lend to Lend';
-			if (outLendBox.additionalRegisters.R7) {
-				if (outLendBox.additionalRegisters.R7[6]) {
-					label = 'Lend to Lend | Tokens';
-				} else {
-					label = 'Lend to Lend | Erg';
-				}
+			if (outLendBox.additionalRegisters.R7 && !isPK(outLendBox.additionalRegisters.R7)) {
+				label = 'Lend to Lend | Tokens';
 			} else {
 				label = 'Lend to Lend | Erg';
 			}
 		}
 		if (inRepaymentBox && outRepaymentBox) {
 			label = 'Repayment to Repayment';
-			if (outRepaymentBox.additionalRegisters.R7) {
-				if (outRepaymentBox.additionalRegisters.R7[6]) {
-					label = 'Repayment to Repayment | Tokens';
-				} else {
-					label = 'Repayment to Repayment | Erg';
-				}
+			if (outRepaymentBox.additionalRegisters.R9) {
+				label = 'Repayment to Repayment | Tokens';
 			} else {
 				label = 'Repayment to Repayment | Erg';
 			}
