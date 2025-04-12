@@ -47,7 +47,8 @@
 				<div class="text-xs opacity-[0.6]">My donation:</div>
 				<div class="font-medium">{d.donation}</div>
 			</div>
-			<div>
+			<div class="flex justify-between">
+				<div class="text-xs opacity-[0.6]">Status:</div>
 				<div class="font-medium" class:text-green-500={d.status?.includes('withdraw')}>
 					{d.status}
 				</div>
