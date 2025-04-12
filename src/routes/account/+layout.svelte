@@ -18,7 +18,7 @@
 </script>
 
 <div class="flex w-full flex-grow flex-col">
-	<div class="mb-4 mt-8 flex items-center justify-between">
+	<div class="mb-4 mt-8 hidden items-center justify-between sm:flex">
 		<div>
 			<div class="text-xl font-medium">My Account</div>
 			<div class="text-sm text-gray-500">9eq6S...QXssg</div>
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<div class="mb-6 border-b-2 border-gray-200">
+	<div class="mb-6 hidden border-b-2 border-gray-200 sm:block">
 		<div class="flex">
 			<div class="relative">
 				<a href="{base}/account/loans" class="tab" class:tab-active={$activeTab === 'loans'}
@@ -63,6 +63,35 @@
 				{/if}
 			</div>
 		</div>
+	</div>
+
+	<div
+		class="my-4 inline-flex rounded-lg border border-light-border p-1 dark:border-dark-border sm:hidden"
+	>
+		<a
+			href="{base}/account/loans"
+			class="grow rounded-md px-4 py-1.5 text-center text-sm font-medium transition-colors"
+			class:bg-dark-accent={$activeTab === 'loans'}
+			class:text-white={$activeTab === 'loans'}
+		>
+			Loans
+		</a>
+		<a
+			href="{base}/account/repayments"
+			class="grow rounded-md px-4 py-1.5 text-center text-sm font-medium transition-colors"
+			class:bg-dark-accent={$activeTab === 'repayments'}
+			class:text-white={$activeTab === 'repayments'}
+		>
+			Repayments
+		</a>
+		<a
+			href="{base}/account/donations"
+			class="grow rounded-md px-4 py-1.5 text-center text-sm font-medium transition-colors"
+			class:bg-dark-accent={$activeTab === 'donations'}
+			class:text-white={$activeTab === 'donations'}
+		>
+			Donations
+		</a>
 	</div>
 
 	{@render children()}

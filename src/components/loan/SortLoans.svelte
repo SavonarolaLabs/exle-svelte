@@ -26,7 +26,7 @@
 
 <div class="group relative text-sm">
 	<button
-		class="flex w-[222px] items-center gap-2 rounded-lg px-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+		class="flex w-[240px] items-center gap-2 rounded-lg px-2 hover:bg-gray-100 dark:hover:bg-gray-800"
 		style="height: 31px;"
 	>
 		<Sort direction={selectedOption.endsWith('_asc') ? 'asc' : 'desc'} />
@@ -41,7 +41,7 @@
 			{#each options as option}
 				<button
 					on:click={() => selectOption(option)}
-					class="block flex h-[38px] w-full items-center whitespace-nowrap px-4 text-left hover:bg-gray-100 dark:hover:bg-gray-800"
+					class="block flex h-[38px] w-[240px] w-full items-center whitespace-nowrap px-4 text-left hover:bg-gray-100 dark:hover:bg-gray-800"
 				>
 					{option.label}
 				</button>
