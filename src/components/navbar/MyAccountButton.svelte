@@ -19,31 +19,31 @@
 		>
 			<a
 				href="{base}/account/loans"
-				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
+				class="block flex h-[38px] items-center px-4 hover:bg-gray-100 hover:bg-gray-800"
 			>
 				My Loans
 			</a>
 			<a
 				href="{base}/account/donations"
-				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
+				class="block flex h-[38px] items-center px-4 hover:bg-gray-100 hover:bg-gray-800"
 			>
 				My Donations
 			</a>
 			<a
 				href="{base}/account/repayments"
-				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
+				class="block flex h-[38px] items-center px-4 hover:bg-gray-100 hover:bg-gray-800"
 			>
 				My Repayments
 			</a>
 			<a
 				href="{base}/transactions"
-				class="block flex h-[38px] items-center px-4 hover:bg-light-accent hover:text-white dark:hover:bg-dark-accent"
+				class="block flex h-[38px] items-center px-4 hover:bg-gray-100 hover:bg-gray-800"
 			>
 				Transactions History
 			</a>
 			<button
 				on:click={logout}
-				class="block flex h-[38px] w-full items-center gap-1 px-4 text-red-500 hover:bg-light-accent dark:hover:bg-dark-accent"
+				class="block flex h-[38px] w-full items-center gap-1 px-4 text-red-500 hover:bg-gray-100 hover:bg-gray-800"
 			>
 				<LogOut />
 				Log out

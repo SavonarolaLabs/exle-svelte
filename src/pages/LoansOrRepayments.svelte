@@ -1,51 +1,77 @@
 <script lang="ts">
 	import Fuse from 'fuse.js';
 	import type { Loan } from '../data/DummyLoans';
-	import { ChevronDown } from 'lucide-svelte';
-	import Sort from '../icons/Sort.svelte';
 	import LoanWidget from '../components/loan/LoanWidget.svelte';
 	import { repayments } from '../stores/ui';
+	import SortLoans from '../components/loan/SortLoans.svelte';
 
 	export let phase = 'loan';
 
-	// Fuse.js configuration
+	let selectedSort = 'date_desc';
+
+	const sortOptions = [
+		{ value: 'date_asc', label: 'Date added (asc)' },
+		{ value: 'date_desc', label: 'Date added (desc)' },
+		{ value: 'funding_asc', label: 'Funding Goal (asc)' },
+		{ value: 'funding_desc', label: 'Funding Goal (desc)' },
+		{ value: 'name_asc', label: 'Name (asc)' },
+		{ value: 'name_desc', label: 'Name (desc)' },
+		{ value: 'interest_asc', label: 'Interest Rate (asc)' },
+		{ value: 'interest_desc', label: 'Interest Rate (desc)' },
+		{ value: 'repaid_asc', label: 'Repaid Percentage (asc)' },
+		{ value: 'repaid_desc', label: 'Repaid Percentage (desc)' }
+	];
+
 	const fuseOptions = {
 		includeScore: true,
 		shouldSort: true,
-		threshold: 0.4, // Lower threshold means more strict matching
+		threshold: 0.4,
 		keys: [
 			'loanTitle',
 			'loanDescription',
 			'loanId',
-			// Add more searchable fields as needed
 			{ name: 'borrowerName', weight: 0.7 },
 			{ name: 'loanPurpose', weight: 0.5 }
 		]
 	};
 
-	// Create Fuse instance with the store value
 	$: fuse = new Fuse($repayments, fuseOptions);
 
 	let searchQuery = '';
 	let filteredLoans: Loan[] = [];
 
-	// Search function
 	function performSearch() {
 		if (!searchQuery || searchQuery.trim() === '') {
 			filteredLoans = $repayments.filter((l) => l.phase === phase);
-			return;
+		} else {
+			const searchResults = fuse.search(searchQuery);
+			filteredLoans = searchResults
+				.map((result) => result.item)
+				.filter((loan) => loan.phase === phase);
 		}
-
-		// Perform fuzzy search
-		const searchResults = fuse.search(searchQuery);
-
-		// Map results to original loan objects and filter by phase
-		filteredLoans = searchResults
-			.map((result) => result.item)
-			.filter((loan) => loan.phase === phase);
+		sortLoans();
 	}
 
-	// Reactive statement to trigger search
+	function sortLoans() {
+		const [key, dir] = selectedSort.split('_');
+		filteredLoans.sort((a, b) => {
+			let aVal: any = a[key];
+			let bVal: any = b[key];
+
+			if (typeof aVal === 'string') aVal = aVal.toLowerCase();
+			if (typeof bVal === 'string') bVal = bVal.toLowerCase();
+
+			if (aVal < bVal) return dir === 'asc' ? -1 : 1;
+			if (aVal > bVal) return dir === 'asc' ? 1 : -1;
+			return 0;
+		});
+	}
+
+	function handleSortChange(value: string) {
+		selectedSort = value;
+		sortLoans();
+	}
+
 	$: searchQuery, phase, $repayments, performSearch();
 </script>
 
@@ -68,12 +94,9 @@
 				<p class="mt-2 text-sm">{filteredLoans.length} Repayments</p>
 			{/if}
 		</div>
+
 		<div class="flex items-center gap-4 max-md:mt-4 max-md:flex-col-reverse max-md:items-start">
-			<div class="flex items-center gap-2 text-sm font-normal">
-				<Sort></Sort>
-				Date added (desc)
-				<ChevronDown size="1em" />
-			</div>
+			<SortLoans selectedOption={selectedSort} onChange={handleSortChange} options={sortOptions} />
 			<input
 				type="text"
 				bind:value={searchQuery}
