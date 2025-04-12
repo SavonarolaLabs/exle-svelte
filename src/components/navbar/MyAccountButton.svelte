@@ -13,9 +13,11 @@
 		My Account <ChevronDown size="1em" />
 	</button>
 
-	<div class="invisible absolute inset-x-0 top-full w-[180px] group-hover:visible">
+	<div
+		class="invisible absolute inset-x-0 top-full z-10 w-[180px] bg-light-background group-hover:visible dark:bg-dark-background"
+	>
 		<ul
-			class="accent-hover overflow-hidden rounded-md border-t border-[#0000000F] bg-white shadow-lg dark:bg-dark-background"
+			class="accent-hover overflow-hidden rounded-md border-t border-[#0000000F] shadow-lg dark:bg-dark-background"
 		>
 			<a
 				href="{base}/account/loans"
