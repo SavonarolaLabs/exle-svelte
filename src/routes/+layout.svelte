@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/navbar/Navbar.svelte';
-	import { initTheme, is_dark, loadRepayments, repayments } from '../stores/ui';
+	import { initTheme, is_dark, loadLoansAndRepayments } from '../stores/ui';
 
 	let { children } = $props();
 
@@ -14,7 +14,7 @@
 		unsubscribe = is_dark.subscribe((value) => {
 			localStorage.setItem('theme', value ? 'dark' : 'light');
 		});
-		loadRepayments();
+		loadLoansAndRepayments();
 	});
 
 	onDestroy(() => {

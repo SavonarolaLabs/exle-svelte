@@ -210,6 +210,10 @@ export function fetchRepayments() {
 	return fetchUnspentBoxesByErgoTree(EXLE_REPAYMENT_BOX_ERGOTREE);
 }
 
+export function fetchLoans() {
+	return fetchUnspentBoxesByErgoTree(EXLE_LEND_BOX_ERGOTREE);
+}
+
 // fetch data end
 
 export interface Loan {
@@ -259,6 +263,39 @@ export function parseRepaymentBox(box: NodeBox): Loan | undefined {
 		creator: decodeExleBorrower(box),
 		isReadyForWithdrawal: lockedAmount > 0n, // TODO: handle erg
 		isRepayed: repaymentLevel == 100n
+	};
+
+	return repayment;
+}
+
+export function parseLoanBox(box: NodeBox): Loan | undefined {
+	if (box.assets.length < 2 || !box.additionalRegisters.R7) return;
+	const token = parseLoanToken(box);
+	if (!token) return;
+
+	const funding = decodeExleFundingInfo(box);
+	const project = decodeExleProjectDetails(box);
+	const repay = decodeExleRepaymentDetailsTokens(box);
+	const { lockedAmount } = getExleRepaymentTokensStatus(box);
+
+	const fundingGoal = Number(Number(funding.fundingGoal) / 10 ** token.decimals).toFixed(2);
+	const fundedAmount = Number(Number(lockedAmount) / 10 ** token.decimals).toFixed(2);
+
+	const repayment = {
+		phase: 'loan' as const,
+		loanId: box.assets[0].tokenId,
+		loanType: 'Crowdloan',
+		loanTitle: project[0],
+		loanDescription: project.slice(1).join('\n'),
+		repaymentPeriod: '' + blocksToDays(funding.repaymentHeightLength), // TODO: - height?
+		interestRate: `${(100 / Number(funding.interestRate)).toFixed(1)} %`,
+		fundingGoal: fundingGoal,
+		fundingToken: token.ticker,
+		fundedAmount: fundedAmount + ' ' + token.ticker,
+		fundedPercentage: Math.floor((Number(fundedAmount) / Number(fundingGoal)) * 100),
+		daysLeft: blocksToDays(repay.repaymentDeadlineHeight), // TODO: - height
+		creator: decodeExleBorrower(box),
+		isReadyForWithdrawal: lockedAmount > 0n // TODO: handle erg
 	};
 
 	return repayment;

@@ -1,4 +1,10 @@
-import { fetchRepayments, parseRepaymentBox, type Loan, type NodeBox } from '$lib/exle/exle';
+import {
+	fetchLoans,
+	fetchRepayments,
+	parseLoanBox,
+	parseRepaymentBox,
+	type Loan
+} from '$lib/exle/exle';
 import { writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
@@ -52,10 +58,15 @@ export function toggleTheme() {
 }
 
 // fetch chain data
-export const repayments: Writable<Loan> = writable([]);
+export const repayments: Writable<Loan[]> = writable([]);
 
-export async function loadRepayments() {
-	const boxes = await fetchRepayments();
-	const repaymentList = boxes.map(parseRepaymentBox).filter(Boolean);
-	repayments.set(repaymentList);
+export async function loadLoansAndRepayments() {
+	const loanBoxes = await fetchLoans();
+	console.log({ loanBoxes });
+	const loanList: Loan[] = loanBoxes.map(parseLoanBox).filter(Boolean) as Loan[];
+
+	const repaymentBoxes = await fetchRepayments();
+	const repaymentList: Loan[] = repaymentBoxes.map(parseRepaymentBox).filter(Boolean) as Loan[];
+
+	repayments.set([...loanList, ...repaymentList]);
 }
