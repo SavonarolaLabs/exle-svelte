@@ -15,7 +15,7 @@
 
 	<div class="invisible absolute inset-x-0 top-full w-[180px] group-hover:visible">
 		<ul
-			class="accent-hover overflow-hidden rounded-md border-t border-[#0000000F] bg-white shadow-lg dark:bg-dark-background dark:shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
+			class="accent-hover overflow-hidden rounded-md border-t border-[#0000000F] bg-white shadow-lg dark:bg-dark-background"
 		>
 			<a
 				href="{base}/account/loans"
