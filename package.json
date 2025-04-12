@@ -31,9 +31,12 @@
 		"tailwindcss": "^3.4.9",
 		"typescript": "^5.0.0",
 		"typescript-eslint": "^8.0.0",
-		"vite": "^5.0.3"
+		"vite": "^5.0.3",
+		"vitest": "^3.1.1"
 	},
 	"dependencies": {
+		"@fleet-sdk/core": "^0.8.2",
+		"@fleet-sdk/serializer": "^0.8.2",
 		"@sveltejs/adapter-static": "^3.0.6",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",
