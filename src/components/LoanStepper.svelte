@@ -13,7 +13,7 @@
 	}
 
 	let currentStep = 1;
-	let selectedLoanType: 'Crowdloan' | 'Solofund loan' | null = null;
+	let selectedLoanType: 'Crowdloan' | 'Solofund' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';
 	let loanDescription = '';
@@ -23,7 +23,7 @@
 	let interestRate = '';
 	let repaymentPeriod = '';
 	let termsAccepted = false;
-	let paymentConfirmed = true;
+	let paymentConfirmed = false;
 
 	function handleContinue() {
 		if (currentStep === 1 && selectedLoanType && isWalletConfirmed) {
@@ -83,15 +83,15 @@
 					<button
 						type="button"
 						class="w-full rounded-lg border-2 p-4 text-left transition"
-						class:border-dark-accent={selectedLoanType === 'Solofund loan'}
-						class:bg-dark-accent={selectedLoanType === 'Solofund loan'}
-						class:text-white={selectedLoanType === 'Solofund loan'}
-						class:border-dark-border={$is_dark && selectedLoanType !== 'Solofund loan'}
-						class:border-light-border={!$is_dark && selectedLoanType !== 'Solofund loan'}
-						on:click={() => (selectedLoanType = 'Solofund loan')}
+						class:border-dark-accent={selectedLoanType === 'Solofund'}
+						class:bg-dark-accent={selectedLoanType === 'Solofund'}
+						class:text-white={selectedLoanType === 'Solofund'}
+						class:border-dark-border={$is_dark && selectedLoanType !== 'Solofund'}
+						class:border-light-border={!$is_dark && selectedLoanType !== 'Solofund'}
+						on:click={() => (selectedLoanType = 'Solofund')}
 					>
-						<p class="mb-4 text-md font-semibold">Solofund loan</p>
-						<p>Only one person can contribute to fund a solofund loan.</p>
+						<p class="mb-4 text-md font-semibold">Solofund</p>
+						<p>Only one person can contribute to fund a Solofund.</p>
 					</button>
 				</div>
 			</div>
