@@ -815,6 +815,7 @@ function prepareLendToRepaymentErgTx(
 		changeAddress
 	);
 }
+
 function lendToRepaymentErgTx(
 	height: number,
 	serviceBox: NodeBox,
@@ -1093,4 +1094,34 @@ function setExleLendRegistersTokens(
 export function encodeProjectDetails(strings: string[]): string {
 	const byteArrays = strings.map((str) => Array.from(Buffer.from(str, 'utf8')));
 	return SColl(SColl(SByte), byteArrays).toHex();
+}
+
+function crowdFundFromLendTx(signedTx: object) {
+	const serviceBox = signedTx.outputs[0];
+	const lendBox = signedTx.outputs[1];
+
+	const updatedLendBox = new OutputBuilder(BigInt(lendBox.value), lendBox.ergoTree)
+		.addTokens(lendBox.assets)
+		.setAdditionalRegisters(lendBox.additionalRegisters);
+
+	const updatedServiceAssets = serviceBox.assets;
+	updatedServiceAssets[3].amount = updatedServiceAssets[3].amount - 1;
+
+	const updatedServiceBox = new OutputBuilder(BigInt(serviceBox.value), serviceBox.ergoTree)
+		.addTokens(updatedServiceAssets)
+		.setAdditionalRegisters(serviceBox.additionalRegisters);
+
+	const crowdFundBox = '';
+	// Mint Service Box =>
+	//R4: LoanId
+	//R5: CrowdFundTokenId
+	//R6: 2L
+
+	const unsignedTx = new TransactionBuilder(height)
+		.from([serviceBox, lendBox, ...utxo])
+		.to([updatedServiceBox, updatedLendBox, crowdFundBox])
+		.payFee(miningFee)
+		.sendChangeTo(changeAddress)
+		.build()
+		.toEIP12Object();
 }
