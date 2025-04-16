@@ -1000,11 +1000,14 @@ export function createLendTx(userInput: CreateLendUserInput, chainData: CreateLe
 
 export function createLendCrowdfundBoxTx(signedTx: Object, userInput: CreateLendUserInput) {
 	const params = {
-		_MinFee: SLong(EXLE_MINING_FEE),
-		_MaxByteBoxFee: SLong(EXLE_MAX_BYTE_BOX_FEE),
-		_LoanId: SColl(SByte, signedTx.ouputs[1].assets[1].tokenId),
-		_SLTCFTokenId: SColl(SByte, signedTx.ouputs[0].boxId),
-		_SLTRepaymentTokenId: SColl(SByte, userInput.loanTokenId)
+		_MinFee: SLong(EXLE_MINING_FEE).toHex(),
+		_MaxByteBoxFee: SLong(EXLE_MAX_BYTE_BOX_FEE).toHex(),
+		_LoanId: SColl(
+			SByte,
+			'05692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b7119141'
+		).toHex(),
+		_SLTCFTokenId: SColl(SByte, EXLE_SLE_CROWD).toHex(),
+		_SLTRepaymentTokenId: SColl(SByte, EXLE_SLE_REPAYMENT_TOKEN_ID).toHex()
 	};
 	const result = createCrowdfundContract(params);
 }
