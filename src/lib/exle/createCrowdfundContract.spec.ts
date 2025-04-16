@@ -1,5 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createCrowdfundContract, EXLE_MAX_BYTE_BOX_FEE, EXLE_MINING_FEE } from './exle';
+import {
+	createCrowdfundContract,
+	EXLE_MAX_BYTE_BOX_FEE,
+	EXLE_MINING_FEE,
+	EXLE_SLE_CROWD,
+	EXLE_SLE_REPAYMENT_TOKEN_ID
+} from './exle';
 import { SByte, SColl, SLong } from '@fleet-sdk/serializer';
 import { ErgoAddress } from '@fleet-sdk/core';
 
@@ -20,17 +26,11 @@ describe('createCrowdfundContract', () => {
 				SByte,
 				'05692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b7119141'
 			).toHex(),
-			_SLTCFTokenId: SColl(
-				SByte,
-				'48688bbd6bed0b8f27bfd795c7f5cebc42e7b07d1c201f65909dc95c9fbe73cf'
-			).toHex(),
-			_SLTRepaymentTokenId: SColl(
-				SByte,
-				'03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
-			).toHex()
+			_SLTCFTokenId: SColl(SByte, EXLE_SLE_CROWD).toHex(),
+			_SLTRepaymentTokenId: SColl(SByte, EXLE_SLE_REPAYMENT_TOKEN_ID).toHex()
 		};
 		const result = createCrowdfundContract(params);
 		const tree = ErgoAddress.fromBase58(expectedAddress).ergoTree;
-		//expect(expectedAddress).toBe(result);
+		expect(expectedAddress).toBe(result);
 	});
 });
