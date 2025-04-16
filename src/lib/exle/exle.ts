@@ -959,8 +959,6 @@ export type CreateLendChainContext = {
 };
 
 export function createLend(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
-	console.log(userInput, chainData);
-
 	const exleFundingInfo = {
 		fundingGoal: userInput.fundingGoal,
 		deadlineHeight: userInput.fundingDeadlineHeight,
@@ -984,8 +982,7 @@ export function createLend(userInput: CreateLendUserInput, chainData: CreateLend
 		EXLE_MINING_FEE,
 		lendParams
 	);
-	console.log(unsignedTx);
-	throw new Error('implement me');
+	return unsignedTx;
 }
 
 function createLendTokens(

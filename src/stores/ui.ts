@@ -106,5 +106,7 @@ export async function createSolofundLoan() {
 		serviceBox,
 		height
 	};
-	createLend(sampleSolofundLend, chainData);
+	const unsignedTx = createLend(sampleSolofundLend, chainData);
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log({ signed });
 }
