@@ -1,6 +1,10 @@
 import { ErgoAddress, OutputBuilder, TransactionBuilder } from '@fleet-sdk/core';
 import { parse, SByte, SColl, SLong } from '@fleet-sdk/serializer';
 
+import { Network } from '@fleet-sdk/common';
+import { compile } from '@fleet-sdk/compiler';
+import { CROWDFUND_CONTRACT } from './CROWDFUND_CONTRACT';
+
 export const EXLE_MINING_FEE = 1_000_000n;
 export const EXLE_MAX_BYTE_BOX_FEE = 1_474_560n;
 export const EXLE_DEV_ADDRESS = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn';
@@ -176,6 +180,15 @@ export function parseLoanToken(box: NodeBox): TokenInfo | undefined {
 		const tokenId = Buffer.from(parse(r7)).toString('hex');
 		return LENDING_TOKENS.find((t) => t.tokenId == tokenId);
 	}
+}
+
+export function createCrowdfundContract(map = {}): string {
+	const tree = compile(CROWDFUND_CONTRACT, {
+		map,
+		version: 0,
+		includeSize: false
+	});
+	return tree.toAddress(Network.Mainnet).toString();
 }
 // utils end
 
@@ -958,7 +971,7 @@ export type CreateLendChainContext = {
 	height: number;
 };
 
-export function createLend(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
+export function createLendTx(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
 	const exleFundingInfo = {
 		fundingGoal: userInput.fundingGoal,
 		deadlineHeight: userInput.fundingDeadlineHeight,
@@ -983,6 +996,18 @@ export function createLend(userInput: CreateLendUserInput, chainData: CreateLend
 		lendParams
 	);
 	return unsignedTx;
+}
+
+export function createLendCrowdfundBoxTx(signedTx) {
+	const tid = 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a';
+	const params = {
+		_MinFee: SLong(110_000n),
+		_MaxByteBoxFee: SLong(10000n),
+		_LoanId: SColl(SByte, tid),
+		_SLTCFTokenId: SColl(SByte, tid),
+		_SLTRepaymentTokenId: SColl(SByte, tid)
+	};
+	const result = createCrowdfundContract(params);
 }
 
 function createLendTokens(

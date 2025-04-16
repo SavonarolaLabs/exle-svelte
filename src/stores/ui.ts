@@ -1,5 +1,6 @@
 import {
-	createLend,
+	createLendCrowdfundBoxTx,
+	createLendTx,
 	fetchLoans,
 	fetchRepayments,
 	fetchServiceBox,
@@ -106,7 +107,9 @@ export async function createSolofundLoan() {
 		serviceBox,
 		height
 	};
-	const unsignedTx = createLend(sampleSolofundLend, chainData);
+	const unsignedTx = createLendTx(sampleSolofundLend, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
+
+	const unsignedCrowdTx = createLendCrowdfundBoxTx(signed);
 	console.log({ signed });
 }
