@@ -960,6 +960,31 @@ export type CreateLendChainContext = {
 
 export function createLend(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
 	console.log(userInput, chainData);
+
+	const exleFundingInfo = {
+		fundingGoal: userInput.fundingGoal,
+		deadlineHeight: userInput.fundingDeadlineHeight,
+		interestRate: userInput.interestRate,
+		repaymentHeightLength: userInput.repaymentHeightLength,
+		serviceFee: decodeExleServiceFee(chainData.serviceBox)
+	};
+
+	const lendParams: ExleLendParametersTokens = {
+		exleFundingInfo: exleFundingInfo,
+		projectDetails: userInput.project,
+		borrowerErgoTree: ErgoAddress.fromBase58(userInput.borrowerAddress).ergoTree,
+		tokenId: userInput.loanTokenId
+	};
+
+	const unsignedTx = createLendTokens(
+		userInput.borrowerAddress,
+		chainData.userUtxo,
+		chainData.serviceBox,
+		chainData.height,
+		EXLE_MINING_FEE,
+		lendParams
+	);
+	console.log(unsignedTx);
 	throw new Error('implement me');
 }
 
@@ -1020,11 +1045,26 @@ function setExleLendRegistersTokens(
 	box: OutputBuilder,
 	lendParams: ExleLendParametersTokens | ExleLendParametersErg
 ): OutputBuilder {
+	const { fundingGoal, deadlineHeight, interestRate, repaymentHeightLength, serviceFee } =
+		lendParams.exleFundingInfo;
+
 	box.setAdditionalRegisters({
-		R4: '123',
-		R5: '123',
-		R6: '123',
-		R7: '123'
+		R4: SColl(SLong, [
+			fundingGoal,
+			deadlineHeight,
+			interestRate,
+			repaymentHeightLength,
+			serviceFee
+		]).toHex(),
+		R5: encodeProjectDetails(lendParams.projectDetails),
+		R6: SColl(SByte, lendParams.borrowerErgoTree).toHex(),
+		R7: SColl(SByte, lendParams.tokenId).toHex()
 	});
+
 	return box;
+}
+
+export function encodeProjectDetails(strings: string[]): string {
+	const byteArrays = strings.map((str) => Array.from(Buffer.from(str, 'utf8')));
+	return SColl(SColl(SByte), byteArrays).toHex();
 }
