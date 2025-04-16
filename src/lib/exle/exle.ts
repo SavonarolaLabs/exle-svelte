@@ -998,14 +998,13 @@ export function createLendTx(userInput: CreateLendUserInput, chainData: CreateLe
 	return unsignedTx;
 }
 
-export function createLendCrowdfundBoxTx(signedTx) {
-	const tid = 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a';
+export function createLendCrowdfundBoxTx(signedTx: Object, userInput: CreateLendUserInput) {
 	const params = {
-		_MinFee: SLong(110_000n),
-		_MaxByteBoxFee: SLong(10000n),
-		_LoanId: SColl(SByte, tid),
-		_SLTCFTokenId: SColl(SByte, tid),
-		_SLTRepaymentTokenId: SColl(SByte, tid)
+		_MinFee: SLong(EXLE_MINING_FEE),
+		_MaxByteBoxFee: SLong(EXLE_MAX_BYTE_BOX_FEE),
+		_LoanId: SColl(SByte, signedTx.ouputs[1].assets[1].tokenId),
+		_SLTCFTokenId: SColl(SByte, signedTx.ouputs[0].boxId),
+		_SLTRepaymentTokenId: SColl(SByte, userInput.loanTokenId)
 	};
 	const result = createCrowdfundContract(params);
 }

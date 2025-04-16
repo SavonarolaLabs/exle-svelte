@@ -97,6 +97,7 @@ const sampleSolofundLend: CreateLendUserInput = {
 };
 
 export async function createSolofundLoan() {
+	const userInput = sampleSolofundLend;
 	const { utxos: userUtxo, height } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();
 	if (!serviceBox) {
@@ -107,9 +108,9 @@ export async function createSolofundLoan() {
 		serviceBox,
 		height
 	};
-	const unsignedTx = createLendTx(sampleSolofundLend, chainData);
+	const unsignedTx = createLendTx(userInput, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
 
-	const unsignedCrowdTx = createLendCrowdfundBoxTx(signed);
+	const unsignedCrowdTx = createLendCrowdfundBoxTx(signed, userInput);
 	console.log({ signed });
 }
