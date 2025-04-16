@@ -180,6 +180,30 @@ export function parseLoanToken(box: NodeBox): TokenInfo | undefined {
 // utils end
 
 // fetch data start
+async function fetchBoxesByTokenId(tokenId: string): Promise<NodeBox[]> {
+	const baseUrl = 'http://213.239.193.208:9053';
+	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=0&limit=1&sortDirection=desc&includeUnconfirmed=true`;
+
+	try {
+		const response = await fetch(url, {
+			headers: { accept: 'application/json' }
+		});
+
+		if (!response.ok) {
+			const body = await response.text();
+			console.error(`[box/unspent/byTokenId] HTTP Error ${response.status}: ${body}`);
+			return [];
+		}
+
+		const text = await response.text();
+		const data = jsonParseBigInt(text);
+		return Array.isArray(data) ? data : [];
+	} catch (error) {
+		console.error(`[box/unspent/byTokenId] Request failed:`, error);
+		return [];
+	}
+}
+
 async function fetchUnspentBoxesByErgoTree(ergoTree: string): Promise<NodeBox[]> {
 	const baseUrl = 'http://213.239.193.208:9053';
 	const url = `${baseUrl}/blockchain/box/unspent/byErgoTree?offset=0&limit=100&sortDirection=desc&includeUnconfirmed=true&excludeMempoolSpent=true`;
@@ -212,6 +236,11 @@ export function fetchRepayments() {
 
 export function fetchLoans() {
 	return fetchUnspentBoxesByErgoTree(EXLE_LEND_BOX_ERGOTREE);
+}
+
+export async function fetchServiceBox(): Promise<NodeBox | undefined> {
+	const boxes = await fetchBoxesByTokenId(EXLE_SLE_SERVICE_NFT_ID);
+	return boxes[0];
 }
 
 // fetch data end
@@ -910,6 +939,28 @@ function fundLendTokensTx(
 		.toEIP12Object();
 
 	return unsignedTx;
+}
+
+export type CreateLendUserInput = {
+	loanType: 'Crowdloan' | 'Solofund';
+	project: string[]; //project[0] - loanTitle, project[1] - loanDescription
+	loanTokenId: null | string;
+	fundingGoal: bigint; // funding goal
+	interestRate: bigint; // in / 1000n
+	fundingDeadlineHeight: bigint; // in height + blocks
+	repaymentHeightLength: bigint; // in blocks
+	borrowerAddress: string;
+};
+
+export type CreateLendChainContext = {
+	userUtxo: Object[];
+	serviceBox: NodeBox;
+	height: number;
+};
+
+export function createLend(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
+	console.log(userInput, chainData);
+	throw new Error('implement me');
 }
 
 function createLendTokens(

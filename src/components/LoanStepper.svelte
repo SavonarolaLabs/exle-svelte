@@ -192,7 +192,7 @@
 						class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 dark:border-dark-border"
 					>
 						<option value="SigUSD">SigUSD</option>
-						<option value="OtherToken">Other Token</option>
+						<option value="ERG">ERG</option>
 					</select>
 				</div>
 				<p class="mt-1 opacity-50 max-md:text-xs">(Token to borrow for this loan)</p>
@@ -209,7 +209,7 @@
 							placeholder="Amount to be raised for this loan"
 							class="w-full rounded-lg border-2 border-light-border bg-transparent p-3 pr-12 text-sm placeholder:text-sm placeholder:opacity-0 dark:border-dark-border md:placeholder:opacity-100"
 						/>
-						<span class="absolute inset-y-0 right-0 flex items-center px-4"> $ </span>
+						<span class="absolute inset-y-0 right-0 flex items-center px-4"> {loanToken} </span>
 					</div>
 				</div>
 				<div class="mt-1 text-xs opacity-50 md:hidden">Amount to be raised for this loan</div>

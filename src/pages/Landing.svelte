@@ -9,6 +9,7 @@
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 	import Roadmap from '../components/Roadmap.svelte';
 	import WhatDistinguishesExle from '../components/WhatDistinguishesExle.svelte';
+	import { createSolofundLoan } from '../stores/ui';
 </script>
 
 <section class="space-y-6 md:space-y-8">
@@ -29,6 +30,11 @@
 	>
 		<Button href="{base}/loans/create" label="Create loan" variant="primary" />
 		<Button href="{base}/learn-more" label="Learn more" variant="primary-outline" />
+	</div>
+	<div
+		class="flex w-full flex-col justify-center space-y-4 px-3 md:flex-row md:space-x-4 md:space-y-0 md:px-0"
+	>
+		<Button onClick={createSolofundLoan} label="Create Solofund Loan" />
 	</div>
 
 	<div class="relative" style="max-width:522px;">

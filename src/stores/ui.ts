@@ -1,9 +1,14 @@
 import {
+	createLend,
 	fetchLoans,
 	fetchRepayments,
+	fetchServiceBox,
 	parseLoanBox,
 	parseRepaymentBox,
-	type Loan
+	type CreateLendChainContext,
+	type CreateLendUserInput,
+	type Loan,
+	type NodeBox
 } from '$lib/exle/exle';
 import { writable, type Writable } from 'svelte/store';
 
@@ -69,4 +74,37 @@ export async function loadLoansAndRepayments() {
 	const repaymentList: Loan[] = repaymentBoxes.map(parseRepaymentBox).filter(Boolean) as Loan[];
 
 	repayments.set([...loanList, ...repaymentList]);
+}
+
+export async function getWeb3WalletData() {
+	await window.ergoConnector.nautilus.connect();
+	const me = await ergo.get_change_address();
+	const utxos = await ergo.get_utxos();
+	const height = await ergo.get_current_height();
+	return { me, utxos, height };
+}
+
+const sampleSolofundLend: CreateLendUserInput = {
+	loanType: 'Solofund',
+	project: ['Foo', 'Bar'],
+	loanTokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a', // Test SigUSD
+	fundingGoal: 100n * 100n,
+	interestRate: 20n, // 2%
+	fundingDeadlineHeight: 1504829n + 100000n,
+	repaymentHeightLength: 720n * 30n,
+	borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
+};
+
+export async function createSolofundLoan() {
+	const { utxos: userUtxo, height } = await getWeb3WalletData();
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+	const chainData: CreateLendChainContext = {
+		userUtxo,
+		serviceBox,
+		height
+	};
+	createLend(sampleSolofundLend, chainData);
 }
