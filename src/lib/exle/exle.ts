@@ -5,6 +5,8 @@ import { Network } from '@fleet-sdk/common';
 import { compile } from '@fleet-sdk/compiler';
 import { CROWDFUND_CONTRACT } from './CROWDFUND_CONTRACT';
 
+export const SCALA_MAX_LONG = 9223372036854775807n;
+
 export const EXLE_MINING_FEE = 1_000_000n;
 export const EXLE_MAX_BYTE_BOX_FEE = 1_474_560n;
 export const EXLE_DEV_ADDRESS = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn';

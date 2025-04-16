@@ -30,6 +30,7 @@ describe('createCrowdfundContract', () => {
 			_SLTCFTokenId: SColl(SByte, EXLE_SLE_CROWD).toHex(),
 			_SLTRepaymentTokenId: SColl(SByte, EXLE_SLE_REPAYMENT_TOKEN_ID).toHex()
 		};
+		ErgoTree;
 		const result = createCrowdfundContract(params);
 		const treeCompiled = ErgoAddress.fromBase58(result).ergoTree;
 		const treeExpected = ErgoAddress.fromBase58(expectedAddress).ergoTree;
