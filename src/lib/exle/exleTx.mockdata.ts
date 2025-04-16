@@ -21,16 +21,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '76eb3e559d58e55203448ff12a9b055bc64d1f6f6e852eab0f846ec3a5717f68',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320034,
 				additionalRegisters: {
@@ -39,16 +39,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '110586e38901c09a0c00b0a5aa01a09005',
+					R9: '110586e38901c09a0c00b0a5aa01a09005'
 				},
 				transactionId: '78e4c22d298e30bda4fbbe400c3f9fd04403807315be9ac293b5b6b8f2a3d238',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb',
-			},
+				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb'
+			}
 		],
 		outputs: [
 			{
@@ -64,12 +64,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '76eb3e559d58e55203448ff12a9b055bc64d1f6f6e852eab0f846ec3a5717f68',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320036,
 				additionalRegisters: {
@@ -78,10 +78,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '110586e38901c09a0c00b0a5aa01e0c807',
+					R9: '110586e38901c09a0c00b0a5aa01e0c807'
 				},
 				transactionId: '73f75d4191ee4bba01d9de81047481d69d4cfa025c240152b4748aa4f0a652ae',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847802,
@@ -94,13 +94,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320036,
 				additionalRegisters: {},
 				transactionId: '73f75d4191ee4bba01d9de81047481d69d4cfa025c240152b4748aa4f0a652ae',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 41847803,
@@ -114,7 +114,7 @@ export const exleMockTxes = [
 				creationHeight: 1320036,
 				additionalRegisters: {},
 				transactionId: '73f75d4191ee4bba01d9de81047481d69d4cfa025c240152b4748aa4f0a652ae',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 41847804,
@@ -130,10 +130,10 @@ export const exleMockTxes = [
 				creationHeight: 1320036,
 				additionalRegisters: {},
 				transactionId: '73f75d4191ee4bba01d9de81047481d69d4cfa025c240152b4748aa4f0a652ae',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 1867,
+		size: 1867
 	},
 	{
 		id: 'a0d30c75f9274b560dba6b8b816bbd3436326276d124d66a8c8c919254d84062',
@@ -157,20 +157,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999972,
+						amount: 9999999972
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1315072,
 				additionalRegisters: {
@@ -178,10 +178,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '046072622e345d0daffb14b301d409be6618b28f5cb072195460dca2c3b25176',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41855333,
@@ -196,16 +196,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'fe5dc13954a0edc68d403830bb4268ec73beac0aeaa2e6fb0dda8990fb33ea47',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1320227,
 				additionalRegisters: {
@@ -213,11 +213,11 @@ export const exleMockTxes = [
 					R5: '1a0216526567696e61206c6f6b6972696f6e20456b69646f72c80452657175657374696e6720666f72202431303030206c6f616e20746f20696e637265617365206d792073746f72652073746f636b20616e642070726f647563742072616e67657320746f2064726177206d6f726520637573746f6d65727320647572696e67207468697320736561736f6e207768656e207363686f6f6c732061726520636c6f7365642063686172616374657269736564206279206d6f726520706572736f6e616c69736564207370656e64696e67206f6e2067696674732c20636f6e66656374696f6e6572732c2063616b65732c2069636520637265616d7320616e6420746f79732e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a436f7374206f6620676f6f64732020202020202020202020202020202020202020202431302c303030202020202020202020202020202031352c30303020202020202020202031382c3030300a546f74616c2073616c65732020202020202020202020202020202020202020202020202020202431372c303030202020202020202020202020202032362c30303020202020202020202033332c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '50e227d3c039a7825a3396a7612ca90922a1d38b846af588aba41492dd9b8329',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -234,20 +234,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 10000000000,
+						amount: 10000000000
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999971,
+						amount: 9999999971
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1320230,
 				additionalRegisters: {
@@ -255,10 +255,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'a0d30c75f9274b560dba6b8b816bbd3436326276d124d66a8c8c919254d84062',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41855464,
@@ -273,12 +273,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'fe5dc13954a0edc68d403830bb4268ec73beac0aeaa2e6fb0dda8990fb33ea47',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320230,
 				additionalRegisters: {
@@ -287,10 +287,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105cc94a101c09a0c00bce7c20100',
+					R9: '1105cc94a101c09a0c00bce7c20100'
 				},
 				transactionId: 'a0d30c75f9274b560dba6b8b816bbd3436326276d124d66a8c8c919254d84062',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 41855465,
@@ -303,13 +303,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1320230,
 				additionalRegisters: {},
 				transactionId: 'a0d30c75f9274b560dba6b8b816bbd3436326276d124d66a8c8c919254d84062',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 41855466,
@@ -325,10 +325,10 @@ export const exleMockTxes = [
 				creationHeight: 1320230,
 				additionalRegisters: {},
 				transactionId: 'a0d30c75f9274b560dba6b8b816bbd3436326276d124d66a8c8c919254d84062',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3597,
+		size: 3597
 	},
 	{
 		id: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
@@ -352,12 +352,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320034,
 				additionalRegisters: {
@@ -366,10 +366,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875461,
@@ -384,22 +384,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358664,
 				additionalRegisters: {
 					R4: '0e20ef99da6d1eaf2935b0c7bd26d367a03c9cb6d8f2e618091cf58c154850665e9b',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'bd79f426b4d96671f48e682dc8bb91260e6b98e2a793b8980e7c518e89ef00ba',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c',
-			},
+				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c'
+			}
 		],
 		outputs: [
 			{
@@ -415,16 +415,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358667,
 				additionalRegisters: {
@@ -433,10 +433,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875510,
@@ -452,10 +452,10 @@ export const exleMockTxes = [
 				creationHeight: 1358667,
 				additionalRegisters: {},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2054,
+		size: 2054
 	},
 	{
 		id: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
@@ -479,16 +479,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358667,
 				additionalRegisters: {
@@ -497,16 +497,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c',
-			},
+				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c'
+			}
 		],
 		outputs: [
 			{
@@ -522,12 +522,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1358670,
 				additionalRegisters: {
@@ -536,10 +536,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60180cc08',
+					R9: '1105f0d28401c09a0c00ccf3a60180cc08'
 				},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875539,
@@ -552,13 +552,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 42875540,
@@ -572,7 +572,7 @@ export const exleMockTxes = [
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 42875541,
@@ -588,10 +588,10 @@ export const exleMockTxes = [
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2107,
+		size: 2107
 	},
 	{
 		id: '63a1f324394bb7df6fe3b67e2e55b928739baa20c1e01e2758041c8c081f862d',
@@ -615,20 +615,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999973,
+						amount: 9999999973
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1187958,
 				additionalRegisters: {
@@ -636,10 +636,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36742021,
@@ -654,16 +654,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'b5331177972f3811edfadef27609b667db5c3457a7ad8baef5e05cbe77d4ba28',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1195138,
 				additionalRegisters: {
@@ -671,11 +671,11 @@ export const exleMockTxes = [
 					R5: '1a020c4e41444150414c2053484f50c40452657175657374696e6720666f72202431303030206c6f616e20746f20696e637265617365206d792073746f72652073746f636b20616e642070726f647563742072616e67657320746f2064726177206d6f726520637573746f6d65727320647572696e672074686973207363686f6f6c206f70656e696e672073686f7070696e6720736561736f6e2063686172616374657269736564206279206d6f726520706572736f6e616c69736564207370656e64696e67206f6e20626f6f6b732c207363686f6f6c20626167732c2070656e732c20616e64206f74686572206e6563657373697479200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a436f7374206f6620676f6f64732020202020202020202020202020202020202020202431302c303030202020202020202020202020202031352c30303020202020202020202031382c3030300a546f74616c2073616c65732020202020202020202020202020202020202020202020202020202431372c303030202020202020202020202020202032362c30303020202020202020202033332c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '50f065b15bafaf152e3c49c3babdc92620509015f5a939e602953b483faa2808',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -692,20 +692,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 10000000000,
+						amount: 10000000000
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999972,
+						amount: 9999999972
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1195141,
 				additionalRegisters: {
@@ -713,10 +713,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '63a1f324394bb7df6fe3b67e2e55b928739baa20c1e01e2758041c8c081f862d',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36742043,
@@ -731,12 +731,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'b5331177972f3811edfadef27609b667db5c3457a7ad8baef5e05cbe77d4ba28',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1195141,
 				additionalRegisters: {
@@ -745,10 +745,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '11058af29101c09a0c00b884b30100',
+					R9: '11058af29101c09a0c00b884b30100'
 				},
 				transactionId: '63a1f324394bb7df6fe3b67e2e55b928739baa20c1e01e2758041c8c081f862d',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36742044,
@@ -761,13 +761,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1195141,
 				additionalRegisters: {},
 				transactionId: '63a1f324394bb7df6fe3b67e2e55b928739baa20c1e01e2758041c8c081f862d',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 36742045,
@@ -783,10 +783,10 @@ export const exleMockTxes = [
 				creationHeight: 1195141,
 				additionalRegisters: {},
 				transactionId: '63a1f324394bb7df6fe3b67e2e55b928739baa20c1e01e2758041c8c081f862d',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3583,
+		size: 3583
 	},
 	{
 		id: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
@@ -810,20 +810,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999994,
+						amount: 9999999994
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999977,
+						amount: 9999999977
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150502,
 				additionalRegisters: {
@@ -831,10 +831,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '09efcf0648cf7c705c5f6934869f0ff61527252d6a3d7ed5efb4cbb9c8661371',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34858003,
@@ -849,16 +849,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'da06ffd8aae2fe838866f2853ba11537812d641ba2bc57aecb77267b67d6bf9a',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 30000,
-					},
+						amount: 30000
+					}
 				],
 				creationHeight: 1150505,
 				additionalRegisters: {
@@ -866,11 +866,11 @@ export const exleMockTxes = [
 					R5: '1a020d526f6f737420436173746c652085034c6f6f6b696e6720666f72202433303020746f20696e637265617365206d792065676720696e6375626174696f6e206361706163697479206174206d79206661726d2c20746865206c6f616e2077696c6c2068656c70206d6520746f206163717569726520616e206175746f6d617465642065676720696e63756261746f7220616e64206120686174636865722c20746869732077696c6c206c6f7765722074686520636f737420746f2072756e206d7920627573696e65737320616e64207374696c6c2072656d61696e20636f6d706574697469766520696e2070726963696e672c2074686520696e63726561736564206861746368696e67206361706163697479207472616e736c61746520746f206d6f726520637573746f6d6572732c206c657373207475726e61726f756e6420616e64206d6f72652072657475726e7320746f20726570617920746865206c6f616e20616d6f756e7420706c757320696e7465726573742077697468696e20333020646179732075706f6e2066756e64696e672e',
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
+					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6'
 				},
 				transactionId: '1c174d83268b0986d7cdeb9d1957aa154d6621cf3028af5a7f7313eddde54d88',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -887,20 +887,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999995,
+						amount: 9999999995
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999976,
+						amount: 9999999976
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150509,
 				additionalRegisters: {
@@ -908,10 +908,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34858070,
@@ -926,12 +926,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'da06ffd8aae2fe838866f2853ba11537812d641ba2bc57aecb77267b67d6bf9a',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1150509,
 				additionalRegisters: {
@@ -940,10 +940,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105dab88c01d08304f02eaca48f0100',
+					R9: '1105dab88c01d08304f02eaca48f0100'
 				},
 				transactionId: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 34858071,
@@ -956,13 +956,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 30000,
-					},
+						amount: 30000
+					}
 				],
 				creationHeight: 1150509,
 				additionalRegisters: {},
 				transactionId: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 34858072,
@@ -978,10 +978,10 @@ export const exleMockTxes = [
 				creationHeight: 1150509,
 				additionalRegisters: {},
 				transactionId: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3395,
+		size: 3395
 	},
 	{
 		id: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
@@ -1005,20 +1005,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999995,
+						amount: 9999999995
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999976,
+						amount: 9999999976
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150509,
 				additionalRegisters: {
@@ -1026,10 +1026,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'b9f816f9787686235e555079a8cce3e39994ac805dc136df1c1792f89bd2c58d',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34858172,
@@ -1044,16 +1044,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '057d2a92033de6fe3ce79583d9c6a2a66368e328e6e651d189b5958254e7d123',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 30000,
-					},
+						amount: 30000
+					}
 				],
 				creationHeight: 1150514,
 				additionalRegisters: {
@@ -1061,11 +1061,11 @@ export const exleMockTxes = [
 					R5: '1a021a467574757265204f7269656e7420456e74657270726973657320c60249276d2072657175657374696e672024333030206c6f616e20696e6a656374696f6e20666f72206d7920627573696e657373206465616c696e67207769746820464d47732d2066617374206d6f76696e6720636f6e73756d657220676f6f64732c20746f20726573746f636b20696e207072657061726174696f6e20666f72206665737469766520736561736f6e2c20492068617665206265656e20696e206f7065726174696f6e20666f7220746865206c617374203220796561727320616e64206f757220686967682073746f636b207475726e6f7665722063616e207375737461696e61626c79206272696e6720696e20676f6f64206e65742072657475726e7320746f20726570617920746865206c6f616e20706c75732031302520696e7465726573742077697468696e20333020646179732075706f6e2066756e64696e672e2020',
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
+					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6'
 				},
 				transactionId: '45ab0f452b3ba012cfe139f83c76d79edf058fd7045e8013033e6c41b9a691ae',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -1082,20 +1082,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999996,
+						amount: 9999999996
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999975,
+						amount: 9999999975
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150517,
 				additionalRegisters: {
@@ -1103,10 +1103,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34858200,
@@ -1121,12 +1121,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '057d2a92033de6fe3ce79583d9c6a2a66368e328e6e651d189b5958254e7d123',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1150517,
 				additionalRegisters: {
@@ -1135,10 +1135,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105eab88c01d08304f02ed0ba8f0100',
+					R9: '1105eab88c01d08304f02ed0ba8f0100'
 				},
 				transactionId: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 34858201,
@@ -1151,13 +1151,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 30000,
-					},
+						amount: 30000
+					}
 				],
 				creationHeight: 1150517,
 				additionalRegisters: {},
 				transactionId: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 34858202,
@@ -1173,10 +1173,10 @@ export const exleMockTxes = [
 				creationHeight: 1150517,
 				additionalRegisters: {},
 				transactionId: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3345,
+		size: 3345
 	},
 	{
 		id: '3797ac7939894ec22e03901bdd7fbd3d2830d69e9acee435ce66d793c4affb30',
@@ -1200,20 +1200,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999996,
+						amount: 9999999996
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999975,
+						amount: 9999999975
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150517,
 				additionalRegisters: {
@@ -1221,10 +1221,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'a30027cd622744962d8ae7341376d0f0179b6685340dd89ec2aa0c83b717176b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34864346,
@@ -1239,16 +1239,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'ba31d8e3005344200b2d3581b22f2f8cc239fc43dd0cd635d9a94ffeffd2bb4c',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1150708,
 				additionalRegisters: {
@@ -1256,11 +1256,11 @@ export const exleMockTxes = [
 					R5: '1a02094a6f70612053686f70fc0352657175657374696e6720666f72202431303030206c6f616e20666f72206d792073686f7020746861742068617320676f6f642073746f636b207475726e6f7665722c20776974682074686520696e63726561736564207472616666696320647572696e672074686520686f6c6964617920736561736f6e2049207769736820746f20726573746f636b20746f206d656574207468652064656d616e642e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a436f7374206f6620676f6f64732020202020202020202020202020202020202020202431302c303030202020202020202020202020202031352c30303020202020202020202031382c3030300a546f74616c2073616c65732020202020202020202020202020202020202020202020202020202431372c303030202020202020202020202020202032362c30303020202020202020202033332c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '5d1003ca6e88fe00c3231b8db19fa503ca434afd0d12ef871ae112f6dd25cfab',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -1277,20 +1277,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999997,
+						amount: 9999999997
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999974,
+						amount: 9999999974
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1150710,
 				additionalRegisters: {
@@ -1298,10 +1298,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '3797ac7939894ec22e03901bdd7fbd3d2830d69e9acee435ce66d793c4affb30',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 34864379,
@@ -1316,12 +1316,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'ba31d8e3005344200b2d3581b22f2f8cc239fc43dd0cd635d9a94ffeffd2bb4c',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1150710,
 				additionalRegisters: {
@@ -1330,10 +1330,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ecbb8c01c09a0c009a86ae0100',
+					R9: '1105ecbb8c01c09a0c009a86ae0100'
 				},
 				transactionId: '3797ac7939894ec22e03901bdd7fbd3d2830d69e9acee435ce66d793c4affb30',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 34864380,
@@ -1346,13 +1346,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1150710,
 				additionalRegisters: {},
 				transactionId: '3797ac7939894ec22e03901bdd7fbd3d2830d69e9acee435ce66d793c4affb30',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 34864381,
@@ -1368,10 +1368,10 @@ export const exleMockTxes = [
 				creationHeight: 1150710,
 				additionalRegisters: {},
 				transactionId: '3797ac7939894ec22e03901bdd7fbd3d2830d69e9acee435ce66d793c4affb30',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3508,
+		size: 3508
 	},
 	{
 		id: '04af85bdd63e9d6e47dd2fb7aa7204585184132dcc29db64cbba5e798a21d592',
@@ -1395,12 +1395,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '902babf421102005d4eaed2773807c0db4bf73c68cdfe028a6e7d2dc58b5fd6a',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1133178,
 				additionalRegisters: {
@@ -1409,10 +1409,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f4a98a01e0d702a01fdaa58d0100',
+					R9: '1105f4a98a01e0d702a01fdaa58d0100'
 				},
 				transactionId: '06e395421e9526eb6145d727a435a722638609cdb4540def817f18afd66c87c1',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35012851,
@@ -1427,22 +1427,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154544,
 				additionalRegisters: {
 					R4: '0e2003bf859b3c00938bda5a8f8ac097e7e0c2163449aa79db120aec0aa19dfa3847',
-					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
+					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd'
 				},
 				transactionId: 'd9a5fc4430761680181352b450909e99b031be57dfcb2b5fb2c83e8aba69f40b',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -1458,16 +1458,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '902babf421102005d4eaed2773807c0db4bf73c68cdfe028a6e7d2dc58b5fd6a',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154547,
 				additionalRegisters: {
@@ -1476,10 +1476,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f4a98a01e0d702a01fdaa58d0100',
+					R9: '1105f4a98a01e0d702a01fdaa58d0100'
 				},
 				transactionId: '04af85bdd63e9d6e47dd2fb7aa7204585184132dcc29db64cbba5e798a21d592',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35012879,
@@ -1495,10 +1495,10 @@ export const exleMockTxes = [
 				creationHeight: 1154547,
 				additionalRegisters: {},
 				transactionId: '04af85bdd63e9d6e47dd2fb7aa7204585184132dcc29db64cbba5e798a21d592',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 1831,
+		size: 1831
 	},
 	{
 		id: '90d2618d5106e9a6d6b54c2c117eb6a5fcef05dd7a0e6268d7c75abdd7b9dba7',
@@ -1522,16 +1522,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '902babf421102005d4eaed2773807c0db4bf73c68cdfe028a6e7d2dc58b5fd6a',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154547,
 				additionalRegisters: {
@@ -1540,16 +1540,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f4a98a01e0d702a01fdaa58d0100',
+					R9: '1105f4a98a01e0d702a01fdaa58d0100'
 				},
 				transactionId: '04af85bdd63e9d6e47dd2fb7aa7204585184132dcc29db64cbba5e798a21d592',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -1565,12 +1565,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '902babf421102005d4eaed2773807c0db4bf73c68cdfe028a6e7d2dc58b5fd6a',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1154549,
 				additionalRegisters: {
@@ -1579,10 +1579,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f4a98a01e0d702a01fdaa58d01e0d702',
+					R9: '1105f4a98a01e0d702a01fdaa58d01e0d702'
 				},
 				transactionId: '90d2618d5106e9a6d6b54c2c117eb6a5fcef05dd7a0e6268d7c75abdd7b9dba7',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35016110,
@@ -1595,13 +1595,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 21560,
-					},
+						amount: 21560
+					}
 				],
 				creationHeight: 1154549,
 				additionalRegisters: {},
 				transactionId: '90d2618d5106e9a6d6b54c2c117eb6a5fcef05dd7a0e6268d7c75abdd7b9dba7',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35016111,
@@ -1614,13 +1614,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 440,
-					},
+						amount: 440
+					}
 				],
 				creationHeight: 1154549,
 				additionalRegisters: {},
 				transactionId: '90d2618d5106e9a6d6b54c2c117eb6a5fcef05dd7a0e6268d7c75abdd7b9dba7',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 35016112,
@@ -1636,10 +1636,10 @@ export const exleMockTxes = [
 				creationHeight: 1154549,
 				additionalRegisters: {},
 				transactionId: '90d2618d5106e9a6d6b54c2c117eb6a5fcef05dd7a0e6268d7c75abdd7b9dba7',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 1889,
+		size: 1889
 	},
 	{
 		id: '1570c2520dd838969d6539a64c963ab54b75a7837c955873e410f1e85175e005',
@@ -1663,12 +1663,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '93d5000e3a1c4bd399f0328dc8239584af73190458eb642d2a2b9fd1f0c4594c',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1133176,
 				additionalRegisters: {
@@ -1677,10 +1677,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f0a98a01e0d702a01fec9a8d0100',
+					R9: '1105f0a98a01e0d702a01fec9a8d0100'
 				},
 				transactionId: 'ca6fe8de1bb1a68ca5779f8c0fdeaca2ae1568da144d7c37efce3c22ecedfab6',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35016103,
@@ -1695,22 +1695,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154550,
 				additionalRegisters: {
 					R4: '0e200375e07c52a44922329cefb01b42daf8bc52fb6b5478139fa564683fb5b989e9',
-					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
+					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd'
 				},
 				transactionId: 'ec33290fa7b43f64dbb979d229e05edbfa806692adb0cc7e9a848a1accb0ad6b',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -1726,16 +1726,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '93d5000e3a1c4bd399f0328dc8239584af73190458eb642d2a2b9fd1f0c4594c',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154552,
 				additionalRegisters: {
@@ -1744,10 +1744,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f0a98a01e0d702a01fec9a8d0100',
+					R9: '1105f0a98a01e0d702a01fec9a8d0100'
 				},
 				transactionId: '1570c2520dd838969d6539a64c963ab54b75a7837c955873e410f1e85175e005',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35016180,
@@ -1763,10 +1763,10 @@ export const exleMockTxes = [
 				creationHeight: 1154552,
 				additionalRegisters: {},
 				transactionId: '1570c2520dd838969d6539a64c963ab54b75a7837c955873e410f1e85175e005',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 1802,
+		size: 1802
 	},
 	{
 		id: 'de6e318e3bd179ce35a4f2748d864df761e0bbe3bfc651d01ac95807e3073ba9',
@@ -1790,16 +1790,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '93d5000e3a1c4bd399f0328dc8239584af73190458eb642d2a2b9fd1f0c4594c',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154552,
 				additionalRegisters: {
@@ -1808,16 +1808,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f0a98a01e0d702a01fec9a8d0100',
+					R9: '1105f0a98a01e0d702a01fec9a8d0100'
 				},
 				transactionId: '1570c2520dd838969d6539a64c963ab54b75a7837c955873e410f1e85175e005',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -1833,12 +1833,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '93d5000e3a1c4bd399f0328dc8239584af73190458eb642d2a2b9fd1f0c4594c',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1154554,
 				additionalRegisters: {
@@ -1847,10 +1847,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105f0a98a01e0d702a01fec9a8d01e0d702',
+					R9: '1105f0a98a01e0d702a01fec9a8d01e0d702'
 				},
 				transactionId: 'de6e318e3bd179ce35a4f2748d864df761e0bbe3bfc651d01ac95807e3073ba9',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35016240,
@@ -1863,13 +1863,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 21560,
-					},
+						amount: 21560
+					}
 				],
 				creationHeight: 1154554,
 				additionalRegisters: {},
 				transactionId: 'de6e318e3bd179ce35a4f2748d864df761e0bbe3bfc651d01ac95807e3073ba9',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35016241,
@@ -1882,13 +1882,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 440,
-					},
+						amount: 440
+					}
 				],
 				creationHeight: 1154554,
 				additionalRegisters: {},
 				transactionId: 'de6e318e3bd179ce35a4f2748d864df761e0bbe3bfc651d01ac95807e3073ba9',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 35016242,
@@ -1904,10 +1904,10 @@ export const exleMockTxes = [
 				creationHeight: 1154554,
 				additionalRegisters: {},
 				transactionId: 'de6e318e3bd179ce35a4f2748d864df761e0bbe3bfc651d01ac95807e3073ba9',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 1860,
+		size: 1860
 	},
 	{
 		id: '4c50ddd31109d7a466311f910d7b7f3b4863d4072532e5cf6e6671970a0f150e',
@@ -1931,12 +1931,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '3382af80fa1db9955678a1c9bf47f31e73f19edf23559d4ffedcbdf5c8cad6b2',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1133173,
 				additionalRegisters: {
@@ -1945,10 +1945,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105eaa98a01e0d702a01f9c9b8d0100',
+					R9: '1105eaa98a01e0d702a01f9c9b8d0100'
 				},
 				transactionId: 'da88de5962de5bac709fb0dbf05507db8f1bfb6e8a715072c4e6094ad25542dc',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35026298,
@@ -1963,22 +1963,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154924,
 				additionalRegisters: {
 					R4: '0e2089aa78a9da88526170da8a8cb563fe7f33c16e06b85638e4b329907b6563841e',
-					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
+					R5: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd'
 				},
 				transactionId: 'aa8beb5c2bfb24d97edc400e2b928c5f4e086b93bf3d5bac150f562d6b77fbc3',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -1994,16 +1994,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '3382af80fa1db9955678a1c9bf47f31e73f19edf23559d4ffedcbdf5c8cad6b2',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154926,
 				additionalRegisters: {
@@ -2012,10 +2012,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105eaa98a01e0d702a01f9c9b8d0100',
+					R9: '1105eaa98a01e0d702a01f9c9b8d0100'
 				},
 				transactionId: '4c50ddd31109d7a466311f910d7b7f3b4863d4072532e5cf6e6671970a0f150e',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35026393,
@@ -2031,10 +2031,10 @@ export const exleMockTxes = [
 				creationHeight: 1154926,
 				additionalRegisters: {},
 				transactionId: '4c50ddd31109d7a466311f910d7b7f3b4863d4072532e5cf6e6671970a0f150e',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 1916,
+		size: 1916
 	},
 	{
 		id: '4b8c823a62ae464dbd7059a6b08eee50942c1e856ea4a578a4ef32c37b8b7b99',
@@ -2058,16 +2058,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '3382af80fa1db9955678a1c9bf47f31e73f19edf23559d4ffedcbdf5c8cad6b2',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 22000,
-					},
+						amount: 22000
+					}
 				],
 				creationHeight: 1154926,
 				additionalRegisters: {
@@ -2076,16 +2076,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105eaa98a01e0d702a01f9c9b8d0100',
+					R9: '1105eaa98a01e0d702a01f9c9b8d0100'
 				},
 				transactionId: '4c50ddd31109d7a466311f910d7b7f3b4863d4072532e5cf6e6671970a0f150e',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea',
-			},
+				boxId: '980519ba8515a31ada78cbf4316bbd29389894e4efa232deff4022df182428ea'
+			}
 		],
 		outputs: [
 			{
@@ -2101,12 +2101,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '3382af80fa1db9955678a1c9bf47f31e73f19edf23559d4ffedcbdf5c8cad6b2',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1154928,
 				additionalRegisters: {
@@ -2115,10 +2115,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd022222b6ee4b390e3a178dfea572baa14da9a9e48a34b20ab4a68817104659f6cd',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd0210672496c633abf52469505f69c2faa64b0f66edffe98073365e55a35e8414b6',
-					R9: '1105eaa98a01e0d702a01f9c9b8d01e0d702',
+					R9: '1105eaa98a01e0d702a01f9c9b8d01e0d702'
 				},
 				transactionId: '4b8c823a62ae464dbd7059a6b08eee50942c1e856ea4a578a4ef32c37b8b7b99',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35026447,
@@ -2131,13 +2131,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 21560,
-					},
+						amount: 21560
+					}
 				],
 				creationHeight: 1154928,
 				additionalRegisters: {},
 				transactionId: '4b8c823a62ae464dbd7059a6b08eee50942c1e856ea4a578a4ef32c37b8b7b99',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35026448,
@@ -2150,13 +2150,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 440,
-					},
+						amount: 440
+					}
 				],
 				creationHeight: 1154928,
 				additionalRegisters: {},
 				transactionId: '4b8c823a62ae464dbd7059a6b08eee50942c1e856ea4a578a4ef32c37b8b7b99',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 35026449,
@@ -2172,10 +2172,10 @@ export const exleMockTxes = [
 				creationHeight: 1154928,
 				additionalRegisters: {},
 				transactionId: '4b8c823a62ae464dbd7059a6b08eee50942c1e856ea4a578a4ef32c37b8b7b99',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 1974,
+		size: 1974
 	},
 	{
 		id: 'bf63ad55c39a897a94787a5cb3c66669b24f879d38d5e59c563038e6815b0444',
@@ -2199,12 +2199,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '26d49e261a50121db5cbb017583ec466fc81f33ed59d0770199c9e4313f27b61',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1139226,
 				additionalRegisters: {
@@ -2213,10 +2213,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105e8d18101c09a0c00969ba301c08602',
+					R9: '1105e8d18101c09a0c00969ba301c08602'
 				},
 				transactionId: 'b27fefa2464e12e70f08814646c4d6ea959a152ec7dda7535341ba182ffcf0fa',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35238157,
@@ -2231,22 +2231,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1160770,
 				additionalRegisters: {
 					R4: '0e20958335c51770abf4dcf23925192190715a2aa7ea9ac2280d34e9d0119a553b3b',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'f11e1c29af6ae1fd57d6618951fe9840c0bae997e503d131bd50f257a3d20357',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd8e145da0dab7d7829f305bf7f5de5fdd6ea82c6c6c842896a1ffa71011e00ac',
-			},
+				boxId: 'd8e145da0dab7d7829f305bf7f5de5fdd6ea82c6c6c842896a1ffa71011e00ac'
+			}
 		],
 		outputs: [
 			{
@@ -2262,16 +2262,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '26d49e261a50121db5cbb017583ec466fc81f33ed59d0770199c9e4313f27b61',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1160772,
 				additionalRegisters: {
@@ -2280,10 +2280,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105e8d18101c09a0c00969ba301c08602',
+					R9: '1105e8d18101c09a0c00969ba301c08602'
 				},
 				transactionId: 'bf63ad55c39a897a94787a5cb3c66669b24f879d38d5e59c563038e6815b0444',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35238326,
@@ -2299,10 +2299,10 @@ export const exleMockTxes = [
 				creationHeight: 1160772,
 				additionalRegisters: {},
 				transactionId: 'bf63ad55c39a897a94787a5cb3c66669b24f879d38d5e59c563038e6815b0444',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2009,
+		size: 2009
 	},
 	{
 		id: '4e34fa5a6d87f41a2b53505b81cc545ed74d11fe274c3adf0b16619a661d33ff',
@@ -2326,16 +2326,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '26d49e261a50121db5cbb017583ec466fc81f33ed59d0770199c9e4313f27b61',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1160772,
 				additionalRegisters: {
@@ -2344,16 +2344,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105e8d18101c09a0c00969ba301c08602',
+					R9: '1105e8d18101c09a0c00969ba301c08602'
 				},
 				transactionId: 'bf63ad55c39a897a94787a5cb3c66669b24f879d38d5e59c563038e6815b0444',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd8e145da0dab7d7829f305bf7f5de5fdd6ea82c6c6c842896a1ffa71011e00ac',
-			},
+				boxId: 'd8e145da0dab7d7829f305bf7f5de5fdd6ea82c6c6c842896a1ffa71011e00ac'
+			}
 		],
 		outputs: [
 			{
@@ -2369,12 +2369,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '26d49e261a50121db5cbb017583ec466fc81f33ed59d0770199c9e4313f27b61',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1160774,
 				additionalRegisters: {
@@ -2383,10 +2383,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105e8d18101c09a0c00969ba301e08903',
+					R9: '1105e8d18101c09a0c00969ba301e08903'
 				},
 				transactionId: '4e34fa5a6d87f41a2b53505b81cc545ed74d11fe274c3adf0b16619a661d33ff',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 35238375,
@@ -2399,13 +2399,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1160774,
 				additionalRegisters: {},
 				transactionId: '4e34fa5a6d87f41a2b53505b81cc545ed74d11fe274c3adf0b16619a661d33ff',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 35238376,
@@ -2419,7 +2419,7 @@ export const exleMockTxes = [
 				creationHeight: 1160774,
 				additionalRegisters: {},
 				transactionId: '4e34fa5a6d87f41a2b53505b81cc545ed74d11fe274c3adf0b16619a661d33ff',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 35238377,
@@ -2435,10 +2435,10 @@ export const exleMockTxes = [
 				creationHeight: 1160774,
 				additionalRegisters: {},
 				transactionId: '4e34fa5a6d87f41a2b53505b81cc545ed74d11fe274c3adf0b16619a661d33ff',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2062,
+		size: 2062
 	},
 
 	{
@@ -2463,20 +2463,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999974,
+						amount: 9999999974
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1185855,
 				additionalRegisters: {
@@ -2484,10 +2484,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '6879e2ac01cc6033b620164ffd978d31d620e5fbf0b473dedb77bffca3887b1c',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36396158,
@@ -2505,11 +2505,11 @@ export const exleMockTxes = [
 					R4: '1105b0bd10c2b293010080d21f82e19001',
 					R5: '1a020f4361726f6c696e65204e616c696d69dc034c6f6f6b696e6720666f7220243133353020746f20626f6f7374206d792067726f636572792073746f726573202020746f206d616e616765206f66666572696e672062657474657220636f6d70657469746976652070726963696e67206f6e206d792070726f647563747320666f722020686967682073616c6573207475726e6f7665722e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a546f74616c20436f7374206f6620676f6f647320202020202020202020202431302c303030202020202020202020202020202032332c30303020202020202020202033362c3030300a546f74616c20436f737473206f662073616c6573202020202020202020202024372c3030302020202020202020202020202020202031362c30303020202020202020202031382c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243131322e35',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: '3a9c991465925d906ed33489cb7233711ff99a50211fc6ebcf42d2235e14cc57',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -2526,20 +2526,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999998,
+						amount: 9999999998
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999974,
+						amount: 9999999974
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1185859,
 				additionalRegisters: {
@@ -2547,10 +2547,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36396203,
@@ -2565,22 +2565,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1185859,
 				additionalRegisters: {
 					R4: '1105b0bd10c2b293010080d21f82e19001',
 					R5: '1a020f4361726f6c696e65204e616c696d69dc034c6f6f6b696e6720666f7220243133353020746f20626f6f7374206d792067726f636572792073746f726573202020746f206d616e616765206f66666572696e672062657474657220636f6d70657469746976652070726963696e67206f6e206d792070726f647563747320666f722020686967682073616c6573207475726e6f7665722e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a546f74616c20436f7374206f6620676f6f647320202020202020202020202431302c303030202020202020202020202020202032332c30303020202020202020202033362c3030300a546f74616c20436f737473206f662073616c6573202020202020202020202024372c3030302020202020202020202020202020202031362c30303020202020202020202031382c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243131322e35',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36396204,
@@ -2594,7 +2594,7 @@ export const exleMockTxes = [
 				creationHeight: 1185859,
 				additionalRegisters: {},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 36396205,
@@ -2610,10 +2610,10 @@ export const exleMockTxes = [
 				creationHeight: 1185859,
 				additionalRegisters: {},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3550,
+		size: 3550
 	},
 	{
 		id: 'c5699dd6323520ee178909238722515a8dcba92b290760bdae48f9667dba27fc',
@@ -2637,22 +2637,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1185859,
 				additionalRegisters: {
 					R4: '1105b0bd10c2b293010080d21f82e19001',
 					R5: '1a020f4361726f6c696e65204e616c696d69dc034c6f6f6b696e6720666f7220243133353020746f20626f6f7374206d792067726f636572792073746f726573202020746f206d616e616765206f66666572696e672062657474657220636f6d70657469746976652070726963696e67206f6e206d792070726f647563747320666f722020686967682073616c6573207475726e6f7665722e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a546f74616c20436f7374206f6620676f6f647320202020202020202020202431302c303030202020202020202020202020202032332c30303020202020202020202033362c3030300a546f74616c20436f737473206f662073616c6573202020202020202020202024372c3030302020202020202020202020202020202031362c30303020202020202020202031382c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243131322e35',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36480057,
@@ -2667,17 +2667,17 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 135000,
-					},
+						amount: 135000
+					}
 				],
 				creationHeight: 1187954,
 				additionalRegisters: {
 					R4: '0e20c6345868ac8337860c0fb6f2b53a3d71399b963357c1b212023069f71d6a1b23',
-					R5: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R5: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '10b7393a83d45ac510d7930f0aebce3e5d28c3e5780e42bbf9c3c5a1a40bde41',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -2694,16 +2694,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 135000,
-					},
+						amount: 135000
+					}
 				],
 				creationHeight: 1187956,
 				additionalRegisters: {
@@ -2711,10 +2711,10 @@ export const exleMockTxes = [
 					R5: '1a020f4361726f6c696e65204e616c696d69dc034c6f6f6b696e6720666f7220243133353020746f20626f6f7374206d792067726f636572792073746f726573202020746f206d616e616765206f66666572696e672062657474657220636f6d70657469746976652070726963696e67206f6e206d792070726f647563747320666f722020686967682073616c6573207475726e6f7665722e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a546f74616c20436f7374206f6620676f6f647320202020202020202020202431302c303030202020202020202020202020202032332c30303020202020202020202033362c3030300a546f74616c20436f737473206f662073616c6573202020202020202020202024372c3030302020202020202020202020202020202031362c30303020202020202020202031382c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243131322e35',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: 'c5699dd6323520ee178909238722515a8dcba92b290760bdae48f9667dba27fc',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36480114,
@@ -2730,10 +2730,10 @@ export const exleMockTxes = [
 				creationHeight: 1187956,
 				additionalRegisters: {},
 				transactionId: 'c5699dd6323520ee178909238722515a8dcba92b290760bdae48f9667dba27fc',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2077,
+		size: 2077
 	},
 	{
 		id: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
@@ -2757,20 +2757,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999998,
+						amount: 9999999998
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999974,
+						amount: 9999999974
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1185859,
 				additionalRegisters: {
@@ -2778,10 +2778,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'f096671c4ee56c17e85ae1770bece2f59b3e0b638aac6b785e2ddfcb6c5a10ec',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36480113,
@@ -2796,16 +2796,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 135000,
-					},
+						amount: 135000
+					}
 				],
 				creationHeight: 1187956,
 				additionalRegisters: {
@@ -2813,11 +2813,11 @@ export const exleMockTxes = [
 					R5: '1a020f4361726f6c696e65204e616c696d69dc034c6f6f6b696e6720666f7220243133353020746f20626f6f7374206d792067726f636572792073746f726573202020746f206d616e616765206f66666572696e672062657474657220636f6d70657469746976652070726963696e67206f6e206d792070726f647563747320666f722020686967682073616c6573207475726e6f7665722e200a0a53616c657320657374696d617465200a2020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202020202059656172203120202020202020202020202020596561722032202020202020202020205965617220330a546f74616c20436f7374206f6620676f6f647320202020202020202020202431302c303030202020202020202020202020202032332c30303020202020202020202033362c3030300a546f74616c20436f737473206f662073616c6573202020202020202020202024372c3030302020202020202020202020202020202031362c30303020202020202020202031382c3030300a0a52657061796d656e74205363686564756c65200a52657061796d656e7420506572696f64203132206d6f6e7468730a496e7374616c6d656e74732031320a4d6f6e74686c79207061796d656e7420243131322e35',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: 'c5699dd6323520ee178909238722515a8dcba92b290760bdae48f9667dba27fc',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -2834,20 +2834,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999973,
+						amount: 9999999973
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1187958,
 				additionalRegisters: {
@@ -2855,10 +2855,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36480392,
@@ -2873,12 +2873,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1187958,
 				additionalRegisters: {
@@ -2887,10 +2887,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ec819101b0bd1000c284b30100',
+					R9: '1105ec819101b0bd1000c284b30100'
 				},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36480393,
@@ -2903,13 +2903,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 135000,
-					},
+						amount: 135000
+					}
 				],
 				creationHeight: 1187958,
 				additionalRegisters: {},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 36480394,
@@ -2925,10 +2925,10 @@ export const exleMockTxes = [
 				creationHeight: 1187958,
 				additionalRegisters: {},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3482,
+		size: 3482
 	},
 	{
 		id: '5e5ce5ecc31ebae052344fcf7d79a53023b2321c0bbafc592a12f74c1546ed2e',
@@ -2952,12 +2952,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1187958,
 				additionalRegisters: {
@@ -2966,10 +2966,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ec819101b0bd1000c284b30100',
+					R9: '1105ec819101b0bd1000c284b30100'
 				},
 				transactionId: 'd41f4357e7fe59f2e5d555b92c93a7264485eaa03f6dd8a3fc19df3005eb3031',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 41847455,
@@ -2984,22 +2984,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 90000,
-					},
+						amount: 90000
+					}
 				],
 				creationHeight: 1320021,
 				additionalRegisters: {
 					R4: '0e20b72a6f3e58ba2f307626415be4093cd393fe55e4bf6787ed6902d0d6795e55d7',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'a36e365dd93de6b18c6d50d0aff591dd581728bb1b4b065bc837d42b96bd7109',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb',
-			},
+				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb'
+			}
 		],
 		outputs: [
 			{
@@ -3015,16 +3015,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 90000,
-					},
+						amount: 90000
+					}
 				],
 				creationHeight: 1320023,
 				additionalRegisters: {
@@ -3033,10 +3033,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ec819101b0bd1000c284b30100',
+					R9: '1105ec819101b0bd1000c284b30100'
 				},
 				transactionId: '5e5ce5ecc31ebae052344fcf7d79a53023b2321c0bbafc592a12f74c1546ed2e',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847533,
@@ -3052,10 +3052,10 @@ export const exleMockTxes = [
 				creationHeight: 1320023,
 				additionalRegisters: {},
 				transactionId: '5e5ce5ecc31ebae052344fcf7d79a53023b2321c0bbafc592a12f74c1546ed2e',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 1968,
+		size: 1968
 	},
 	{
 		id: '21cc408d53fe8c56575b7e9ad407a823db20e45be7c691e6ac3d165c526a0ba3',
@@ -3079,16 +3079,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 90000,
-					},
+						amount: 90000
+					}
 				],
 				creationHeight: 1320023,
 				additionalRegisters: {
@@ -3097,16 +3097,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ec819101b0bd1000c284b30100',
+					R9: '1105ec819101b0bd1000c284b30100'
 				},
 				transactionId: '5e5ce5ecc31ebae052344fcf7d79a53023b2321c0bbafc592a12f74c1546ed2e',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb',
-			},
+				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb'
+			}
 		],
 		outputs: [
 			{
@@ -3122,12 +3122,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '7066adf6130e08ce9bb8b860b53349d2c8896f45094cd95054642175bb231ac3',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320026,
 				additionalRegisters: {
@@ -3136,10 +3136,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105ec819101b0bd1000c284b301a0fe0a',
+					R9: '1105ec819101b0bd1000c284b301a0fe0a'
 				},
 				transactionId: '21cc408d53fe8c56575b7e9ad407a823db20e45be7c691e6ac3d165c526a0ba3',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847558,
@@ -3152,13 +3152,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 90000,
-					},
+						amount: 90000
+					}
 				],
 				creationHeight: 1320026,
 				additionalRegisters: {},
 				transactionId: '21cc408d53fe8c56575b7e9ad407a823db20e45be7c691e6ac3d165c526a0ba3',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 41847559,
@@ -3172,7 +3172,7 @@ export const exleMockTxes = [
 				creationHeight: 1320026,
 				additionalRegisters: {},
 				transactionId: '21cc408d53fe8c56575b7e9ad407a823db20e45be7c691e6ac3d165c526a0ba3',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 41847560,
@@ -3188,10 +3188,10 @@ export const exleMockTxes = [
 				creationHeight: 1320026,
 				additionalRegisters: {},
 				transactionId: '21cc408d53fe8c56575b7e9ad407a823db20e45be7c691e6ac3d165c526a0ba3',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2023,
+		size: 2023
 	},
 
 	{
@@ -3216,20 +3216,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 10000000000,
+						amount: 10000000000
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999992,
+						amount: 9999999992
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1077832,
 				additionalRegisters: {
@@ -3237,10 +3237,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '85146824e52e3f10318725fd9bca844a7a350e226e99016c9571f9e673e5c34e',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 32448869,
@@ -3258,11 +3258,11 @@ export const exleMockTxes = [
 					R4: '1105c09a0ccca187010080d21f8cd08401',
 					R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: 'a491c5d13c8d43456219b2c8574cd7ddbe2bac89486cf47194dc6543715cd130',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -3279,20 +3279,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999992,
+						amount: 9999999992
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1086474,
 				additionalRegisters: {
@@ -3300,10 +3300,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 32449056,
@@ -3318,22 +3318,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1086474,
 				additionalRegisters: {
 					R4: '1105c09a0ccca187010080d21f8cd08401',
 					R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 32449057,
@@ -3347,7 +3347,7 @@ export const exleMockTxes = [
 				creationHeight: 1086474,
 				additionalRegisters: {},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 32449058,
@@ -3363,10 +3363,10 @@ export const exleMockTxes = [
 				creationHeight: 1086474,
 				additionalRegisters: {},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3634,
+		size: 3634
 	},
 	{
 		id: '371e72758dcecf92afc2e68dedaf4714b352084df613177f9508ee96ca6cb084',
@@ -3390,22 +3390,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1086474,
 				additionalRegisters: {
 					R4: '1105c09a0ccca187010080d21f8cd08401',
 					R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 				},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 32454110,
@@ -3420,17 +3420,17 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1086643,
 				additionalRegisters: {
 					R4: '0e20727d9876824cfc30ec2400c3b46b06f4f37db1df642c5296ba7f66d90c654dc6',
-					R5: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R5: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: 'c2ab63dab19c032d9376dd93cdbfa6dbef322ef2b9febd6fe0cb3c0f57f252fa',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -3447,16 +3447,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1086646,
 				additionalRegisters: {
@@ -3464,10 +3464,10 @@ export const exleMockTxes = [
 					R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '371e72758dcecf92afc2e68dedaf4714b352084df613177f9508ee96ca6cb084',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 32454150,
@@ -3483,10 +3483,10 @@ export const exleMockTxes = [
 				creationHeight: 1086646,
 				additionalRegisters: {},
 				transactionId: '371e72758dcecf92afc2e68dedaf4714b352084df613177f9508ee96ca6cb084',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2161,
+		size: 2161
 	},
 	{
 		id: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
@@ -3510,20 +3510,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 9999999999,
+						amount: 9999999999
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999992,
+						amount: 9999999992
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1086474,
 				additionalRegisters: {
@@ -3531,10 +3531,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 32454149,
@@ -3549,16 +3549,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1086646,
 				additionalRegisters: {
@@ -3566,11 +3566,11 @@ export const exleMockTxes = [
 					R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 				},
 				transactionId: '371e72758dcecf92afc2e68dedaf4714b352084df613177f9508ee96ca6cb084',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [],
 		outputs: [
@@ -3587,20 +3587,20 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '18dc4c1da4a0a91c08c0b7b85ccd46e0b2ab91396b38c8216406959356805e3b',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-						amount: 10000000000,
+						amount: 10000000000
 					},
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 9999999991,
+						amount: 9999999991
 					},
 					{
 						tokenId: '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9',
-						amount: 9999999998,
-					},
+						amount: 9999999998
+					}
 				],
 				creationHeight: 1086648,
 				additionalRegisters: {
@@ -3608,10 +3608,10 @@ export const exleMockTxes = [
 					R5: '1a022015133f2f355f4b8564dc88536968363e23377ac95d883f86a522d395f1d9ff37202f918f613dfd33193cbf8cd59f8174ea7cb993fd6b29f02b71f3e58d1f700efd',
 					R6: '0e6645786c6520534c54205365727669636520426f783a2041206c656e64696e672070726f746f636f6c20746861742070726f7669646520686973746f726963616c2077726974696e6773206f66204c6f616e7320696e207465726d73206f6620546f6b656e732e',
 					R7: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
-					R8: '110290038084af5f',
+					R8: '110290038084af5f'
 				},
 				transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 32454186,
@@ -3626,12 +3626,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1086648,
 				additionalRegisters: {
@@ -3640,10 +3640,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60100',
+					R9: '1105f0d28401c09a0c00ccf3a60100'
 				},
 				transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 32454187,
@@ -3656,13 +3656,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 100000,
-					},
+						amount: 100000
+					}
 				],
 				creationHeight: 1086648,
 				additionalRegisters: {},
 				transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 32454188,
@@ -3678,10 +3678,10 @@ export const exleMockTxes = [
 				creationHeight: 1086648,
 				additionalRegisters: {},
 				transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 3566,
+		size: 3566
 	},
 	{
 		id: 'be8f6c5f3fc9ec60b8c56ea482ad26e66633d54d5728df04a804497aabb8b9d6',
@@ -3705,12 +3705,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1086648,
 				additionalRegisters: {
@@ -3719,10 +3719,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60100',
+					R9: '1105f0d28401c09a0c00ccf3a60100'
 				},
 				transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36421244,
@@ -3737,22 +3737,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1186499,
 				additionalRegisters: {
 					R4: '0e203dd8eb17421bdaa17fa8ef6e4dbd9723a98f2e77eef48e6cdbe8eedbc3ebfa03',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'aa682f8b80d37991c9b0bf8fc9627165d85209a6a08ccb64100b2da7a0888128',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '8644dc89ba9b856294b63ce6f54ab17d8443dbb8f6401365e70169371241cf4a',
-			},
+				boxId: '8644dc89ba9b856294b63ce6f54ab17d8443dbb8f6401365e70169371241cf4a'
+			}
 		],
 		outputs: [
 			{
@@ -3768,16 +3768,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1186501,
 				additionalRegisters: {
@@ -3786,10 +3786,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60100',
+					R9: '1105f0d28401c09a0c00ccf3a60100'
 				},
 				transactionId: 'be8f6c5f3fc9ec60b8c56ea482ad26e66633d54d5728df04a804497aabb8b9d6',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36421292,
@@ -3805,10 +3805,10 @@ export const exleMockTxes = [
 				creationHeight: 1186501,
 				additionalRegisters: {},
 				transactionId: 'be8f6c5f3fc9ec60b8c56ea482ad26e66633d54d5728df04a804497aabb8b9d6',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2052,
+		size: 2052
 	},
 	{
 		id: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
@@ -3832,16 +3832,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1186501,
 				additionalRegisters: {
@@ -3850,16 +3850,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60100',
+					R9: '1105f0d28401c09a0c00ccf3a60100'
 				},
 				transactionId: 'be8f6c5f3fc9ec60b8c56ea482ad26e66633d54d5728df04a804497aabb8b9d6',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '8644dc89ba9b856294b63ce6f54ab17d8443dbb8f6401365e70169371241cf4a',
-			},
+				boxId: '8644dc89ba9b856294b63ce6f54ab17d8443dbb8f6401365e70169371241cf4a'
+			}
 		],
 		outputs: [
 			{
@@ -3875,12 +3875,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1186503,
 				additionalRegisters: {
@@ -3889,10 +3889,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c08602',
+					R9: '1105f0d28401c09a0c00ccf3a601c08602'
 				},
 				transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 36421374,
@@ -3905,13 +3905,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1186503,
 				additionalRegisters: {},
 				transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 36421375,
@@ -3925,7 +3925,7 @@ export const exleMockTxes = [
 				creationHeight: 1186503,
 				additionalRegisters: {},
 				transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 36421376,
@@ -3941,10 +3941,10 @@ export const exleMockTxes = [
 				creationHeight: 1186503,
 				additionalRegisters: {},
 				transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2107,
+		size: 2107
 	},
 	{
 		id: '7e1dc3782f7320c1c39898ae71fd771ac152576eeb0c207a762353b1c9dd44c1',
@@ -3968,12 +3968,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1186503,
 				additionalRegisters: {
@@ -3982,10 +3982,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c08602',
+					R9: '1105f0d28401c09a0c00ccf3a601c08602'
 				},
 				transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 39277166,
@@ -4000,22 +4000,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1244996,
 				additionalRegisters: {
 					R4: '0e206a15b2ed294096476d3fc318ade447f43411b3ecb43e2f7c341dc86371b86cc4',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: '607b746398b8b77e838ba7e1883f6006419106f4b07664e27ca67726403c37fa',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2',
-			},
+				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2'
+			}
 		],
 		outputs: [
 			{
@@ -4031,16 +4031,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1245000,
 				additionalRegisters: {
@@ -4049,10 +4049,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c08602',
+					R9: '1105f0d28401c09a0c00ccf3a601c08602'
 				},
 				transactionId: '7e1dc3782f7320c1c39898ae71fd771ac152576eeb0c207a762353b1c9dd44c1',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 39277555,
@@ -4068,10 +4068,10 @@ export const exleMockTxes = [
 				creationHeight: 1245000,
 				additionalRegisters: {},
 				transactionId: '7e1dc3782f7320c1c39898ae71fd771ac152576eeb0c207a762353b1c9dd44c1',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2053,
+		size: 2053
 	},
 	{
 		id: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
@@ -4095,16 +4095,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1245000,
 				additionalRegisters: {
@@ -4113,16 +4113,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c08602',
+					R9: '1105f0d28401c09a0c00ccf3a601c08602'
 				},
 				transactionId: '7e1dc3782f7320c1c39898ae71fd771ac152576eeb0c207a762353b1c9dd44c1',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2',
-			},
+				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2'
+			}
 		],
 		outputs: [
 			{
@@ -4138,12 +4138,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1245003,
 				additionalRegisters: {
@@ -4152,10 +4152,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601e08903',
+					R9: '1105f0d28401c09a0c00ccf3a601e08903'
 				},
 				transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 39277690,
@@ -4168,13 +4168,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1245003,
 				additionalRegisters: {},
 				transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 39277691,
@@ -4188,7 +4188,7 @@ export const exleMockTxes = [
 				creationHeight: 1245003,
 				additionalRegisters: {},
 				transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 39277692,
@@ -4204,10 +4204,10 @@ export const exleMockTxes = [
 				creationHeight: 1245003,
 				additionalRegisters: {},
 				transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2106,
+		size: 2106
 	},
 	{
 		id: '3e1546bf59149c89c2989a2c81f7d25e92a1973cc628c59fdb54b1da2b54a826',
@@ -4231,12 +4231,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1245003,
 				additionalRegisters: {
@@ -4245,10 +4245,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601e08903',
+					R9: '1105f0d28401c09a0c00ccf3a601e08903'
 				},
 				transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 40327735,
@@ -4263,22 +4263,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1272283,
 				additionalRegisters: {
 					R4: '0e200c2bbcd53da9da55e11eebebfff992efd059eb698946d88a117328a24161e0ed',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: '3ea886d0ed84a420c77fd4edc5e6b4132e353d116ed98678b7248dd9f30567ac',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2',
-			},
+				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2'
+			}
 		],
 		outputs: [
 			{
@@ -4294,16 +4294,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1272285,
 				additionalRegisters: {
@@ -4312,10 +4312,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601e08903',
+					R9: '1105f0d28401c09a0c00ccf3a601e08903'
 				},
 				transactionId: '3e1546bf59149c89c2989a2c81f7d25e92a1973cc628c59fdb54b1da2b54a826',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 40327777,
@@ -4331,10 +4331,10 @@ export const exleMockTxes = [
 				creationHeight: 1272285,
 				additionalRegisters: {},
 				transactionId: '3e1546bf59149c89c2989a2c81f7d25e92a1973cc628c59fdb54b1da2b54a826',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2053,
+		size: 2053
 	},
 	{
 		id: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
@@ -4358,16 +4358,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1272285,
 				additionalRegisters: {
@@ -4376,16 +4376,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601e08903',
+					R9: '1105f0d28401c09a0c00ccf3a601e08903'
 				},
 				transactionId: '3e1546bf59149c89c2989a2c81f7d25e92a1973cc628c59fdb54b1da2b54a826',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2',
-			},
+				boxId: 'd5dc74f9c28560ba118b413a08845b1fb1fcab7f68965be07444e58ea21d0dd2'
+			}
 		],
 		outputs: [
 			{
@@ -4401,12 +4401,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1272287,
 				additionalRegisters: {
@@ -4415,10 +4415,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601808d04',
+					R9: '1105f0d28401c09a0c00ccf3a601808d04'
 				},
 				transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 40327836,
@@ -4431,13 +4431,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 8400,
-					},
+						amount: 8400
+					}
 				],
 				creationHeight: 1272287,
 				additionalRegisters: {},
 				transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 40327837,
@@ -4451,7 +4451,7 @@ export const exleMockTxes = [
 				creationHeight: 1272287,
 				additionalRegisters: {},
 				transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 40327838,
@@ -4467,10 +4467,10 @@ export const exleMockTxes = [
 				creationHeight: 1272287,
 				additionalRegisters: {},
 				transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2106,
+		size: 2106
 	},
 	{
 		id: '2479d660fb9a98bfd1ae23a398dbb5f26d26a37f65b955dcbc5122f5edfea5ca',
@@ -4494,12 +4494,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1272287,
 				additionalRegisters: {
@@ -4508,10 +4508,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601808d04',
+					R9: '1105f0d28401c09a0c00ccf3a601808d04'
 				},
 				transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847611,
@@ -4526,22 +4526,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320029,
 				additionalRegisters: {
 					R4: '0e20b61075a8830698369103e0738d63cfa4eee5a74387a4c0d660dfee40ea4f2c1d',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'a09487fc7b8eab8c78b2477dcf9dc0fac83630f77fe1840ddf3d2acea69141c4',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb',
-			},
+				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb'
+			}
 		],
 		outputs: [
 			{
@@ -4557,16 +4557,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320032,
 				additionalRegisters: {
@@ -4575,10 +4575,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601808d04',
+					R9: '1105f0d28401c09a0c00ccf3a601808d04'
 				},
 				transactionId: '2479d660fb9a98bfd1ae23a398dbb5f26d26a37f65b955dcbc5122f5edfea5ca',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847753,
@@ -4594,10 +4594,10 @@ export const exleMockTxes = [
 				creationHeight: 1320032,
 				additionalRegisters: {},
 				transactionId: '2479d660fb9a98bfd1ae23a398dbb5f26d26a37f65b955dcbc5122f5edfea5ca',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2054,
+		size: 2054
 	},
 	{
 		id: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
@@ -4621,16 +4621,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320032,
 				additionalRegisters: {
@@ -4639,16 +4639,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601808d04',
+					R9: '1105f0d28401c09a0c00ccf3a601808d04'
 				},
 				transactionId: '2479d660fb9a98bfd1ae23a398dbb5f26d26a37f65b955dcbc5122f5edfea5ca',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb',
-			},
+				boxId: '411eaaa559ec91b2abaac2c28d240f38e142004e4170231f75960adc48a9f4eb'
+			}
 		],
 		outputs: [
 			{
@@ -4664,12 +4664,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320034,
 				additionalRegisters: {
@@ -4678,10 +4678,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 41847787,
@@ -4694,13 +4694,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 20000,
-					},
+						amount: 20000
+					}
 				],
 				creationHeight: 1320034,
 				additionalRegisters: {},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 41847788,
@@ -4714,7 +4714,7 @@ export const exleMockTxes = [
 				creationHeight: 1320034,
 				additionalRegisters: {},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 41847789,
@@ -4730,10 +4730,10 @@ export const exleMockTxes = [
 				creationHeight: 1320034,
 				additionalRegisters: {},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2107,
+		size: 2107
 	},
 	{
 		id: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
@@ -4757,12 +4757,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1320034,
 				additionalRegisters: {
@@ -4771,10 +4771,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875461,
@@ -4789,22 +4789,22 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358664,
 				additionalRegisters: {
 					R4: '0e20ef99da6d1eaf2935b0c7bd26d367a03c9cb6d8f2e618091cf58c154850665e9b',
-					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
+					R5: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52'
 				},
 				transactionId: 'bd79f426b4d96671f48e682dc8bb91260e6b98e2a793b8980e7c518e89ef00ba',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c',
-			},
+				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c'
+			}
 		],
 		outputs: [
 			{
@@ -4820,16 +4820,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358667,
 				additionalRegisters: {
@@ -4838,10 +4838,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875510,
@@ -4857,10 +4857,10 @@ export const exleMockTxes = [
 				creationHeight: 1358667,
 				additionalRegisters: {},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 1,
-			},
+				index: 1
+			}
 		],
-		size: 2054,
+		size: 2054
 	},
 	{
 		id: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
@@ -4884,16 +4884,16 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358667,
 				additionalRegisters: {
@@ -4902,16 +4902,16 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+					R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 				},
 				transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-				index: 0,
-			},
+				index: 0
+			}
 		],
 		dataInputs: [
 			{
-				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c',
-			},
+				boxId: 'df162d6a657fd30056c9cf217c6fb69a98159808efea48ac9dfe73daeb9f342c'
+			}
 		],
 		outputs: [
 			{
@@ -4927,12 +4927,12 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-						amount: 1,
+						amount: 1
 					},
 					{
 						tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-						amount: 1,
-					},
+						amount: 1
+					}
 				],
 				creationHeight: 1358670,
 				additionalRegisters: {
@@ -4941,10 +4941,10 @@ export const exleMockTxes = [
 					R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 					R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 					R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-					R9: '1105f0d28401c09a0c00ccf3a60180cc08',
+					R9: '1105f0d28401c09a0c00ccf3a60180cc08'
 				},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 0,
+				index: 0
 			},
 			{
 				globalIndex: 42875539,
@@ -4957,13 +4957,13 @@ export const exleMockTxes = [
 				assets: [
 					{
 						tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-						amount: 16800,
-					},
+						amount: 16800
+					}
 				],
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 1,
+				index: 1
 			},
 			{
 				globalIndex: 42875540,
@@ -4977,7 +4977,7 @@ export const exleMockTxes = [
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 2,
+				index: 2
 			},
 			{
 				globalIndex: 42875541,
@@ -4993,11 +4993,11 @@ export const exleMockTxes = [
 				creationHeight: 1358670,
 				additionalRegisters: {},
 				transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-				index: 3,
-			},
+				index: 3
+			}
 		],
-		size: 2107,
-	},
+		size: 2107
+	}
 ];
 
 export const exleMockBoxesByTokenId = {
@@ -5015,12 +5015,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1358670,
 			additionalRegisters: {
@@ -5029,10 +5029,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a60180cc08',
+				R9: '1105f0d28401c09a0c00ccf3a60180cc08'
 			},
 			transactionId: '11b446e6cd851583ceb9d89741e6ecf206637a426ca27016072aed63e36c1566',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 42875509,
@@ -5047,16 +5047,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 16800,
-				},
+					amount: 16800
+				}
 			],
 			creationHeight: 1358667,
 			additionalRegisters: {
@@ -5065,10 +5065,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+				R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 			},
 			transactionId: '76d530fe258f098cf68c77b9b1543ab65c5dcfe5147497860fb871c0050c719b',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 41847786,
@@ -5083,12 +5083,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1320034,
 			additionalRegisters: {
@@ -5097,10 +5097,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601c0c506',
+				R9: '1105f0d28401c09a0c00ccf3a601c0c506'
 			},
 			transactionId: '5c7ae484f663b64268c7534ddf2b1c2c4258d18fccf55924ef8b468d218b1984',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 41847752,
@@ -5115,16 +5115,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 20000,
-				},
+					amount: 20000
+				}
 			],
 			creationHeight: 1320032,
 			additionalRegisters: {
@@ -5133,10 +5133,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601808d04',
+				R9: '1105f0d28401c09a0c00ccf3a601808d04'
 			},
 			transactionId: '2479d660fb9a98bfd1ae23a398dbb5f26d26a37f65b955dcbc5122f5edfea5ca',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 40327835,
@@ -5151,12 +5151,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1272287,
 			additionalRegisters: {
@@ -5165,10 +5165,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601808d04',
+				R9: '1105f0d28401c09a0c00ccf3a601808d04'
 			},
 			transactionId: '30db3539c37d3ab6c7b49ce176fb8979d912ae14cb62b736916ef7fc6893d09b',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 40327776,
@@ -5183,16 +5183,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 8400,
-				},
+					amount: 8400
+				}
 			],
 			creationHeight: 1272285,
 			additionalRegisters: {
@@ -5201,10 +5201,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601e08903',
+				R9: '1105f0d28401c09a0c00ccf3a601e08903'
 			},
 			transactionId: '3e1546bf59149c89c2989a2c81f7d25e92a1973cc628c59fdb54b1da2b54a826',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 39277689,
@@ -5219,12 +5219,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1245003,
 			additionalRegisters: {
@@ -5233,10 +5233,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601e08903',
+				R9: '1105f0d28401c09a0c00ccf3a601e08903'
 			},
 			transactionId: '331bfa2af8d029473167aa194810d13565e3f342958421a8056f876551a277a9',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 39277554,
@@ -5251,16 +5251,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 8400,
-				},
+					amount: 8400
+				}
 			],
 			creationHeight: 1245000,
 			additionalRegisters: {
@@ -5269,10 +5269,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601c08602',
+				R9: '1105f0d28401c09a0c00ccf3a601c08602'
 			},
 			transactionId: '7e1dc3782f7320c1c39898ae71fd771ac152576eeb0c207a762353b1c9dd44c1',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 36421373,
@@ -5287,12 +5287,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1186503,
 			additionalRegisters: {
@@ -5301,10 +5301,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a601c08602',
+				R9: '1105f0d28401c09a0c00ccf3a601c08602'
 			},
 			transactionId: '5655a1e8fb28dd9098ceca724e818b8c13ef73eea9f1a201f9bbcb6673ab094f',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 36421291,
@@ -5319,16 +5319,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 16800,
-				},
+					amount: 16800
+				}
 			],
 			creationHeight: 1186501,
 			additionalRegisters: {
@@ -5337,10 +5337,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a60100',
+				R9: '1105f0d28401c09a0c00ccf3a60100'
 			},
 			transactionId: 'be8f6c5f3fc9ec60b8c56ea482ad26e66633d54d5728df04a804497aabb8b9d6',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 32454186,
@@ -5355,12 +5355,12 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1086648,
 			additionalRegisters: {
@@ -5369,10 +5369,10 @@ export const exleMockBoxesByTokenId = {
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
 				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
-				R9: '1105f0d28401c09a0c00ccf3a60100',
+				R9: '1105f0d28401c09a0c00ccf3a60100'
 			},
 			transactionId: 'b33437ec08a985772f6222f636f83ed573e9b72640aa3b5cd80826d158293252',
-			index: 1,
+			index: 1
 		},
 		{
 			globalIndex: 32454149,
@@ -5387,16 +5387,16 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '03faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-					amount: 100000,
-				},
+					amount: 100000
+				}
 			],
 			creationHeight: 1086646,
 			additionalRegisters: {
@@ -5404,10 +5404,10 @@ export const exleMockBoxesByTokenId = {
 				R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
 				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
-				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45',
+				R8: '0e240008cd022b664b577377784da4855018cf826dd14d6541a128f7dadd85fdd150e90cba45'
 			},
 			transactionId: '371e72758dcecf92afc2e68dedaf4714b352084df613177f9508ee96ca6cb084',
-			index: 0,
+			index: 0
 		},
 		{
 			globalIndex: 32449056,
@@ -5422,23 +5422,168 @@ export const exleMockBoxesByTokenId = {
 			assets: [
 				{
 					tokenId: 'a624c7e51ffae8f16fe024d8556faf47aac1c7fcaa7f584b95e9784e6426f630',
-					amount: 1,
+					amount: 1
 				},
 				{
 					tokenId: '1db09ec403231a6bcf263d0efdae28602e630e78ee5e85f123ae4361b5759f21',
-					amount: 1,
-				},
+					amount: 1
+				}
 			],
 			creationHeight: 1086474,
 			additionalRegisters: {
 				R4: '1105c09a0ccca187010080d21f8cd08401',
 				R5: '1a021243616d656c7320496e766573746d656e7420ad0449207769736820746f2072657175657374206c6f616e20666f7220657870616e64696e67206d792072657461696c20627573696e657373202863616d656c20696e766573746d656e742920746f20612074756e65206f662024312c3030300a0a53616c657320666f72656361737420666f72207468652031737420332079656172730a2020202020202020202020202020202020202020202020202020202020202020202020202020202059656172312020202020202020202020202020202020205965617232202020202020202020202020202020205965617233200a546f74616c2053616c657320202020202020202020202020202020202020202024392c36303020202020202020202020202020202431342c30303020202020202020202020202020202432322c3030300a546f74616c20436f7374206f662053616c6573202020202020202024382c34303020202020202020202020202020202431322c30303020202020202020202020202020202431352c30303020202020200a0a204c6f616e2052657061796d656e74205363686564756c65200a546f74616c204c6f616e20416d6f756e7420202020202020202020202020202024313030300a4c6f616e20706572696f642020202020202020202020202020202020202020202020202020203120796561720a4e756d626572206f662052657061796d656e742020202020202020203132200a416d6f756e742070617961626c652f4d6f6e74682020202020202020243834',
 				R6: '0e240008cd0228f2412b988ce7f2359995299f7686ebcb1c16e7faa5b1db8178984635294e52',
-				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04',
+				R7: '0e2003faf2cb329f2e90d6d23b58d91bbb6c046aa143261cc21f52fbe2824bfcbf04'
 			},
 			transactionId: '7a811b8a7cc861e9cb4df9a601aaf9004dfec3af4bbf825393f3eba739eb8ece',
-			index: 1,
-		},
+			index: 1
+		}
 	],
-	total: 13,
+	total: 13
 };
+export const exleCrowdfundTxes = [
+	{
+		id: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+		blockId: '43435e31c558150d1dc817edd60bf44dab84a00682222711ab5bca980ba6adaf',
+		inclusionHeight: 983600,
+		timestamp: 1681635594245,
+		index: 5,
+		globalIndex: 5056776,
+		numConfirmations: 519890,
+		inputs: [
+			{
+				globalIndex: 28327994,
+				inclusionHeight: 983598,
+				address:
+					'61FP1XoupNs44SyzARauWp31V8ZnxJo3FEB8BpUB8DriGaUdvFM2LkwEGbiNACMmozBGfFuAYvNegsxA9rP7yRXizAkXZqqagkDidGhC34KQDfc7QZLjgesZvsaKjXj3KjL3dgKEjqDbaVVfqQkLwv2hfthdjy3L6LuombC5m5akqnmnMWNi7ZgCWL4Bj47XRDPMozrC5Gc5ovy8ww8jXZ1LTKM9rEG9KagnaHNXw2UhnXtGpNHmyXgXH6QTXXt9jUs4nA4ZJFh9pDBS27JDmomWgpjUaNMKj5tfnbkA3WWrpZQN4gif4NZcwCygq9CxgVrowu22fC5NmChHoh4SEeWLzzv68c6L8sCbqetez4VHZZVR1XAW6TVkvVPhhiWpnzztUgzCbwax8aEtLYe7fmYdsbmC8ZeKmpZDqiKeiC4RWCnuHFipYK7FJhbXW75hakxATREvUNSDrMChoXTS4LdDukUbZnnBdEMcBAK5iihxta1EQXZNx9gn5Yq8qB9Z5p1PDdNBgAhQsUJt5NThL2YuCzQ6B8pYc9BJzg5EvzA2aSatXXnsbWX4RFzNdEgpE1UaeM61CuxbytaSXubxUgNGxCin8hTvhhryse7w49PNM9DgpoRzSSEdJRzLLiypb2S8shFsc87R4xuggQzqKjqhjHdA7NGoaqmAZnCf9zU76c9myNuJvqFiNiepDyXDeKt3RQVMmvAwUAdgR24XcXdugawzEwwF2df3apMhKZP35JTUd884KTTDrDygWDvMUVER8kfAxzJt3vPjFMYoiMDtbCmC7m77TUSw2uzdeqgLf6r1er9QY8H2YMirZ5k4op3gA2bnmGJ2ntZd4Scv25eomJLBuv5tFLCZPEEoq2XSfB4MP3GdiSrwJj4YxxaARroaLkQ6QaKTuMAsAWLz7F2atbbRBZTgVwaJ8DvsQ3pXabUSzcDKAstvVjhPJv1AAfiWUKFU2cX95vy16a2Eoh9wk54fTVrFzm37uNygTa1dgumFabWDJWUHxdZGPUXPP7TGr43xWAo3KjwZn9NcZhgQqa4JVRATw1wG6jwYKECSJG6Pck2d7eDHmuYMyKPqPWk2ZdC1mgNdtqqGPLUX6zY4Z5m4XeLCWKgbTYMmbmHeERfvQF3VroYBdVGiv1NQk6kMTyP24EJn6wc7JTnA2tMKkefCbUTVPbqMD4Yk66Z7JB1gu7AtpmtXpTitDkq9VLnEetMq5AwM1RyNjfvkZFG4DtqBsQNQYq3K6gFYR5HCcJhRmuTK8ShWiGVogF3TMqzp2G3cEswdijnskhAVjqSXLxr6TD9ocU7k45K2hqtsAbRncFfBHAjJjfMn9ZmQ3eqXC7YFk2BJfkfdZ7Pa9yRFHGPP',
+				spentTransactionId: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+				boxId: '1175a615695ac7b10efa09caca7e763c9e1a4a6ba30f86fbb52fbcd4f9fde529',
+				value: 4949120,
+				ergoTree:
+					'10370404040404000402040004000402040204080e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc004020400040004020404040405000404040004000402040404060406058080b401040805d00f05d00f050005d00f050204000580897a05020100040004000404020105000400040404040400040204000404040005809ba204010104020400040404040100d815d601e4c6a70411d602b27201730000d603e4c6a70911d604b27203730100d605db6308a7d606b2a5730200d607e4c672060911d608b27203730300d60993e4c6720604117201d60a93e4c67206051ae4c6a7051ad60b93e4c67206060ee4c6a7060ed60ce4c6a7070ed60d93e4c67206070e720cd60ee4c6a7080ed60f93e4c67206080e720ed61093c27206c2a7d611db63087206d61293b27211730400b27205730500d61393b27211730600b27205730700d614b27203730800d61573099593b1a4730ad809d616b2db6501fe730b00d617b2e4c672160811730c00d618b2a5730d00d6199591b17205730e8cb27205730f00027310d61ab2a5731100d61bc67216070ed61c96830d017209720a720b720d720f93b27207731200b2720373130093b27207731400720893b27207731500720493b27207731600b2720373170072107212721393c172067318d61d93b272077319009a72147219d61e9d9c9d9c72197202731a7217731b95ec937202731c8f9d9c72047217731d731ed801d61fb2db63087218731f00d196830401721c721d96830301938c721f01720c93c27218720e938c721f0272199683020193c2721ae4721b93c1721a7320958f721e7321d17322d802d61fb2db63087218732300d620b2db6308721a732400d196830401721c721d96830301938c721f01720c93c27218720e938c721f02997219721e96830301938c722001720c93c2721ae4721b938c722002721ed805d61691b172057325d617860283010273267327d618957216ededed938cb272057328017217017215938cb27205732901721701720c8f8cb27205732a0172170299720872148f72147208ed938cb27205732b0172170172158f72147208d619b2a4732c00d61a9572169a8cb2db63087219732d00028cb27205732e00028cb2db63087219732f0002957218d801d61b9683040192c1720673307331968309017209720a720b720d720f937207720372107212721372189591721a7208d803d61cb2db6308b2a5733200733300d61d9972087214d61eb27211733400d19683030196830201938c721c0299721a721d938c721c01720c96830201938c721e02721d938c721e01720c721bd801d61cb27211733500d19683020196830201938c721c02721a938c721c01720c721bd17336',
+				assets: [
+					{
+						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
+						amount: 1
+					},
+					{
+						tokenId: '05692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b7119141',
+						amount: 1
+					},
+					{
+						tokenId: '6ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+						amount: 110
+					}
+				],
+				creationHeight: 983596,
+				additionalRegisters: {
+					R4: '1105c801fe9778c801d00fae8878',
+					R5: '1a022245786c652054657374204c6f616e3a2043726f776446756e64204150492054657374245468697320697320612074657374206c6f616e20776974682045786c652053797374656d',
+					R6: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
+					R7: '0e206ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+					R8: '0ea20d104f04000e2005692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b71191410201050004000580a4e803040004000e2052cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9050204020402040404060404040204000e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc00504040205020100040204000402040404020400040204000400050204020402040204040500050005000500050005000500050005000502040204020404050404040502040404020404040404000404040205020402040204020402050004020500040205020400050204020502050004000502040205020500d810d601db6501fed602b27201730000d603db63087202d6047301d605860283010273027303d606b2a5730400d607c2a7d608db63087206d609db6308a7d60a92c1a77305d60bb2a4730600d60cb27203730700d60d9683030193c272027207938c720c017308938c720c027309d60eb27209730a017205d60fb27208730b017205d6108c720f029595ed93b17203730c93b17201730dd801d611db6308b27201730e0096830401938cb27211730f0001e4c67202040e938cb2721173100001731193e4c6720206057312938cb272037313000273147315d806d61193e4c67202040e7204d612b2db6308b2a47316007317017205d613e4c67202050ed614db6308b2a5731800d615c6b27201731900070ed6168c721202d1968303017211968303017211938c72120172139593b17214731ad801d617b27214731b01720596830201938c721701e47215938c7217027216d802d617b27214731c017205d6188c72170196830301937218e47215938c7217029972168cb27214731d01720502937218721393c2720672079596830401ed93c5a7c5720b937207c2b2a5731e008f8c720e027210947210731f938c720e018c720f01d805d611b4a473209ab1a47321d612e4c67202050ed613b2a5732200d614db63087213d615e4c6b27201732300070ed19683040193e4c6720206057324968302019399b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172127325d90116414d0e9a8c7216018c8c72160202b0b57214d901164d0e938c72160172127326d90116414d0e9a8c7216018c8c7216020299b0b57214d901164d0e938c72160172157327d90116414d0e9a8c7216018c8c72160202b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172157328d90116414d0e9a8c7216018c8c721602029399b0b57208d901164d0e938c72160172127329d90116414d0e9a8c7216018c8c72160202b0b57209d901164d0e938c7216017212732ad90116414d0e9a8c7216018c8c7216020299b0b57209d901164d0e938c7216017215732bd90116414d0e9a8c7216018c8c72160202b0b57208d901164d0e938c7216017215732cd90116414d0e9a8c7216018c8c72160202af7211d901166393c27216c27213720ad802d611c67202040ed612c67202050e9593e4c672020605732dd805d613b2a5732e00d614e47212d615db63087213d616b27215732f00d617b27208733000d19683060193c2721372079683030193e47211e4c67213040e937214e4c67213050e93e4c6721306057331968302019683030193b172157332938c7216017214938c721602733396830201938c721701e4c6720b070e938c7217028cb2720973340002938cb2db6308720b733500017204720d720ad80ad613b27208733600d6148c721302d615b27201733700d616b2e4c672150411733800d6179372147216d618e4c67215070ed619938c7213017218d61a9972148cb27209733901720502d61be47212d61ce47211d19683080196830201957217d801d61db27208733a0096830301938c721d02733b938c721d018cb27209733c00017219d802d61db27209733d00d61eb27208733e009683030193998c721d028c721e02721a938c721e018c721d0172199399b0b5db6308b2a5733f00d9011d4d0e938c721d01721b7340d9011d414d0e9a8c721d018c8c721d0202b0b5db6308b2a4734100d9011d4d0e938c721d01721b7342d9011d414d0e9a8c721d018c8c721d0202721a968302017219938cb2db6308721573430001721c9683020193721ce4c67206040e93721be4c67206050e9572179683040193e4c6720606057344938cb27208734500027346938cb2720873470002734872179683030193e4c6720606057349938cb27208734a0002734b948cb27208734c0002734d93c272067207720d720a90b0b57208d9011d4d0e938c721d017218734ed9011d414d0e9a8c721d018c8c721d02027216',
+					R9: '1105ca8878dc0114cea77800'
+				},
+				transactionId: '1aa4a5117132e5074d70887c59e71b68ed5f326b8d8479082ca03ec963f8720f',
+				index: 0
+			}
+		],
+		dataInputs: [
+			{
+				boxId: '6a0f6d75f9f1d789e810d54246edfa24d5fdc555afbcee36fe38f2524abbc49b'
+			}
+		],
+		outputs: [
+			{
+				globalIndex: 28328027,
+				inclusionHeight: 983600,
+				address:
+					'61FP1XoupNs44SyzARauWp31V8ZnxJo3FEB8BpUB8DriGaUdvFM2LkwEGbiNACMmozBGfFuAYvNegsxA9rP7yRXizAkXZqqagkDidGhC34KQDfc7QZLjgesZvsaKjXj3KjL3dgKEjqDbaVVfqQkLwv2hfthdjy3L6LuombC5m5akqnmnMWNi7ZgCWL4Bj47XRDPMozrC5Gc5ovy8ww8jXZ1LTKM9rEG9KagnaHNXw2UhnXtGpNHmyXgXH6QTXXt9jUs4nA4ZJFh9pDBS27JDmomWgpjUaNMKj5tfnbkA3WWrpZQN4gif4NZcwCygq9CxgVrowu22fC5NmChHoh4SEeWLzzv68c6L8sCbqetez4VHZZVR1XAW6TVkvVPhhiWpnzztUgzCbwax8aEtLYe7fmYdsbmC8ZeKmpZDqiKeiC4RWCnuHFipYK7FJhbXW75hakxATREvUNSDrMChoXTS4LdDukUbZnnBdEMcBAK5iihxta1EQXZNx9gn5Yq8qB9Z5p1PDdNBgAhQsUJt5NThL2YuCzQ6B8pYc9BJzg5EvzA2aSatXXnsbWX4RFzNdEgpE1UaeM61CuxbytaSXubxUgNGxCin8hTvhhryse7w49PNM9DgpoRzSSEdJRzLLiypb2S8shFsc87R4xuggQzqKjqhjHdA7NGoaqmAZnCf9zU76c9myNuJvqFiNiepDyXDeKt3RQVMmvAwUAdgR24XcXdugawzEwwF2df3apMhKZP35JTUd884KTTDrDygWDvMUVER8kfAxzJt3vPjFMYoiMDtbCmC7m77TUSw2uzdeqgLf6r1er9QY8H2YMirZ5k4op3gA2bnmGJ2ntZd4Scv25eomJLBuv5tFLCZPEEoq2XSfB4MP3GdiSrwJj4YxxaARroaLkQ6QaKTuMAsAWLz7F2atbbRBZTgVwaJ8DvsQ3pXabUSzcDKAstvVjhPJv1AAfiWUKFU2cX95vy16a2Eoh9wk54fTVrFzm37uNygTa1dgumFabWDJWUHxdZGPUXPP7TGr43xWAo3KjwZn9NcZhgQqa4JVRATw1wG6jwYKECSJG6Pck2d7eDHmuYMyKPqPWk2ZdC1mgNdtqqGPLUX6zY4Z5m4XeLCWKgbTYMmbmHeERfvQF3VroYBdVGiv1NQk6kMTyP24EJn6wc7JTnA2tMKkefCbUTVPbqMD4Yk66Z7JB1gu7AtpmtXpTitDkq9VLnEetMq5AwM1RyNjfvkZFG4DtqBsQNQYq3K6gFYR5HCcJhRmuTK8ShWiGVogF3TMqzp2G3cEswdijnskhAVjqSXLxr6TD9ocU7k45K2hqtsAbRncFfBHAjJjfMn9ZmQ3eqXC7YFk2BJfkfdZ7Pa9yRFHGPP',
+				spentTransactionId: null,
+				boxId: 'e512746c198ea1885500a615b153fe0064d36ee41f3d3241a002aaf40b8751fd',
+				value: 1474560,
+				ergoTree:
+					'10370404040404000402040004000402040204080e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc004020400040004020404040405000404040004000402040404060406058080b401040805d00f05d00f050005d00f050204000580897a05020100040004000404020105000400040404040400040204000404040005809ba204010104020400040404040100d815d601e4c6a70411d602b27201730000d603e4c6a70911d604b27203730100d605db6308a7d606b2a5730200d607e4c672060911d608b27203730300d60993e4c6720604117201d60a93e4c67206051ae4c6a7051ad60b93e4c67206060ee4c6a7060ed60ce4c6a7070ed60d93e4c67206070e720cd60ee4c6a7080ed60f93e4c67206080e720ed61093c27206c2a7d611db63087206d61293b27211730400b27205730500d61393b27211730600b27205730700d614b27203730800d61573099593b1a4730ad809d616b2db6501fe730b00d617b2e4c672160811730c00d618b2a5730d00d6199591b17205730e8cb27205730f00027310d61ab2a5731100d61bc67216070ed61c96830d017209720a720b720d720f93b27207731200b2720373130093b27207731400720893b27207731500720493b27207731600b2720373170072107212721393c172067318d61d93b272077319009a72147219d61e9d9c9d9c72197202731a7217731b95ec937202731c8f9d9c72047217731d731ed801d61fb2db63087218731f00d196830401721c721d96830301938c721f01720c93c27218720e938c721f0272199683020193c2721ae4721b93c1721a7320958f721e7321d17322d802d61fb2db63087218732300d620b2db6308721a732400d196830401721c721d96830301938c721f01720c93c27218720e938c721f02997219721e96830301938c722001720c93c2721ae4721b938c722002721ed805d61691b172057325d617860283010273267327d618957216ededed938cb272057328017217017215938cb27205732901721701720c8f8cb27205732a0172170299720872148f72147208ed938cb27205732b0172170172158f72147208d619b2a4732c00d61a9572169a8cb2db63087219732d00028cb27205732e00028cb2db63087219732f0002957218d801d61b9683040192c1720673307331968309017209720a720b720d720f937207720372107212721372189591721a7208d803d61cb2db6308b2a5733200733300d61d9972087214d61eb27211733400d19683030196830201938c721c0299721a721d938c721c01720c96830201938c721e02721d938c721e01720c721bd801d61cb27211733500d19683020196830201938c721c02721a938c721c01720c721bd17336',
+				assets: [
+					{
+						tokenId: '302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc0',
+						amount: 1
+					},
+					{
+						tokenId: '05692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b7119141',
+						amount: 1
+					}
+				],
+				creationHeight: 983598,
+				additionalRegisters: {
+					R4: '1105c801fe9778c801d00fae8878',
+					R5: '1a022245786c652054657374204c6f616e3a2043726f776446756e64204150492054657374245468697320697320612074657374206c6f616e20776974682045786c652053797374656d',
+					R6: '0e240008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
+					R7: '0e206ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+					R8: '0ea20d104f04000e2005692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b71191410201050004000580a4e803040004000e2052cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9050204020402040404060404040204000e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc00504040205020100040204000402040404020400040204000400050204020402040204040500050005000500050005000500050005000502040204020404050404040502040404020404040404000404040205020402040204020402050004020500040205020400050204020502050004000502040205020500d810d601db6501fed602b27201730000d603db63087202d6047301d605860283010273027303d606b2a5730400d607c2a7d608db63087206d609db6308a7d60a92c1a77305d60bb2a4730600d60cb27203730700d60d9683030193c272027207938c720c017308938c720c027309d60eb27209730a017205d60fb27208730b017205d6108c720f029595ed93b17203730c93b17201730dd801d611db6308b27201730e0096830401938cb27211730f0001e4c67202040e938cb2721173100001731193e4c6720206057312938cb272037313000273147315d806d61193e4c67202040e7204d612b2db6308b2a47316007317017205d613e4c67202050ed614db6308b2a5731800d615c6b27201731900070ed6168c721202d1968303017211968303017211938c72120172139593b17214731ad801d617b27214731b01720596830201938c721701e47215938c7217027216d802d617b27214731c017205d6188c72170196830301937218e47215938c7217029972168cb27214731d01720502937218721393c2720672079596830401ed93c5a7c5720b937207c2b2a5731e008f8c720e027210947210731f938c720e018c720f01d805d611b4a473209ab1a47321d612e4c67202050ed613b2a5732200d614db63087213d615e4c6b27201732300070ed19683040193e4c6720206057324968302019399b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172127325d90116414d0e9a8c7216018c8c72160202b0b57214d901164d0e938c72160172127326d90116414d0e9a8c7216018c8c7216020299b0b57214d901164d0e938c72160172157327d90116414d0e9a8c7216018c8c72160202b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172157328d90116414d0e9a8c7216018c8c721602029399b0b57208d901164d0e938c72160172127329d90116414d0e9a8c7216018c8c72160202b0b57209d901164d0e938c7216017212732ad90116414d0e9a8c7216018c8c7216020299b0b57209d901164d0e938c7216017215732bd90116414d0e9a8c7216018c8c72160202b0b57208d901164d0e938c7216017215732cd90116414d0e9a8c7216018c8c72160202af7211d901166393c27216c27213720ad802d611c67202040ed612c67202050e9593e4c672020605732dd805d613b2a5732e00d614e47212d615db63087213d616b27215732f00d617b27208733000d19683060193c2721372079683030193e47211e4c67213040e937214e4c67213050e93e4c6721306057331968302019683030193b172157332938c7216017214938c721602733396830201938c721701e4c6720b070e938c7217028cb2720973340002938cb2db6308720b733500017204720d720ad80ad613b27208733600d6148c721302d615b27201733700d616b2e4c672150411733800d6179372147216d618e4c67215070ed619938c7213017218d61a9972148cb27209733901720502d61be47212d61ce47211d19683080196830201957217d801d61db27208733a0096830301938c721d02733b938c721d018cb27209733c00017219d802d61db27209733d00d61eb27208733e009683030193998c721d028c721e02721a938c721e018c721d0172199399b0b5db6308b2a5733f00d9011d4d0e938c721d01721b7340d9011d414d0e9a8c721d018c8c721d0202b0b5db6308b2a4734100d9011d4d0e938c721d01721b7342d9011d414d0e9a8c721d018c8c721d0202721a968302017219938cb2db6308721573430001721c9683020193721ce4c67206040e93721be4c67206050e9572179683040193e4c6720606057344938cb27208734500027346938cb2720873470002734872179683030193e4c6720606057349938cb27208734a0002734b948cb27208734c0002734d93c272067207720d720a90b0b57208d9011d4d0e938c721d017218734ed9011d414d0e9a8c721d018c8c721d02027216',
+					R9: '1105ca8878dc0114cea778dc01'
+				},
+				transactionId: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+				index: 0
+			},
+			{
+				globalIndex: 28328028,
+				inclusionHeight: 983600,
+				address:
+					'DhxC8Jc3PbbmDJjBsbZbYZm8FsSX9N129P8ws7tcQ74J5Lx4x5m13WNU7LpVjXDqe6ZGJ4DweM16QFBP4QCpky4Zt6CZe3cwZ3U8KNRaW6LPrwycXrnhfbf8BuxgkY1bwyFgsn27wTCvk1DU4indr8ufFVoGD1MG5nc9M5N3FdJpJrKb1ENYriWL8mj4ExZhw9QFDsqaLoQhfK7ytGhgqVHsUGYZk166eZT6tKdRPRokqcuUMDoZN2wYka4AwLV2WbJuScbMvGFZMq8ozeX89gD9dSCBUBtm92wXi6d1aFez7cjHweez1HKw2bYjUifHiD3W917MiQHXJsVuQAwN9tdDtpKE212sGB9BH2rhJaEL83aqda39aXn73jWsBYRHsMzNtNEWUij3HHVW2kHgLEWEEgoMCuSTdKjPygDufkCPXUqLkzeUDPc7QRikDEqKndmTJo8pvTZenhgW2mfYiLLmyUReCHuv2kmp6V6dxBst1UeUaGCPYebtHqxsHiLcsEB2g2XjzEHQeuoCgEwVEMTtVskS8DoXdyKG2BaFNZLpSM9iksJR9SEp1Sv6DjxqtpUjzPxoryxGB6bXMohqEUX6RmHC4RaV2h1JCxT7jQUKvbgYgJyCJwSVzMNCyEykLQrtfhyJtcsVghwNep13AFhDt8nccj9TtCdpBY7ftwxGFb91P9i5eiNmAfRu1vgpK3WGBcrQBqTRQ1SLVmF7SE6L4zb3YXmzABxLjYBJBKbJvk2WzVfQEdvasuB9qLjxCcMRPzHqWKWL22fLt8dKr3sEGnVqtpPUCuA7AcASgAwe67jbSR877c7hugSwTyRtdkGGr4zkEtZy3HSK4oY5y5amKjhFzgGvbzDtjHNMuaNk7abT9w6DeMyMWvoXQCf4zzhYx5XxnCwYV7wuMKyeK6iH9BAGPT8ZKTi865FxSA3vyPYcwcpxWXSiyXqd9jHwg29e8QKBwWhEzxXvBtF8tyeAFQ8czh7tH8trffQLckm7XAnDN6LfXkq4oJXMPmPbNncnwsQN1mjnkPYRMqnWxwkARQFkzCtWH4863YtSPiegxdVK33essEH4czDxLcA3gDVZfT33DCgHtnAFKgYZ5fuRxHchYJpk5Kjt5qXpsMJ2JwJdNErCK63wiAgrRVhWn1fDVg7kTq1H557BXz5ceg518udF6rVy1gcsgSGiVBkfMc5Ydi7sSZMXfp4RvyxH7tvYaXJHnHhBvguYiGSHNnrTsPRdtinFKQnKCmK9Sqjyk2ZUD9oM54cKGt9aug7VAYf9NEA5UZG99GGtHBvoMD5QLDJcicoCm79SdP7Fb7ZA1DQKj9zY2hCYmVfHALvfR7RXxcSZhwH1hFHnaFPfJgrSNj6zempAYWBZWjS6qFmAxEXzADo7uArraNZLerERRH4g8hC7NrMYTahdkA1aVXx5dBCxPiBeZXmkFvsugtseGXYPUxrJcapL5ijyvkMd59NwwfvShGt5rRX2aWJcAsSX7o6A2AonyEG8HZqzWsVSCeM675yJRLFMcSGFcbnFwW2i7ghh6Y11EtYjuPKCqcNe46BUrW4k5vGK21BQoam5aWnQ4fAhpcm1Ez9VtoFE1GYd1gD54USmRZCrYMwC8D7dXxieZGnFQqUi6acwXnp7gxvMTyby7hnNPdBkUVFEf4zawqnoMqiRddoTHmi4rW8c3KYBWrMBBazbXzZzDYB7y76spxK2ob5gVkP5gF6cUURXHveJiFZSHfqFSsZZ4T1WHSYFnvuofbgoWFahqZBVz27bAQdCANHo8BTtHtu57C3pDSGHqQLfvDkEu3doQyZgVwz7nrqGDYPa7zmkF8Rx22Mar3hV4ZbC7pLUX7ZWi5fmDLK6596eAkWCoGhJUXRYBTvWPttmNiNW5TkKnorAGNrFz7S87ZnwYsjAJK33Ti6y64BzGqsJYYNeWVn4SF6TjPYD83nkSaNbhuf4VEaugbYdqCXB1eZGDb5nbm52HJNCT6rD7336zDNhtWytwAfroGbWk7EJXSNwxDXyhdWyYjtTretjGGkAGzh8nFnC3x3oVJ67R1woz13zAJy7FdMeFSEpm4LfAbFSNDdUybiK7WCgoMfqrGixKz1c2pNv7F2VuWUdkmsbg7BL8sCaeGt4CR8kC6KrsEtFjnjiCFzmW5iyhwwnHo7UWh85VBuEGa1hX596UwWe5c3c3Vrk854SGLaeGYhUneYJDj8KpCDfmcszHHbgbjo3L2wQaWiPXxcmeuw1oyHefdgP7VvcArUukdkKvT4fMHWDb9Yr1Hw24Z5Jvb1S6hHr1kVgQkuicgabzgCJw56z2UHtSKJLU',
+				spentTransactionId: null,
+				boxId: '174b501d6abb14e5da97c24b4ab0c747780829d01af41fe0768c39401ce0e5fc',
+				value: 1000000,
+				ergoTree:
+					'104f04000e2005692a2965c6bab42ef7e440ce25108e7f5cad42ec97ea7fe4fc6d55b71191410201050004000580a4e803040004000e2052cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9050204020402040404060404040204000e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc00504040205020100040204000402040404020400040204000400050204020402040204040500050005000500050005000500050005000502040204020404050404040502040404020404040404000404040205020402040204020402050004020500040205020400050204020502050004000502040205020500d810d601db6501fed602b27201730000d603db63087202d6047301d605860283010273027303d606b2a5730400d607c2a7d608db63087206d609db6308a7d60a92c1a77305d60bb2a4730600d60cb27203730700d60d9683030193c272027207938c720c017308938c720c027309d60eb27209730a017205d60fb27208730b017205d6108c720f029595ed93b17203730c93b17201730dd801d611db6308b27201730e0096830401938cb27211730f0001e4c67202040e938cb2721173100001731193e4c6720206057312938cb272037313000273147315d806d61193e4c67202040e7204d612b2db6308b2a47316007317017205d613e4c67202050ed614db6308b2a5731800d615c6b27201731900070ed6168c721202d1968303017211968303017211938c72120172139593b17214731ad801d617b27214731b01720596830201938c721701e47215938c7217027216d802d617b27214731c017205d6188c72170196830301937218e47215938c7217029972168cb27214731d01720502937218721393c2720672079596830401ed93c5a7c5720b937207c2b2a5731e008f8c720e027210947210731f938c720e018c720f01d805d611b4a473209ab1a47321d612e4c67202050ed613b2a5732200d614db63087213d615e4c6b27201732300070ed19683040193e4c6720206057324968302019399b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172127325d90116414d0e9a8c7216018c8c72160202b0b57214d901164d0e938c72160172127326d90116414d0e9a8c7216018c8c7216020299b0b57214d901164d0e938c72160172157327d90116414d0e9a8c7216018c8c72160202b0dc0c0f721101d9011663b5db63087216d901184d0e938c72180172157328d90116414d0e9a8c7216018c8c721602029399b0b57208d901164d0e938c72160172127329d90116414d0e9a8c7216018c8c72160202b0b57209d901164d0e938c7216017212732ad90116414d0e9a8c7216018c8c7216020299b0b57209d901164d0e938c7216017215732bd90116414d0e9a8c7216018c8c72160202b0b57208d901164d0e938c7216017215732cd90116414d0e9a8c7216018c8c72160202af7211d901166393c27216c27213720ad802d611c67202040ed612c67202050e9593e4c672020605732dd805d613b2a5732e00d614e47212d615db63087213d616b27215732f00d617b27208733000d19683060193c2721372079683030193e47211e4c67213040e937214e4c67213050e93e4c6721306057331968302019683030193b172157332938c7216017214938c721602733396830201938c721701e4c6720b070e938c7217028cb2720973340002938cb2db6308720b733500017204720d720ad80ad613b27208733600d6148c721302d615b27201733700d616b2e4c672150411733800d6179372147216d618e4c67215070ed619938c7213017218d61a9972148cb27209733901720502d61be47212d61ce47211d19683080196830201957217d801d61db27208733a0096830301938c721d02733b938c721d018cb27209733c00017219d802d61db27209733d00d61eb27208733e009683030193998c721d028c721e02721a938c721e018c721d0172199399b0b5db6308b2a5733f00d9011d4d0e938c721d01721b7340d9011d414d0e9a8c721d018c8c721d0202b0b5db6308b2a4734100d9011d4d0e938c721d01721b7342d9011d414d0e9a8c721d018c8c721d0202721a968302017219938cb2db6308721573430001721c9683020193721ce4c67206040e93721be4c67206050e9572179683040193e4c6720606057344938cb27208734500027346938cb2720873470002734872179683030193e4c6720606057349938cb27208734a0002734b948cb27208734c0002734d93c272067207720d720a90b0b57208d9011d4d0e938c721d017218734ed9011d414d0e9a8c721d018c8c721d02027216',
+				assets: [
+					{
+						tokenId: '6ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+						amount: 108
+					}
+				],
+				creationHeight: 983598,
+				additionalRegisters: {},
+				transactionId: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+				index: 1
+			},
+			{
+				globalIndex: 28328029,
+				inclusionHeight: 983600,
+				address: '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn',
+				spentTransactionId: '74ad77a657af3df3e43108ee5da09c1e3afabcc4b20928f749eba82a3abaf161',
+				boxId: '5b43660c144c71aa3cb06c0ca11887706b632d085db2fff2c03eb0e38c2343e0',
+				value: 1000000,
+				ergoTree: '0008cd024f716db88462f0c69b98d20cc281c0e51d6d1aa9ab79aa266e68b2eada18a18c',
+				assets: [
+					{
+						tokenId: '6ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+						amount: 2
+					}
+				],
+				creationHeight: 983598,
+				additionalRegisters: {},
+				transactionId: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+				index: 2
+			},
+			{
+				globalIndex: 28328030,
+				inclusionHeight: 983600,
+				address:
+					'2iHkR7CWvD1R4j1yZg5bkeDRQavjAaVPeTDFGGLZduHyfWMuYpmhHocX8GJoaieTx78FntzJbCBVL6rf96ocJoZdmWBL2fci7NqWgAirppPQmZ7fN9V6z13Ay6brPriBKYqLp1bT2Fk4FkFLCfdPpe',
+				spentTransactionId: '14ef23c7d56879f1897a22ccc5b9b1cd949c93433d564377a76f9fa1d72f621d',
+				boxId: 'cbdac888c75d7b7c45999e50a60ef2da1c3573c9641edb430be383eff91bb1d7',
+				value: 1474560,
+				ergoTree:
+					'1005040004000e36100204a00b08cd0279be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798ea02d192a39a8cc7a701730073011001020402d19683030193a38cc7b2a57300000193c2b2a57301007473027303830108cdeeac93b1a57304',
+				assets: [],
+				creationHeight: 983598,
+				additionalRegisters: {},
+				transactionId: '2e6200842255b714102af1ca4f82f67076568fcbcca9b5620e097024705899d9',
+				index: 3
+			}
+		],
+		size: 4919
+	}
+];

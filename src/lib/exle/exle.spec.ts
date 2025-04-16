@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { jsonParseBigInt, type NodeBox } from './exle';
-import { exleMockBoxesByTokenId, exleMockTxes } from './exleTx.mockdata';
+import { decodeExleLenderTokens, jsonParseBigInt, parseRepaymentBox, type NodeBox } from './exle';
+import { exleCrowdfundTxes, exleMockBoxesByTokenId, exleMockTxes } from './exleTx.mockdata';
 import {
 	decodeExleFundingInfo,
 	decodeExleLoanTokenId,
@@ -165,7 +165,7 @@ describe('Exle Function ', () => {
 		//console.dir(unsignedTx, { depth: null });
 		expect(unsignedTx).toBeTruthy();
 	});
-	it.only('Fund Lend Box from Proxy| from tx[17]', () => {
+	it('Fund Lend Box from Proxy| from tx[17]', () => {
 		const tx = exleMockTxes[17];
 		const lendBox = tx.inputs.find(isExleLendTokenBox);
 		const fundingBox = tx.inputs.find((i) => !isExleLendTokenBox(i));
@@ -217,6 +217,7 @@ describe('Exle Function ', () => {
 				tx,
 				label
 			);
+
 			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
 			if (lowLevelLabel == 'Create Lend | Tokens') {
 				console.log(
@@ -230,12 +231,15 @@ describe('Exle Function ', () => {
 					lockedLevel,
 					')'
 				);
-				console.log('Loan initial box:');
-				console.log(tx.id);
+				const lendBox = tx.outputs.find(isExleLendTokenBox);
+				const funding = decodeExleFundingInfo(lendBox);
+				console.log(funding);
+				//console.log('Loan initial box:');
+				//console.log(tx.id);
 				//console.log(tx.inputs[1]); // SLT Fee Box
 
-				console.log(tx.outputs[0]); // SLT Fee Box
-				console.log('Take Service input[0] => Drop it new NFT + give 1 Lend Token');
+				//console.log(tx.outputs[0]); // SLT Fee Box
+				//console.log('Take Service input[0] => Drop it new NFT + give 1 Lend Token');
 
 				//val serviceFeeBox: Box      = OUTPUTS(2)
 				//val sltLendBox: Box         = OUTPUTS(1)
@@ -251,6 +255,23 @@ describe('Exle Function ', () => {
 		const boxes = exleMockBoxesByTokenId.items;
 		const txes = boxes.map((b) => b.transactionId);
 		console.log(txes);
+	});
+	it.only('High/Low Level Recogniser', () => {
+		const txes = exleCrowdfundTxes;
+		//const txes = exleMockTxes.slice(17, 18); //16 - 21
+
+		txes.forEach((tx) => {
+			const label = exleHighLevelRecogniser(tx);
+			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
+				tx,
+				label
+			);
+			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
+			console.log('Label:', label, '|', lowLevelLabel, '|', fundingLevel, '|', repaymentLevel);
+			console.log(decodeExleLenderTokens(tx.outputs[0]) == tx.outputs[1].ergoTree);
+			console.log(tx.outputs[1].additionalRegisters);
+			//console.log('', lowLevelLabel);
+		});
 	});
 });
 
