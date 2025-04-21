@@ -1104,7 +1104,7 @@ export function prepareCrowdFundFromLendTx(signedTx: object, height: number, me:
 	const serviceBox = signedTx.outputs[0];
 	const lendBox = signedTx.outputs[1];
 
-	const userUtxo = signedTx.outputs.slice(3);
+	const userUtxo = signedTx.outputs.slice(4);
 	const miningFee = EXLE_MINING_FEE;
 	const loanId = lendBox.assets[1].tokenId;
 	// Crowd Adress or Crowd Ergo Tree ??
@@ -1140,33 +1140,45 @@ function crowdFundFromLendTx(
 		.addTokens(lendBox.assets)
 		.setAdditionalRegisters(lendBox.additionalRegisters);
 
-	const updatedServiceAssets = serviceBox.assets;
-	updatedServiceAssets[3].amount = updatedServiceAssets[3].amount - 1;
-
 	const updatedServiceBox = new OutputBuilder(BigInt(serviceBox.value), serviceBox.ergoTree)
-		.addTokens(updatedServiceAssets)
+		.addTokens([
+			serviceBox.assets[0],
+			serviceBox.assets[1],
+			serviceBox.assets[2],
+			{ tokenId: serviceBox.assets[3].tokenId, amount: BigInt(serviceBox.assets[3].amount) - 1n }
+		])
 		.setAdditionalRegisters(serviceBox.additionalRegisters);
 
 	const loanId = lendBox.assets[1].tokenId;
 
-	const crowdFundBox = new OutputBuilder(EXLE_MINING_FEE, crowdErgoTree)
+	const devFeeAmount = decodeExleServiceFee(serviceBox);
+	const devFeeBox = new OutputBuilder(devFeeAmount, EXLE_DEV_ADDRESS);
+
+	const crowdFundBox = new OutputBuilder(4n * EXLE_MINING_FEE, crowdErgoTree)
 		.addTokens({ tokenId: serviceBox.assets[3].tokenId, amount: 1n })
 		.mintToken({
 			tokenId: serviceBox.boxId,
 			amount: SCALA_MAX_LONG,
 			decimals: 0
 		})
+
 		.setAdditionalRegisters({
 			R4: SColl(SByte, loanId).toHex(), //R4: LoanId
-			R5: SColl(SByte, EXLE_SLE_CROWD).toHex(), //R5: CrowdFundTokenId
-			R6: SLong(2n).toHex() //R6: 2L
+			R5: SColl(SByte, serviceBox.boxId).toHex(), //R5: CrowdFundTokenId
+			R6: SLong(0n).toHex() //R6: 0
 		});
-
+	console.log(serviceBox);
+	console.log(updatedServiceBox);
 	const unsignedTx = new TransactionBuilder(height)
-		.from([serviceBox, lendBox, ...utxo])
-		.to([updatedServiceBox, updatedLendBox, crowdFundBox])
+		.from([serviceBox, lendBox], {
+			ensureInclusion: true
+		})
+		.from([...utxo])
+		.to([updatedServiceBox, updatedLendBox, crowdFundBox, devFeeBox])
 		.payFee(miningFee)
 		.sendChangeTo(changeAddress)
 		.build()
 		.toEIP12Object();
+
+	return unsignedTx;
 }

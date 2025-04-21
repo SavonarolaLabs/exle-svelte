@@ -130,8 +130,29 @@ export async function createCrowdfundLoan() {
 	};
 	const unsignedTx = createLendTx(userInput, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
+	console.log('ok');
+	console.log('------CHECK-----');
+	console.log(unsignedTx.inputs[0].assets);
+	console.log(unsignedTx.outputs[0].assets);
+
+	await wait();
 
 	const unsignedTx2 = prepareCrowdFundFromLendTx(signed, height, me);
+	console.log(unsignedTx2);
+	console.log('------CHECK-----');
+	console.log(unsignedTx2.inputs[0].assets);
+	console.log(unsignedTx2.outputs[0].assets);
 	const signed2 = await ergo.sign_tx(unsignedTx2);
 	console.log({ signed2 });
+}
+
+function delay(ms) {
+	return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// Использование:
+async function wait() {
+	console.log('До задержки');
+	await delay(500); // задержка 200 мс
+	console.log('После задержки');
 }
