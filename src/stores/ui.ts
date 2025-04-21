@@ -6,6 +6,7 @@ import {
 	fetchServiceBox,
 	parseLoanBox,
 	parseRepaymentBox,
+	prepareCrowdFundFromLendTx,
 	type CreateLendChainContext,
 	type CreateLendUserInput,
 	type Loan,
@@ -113,4 +114,24 @@ export async function createSolofundLoan() {
 
 	const unsignedCrowdTx = createLendCrowdfundBoxTx(signed, userInput);
 	console.log({ signed });
+}
+
+export async function createCrowdfundLoan() {
+	const userInput = sampleSolofundLend;
+	const { utxos: userUtxo, height, me } = await getWeb3WalletData();
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+	const chainData: CreateLendChainContext = {
+		userUtxo,
+		serviceBox,
+		height
+	};
+	const unsignedTx = createLendTx(userInput, chainData);
+	const signed = await ergo.sign_tx(unsignedTx);
+
+	const unsignedTx2 = prepareCrowdFundFromLendTx(signed, height, me);
+	const signed2 = await ergo.sign_tx(unsignedTx2);
+	console.log({ signed2 });
 }
