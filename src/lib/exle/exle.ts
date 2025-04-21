@@ -1127,7 +1127,7 @@ function createCrowdBoxErgoTree(loanId: string): string {
 	return EXLE_TEMPLATE_CROWD_TREE.replace(EXLE_STRING_TO_REPLACE, loanId);
 }
 
-function crowdFundFromLendTx(
+export function crowdFundFromLendTx(
 	serviceBox: NodeBox,
 	lendBox: NodeBox,
 	crowdErgoTree: string,
@@ -1161,12 +1161,12 @@ function crowdFundFromLendTx(
 			amount: SCALA_MAX_LONG,
 			decimals: 0
 		})
-
 		.setAdditionalRegisters({
 			R4: SColl(SByte, loanId).toHex(), //R4: LoanId
 			R5: SColl(SByte, serviceBox.boxId).toHex(), //R5: CrowdFundTokenId
 			R6: SLong(0n).toHex() //R6: 0
 		});
+
 	console.log(serviceBox);
 	console.log(updatedServiceBox);
 	const unsignedTx = new TransactionBuilder(height)
@@ -1175,6 +1175,142 @@ function crowdFundFromLendTx(
 		})
 		.from([...utxo])
 		.to([updatedServiceBox, updatedLendBox, crowdFundBox, devFeeBox])
+		.payFee(miningFee)
+		.sendChangeTo(changeAddress)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+
+export function prepareFundCrowdFundBoxTx(
+	amount: bigint,
+	crowdFundBox: NodeBox,
+	lendBox: NodeBox,
+	utxo: any,
+	height: number,
+	miningFee: bigint,
+	changeAddress: string
+) {
+	const loanTokenId = decodeExleLoanTokenId(lendBox);
+	const { fundingGoal } = decodeExleFundingInfo(lendBox);
+	const fundedAmount = crowdFundBox.assets[2]?.amount ?? 0n;
+	let leftAmount = fundingGoal - fundedAmount;
+
+	let fundAmount = amount;
+	if (amount > leftAmount) {
+		fundAmount = leftAmount;
+	}
+
+	const { paymentBox, otherUtxo } = findSuitableBox(utxo, loanTokenId, fundAmount);
+
+	const unsignedTx = fundCrowdFundBoxTx(
+		fundAmount,
+		crowdFundBox,
+		lendBox,
+		paymentBox,
+		otherUtxo,
+		height,
+		miningFee,
+		changeAddress
+	);
+
+	return unsignedTx;
+}
+
+function findSuitableBox(utxo: any, loanTokenId: string, amount: bigint) {
+	// check check
+	// check if not enough amount in one single box
+	// error(u have enough tokens - but you need to consolidate them in One box)
+
+	//find suitable paymentBox from all Utxo?
+	// enough loan?
+	return { paymentBox, otherUtxo };
+}
+
+export function fundCrowdFundBoxTx(
+	amount: bigint,
+	crowdFundBox: NodeBox,
+	lendBox: NodeBox,
+	paymentBox: NodeBox,
+	otherUtxo: any,
+	height: number,
+	miningFee: bigint,
+	changeAddress: string
+) {
+	const outCrowdFundBox = new OutputBuilder(crowdFundBox.value, crowdFundBox.ergoTree);
+
+	const loanTokenId = decodeExleLoanTokenId(lendBox);
+	const { fundingGoal } = decodeExleFundingInfo(lendBox);
+	const fundedAmount = crowdFundBox.assets[2]?.amount ?? 0n;
+	let usedAmount = amount;
+
+	//CALCULATE LOANTOKEN AMOUNT IN USER PAYMENT BOX
+	const paymentBoxLoanTokenAmount =
+		paymentBox.assets.find((a) => a.tokenId == loanTokenId)?.amount ?? 0n;
+	// ---------------------------------------------
+	// error check?
+	if (paymentBoxLoanTokenAmount < amount) {
+		// + check otherUtxos?
+		console.error('not enough'); //
+	}
+	//
+
+	if (fundingGoal < amount + fundedAmount) {
+		usedAmount = fundingGoal - fundedAmount;
+
+		outCrowdFundBox
+			.addTokens([
+				crowdFundBox.assets[0],
+				{ tokenId: crowdFundBox.assets[1].tokenId, amount: 1n },
+				{ tokenId: loanTokenId, amount: fundedAmount + usedAmount }
+			])
+			.setAdditionalRegisters({
+				R4: crowdFundBox.additionalRegisters.R4,
+				R5: crowdFundBox.additionalRegisters.R5,
+				R6: SLong(1n).toHex()
+			});
+	} else {
+		outCrowdFundBox
+			.addTokens([
+				crowdFundBox.assets[0],
+				{ tokenId: crowdFundBox.assets[1].tokenId, amount: crowdFundBox.assets[1].amount - amount },
+				{ tokenId: loanTokenId, amount: fundedAmount + amount }
+			])
+			.setAdditionalRegisters(crowdFundBox.additionalRegisters);
+	}
+
+	const receiptBox = new OutputBuilder(paymentBox.value, changeAddress);
+
+	// unUsed loanTokenAmount
+	if (paymentBoxLoanTokenAmount > usedAmount) {
+		receiptBox.addTokens([
+			{
+				tokenId: crowdFundBox.assets[1].tokenId,
+				amount: usedAmount
+			},
+			{ tokenId: loanTokenId, amount: paymentBoxLoanTokenAmount - usedAmount }
+		]);
+	} else {
+		receiptBox.addTokens({
+			tokenId: crowdFundBox.assets[1].tokenId,
+			amount: usedAmount
+		});
+	}
+
+	//dataInput 0 - CrowdStateBox
+	const crowdStateBox = crowdFundBox;
+	//dataInput 1 - Placeholder
+	const placeholder = paymentBox;
+	//dataInput 2 - LoanBox
+
+	const unsignedTx = new TransactionBuilder(height)
+		.from([crowdFundBox, paymentBox], {
+			ensureInclusion: true
+		})
+		.from([...otherUtxo])
+		.withDataFrom([crowdStateBox, placeholder, lendBox])
+		.to([outCrowdFundBox, receiptBox])
 		.payFee(miningFee)
 		.sendChangeTo(changeAddress)
 		.build()
