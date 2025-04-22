@@ -207,8 +207,8 @@ export async function fundCrowdfundLoan() {
 	console.log('-----------');
 	const signed = await ergo.sign_tx(unsignedTx);
 	console.log({ signed });
-	//const sumbited = await ergo.submit_tx(signed);
-	//console.log({ sumbited });
+	const sumbited = await ergo.submit_tx(signed);
+	console.log({ sumbited });
 }
 
 export async function createCrowdfundLoan_old() {
