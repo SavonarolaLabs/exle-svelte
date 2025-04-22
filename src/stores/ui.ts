@@ -156,6 +156,11 @@ export async function fundCrowdfundLoan() {
 	const amount: bigint = 100n * 100n;
 	const { utxos: utxo, height, me } = await getWeb3WalletData();
 
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+
 	const lendbox = await fetchLendBox(
 		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
 	);
@@ -165,6 +170,8 @@ export async function fundCrowdfundLoan() {
 	const loanId = lendbox.assets[1].tokenId;
 
 	const crowdFundBox = (await fetchCrowdFundBoxesByLoanId(loanId))[0];
+
+	console.log('Crowd?', crowdFundBox);
 
 	const paymentBox = {
 		boxId: 'b334f7c6c947d5220940e68969d0b2f25aeb13730da7cc45b12cdeeb84dffffc',
@@ -188,13 +195,16 @@ export async function fundCrowdfundLoan() {
 		amount,
 		crowdFundBox,
 		lendbox,
+		serviceBox,
 		paymentBox,
 		otherUtxo,
 		height,
 		EXLE_MINING_FEE,
 		me
 	);
+	console.log('-----------');
 	console.log(unsignedTx);
+	console.log('-----------');
 	const signed = await ergo.sign_tx(unsignedTx);
 	console.log({ signed });
 	//const sumbited = await ergo.submit_tx(signed);
