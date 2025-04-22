@@ -1,12 +1,17 @@
 import {
 	createLendCrowdfundBoxTx,
 	createLendTx,
+	EXLE_MINING_FEE,
+	fetchCrowdFundBoxesByLoanId,
+	fetchLendBox,
 	fetchLoans,
 	fetchRepayments,
 	fetchServiceBox,
+	fundCrowdFundBoxTx,
 	parseLoanBox,
 	parseRepaymentBox,
 	prepareCrowdFundFromLendTx,
+	prepareNewCrowdFundTx,
 	type CreateLendChainContext,
 	type CreateLendUserInput,
 	type Loan,
@@ -92,7 +97,7 @@ const sampleSolofundLend: CreateLendUserInput = {
 	loanTokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a', // Test SigUSD
 	fundingGoal: 100n * 100n,
 	interestRate: 20n, // 2%
-	fundingDeadlineHeight: 1504829n + 100000n,
+	fundingDeadlineHeight: 1_504_829n + 100_000n,
 	repaymentHeightLength: 720n * 30n,
 	borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 };
@@ -112,11 +117,91 @@ export async function createSolofundLoan() {
 	const unsignedTx = createLendTx(userInput, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
 
-	const unsignedCrowdTx = createLendCrowdfundBoxTx(signed, userInput);
-	console.log({ signed });
+	//const unsignedCrowdTx = createLendCrowdfundBoxTx(signed, userInput);
+	//console.log({ signed });
+	const sumbited = await ergo.submit_tx(signed);
+	console.log({ sumbited });
 }
 
+//prepareNewCrowdFundTx
+// serviceBox: 9d5a69629b999312d1971ba10d185c914eea72505a0206f16ea52aa3a9f8f871
+// lendBox:
 export async function createCrowdfundLoan() {
+	const { utxos: utxo, height, me } = await getWeb3WalletData();
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+
+	const lendbox = await fetchLendBox(
+		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+	);
+	if (!lendbox) {
+		throw new Error('Failed to fetch lend box');
+	}
+
+	const unsignedTx = prepareNewCrowdFundTx(serviceBox, lendbox, utxo, height, me);
+	console.log(unsignedTx);
+	console.log('------CHECK-----');
+	console.log(unsignedTx.inputs[0].assets);
+	console.log(unsignedTx.outputs[0].assets);
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log({ signed });
+	const sumbited = await ergo.submit_tx(signed);
+	console.log({ sumbited });
+}
+
+//fundCrowdFundBoxTx
+export async function fundCrowdfundLoan() {
+	const amount: bigint = 100n * 100n;
+	const { utxos: utxo, height, me } = await getWeb3WalletData();
+
+	const lendbox = await fetchLendBox(
+		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+	);
+	if (!lendbox) {
+		throw new Error('Failed to fetch lend box');
+	}
+	const loanId = lendbox.assets[1].tokenId;
+
+	const crowdFundBox = (await fetchCrowdFundBoxesByLoanId(loanId))[0];
+
+	const paymentBox = {
+		boxId: 'b334f7c6c947d5220940e68969d0b2f25aeb13730da7cc45b12cdeeb84dffffc',
+		value: 50000000,
+		ergoTree: '0008cd02eb083423041003740c9e791b2fea5ecf6e273669630a25b7ecabf9145395e447',
+		assets: [
+			{
+				tokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a',
+				amount: 10000000000
+			}
+		],
+		creationHeight: 1509225,
+		additionalRegisters: {},
+		transactionId: '63bfcbcb9fd24c7e5f174a0a6f5cb2b2d8ef16f762af60b649f01a90acea2f4f',
+		index: 0
+	};
+
+	const otherUtxo = utxo.filter((x) => x.boxId != paymentBox.boxId);
+
+	const unsignedTx = fundCrowdFundBoxTx(
+		amount,
+		crowdFundBox,
+		lendbox,
+		paymentBox,
+		otherUtxo,
+		height,
+		EXLE_MINING_FEE,
+		me
+	);
+	console.log(unsignedTx);
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log({ signed });
+	//const sumbited = await ergo.submit_tx(signed);
+	//console.log({ sumbited });
+}
+
+export async function createCrowdfundLoan_old() {
 	const userInput = sampleSolofundLend;
 	const { utxos: userUtxo, height, me } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();

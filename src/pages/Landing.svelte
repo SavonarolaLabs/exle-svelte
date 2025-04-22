@@ -9,7 +9,7 @@
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 	import Roadmap from '../components/Roadmap.svelte';
 	import WhatDistinguishesExle from '../components/WhatDistinguishesExle.svelte';
-	import { createCrowdfundLoan, createSolofundLoan } from '../stores/ui';
+	import { createCrowdfundLoan, createSolofundLoan, fundCrowdfundLoan } from '../stores/ui';
 </script>
 
 <section class="space-y-6 md:space-y-8">
@@ -36,6 +36,7 @@
 	>
 		<Button onClick={createSolofundLoan} label="Create Solofund Loan" />
 		<Button onClick={createCrowdfundLoan} label="Create Crowdfund Loan" />
+		<Button onClick={fundCrowdfundLoan} label="FUND Crowdfund Loan" />
 	</div>
 
 	<div class="relative" style="max-width:522px;">

@@ -161,6 +161,7 @@ export function decodeBorrowerPk(box: NodeBox, register: string) {
 export function jsonParseBigInt(text: string) {
 	return JSON.parse(text, (key, value) => {
 		if (key === 'value' || key === 'amount') {
+			console.log(value, '' + value);
 			return '' + value;
 		}
 		return value;
@@ -262,6 +263,20 @@ export async function fetchServiceBox(): Promise<NodeBox | undefined> {
 	return boxes[0];
 }
 
+export async function fetchLendBox(tokenId: string): Promise<NodeBox | undefined> {
+	const boxes = await fetchBoxesByTokenId(tokenId);
+	return boxes[0];
+}
+
+export async function fetchBoxByTokenId(tokenId: string): Promise<NodeBox | undefined> {
+	const boxes = await fetchBoxesByTokenId(tokenId);
+	return boxes[0];
+}
+
+export function fetchCrowdFundBoxesByLoanId(loanId: string) {
+	const crowdErgoTree = createCrowdBoxErgoTree(loanId);
+	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
+}
 // fetch data end
 
 export interface Loan {
@@ -1123,6 +1138,30 @@ export function prepareCrowdFundFromLendTx(signedTx: object, height: number, me:
 	return unsignedTx;
 }
 
+export function prepareNewCrowdFundTx(
+	serviceBox: NodeBox,
+	lendBox: NodeBox,
+	utxo: any,
+	height: number,
+	me: string
+) {
+	const miningFee = EXLE_MINING_FEE;
+	const loanId = lendBox.assets[1].tokenId;
+	const crowdErgoTree = createCrowdBoxErgoTree(loanId);
+
+	const unsignedTx = crowdFundFromLendTx(
+		serviceBox,
+		lendBox,
+		crowdErgoTree,
+		utxo,
+		height,
+		miningFee,
+		me
+	);
+
+	return unsignedTx;
+}
+
 function createCrowdBoxErgoTree(loanId: string): string {
 	return EXLE_TEMPLATE_CROWD_TREE.replace(EXLE_STRING_TO_REPLACE, loanId);
 }
@@ -1242,7 +1281,8 @@ export function fundCrowdFundBoxTx(
 
 	const loanTokenId = decodeExleLoanTokenId(lendBox);
 	const { fundingGoal } = decodeExleFundingInfo(lendBox);
-	const fundedAmount = crowdFundBox.assets[2]?.amount ?? 0n;
+	const fundedAmount = BigInt(crowdFundBox.assets[2]?.amount ?? 0n);
+	console.log('fundedAmount,', fundedAmount);
 	let usedAmount = amount;
 
 	//CALCULATE LOANTOKEN AMOUNT IN USER PAYMENT BOX
@@ -1255,8 +1295,8 @@ export function fundCrowdFundBoxTx(
 		console.error('not enough'); //
 	}
 	//
-
-	if (fundingGoal < amount + fundedAmount) {
+	console.log(BigInt(crowdFundBox.assets[1].amount), amount);
+	if (BigInt(fundingGoal) < amount + fundedAmount) {
 		usedAmount = fundingGoal - fundedAmount;
 
 		outCrowdFundBox
@@ -1274,7 +1314,10 @@ export function fundCrowdFundBoxTx(
 		outCrowdFundBox
 			.addTokens([
 				crowdFundBox.assets[0],
-				{ tokenId: crowdFundBox.assets[1].tokenId, amount: crowdFundBox.assets[1].amount - amount },
+				{
+					tokenId: crowdFundBox.assets[1].tokenId,
+					amount: BigInt(crowdFundBox.assets[1].amount) - amount
+				},
 				{ tokenId: loanTokenId, amount: fundedAmount + amount }
 			])
 			.setAdditionalRegisters(crowdFundBox.additionalRegisters);
@@ -1283,13 +1326,13 @@ export function fundCrowdFundBoxTx(
 	const receiptBox = new OutputBuilder(paymentBox.value, changeAddress);
 
 	// unUsed loanTokenAmount
-	if (paymentBoxLoanTokenAmount > usedAmount) {
+	if (BigInt(paymentBoxLoanTokenAmount) > usedAmount) {
 		receiptBox.addTokens([
 			{
 				tokenId: crowdFundBox.assets[1].tokenId,
 				amount: usedAmount
 			},
-			{ tokenId: loanTokenId, amount: paymentBoxLoanTokenAmount - usedAmount }
+			{ tokenId: loanTokenId, amount: BigInt(paymentBoxLoanTokenAmount) - usedAmount }
 		]);
 	} else {
 		receiptBox.addTokens({
@@ -1299,11 +1342,39 @@ export function fundCrowdFundBoxTx(
 	}
 
 	//dataInput 0 - CrowdStateBox
-	const crowdStateBox = crowdFundBox;
+	//const crowdStateBox = crowdFundBox;
+	const crowdStateBox = {
+		boxId: 'e896c8ad70bbc8be6132ec4c87740c028617e85973c8b236651b652c75cf241e',
+		value: 1500000000,
+		ergoTree: '0008cd02eb083423041003740c9e791b2fea5ecf6e273669630a25b7ecabf9145395e447',
+		assets: [],
+		creationHeight: 1471878,
+		additionalRegisters: {},
+		transactionId: '0a01aeec0c38d674a4f00d9f12e55c579eb7fed1003cec9ddf9cf7288518b422',
+		index: 0
+	};
 	//dataInput 1 - Placeholder
-	const placeholder = paymentBox;
-	//dataInput 2 - LoanBox
 
+	const placeholder = {
+		boxId: '84d380f763eaafae04067632e97c96f4002af22cfa9a57e020e47fc3012a220e',
+		value: 1000000,
+		ergoTree: '0008cd02eb083423041003740c9e791b2fea5ecf6e273669630a25b7ecabf9145395e447',
+		assets: [
+			{
+				tokenId: 'da098134180c2391b108e7b9ec5727fa644daced2d4b0b3b9196d94c0fa57ace',
+				amount: 1
+			}
+		],
+		creationHeight: 1471927,
+		additionalRegisters: {},
+		transactionId: 'cb6aab3f7ddd804b32be6181cea4a381989c1e83ff738d3ceef2dd149d103b40',
+		index: 0
+	};
+
+	//const placeholder = paymentBox;
+	//dataInput 2 - LoanBox
+	console.log('7bd13a421902c1202c2f78617e2065429cd2d2f65cce2749122fbe145312e30d?');
+	console.log('crowdFundBox', { crowdFundBox });
 	const unsignedTx = new TransactionBuilder(height)
 		.from([crowdFundBox, paymentBox], {
 			ensureInclusion: true
