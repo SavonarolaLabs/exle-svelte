@@ -1,13 +1,14 @@
 import {
 	createLendCrowdfundBoxTx,
-	createLendTx,
+	createLendTokensTx,
 	EXLE_MINING_FEE,
 	fetchCrowdFundBoxesByLoanId,
 	fetchLendBox,
 	fetchLoans,
 	fetchRepayments,
 	fetchServiceBox,
-	fundCrowdFundBoxTx,
+	fundCrowdFundBoxTokensTx,
+	fundLendWithCrowdBoxTokensTx,
 	parseLoanBox,
 	parseRepaymentBox,
 	prepareCrowdFundFromLendTx,
@@ -102,7 +103,7 @@ const sampleSolofundLend: CreateLendUserInput = {
 	borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 };
 
-export async function createSolofundLoan() {
+export async function createSolofundLoanTokens() {
 	const userInput = sampleSolofundLend;
 	const { utxos: userUtxo, height } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();
@@ -114,7 +115,7 @@ export async function createSolofundLoan() {
 		serviceBox,
 		height
 	};
-	const unsignedTx = createLendTx(userInput, chainData);
+	const unsignedTx = createLendTokensTx(userInput, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
 
 	//const unsignedCrowdTx = createLendCrowdfundBoxTx(signed, userInput);
@@ -126,7 +127,7 @@ export async function createSolofundLoan() {
 //prepareNewCrowdFundTx
 // serviceBox: 9d5a69629b999312d1971ba10d185c914eea72505a0206f16ea52aa3a9f8f871
 // lendBox:
-export async function createCrowdfundLoan() {
+export async function createCrowdfundLoanTokens() {
 	const { utxos: utxo, height, me } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();
 	if (!serviceBox) {
@@ -152,7 +153,7 @@ export async function createCrowdfundLoan() {
 }
 
 //fundCrowdFundBoxTx
-export async function fundCrowdfundLoan() {
+export async function fundCrowdfundLoanTokens() {
 	const amount: bigint = 100n * 100n;
 	const { utxos: utxo, height, me } = await getWeb3WalletData();
 
@@ -191,7 +192,7 @@ export async function fundCrowdfundLoan() {
 
 	const otherUtxo = utxo.filter((x) => x.boxId != paymentBox.boxId);
 
-	const unsignedTx = fundCrowdFundBoxTx(
+	const unsignedTx = fundCrowdFundBoxTokensTx(
 		amount,
 		crowdFundBox,
 		lendbox,
@@ -211,6 +212,30 @@ export async function fundCrowdfundLoan() {
 	console.log({ sumbited });
 }
 
+export async function fundLoanWithCrowdBoxTokens() {
+	const { height } = await getWeb3WalletData();
+
+	const lendbox = await fetchLendBox(
+		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+	);
+	if (!lendbox) {
+		throw new Error('Failed to fetch lend box');
+	}
+
+	const loanId = lendbox.assets[1].tokenId;
+
+	const crowdFundBox = (await fetchCrowdFundBoxesByLoanId(loanId))[0];
+
+	const unsignedTx = fundLendWithCrowdBoxTokensTx(crowdFundBox, lendbox, height, EXLE_MINING_FEE);
+
+	console.log('----------');
+	console.log(unsignedTx);
+	//const signed = await ergo.sign_tx(unsignedTx);
+	//console.log({ signed });
+	//const sumbited = await ergo.submit_tx(signed);
+	//console.log({ sumbited });
+}
+
 export async function createCrowdfundLoan_old() {
 	const userInput = sampleSolofundLend;
 	const { utxos: userUtxo, height, me } = await getWeb3WalletData();
@@ -223,7 +248,7 @@ export async function createCrowdfundLoan_old() {
 		serviceBox,
 		height
 	};
-	const unsignedTx = createLendTx(userInput, chainData);
+	const unsignedTx = createLendTokensTx(userInput, chainData);
 	const signed = await ergo.sign_tx(unsignedTx);
 	console.log('ok');
 	console.log('------CHECK-----');

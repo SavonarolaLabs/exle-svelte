@@ -9,7 +9,12 @@
 	import HowItWorksSteps from '../components/HowItWorksSteps.svelte';
 	import Roadmap from '../components/Roadmap.svelte';
 	import WhatDistinguishesExle from '../components/WhatDistinguishesExle.svelte';
-	import { createCrowdfundLoan, createSolofundLoan, fundCrowdfundLoan } from '../stores/ui';
+	import {
+		createCrowdfundLoanTokens,
+		createSolofundLoanTokens,
+		fundCrowdfundLoanTokens,
+		fundLoanWithCrowdBoxTokens
+	} from '../stores/ui';
 </script>
 
 <section class="space-y-6 md:space-y-8">
@@ -34,9 +39,14 @@
 	<div
 		class="flex w-full flex-col justify-center space-y-4 px-3 md:flex-row md:space-x-4 md:space-y-0 md:px-0"
 	>
-		<Button onClick={createSolofundLoan} label="Create Solofund Loan" />
-		<Button onClick={createCrowdfundLoan} label="Create Crowdfund Loan" />
-		<Button onClick={fundCrowdfundLoan} label="FUND Crowdfund Loan" />
+		<Button onClick={createSolofundLoanTokens} label="Create Solofund Loan (TOKENS)" />
+		<Button onClick={createCrowdfundLoanTokens} label="Create Crowdfund Loan (TOKENS)" />
+		<Button onClick={fundCrowdfundLoanTokens} label="FUND Crowdfund Loan (TOKENS)" />
+		<Button onClick={fundLoanWithCrowdBoxTokens} label="FUND Loan with CrowdFundBox (TOKENS)" />
+		<Button
+			onClick={fundLoanWithCrowdBoxTokens}
+			label="Withdraw Lend (+ Lend => Repayment)(TOKENS)"
+		/>
 	</div>
 
 	<div class="relative" style="max-width:522px;">

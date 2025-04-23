@@ -978,6 +978,62 @@ function fundLendTokensTx(
 	return unsignedTx;
 }
 
+export function fundLendWithCrowdBoxTokensTx(
+	crowdBox: NodeBox,
+	lendBox: NodeBox,
+	height: number,
+	miningFee: bigint
+) {
+	const lenderErgoTree = crowdBox.ergoTree;
+
+	const fundingTokenId = decodeExleLoanTokenId(lendBox);
+	const { fundingGoal } = decodeExleFundingInfo(lendBox);
+
+	console.log('lendBox', lendBox);
+
+	console.log('fundingGoal', fundingGoal);
+	console.log('crowdBox', crowdBox);
+
+	// === Add Funding tokens + 2 mining Fee
+	const updatedLendBox = new OutputBuilder(
+		BigInt(lendBox.value) + 2n * miningFee,
+		lendBox.ergoTree
+	).addTokens([
+		lendBox.assets[0],
+		lendBox.assets[1],
+		{ amount: fundingGoal, tokenId: fundingTokenId }
+	]);
+
+	// === Add registers ===
+	updatedLendBox.setAdditionalRegisters({
+		R4: lendBox.additionalRegisters.R4,
+		R5: lendBox.additionalRegisters.R5,
+		R6: lendBox.additionalRegisters.R6,
+		R7: lendBox.additionalRegisters.R7,
+		R8: SColl(SByte, lenderErgoTree).toHex() // Add Lender ErgoTree
+	});
+
+	const updatedCrowdBox = new OutputBuilder(miningFee, crowdBox.ergoTree)
+		.addTokens([crowdBox.assets[0], crowdBox.assets[1]])
+		.setAdditionalRegisters({
+			R4: crowdBox.additionalRegisters.R4,
+			R5: crowdBox.additionalRegisters.R5,
+			R6: SLong(2n).toHex()
+		});
+
+	// === Сборка транзакции ===
+	const unsignedTx = new TransactionBuilder(height)
+		.from([lendBox, crowdBox], {
+			ensureInclusion: true
+		})
+		.to([updatedLendBox, updatedCrowdBox])
+		.payFee(miningFee)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+
 export type CreateLendUserInput = {
 	loanType: 'Crowdloan' | 'Solofund';
 	project: string[]; //project[0] - loanTitle, project[1] - loanDescription
@@ -995,7 +1051,10 @@ export type CreateLendChainContext = {
 	height: number;
 };
 
-export function createLendTx(userInput: CreateLendUserInput, chainData: CreateLendChainContext) {
+export function createLendTokensTx(
+	userInput: CreateLendUserInput,
+	chainData: CreateLendChainContext
+) {
 	const exleFundingInfo = {
 		fundingGoal: userInput.fundingGoal,
 		deadlineHeight: userInput.fundingDeadlineHeight,
@@ -1127,7 +1186,7 @@ export function prepareCrowdFundFromLendTx(signedTx: object, height: number, me:
 	// Crowd Adress or Crowd Ergo Tree ??
 	const crowdErgoTree = createCrowdBoxErgoTree(loanId);
 
-	const unsignedTx = crowdFundFromLendTx(
+	const unsignedTx = crowdFundFromLendTokensTx(
 		serviceBox,
 		lendBox,
 		crowdErgoTree,
@@ -1151,7 +1210,7 @@ export function prepareNewCrowdFundTx(
 	const loanId = lendBox.assets[1].tokenId;
 	const crowdErgoTree = createCrowdBoxErgoTree(loanId);
 
-	const unsignedTx = crowdFundFromLendTx(
+	const unsignedTx = crowdFundFromLendTokensTx(
 		serviceBox,
 		lendBox,
 		crowdErgoTree,
@@ -1168,7 +1227,7 @@ function createCrowdBoxErgoTree(loanId: string): string {
 	return EXLE_TEMPLATE_CROWD_TREE.replace(EXLE_STRING_TO_REPLACE, loanId);
 }
 
-export function crowdFundFromLendTx(
+export function crowdFundFromLendTokensTx(
 	serviceBox: NodeBox,
 	lendBox: NodeBox,
 	crowdErgoTree: string,
@@ -1224,7 +1283,7 @@ export function crowdFundFromLendTx(
 	return unsignedTx;
 }
 
-export function prepareFundCrowdFundBoxTx(
+export function prepareFundCrowdFundBoxTx_OLD(
 	amount: bigint,
 	crowdFundBox: NodeBox,
 	lendBox: NodeBox,
@@ -1245,7 +1304,7 @@ export function prepareFundCrowdFundBoxTx(
 
 	const { paymentBox, otherUtxo } = findSuitableBox(utxo, loanTokenId, fundAmount);
 
-	const unsignedTx = fundCrowdFundBoxTx(
+	const unsignedTx = fundCrowdFundBoxTokensTx(
 		fundAmount,
 		crowdFundBox,
 		lendBox,
@@ -1269,7 +1328,7 @@ function findSuitableBox(utxo: any, loanTokenId: string, amount: bigint) {
 	return { paymentBox, otherUtxo };
 }
 
-export function fundCrowdFundBoxTx(
+export function fundCrowdFundBoxTokensTx(
 	amount: bigint,
 	crowdFundBox: NodeBox,
 	lendBox: NodeBox,
