@@ -1352,19 +1352,7 @@ export function fundCrowdFundBoxTx(
 
 	//dataInput 0 - CrowdStateBox
 	const crowdStateBox = crowdFundBox;
-	// const crowdStateBox = {
-	// 	boxId: 'e896c8ad70bbc8be6132ec4c87740c028617e85973c8b236651b652c75cf241e',
-	// 	value: 1500000000,
-	// 	ergoTree: '0008cd02eb083423041003740c9e791b2fea5ecf6e273669630a25b7ecabf9145395e447',
-	// 	assets: [],
-	// 	creationHeight: 1471878,
-	// 	additionalRegisters: {},
-	// 	transactionId: '0a01aeec0c38d674a4f00d9f12e55c579eb7fed1003cec9ddf9cf7288518b422',
-	// 	index: 0
-	// };
 	//dataInput 1 - ServiceBox
-
-	//const placeholder = paymentBox;
 	//dataInput 2 - LoanBox
 	console.log('7bd13a421902c1202c2f78617e2065429cd2d2f65cce2749122fbe145312e30d?');
 
