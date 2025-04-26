@@ -1459,3 +1459,60 @@ export function fundCrowdFundBoxTokensTx(
 
 	return unsignedTx;
 }
+
+// missing functions
+export function fundRepaymentTokensTx(
+	fundingAmount: bigint,
+	funderBase58PK: string,
+	utxos: Array<any>,
+	repaymentBox: NodeBox,
+	height: number,
+	miningFee: bigint
+) {
+	const fundingTokenId = decodeExleLoanTokenId(repaymentBox);
+
+	const updatedRepaymentBox = new OutputBuilder(
+		BigInt(repaymentBox.value) + 2n * miningFee, // value???
+		repaymentBox.ergoTree
+	);
+
+	if (repaymentBox.assets[2]) {
+		updatedRepaymentBox.addTokens([
+			repaymentBox.assets[0],
+			repaymentBox.assets[1],
+			{
+				amount: BigInt(repaymentBox.assets[2].amount) + fundingAmount,
+				tokenId: fundingTokenId
+			}
+		]);
+	} else {
+		updatedRepaymentBox.addTokens([
+			repaymentBox.assets[0],
+			repaymentBox.assets[1],
+			{ amount: fundingAmount, tokenId: fundingTokenId }
+		]);
+	}
+
+	// === Add registers ===
+	updatedRepaymentBox.setAdditionalRegisters(repaymentBox.additionalRegisters);
+
+	// === Сборка транзакции ===
+	const unsignedTx = new TransactionBuilder(height)
+		.from([repaymentBox], {
+			ensureInclusion: true
+		})
+		.from([...utxos])
+		.to([updatedRepaymentBox])
+		.payFee(miningFee)
+		.sendChangeTo(funderBase58PK)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+//sendFromRepaymentBoxToLender??
+//sendFromCrowdBoxToLenders??
+//findSuitableBox
+
+// erg functions:
+//

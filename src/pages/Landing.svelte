@@ -13,7 +13,9 @@
 		createCrowdfundLoanTokens,
 		createSolofundLoanTokens,
 		fundCrowdfundLoanTokens,
-		fundLoanWithCrowdBoxTokens
+		fundLoanWithCrowdBoxTokens,
+		fundRepaymentTokens,
+		withdrawLendTokensTx
 	} from '../stores/ui';
 </script>
 
@@ -43,10 +45,8 @@
 		<Button onClick={createCrowdfundLoanTokens} label="Create Crowdfund Loan (TOKENS)" />
 		<Button onClick={fundCrowdfundLoanTokens} label="FUND Crowdfund Loan (TOKENS)" />
 		<Button onClick={fundLoanWithCrowdBoxTokens} label="FUND Loan with CrowdFundBox (TOKENS)" />
-		<Button
-			onClick={fundLoanWithCrowdBoxTokens}
-			label="Withdraw Lend (+ Lend => Repayment)(TOKENS)"
-		/>
+		<Button onClick={withdrawLendTokensTx} label="Withdraw Lend (+ Lend => Repayment)(TOKENS)" />
+		<Button onClick={fundRepaymentTokens} label="Fund Repayment(TOKENS)" />
 	</div>
 
 	<div class="relative" style="max-width:522px;">

@@ -9,9 +9,11 @@ import {
 	fetchServiceBox,
 	fundCrowdFundBoxTokensTx,
 	fundLendWithCrowdBoxTokensTx,
+	fundRepaymentTokensTx,
 	parseLoanBox,
 	parseRepaymentBox,
 	prepareCrowdFundFromLendTx,
+	prepareLendToRepaymentTokensTx,
 	prepareNewCrowdFundTx,
 	type CreateLendChainContext,
 	type CreateLendUserInput,
@@ -212,6 +214,37 @@ export async function fundCrowdfundLoanTokens() {
 	console.log({ sumbited });
 }
 
+export async function withdrawLendTokensTx() {
+	const { height, me } = await getWeb3WalletData();
+
+	const lendbox = await fetchLendBox(
+		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+	);
+	if (!lendbox) {
+		throw new Error('Failed to fetch lend box');
+	}
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+
+	const unsignedTx = prepareLendToRepaymentTokensTx(
+		height,
+		serviceBox,
+		lendbox,
+		EXLE_MINING_FEE,
+		me
+	);
+
+	console.log(unsignedTx);
+	// autosign + submit
+
+	//const signed = await ergo.sign_tx(unsignedTx);
+	//console.log({ signed });
+	//const sumbited = await ergo.submit_tx(signed);
+	//console.log({ sumbited });
+}
+
 export async function fundLoanWithCrowdBoxTokens() {
 	const { height } = await getWeb3WalletData();
 
@@ -232,6 +265,35 @@ export async function fundLoanWithCrowdBoxTokens() {
 	console.log(unsignedTx);
 	//const signed = await ergo.sign_tx(unsignedTx);
 	//console.log({ signed });
+	//const sumbited = await ergo.submit_tx(signed);
+	//console.log({ sumbited });
+}
+
+export async function fundRepaymentTokens() {
+	const { height, me, utxos: utxo } = await getWeb3WalletData();
+
+	const repaymentBox = await fetchLendBox(
+		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+	);
+	if (!repaymentBox) {
+		throw new Error('Failed to fetch lend box');
+	}
+
+	const fundingAmount = 10000n;
+
+	const unsignedTx = fundRepaymentTokensTx(
+		fundingAmount,
+		me,
+		utxo,
+		repaymentBox,
+		height,
+		EXLE_MINING_FEE
+	);
+
+	console.log('----------');
+	console.log(unsignedTx);
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log({ signed });
 	//const sumbited = await ergo.submit_tx(signed);
 	//console.log({ sumbited });
 }
