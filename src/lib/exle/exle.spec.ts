@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { decodeExleLenderTokens, jsonParseBigInt, parseRepaymentBox, type NodeBox } from './exle';
+import {
+	decodeExleLenderTokens,
+	decodeExleRepaymentDetailsTokens,
+	jsonParseBigInt,
+	parseRepaymentBox,
+	type NodeBox
+} from './exle';
 import { exleCrowdfundTxes, exleMockBoxesByTokenId, exleMockTxes } from './exleTx.mockdata';
 import {
 	decodeExleFundingInfo,
@@ -134,11 +140,50 @@ describe('Exle Function ', () => {
 		const enrichedTx = await enrichTxWithDataInputs(rawTx);
 		await printTxDetails(enrichedTx, txIndex);
 	});
-	it.skip('Test lendToRepayment from tx[4]', () => {
+	it.only('CHECK CURRENT TX 9', () => {
+		const tx = exleMockTxes[8]; //32 partial // 8 full
+		const tx2 = exleMockTxes[32]; //32 partial // 8 full
+
+		console.log({ tx });
+		console.log({ tx2 });
+		// console.log(decodeExleRepaymentDetailsTokens(tx.inputs[0]));
+		// console.log(decodeExleRepaymentDetailsTokens(tx.outputs[0]));
+
+		console.log(tx.inputs[0].value == tx2.inputs[0].value);
+		console.log(tx.outputs[1].value == tx2.outputs[1].value);
+		console.log(tx.inputs[0].value == tx2.inputs[0].value);
+		console.log(tx.outputs[1].value == tx2.outputs[1].value);
+
+		console.log(tx.inputs[1].assets);
+		console.log(tx2.inputs[1].assets);
+		//console.log(tx.outputs[0].assets);
+		//console.log(tx2.outputs[0].assets);
+		console.log(decodeExleRepaymentDetailsTokens(tx2.outputs[0]));
+
+		//Box [1] input overfunded ........
+
+		console.log(tx.outputs[0].ergoTree == tx2.outputs[0].ergoTree);
+		console.log(tx2.outputs[0].ergoTree);
+
+		console.log(
+			JSON.stringify(tx.inputs[0].additionalRegisters) ==
+				JSON.stringify(tx.outputs[0].additionalRegisters)
+		);
+
+		// a624c7 - LEND
+		// 302e93 - REPAYMENT
+		// 52cdac - CROWD
+
+		//console.log('Unsigned Lend -> Repayment Tx:');
+		//console.dir(unsignedTx, { depth: null });
+	});
+	it('Test lendToRepayment from tx[4]', () => {
 		const tx = exleMockTxes[4];
 		const serviceBox = tx.inputs.find(isExleServiceBox);
 		const lendBox = tx.inputs.find(isExleLendTokenBox);
 
+		console.log({ tx });
+		console.log(tx.outputs);
 		// a624c7 - LEND
 		// 302e93 - REPAYMENT
 		// 52cdac - CROWD
@@ -219,32 +264,32 @@ describe('Exle Function ', () => {
 			);
 
 			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
-			if (lowLevelLabel == 'Create Lend | Tokens') {
-				console.log(
-					'Label:',
-					lowLevelLabel,
-					'|',
-					fundingLevel,
-					'|',
-					repaymentLevel,
-					'(',
-					lockedLevel,
-					')'
-				);
-				const lendBox = tx.outputs.find(isExleLendTokenBox);
-				const funding = decodeExleFundingInfo(lendBox);
-				console.log(funding);
-				//console.log('Loan initial box:');
-				//console.log(tx.id);
-				//console.log(tx.inputs[1]); // SLT Fee Box
+			//if (lowLevelLabel == 'Create Lend | Tokens') {
+			console.log(
+				'Label:',
+				lowLevelLabel,
+				'|',
+				fundingLevel,
+				'|',
+				repaymentLevel,
+				'(',
+				lockedLevel,
+				')'
+			);
+			//const lendBox = tx.outputs.find(isExleLendTokenBox);
+			//const funding = decodeExleFundingInfo(lendBox);
+			//	console.log(funding);
+			//console.log('Loan initial box:');
+			//console.log(tx.id);
+			//console.log(tx.inputs[1]); // SLT Fee Box
 
-				//console.log(tx.outputs[0]); // SLT Fee Box
-				//console.log('Take Service input[0] => Drop it new NFT + give 1 Lend Token');
+			//console.log(tx.outputs[0]); // SLT Fee Box
+			//console.log('Take Service input[0] => Drop it new NFT + give 1 Lend Token');
 
-				//val serviceFeeBox: Box      = OUTPUTS(2)
-				//val sltLendBox: Box         = OUTPUTS(1)
-				//console.log(tx.outputs[0].additionalRegisters);
-			}
+			//val serviceFeeBox: Box      = OUTPUTS(2)
+			//val sltLendBox: Box         = OUTPUTS(1)
+			//console.log(tx.outputs[0].additionalRegisters);
+			//}
 
 			//console.log('Label:', label, '|', lowLevelLabel, '|', fundingLevel, '|', repaymentLevel);
 			//console.log('', lowLevelLabel);
@@ -256,9 +301,9 @@ describe('Exle Function ', () => {
 		const txes = boxes.map((b) => b.transactionId);
 		console.log(txes);
 	});
-	it.only('High/Low Level Recogniser', () => {
-		const txes = exleCrowdfundTxes;
-		//const txes = exleMockTxes.slice(17, 18); //16 - 21
+	it('High/Low Level Recogniser', () => {
+		//const txes = exleCrowdfundTxes;
+		const txes = exleMockTxes.slice(20, 21); //16 - 21
 
 		txes.forEach((tx) => {
 			const label = exleHighLevelRecogniser(tx);
@@ -268,8 +313,11 @@ describe('Exle Function ', () => {
 			);
 			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
 			console.log('Label:', label, '|', lowLevelLabel, '|', fundingLevel, '|', repaymentLevel);
-			console.log(decodeExleLenderTokens(tx.outputs[0]) == tx.outputs[1].ergoTree);
-			console.log(tx.outputs[1].additionalRegisters);
+			//console.log(decodeExleLenderTokens(tx.outputs[0]) == tx.outputs[1].ergoTree);
+
+			console.log(decodeExleRepaymentDetailsTokens(tx.inputs[0]));
+			console.log(decodeExleRepaymentDetailsTokens(tx.outputs[0]));
+
 			//console.log('', lowLevelLabel);
 		});
 	});

@@ -989,11 +989,6 @@ export function fundLendWithCrowdBoxTokensTx(
 	const fundingTokenId = decodeExleLoanTokenId(lendBox);
 	const { fundingGoal } = decodeExleFundingInfo(lendBox);
 
-	console.log('lendBox', lendBox);
-
-	console.log('fundingGoal', fundingGoal);
-	console.log('crowdBox', crowdBox);
-
 	// === Add Funding tokens + 2 mining Fee
 	const updatedLendBox = new OutputBuilder(
 		BigInt(lendBox.value) + 2n * miningFee,
@@ -1026,6 +1021,7 @@ export function fundLendWithCrowdBoxTokensTx(
 		.from([lendBox, crowdBox], {
 			ensureInclusion: true
 		})
+		.withDataFrom([crowdBox, lendBox])
 		.to([updatedLendBox, updatedCrowdBox])
 		.payFee(miningFee)
 		.build()
@@ -1283,41 +1279,7 @@ export function crowdFundFromLendTokensTx(
 	return unsignedTx;
 }
 
-export function prepareFundCrowdFundBoxTx_OLD(
-	amount: bigint,
-	crowdFundBox: NodeBox,
-	lendBox: NodeBox,
-	utxo: any,
-	height: number,
-	miningFee: bigint,
-	changeAddress: string
-) {
-	const loanTokenId = decodeExleLoanTokenId(lendBox);
-	const { fundingGoal } = decodeExleFundingInfo(lendBox);
-	const fundedAmount = crowdFundBox.assets[2]?.amount ?? 0n;
-	let leftAmount = fundingGoal - fundedAmount;
-
-	let fundAmount = amount;
-	if (amount > leftAmount) {
-		fundAmount = leftAmount;
-	}
-
-	const { paymentBox, otherUtxo } = findSuitableBox(utxo, loanTokenId, fundAmount);
-
-	const unsignedTx = fundCrowdFundBoxTokensTx(
-		fundAmount,
-		crowdFundBox,
-		lendBox,
-		paymentBox,
-		otherUtxo,
-		height,
-		miningFee,
-		changeAddress
-	);
-
-	return unsignedTx;
-}
-
+//findSuitableBox
 function findSuitableBox(utxo: any, loanTokenId: string, amount: bigint) {
 	// check check
 	// check if not enough amount in one single box
@@ -1466,13 +1428,14 @@ export function fundRepaymentTokensTx(
 	funderBase58PK: string,
 	utxos: Array<any>,
 	repaymentBox: NodeBox,
+	serviceBox: NodeBox,
 	height: number,
 	miningFee: bigint
 ) {
 	const fundingTokenId = decodeExleLoanTokenId(repaymentBox);
 
 	const updatedRepaymentBox = new OutputBuilder(
-		BigInt(repaymentBox.value) + 2n * miningFee, // value???
+		BigInt(repaymentBox.value) + 3n * miningFee, // value???
 		repaymentBox.ergoTree
 	);
 
@@ -1502,6 +1465,7 @@ export function fundRepaymentTokensTx(
 			ensureInclusion: true
 		})
 		.from([...utxos])
+		.withDataFrom([serviceBox])
 		.to([updatedRepaymentBox])
 		.payFee(miningFee)
 		.sendChangeTo(funderBase58PK)
@@ -1510,9 +1474,121 @@ export function fundRepaymentTokensTx(
 
 	return unsignedTx;
 }
-//sendFromRepaymentBoxToLender??
-//sendFromCrowdBoxToLenders??
-//findSuitableBox
 
-// erg functions:
-//
+//sendFromRepaymentBoxToLender
+export function sendFromRepaymentBoxToLenderTokensTx(
+	repaymentBox: NodeBox,
+	height: number,
+	miningFee: bigint
+) {
+	const lenderErgoTree = decodeExleLenderTokens(repaymentBox);
+
+	const updatedRepaymentBox = new OutputBuilder(
+		BigInt(repaymentBox.value) - 2n * miningFee, //
+		repaymentBox.ergoTree
+	).addTokens([repaymentBox.assets[0], repaymentBox.assets[1]]);
+
+	const { fundedHeight, repaymentAmount, interestAmount, repaymentDeadlineHeight, repaidAmount } =
+		decodeExleRepaymentDetailsTokens(repaymentBox);
+
+	const amountToRepay = repaymentBox.assets[2].amount;
+	const newRepaidAmount = repaidAmount + amountToRepay; //<==
+
+	const repaymentR9 = SColl(SLong, [
+		fundedHeight,
+		repaymentAmount,
+		interestAmount,
+		repaymentDeadlineHeight,
+		newRepaidAmount
+	]).toHex();
+
+	updatedRepaymentBox.setAdditionalRegisters({
+		R4: repaymentBox.additionalRegisters.R4,
+		R5: repaymentBox.additionalRegisters.R5,
+		R6: repaymentBox.additionalRegisters.R6,
+		R7: repaymentBox.additionalRegisters.R7,
+		R8: repaymentBox.additionalRegisters.R8,
+		R9: repaymentR9
+	});
+
+	const lenderBox = new OutputBuilder(miningFee, lenderErgoTree).addTokens(repaymentBox.assets[2]);
+
+	// === Сборка транзакции ===
+	const unsignedTx = new TransactionBuilder(height)
+		.from([repaymentBox], {
+			ensureInclusion: true
+		})
+		.to([updatedRepaymentBox, lenderBox])
+		.payFee(miningFee)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+
+//sendFromCrowdBoxToLenders	// lender box + Crowd => lender box + Crowd ??
+export function sendFromCrowdBoxToLenderTokensTx(
+	crowdFundBox: NodeBox,
+	utxos: any,
+	height: number,
+	miningFee: bigint
+) {
+	const updatedCrowdFundBox = new OutputBuilder(
+		BigInt(crowdFundBox.value) - 2n * miningFee, //
+		crowdFundBox.ergoTree
+	).addTokens([crowdFundBox.assets[0], crowdFundBox.assets[1]]);
+
+	updatedCrowdFundBox.setAdditionalRegisters({
+		R4: crowdFundBox.additionalRegisters.R4,
+		R5: crowdFundBox.additionalRegisters.R5,
+		R6: crowdFundBox.additionalRegisters.R6
+	});
+
+	//const lenderBox = new OutputBuilder(miningFee, lenderErgoTree).addTokens();
+
+	// === Сборка транзакции ===
+	const unsignedTx = new TransactionBuilder(height)
+		.from([crowdFundBox], {
+			ensureInclusion: true
+		})
+		.to([updatedCrowdFundBox, lenderBox])
+		.payFee(miningFee)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+
+export async function checkTransaction(tx: object): Promise<any> {
+	const response = await fetch('https://crystalpool.cc:4004/api/transactions/check', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ tx })
+	});
+
+	if (!response.ok) {
+		const error = await response.json().catch(() => ({}));
+		throw new Error(`Check failed: ${error.error || response.statusText}`);
+	}
+
+	return response.json();
+}
+
+export async function submitTransaction(tx: object): Promise<any> {
+	const response = await fetch('https://crystalpool.cc:4004/api/transactions/submit', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({ tx })
+	});
+
+	if (!response.ok) {
+		const error = await response.json().catch(() => ({}));
+		throw new Error(`Submit failed: ${error.error || response.statusText}`);
+	}
+
+	return response.json();
+}
