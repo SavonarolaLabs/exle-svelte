@@ -557,7 +557,7 @@ export function exleHighLevelRecogniser(tx): string {
 		if (inLendBox && outLendBox) {
 			if (tx.outputs[2]?.assets[1]) {
 				if (tx.outputs[2].assets[0].tokenId == EXLE_SLE_CROWD) {
-					label = 'Create CrowdFund';
+					label = 'Create CrowdFund | Tokens';
 				}
 			}
 		}
@@ -651,6 +651,14 @@ export function exleLowLevelRecogniser(tx: ErgoTransaction, label: string) {
 		repaymentLevel = 0n;
 		lowLevelLabel = 'Create Lend | Tokens';
 	}
+
+	if (label == 'Create CrowdFund | Tokens') {
+		outLendBox = tx.outputs.find(isExleLendTokenBox);
+		fundingLevel = 0n;
+		repaymentLevel = 0n;
+		lowLevelLabel = 'Create CrowdFund | Tokens';
+	}
+
 	if (label == 'Lend to Repayment | Tokens') {
 		inLendBox = tx.inputs.find(isExleLendTokenBox);
 		outRepaymentBox = tx.outputs.find(isExleRepaymentTokenBox);

@@ -259,11 +259,12 @@ describe('Exle Function ', () => {
 		// 21 -> 34
 		//const txes = exleMockTxes.slice(0, 34); //16 - 21
 		//const txes = loanHistoryTxs;
-		const txes = loanHistoryTxs.slice(19, 20); //16 - 21
+		const txes = loanHistoryTxs.slice(0, 20); //16 - 21
 		//const txes = exleMockTxes.slice(17, 18); //16 - 21
 
 		txes.forEach((tx, i) => {
 			const label = exleHighLevelRecogniser(tx);
+
 			if (
 				tx.outputs.find(
 					(ii) =>
@@ -272,13 +273,14 @@ describe('Exle Function ', () => {
 						ii.ergoTree == EXLE_REPAYMENT_BOX_ERGOTREE
 				)
 			) {
-				// console.log(i);
-				console.log(tx.inputs[0].boxId);
+				//console.log(i);
+				//console.log(tx.inputs[0].boxId);
 				// console.log(tx.inputs[1]);
 				// console.log(tx.outputs[0]);
 				// console.log(tx.outputs[1]);
-				console.log(tx.outputs[2]);
+				//console.log(tx.outputs[2]);
 			}
+
 			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
 				tx,
 				label
@@ -287,6 +289,7 @@ describe('Exle Function ', () => {
 			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
 			//if (lowLevelLabel == 'Create Lend | Tokens') {
 			console.log(
+				tx.inclusionHeight,
 				'HIGH:',
 				label,
 				'LOW:',
