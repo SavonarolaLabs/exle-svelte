@@ -45,6 +45,9 @@ export const EXLE_SLE_REPAYMENT_TOKEN_ID =
 //Exle: SLT CrowdFund Token V1.3 | This acts as a form of identification for SLT CrowdFundBox where lenders use to raise funds in a group.
 export const EXLE_SLE_CROWD = '52cdac4eaeeade5c52056b1a5e6ccb5d5c04f81988b15afa27b93dd3b56d4cf9';
 
+export const EXLE_PROXY_REPAYMENT =
+	'101504000e20302e93e8a379fb7bd750567947d0a396f2b138b51781e743457ee206e5b8ecc00400040002010500040204040404050004000400040204040400040401000400040004e8020100d806d601b2a4730000d602db63087201d6037301d604b2a5730200d605e4c6a7050ed60693c27204720595938cb27202730301860283010273047305017203d804d607b2e4c672010911730600d6089591b1720273078cb27202730800027309d609eded93e4c6a7040ec572019172077208938cb27202730a00017203d60a9a72088cb2db6308a7730b00029572099591720a7207d801d60bb2a5730c00d1eded938cb2db63087204730d0002720796830201938cb2db6308720b730e000299720a720793c2720b72057209d1ed7209938cb2db63087204730f0002720ad17310957206d802d607b2db63087204731100d608b27202731200d1ed96830301938c7207018c720801938c7207028c72080292a39a8cc7a70173137206d17314';
+
 const LENDING_TOKENS: TokenInfo[] = [
 	{
 		tokenId: '0000000000000000000000000000000000000000000000000000000000000000',
@@ -1488,6 +1491,35 @@ export function fundCrowdFundBoxTokensTx(
 }
 
 // missing functions
+export function fundRepaymentTokensSruProxyTx(
+	fundingAmount: bigint,
+	funderBase58PK: string,
+	utxos: Array<any>,
+	repaymentBox: NodeBox,
+	height: number,
+	miningFee: bigint
+) {
+	const fundingTokenId = decodeExleLoanTokenId(repaymentBox);
+
+	const proxyRepaymentBox = new OutputBuilder(4n * miningFee, EXLE_PROXY_REPAYMENT)
+		.setAdditionalRegisters({
+			R4: SColl(SByte, repaymentBox.boxId).toHex(),
+			R5: SColl(SByte, ErgoAddress.fromBase58(funderBase58PK).ergoTree).toHex()
+		})
+		.addTokens({ amount: fundingAmount, tokenId: fundingTokenId });
+
+	// === Сборка транзакции ===
+	const unsignedTx = new TransactionBuilder(height)
+		.from([...utxos])
+		.to([proxyRepaymentBox])
+		.payFee(miningFee)
+		.sendChangeTo(funderBase58PK)
+		.build()
+		.toEIP12Object();
+
+	return unsignedTx;
+}
+
 export function fundRepaymentTokensTx(
 	fundingAmount: bigint,
 	funderBase58PK: string,

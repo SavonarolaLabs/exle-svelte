@@ -12,6 +12,7 @@ import {
 	fetchServiceBox,
 	fundCrowdFundBoxTokensTx,
 	fundLendWithCrowdBoxTokensTx,
+	fundRepaymentTokensSruProxyTx,
 	fundRepaymentTokensTx,
 	parseLoanBox,
 	parseRepaymentBox,
@@ -316,11 +317,6 @@ export async function repayLoanByIdTokens(loanId: string, inputAmount: string) {
 	}
 	const { height, me, utxos } = await getWeb3WalletData();
 
-	const serviceBox = await fetchServiceBox();
-	if (!serviceBox) {
-		throw new Error('Failed to fetch service box');
-	}
-
 	const lendBox = await fetchLendBox(loanId);
 	if (!lendBox) {
 		throw new Error('Failed to fetch lend box');
@@ -330,12 +326,11 @@ export async function repayLoanByIdTokens(loanId: string, inputAmount: string) {
 
 	const amount = BigInt(Math.floor(Number(inputAmount) * 10 ** decimals));
 
-	const unsignedTx = fundRepaymentTokensTx(
+	const unsignedTx = fundRepaymentTokensSruProxyTx(
 		amount,
 		me,
 		utxos,
 		lendBox, // treat this as a repaymentBox
-		serviceBox,
 		height,
 		EXLE_MINING_FEE
 	);
@@ -345,9 +340,8 @@ export async function repayLoanByIdTokens(loanId: string, inputAmount: string) {
 	const signed = await ergo.sign_tx(unsignedTx);
 	console.log('Signed TX:', signed);
 
-	//const submitted = await ergo.submit_tx(signed);
-	//console.log('Submitted TX ID:', submitted);
-
+	const submitted = await ergo.submit_tx(signed);
+	console.log('Submitted TX ID:', submitted);
 	return submitted;
 }
 
