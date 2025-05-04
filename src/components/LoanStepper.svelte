@@ -59,7 +59,7 @@
 			loanType: 'Solofund',
 			project: [loanTitle, loanDescription],
 			loanTokenId: token.tokenId,
-			fundingGoal: BigInt(Math.floor(Number(fundingGoal) * token.decimals)),
+			fundingGoal: BigInt(Math.floor(Number(fundingGoal) * 10 ** token.decimals)),
 			interestRate: BigInt(Math.floor(Number(fundingGoal) * 10)),
 
 			fundingDeadlineLength: BigInt(toErgoBlocks(Math.floor(Number(fundingDeadline)), 'Months')),
