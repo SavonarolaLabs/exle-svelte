@@ -384,7 +384,7 @@ export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | unde
 
 	const repayment = {
 		phase: 'repayment' as const,
-		loanId: box.assets[0].tokenId,
+		loanId: box.assets[1].tokenId,
 		loanType: 'Crowdloan',
 		loanTitle: project[0],
 		loanDescription: project.slice(1).join('\n'),
