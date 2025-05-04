@@ -1,6 +1,7 @@
 import {
 	createLendCrowdfundBoxTx,
 	createLendTokensTx,
+	decodeExleFundingInfo,
 	EXLE_MINING_FEE,
 	fetchCrowdFundBoxesByLoanId,
 	fetchLendBox,
@@ -14,6 +15,7 @@ import {
 	parseLoanBox,
 	parseRepaymentBox,
 	prepareCrowdFundFromLendTx,
+	preparefundLendTokensTx,
 	prepareLendToRepaymentTokensTx,
 	prepareNewCrowdFundTx,
 	type CreateLendChainContext,
@@ -21,7 +23,7 @@ import {
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
-import { writable, type Writable } from 'svelte/store';
+import { get, writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
 export const change_address: Writable<string> = writable(
@@ -41,6 +43,29 @@ export const token_balance: Writable<Object[]> = writable([
 	}
 ]);
 
+async function disconnectWeb3Wallet() {
+	console.log('disconnectWeb3Wallet');
+	await window.ergoConnector[get(connected_wallet)].disconnect();
+	connected_wallet.set('');
+}
+
+async function connectWeb3Wallet(walletname = '') {
+	const wallets = window.ergoConnector ? Object.keys(window.ergoConnector) : [];
+	if (wallets.length > 0) {
+		try {
+			let connected = await window.ergoConnector[wallets[0]].connect();
+			if (connected) {
+				connected_wallet.set(wallets[0]);
+				//await loadWeb3WalletTokens();
+			} else {
+				console.warn(`Connecting ${wallets[0]} failed.`);
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	}
+}
+
 export function toggleMobileMenu() {
 	is_mobile_menu_open.update((value) => !value);
 }
@@ -50,11 +75,11 @@ export function closeMobileMenu() {
 }
 
 export function logout() {
-	connected_wallet.set('');
+	disconnectWeb3Wallet();
 }
 
 export function connectWallet() {
-	connected_wallet.set('nautilus');
+	connectWeb3Wallet();
 }
 
 export const is_dark: Writable<boolean> = writable(true);
@@ -247,6 +272,35 @@ export async function withdrawLendTokensTx() {
 	//console.log({ signed });
 	//const sumbited = await ergo.submit_tx(signed);
 	//console.log({ sumbited });
+}
+
+export async function fundLoanSolobyId(loanId: string) {
+	100n * 100n; // Example amount (10,000)
+	const { height, utxos, me } = await getWeb3WalletData();
+
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) throw new Error('Failed to fetch service box');
+
+	const lendBox = await fetchLendBox(loanId);
+	if (!lendBox) throw new Error('Failed to fetch lend box');
+	const { fundingGoal } = decodeExleFundingInfo(lendBox);
+
+	const unsignedTx = preparefundLendTokensTx(
+		fundingGoal,
+		me,
+		utxos,
+		lendBox,
+		height,
+		EXLE_MINING_FEE
+	);
+
+	console.log('Unsigned TX:', unsignedTx);
+
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log('Signed TX:', signed);
+
+	const submitted = await ergo.submit_tx(signed);
+	console.log('Submitted TX ID:', submitted);
 }
 
 export async function fundLoanWithCrowdBoxTokens() {

@@ -7,6 +7,8 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import TickCircle from '../../icons/TickCircle.svelte';
+	import { fundLoanSolobyId } from '../../stores/ui';
+	import { shortenAddress } from '$lib/utils';
 	export let loan: Loan;
 
 	let amount = '';
@@ -15,7 +17,32 @@
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	function onButtonClick() {}
+	function canFundSoloFundLoan(loan: Loan) {
+		return (
+			loan.loanType == 'Solofund' &&
+			!loan.isReadyForWithdrawal &&
+			loan.phase === 'loan' &&
+			loan.daysLeft > 0
+		);
+	}
+
+	async function onButtonClick() {
+		if (loan.isReadyForWithdrawal) {
+			console.log('Withdrawing loan:', loan.loanId);
+			return;
+		}
+
+		if (loan.phase === 'loan') {
+			fundLoanSolobyId(loan.loanId);
+			console.log(`Funding loan: ${loan.loanId} with amount: ${amount} ${loan.fundingToken}`);
+			return;
+		}
+
+		if (loan.phase === 'repayment') {
+			console.log(`Repaying loan: ${loan.loanId} with amount: ${amount} ${loan.fundingToken}`);
+			return;
+		}
+	}
 </script>
 
 <div class="mb-8 mt-10 max-xl:px-4">
@@ -25,7 +52,7 @@
 	<div class="xl:w-1/2">
 		<div class="mb-2 flex items-center justify-between text-xs font-thin">
 			<div>
-				<span>Loan ID: {loan.loanId}</span>
+				<span>Loan ID: {shortenAddress(loan.loanId)}</span>
 				<h3 class="mb-3 text-xl font-medium">{loan.loanTitle}</h3>
 			</div>
 			<span class="rounded-md bg-gray-100 px-2 py-[4px] text-sm dark:bg-dark-gray"
@@ -37,7 +64,7 @@
 			{loan.loanDescription}
 		</p>
 		<p class="font-thin">Borrower:</p>
-		<p class="font-thin">{loan.creator}</p>
+		<p class="font-thin">{shortenAddress(loan.creator)}</p>
 
 		<ul class="my-5 space-y-4 text-sm">
 			<li class="flex items-end gap-2">
@@ -109,13 +136,24 @@
 				{/if}
 				<div class="mb-2 mt-8">Amount</div>
 				<div class="relative mb-10 w-full">
-					<input
-						id="interest-rate"
-						type="number"
-						placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
-						bind:value={amount}
-						class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
-					/>
+					{#if canFundSoloFundLoan(loan)}
+						<input
+							id="interest-rate"
+							type="number"
+							readonly
+							placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
+							bind:value={loan.fundingGoal}
+							class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+						/>
+					{:else}
+						<input
+							id="interest-rate"
+							type="number"
+							placeholder={loan.loanType == 'Solofund' ? loan.fundingGoal : ''}
+							bind:value={amount}
+							class=" w-full rounded-xl border-2 border-[#e5e5eb] bg-transparent dark:border-dark-border"
+						/>
+					{/if}
 					<span class="absolute inset-y-0 right-0 flex items-center px-4">{loan.fundingToken}</span>
 				</div>
 			{/if}
@@ -127,7 +165,7 @@
 					onClick={onButtonClick}
 					label={loan.phase == 'loan' ? 'Fund the loan' : 'Repay the loan'}
 					variant="primary"
-					disabled={!amount || loan.daysLeft == 0}
+					disabled={!canFundSoloFundLoan(loan) && (!amount || loan.daysLeft == 0)}
 					w100={true}
 				/>
 			{/if}
