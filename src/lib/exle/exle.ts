@@ -213,7 +213,8 @@ export function jsonParseBigInt(text: string) {
 function blocksToDays(blocks: bigint): number {
 	if (blocks === 0n) return 0;
 	const blocksPerDay = 720n;
-	return Number((blocks + blocksPerDay - 1n) / blocksPerDay);
+	const left = Number((blocks + blocksPerDay - 1n) / blocksPerDay);
+	return left < 0 ? 0 : left;
 }
 
 function isPK(checkString: string): boolean {
@@ -365,7 +366,7 @@ export interface Loan {
 	isRepayed?: boolean;
 }
 
-export function parseRepaymentBox(box: NodeBox): Loan | undefined {
+export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | undefined {
 	if (box.assets.length < 2 || !box.additionalRegisters.R7) return;
 	const token = parseLoanToken(box);
 	if (!token) return;
@@ -390,7 +391,7 @@ export function parseRepaymentBox(box: NodeBox): Loan | undefined {
 		fundingToken: token.ticker,
 		fundedAmount: fundedAmount + ' ' + token.ticker,
 		fundedPercentage: Number(repaymentLevel),
-		daysLeft: blocksToDays(repay.repaymentDeadlineHeight), // TODO: - height
+		daysLeft: blocksToDays(repay.repaymentDeadlineHeight - BigInt(nodeInfo.fullHeight)), // TODO: - height
 		creator: decodeExleBorrower(box),
 		isReadyForWithdrawal: lockedAmount > 0n, // TODO: handle erg
 		isRepayed: repaymentLevel == 100n

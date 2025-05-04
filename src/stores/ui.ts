@@ -110,7 +110,9 @@ export async function loadLoansAndRepayments() {
 		.filter(Boolean) as Loan[];
 
 	const repaymentBoxes = await fetchRepayments();
-	const repaymentList: Loan[] = repaymentBoxes.map(parseRepaymentBox).filter(Boolean) as Loan[];
+	const repaymentList: Loan[] = repaymentBoxes
+		.map((b) => parseRepaymentBox(b, nodeInfo))
+		.filter(Boolean) as Loan[];
 
 	repayments.set([...loanList, ...repaymentList]);
 }
