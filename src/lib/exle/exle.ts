@@ -270,6 +270,69 @@ export async function fetchNodeInfo(): Promise<NodeInfo | null> {
 }
 
 // fetch data start
+type ErgoTransaction = {
+	id: string;
+	inputs: any[];
+	outputs: any[];
+	[key: string]: any;
+};
+
+type TransactionsResponse = {
+	items: ErgoTransaction[];
+};
+
+async function fetchTransactionsByAddress(
+	address: string,
+	offset: number = 0,
+	limit: number = 100
+): Promise<ErgoTransaction[]> {
+	const url = `http://213.239.193.208:9053/blockchain/transaction/byAddress?offset=${offset}&limit=${limit}`;
+
+	try {
+		const response = await fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify(address)
+		});
+
+		if (!response.ok) {
+			const errorText = await response.text();
+			throw new Error(`HTTP ${response.status}: ${errorText}`);
+		}
+
+		const data: TransactionsResponse = await response.json();
+
+		if (Array.isArray(data.items)) {
+			return data.items;
+		} else {
+			console.error('Unexpected response format:', data);
+			return [];
+		}
+	} catch (error) {
+		console.error('Failed to fetch transactions:', error);
+		return [];
+	}
+}
+
+async function fetchTransactionsByTree(
+	tree: string,
+	offset: number = 0,
+	limit: number = 100
+): Promise<ErgoTransaction[]> {
+	const address = ErgoAddress.fromErgoTree(tree).toString();
+	return fetchTransactionsByAddress(address, offset, limit);
+}
+
+export async function fetchLoanHistory(
+	offset: number = 0,
+	limit: number = 100
+): Promise<ErgoTransaction[]> {
+	return fetchTransactionsByTree(EXLE_LEND_BOX_ERGOTREE, offset, limit);
+}
+
 async function fetchBoxesByTokenId(tokenId: string): Promise<NodeBox[]> {
 	const baseUrl = 'http://213.239.193.208:9053';
 	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=0&limit=1&sortDirection=desc&includeUnconfirmed=true`;
