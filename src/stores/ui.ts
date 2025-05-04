@@ -2,6 +2,7 @@ import {
 	createLendCrowdfundBoxTx,
 	createLendTokensTx,
 	decodeExleFundingInfo,
+	decodeExleLoanTokenId,
 	EXLE_MINING_FEE,
 	fetchCrowdFundBoxesByLoanId,
 	fetchLendBox,
@@ -23,6 +24,7 @@ import {
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
+import { decimalsByTokenId } from '$lib/tokens';
 import { get, writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
@@ -306,6 +308,47 @@ export async function fundLoanSolobyId(loanId: string) {
 
 	const submitted = await ergo.submit_tx(signed);
 	console.log('Submitted TX ID:', submitted);
+}
+
+export async function repayLoanByIdTokens(loanId: string, inputAmount: string) {
+	if (!inputAmount || isNaN(Number(inputAmount))) {
+		throw new Error('Invalid amount');
+	}
+	const { height, me, utxos } = await getWeb3WalletData();
+
+	const serviceBox = await fetchServiceBox();
+	if (!serviceBox) {
+		throw new Error('Failed to fetch service box');
+	}
+
+	const lendBox = await fetchLendBox(loanId);
+	if (!lendBox) {
+		throw new Error('Failed to fetch lend box');
+	}
+	const tokenId = decodeExleLoanTokenId(lendBox);
+	const decimals = decimalsByTokenId(tokenId);
+
+	const amount = BigInt(Math.floor(Number(inputAmount) * 10 ** decimals));
+
+	const unsignedTx = fundRepaymentTokensTx(
+		amount,
+		me,
+		utxos,
+		lendBox, // treat this as a repaymentBox
+		serviceBox,
+		height,
+		EXLE_MINING_FEE
+	);
+
+	console.log('Prepared TX:', unsignedTx);
+
+	const signed = await ergo.sign_tx(unsignedTx);
+	console.log('Signed TX:', signed);
+
+	//const submitted = await ergo.submit_tx(signed);
+	//console.log('Submitted TX ID:', submitted);
+
+	return submitted;
 }
 
 export async function fundLoanWithCrowdBoxTokens() {

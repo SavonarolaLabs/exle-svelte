@@ -13,3 +13,7 @@ export const TOKENS = [
 export function tokenByTicker(ticker: string) {
 	return TOKENS.find((t) => t.ticker == ticker);
 }
+
+export function decimalsByTokenId(tokenId: string): number {
+	return TOKENS.find((t) => t.tokenId == tokenId)!.decimals;
+}

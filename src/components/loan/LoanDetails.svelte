@@ -7,7 +7,7 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import TickCircle from '../../icons/TickCircle.svelte';
-	import { fundLoanSolobyId } from '../../stores/ui';
+	import { fundLoanSolobyId, repayLoanByIdTokens } from '../../stores/ui';
 	import { shortenAddress } from '$lib/utils';
 	export let loan: Loan;
 
@@ -39,6 +39,7 @@
 		}
 
 		if (loan.phase === 'repayment') {
+			repayLoanByIdTokens(loan.loanId, amount);
 			console.log(`Repaying loan: ${loan.loanId} with amount: ${amount} ${loan.fundingToken}`);
 			return;
 		}
