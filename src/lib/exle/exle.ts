@@ -1036,7 +1036,7 @@ export type CreateLendInputParams = {
 	loanTokenId: null | string;
 	fundingGoal: bigint; // funding goal
 	interestRate: bigint; // in / 1000n
-	fundingDeadlineHeight: bigint; // in height + blocks
+	fundingDeadlineLength: bigint; // in height + blocks
 	repaymentHeightLength: bigint; // in blocks
 	borrowerAddress: string;
 };
@@ -1053,7 +1053,7 @@ export function createLendTokensTx(
 ) {
 	const exleFundingInfo = {
 		fundingGoal: userInput.fundingGoal,
-		deadlineHeight: userInput.fundingDeadlineHeight,
+		deadlineHeight: userInput.fundingDeadlineLength + BigInt(chainData.height),
 		interestRate: userInput.interestRate,
 		repaymentHeightLength: userInput.repaymentHeightLength,
 		serviceFee: decodeExleServiceFee(chainData.serviceBox)

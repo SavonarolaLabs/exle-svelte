@@ -16,7 +16,7 @@ const sampleSolofundLend: CreateLendInputParams = {
 	loanTokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a', // Test SigUSD
 	fundingGoal: 100n * 100n,
 	interestRate: 20n, // 2%
-	fundingDeadlineHeight: 1_512_787n + 100_000n,
+	fundingDeadlineLength: 100_000n,
 	repaymentHeightLength: 720n * 30n,
 	borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 };

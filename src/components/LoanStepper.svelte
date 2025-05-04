@@ -62,7 +62,7 @@
 			fundingGoal: BigInt(Math.floor(Number(fundingGoal) * token.decimals)),
 			interestRate: BigInt(Math.floor(Number(fundingGoal) * 10)),
 
-			fundingDeadlineHeight: BigInt(toErgoBlocks(Math.floor(Number(fundingDeadline)), 'Months')),
+			fundingDeadlineLength: BigInt(toErgoBlocks(Math.floor(Number(fundingDeadline)), 'Months')),
 			repaymentHeightLength: BigInt(toErgoBlocks(Math.floor(Number(repaymentPeriod)), 'Months')),
 			borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 		};
