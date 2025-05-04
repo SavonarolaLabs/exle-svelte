@@ -277,7 +277,7 @@ describe('Exle Function ', () => {
 				')'
 			);
 			//const lendBox = tx.outputs.find(isExleLendTokenBox);
-			//const funding = decodeExleFundingInfo(lendBox);
+			//const funding = (lendBox);decodeExleFundingInfo
 			//	console.log(funding);
 			//console.log('Loan initial box:');
 			//console.log(tx.id);

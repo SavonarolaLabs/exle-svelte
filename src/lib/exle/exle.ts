@@ -179,6 +179,25 @@ type NodeInfo = {
 };
 
 // utils start
+export function convertToBigInt(obj: any): any {
+	if (Array.isArray(obj)) {
+		return obj.map(convertToBigInt);
+	} else if (obj && typeof obj === 'object') {
+		const copy: any = {};
+		for (const [k, v] of Object.entries(obj)) {
+			if (typeof v == 'string' && v.includes('.')) {
+				copy[k] = v;
+			} else if (k === 'value' || k === 'amount') {
+				copy[k] = BigInt(String(v));
+			} else {
+				copy[k] = convertToBigInt(v);
+			}
+		}
+		return copy;
+	}
+	return obj;
+}
+
 export function decodeBigInt(box: NodeBox, register: string): bigint | undefined {
 	const r = box.additionalRegisters[register];
 	if (r) {
@@ -413,6 +432,16 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
 }
 // fetch data end
+export type HistoryType = '🎉 Loan Funded' | 'Loan Created';
+export type LoanRole = 'Borrower' | 'Lender';
+export type HistoryItem = {
+	type: HistoryType;
+	role: LoanRole;
+	txId: string;
+	timestamp: number;
+	amount: bigint | undefined;
+	tokenId: string | undefined;
+};
 
 export interface Loan {
 	phase: 'loan' | 'repayment';
@@ -552,7 +581,37 @@ export function exleHighLevelRecogniser(tx): string {
 	return label;
 }
 
-export function exleLowLevelRecogniser(tx, label: string) {
+export function txToHistoryItem(tx: ErgoTransaction, label: string): HistoryItem {
+	if (label == 'Lend to Repayment | Tokens') {
+		const role = 'Borrower';
+
+		const inLendBox = tx.inputs.find(isExleLendTokenBox);
+		const tokenId = decodeExleLoanTokenId(inLendBox);
+		const { fundingGoal: amount } = decodeExleFundingInfo(inLendBox);
+
+		return {
+			type: '🎉 Loan Funded',
+			role,
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount,
+			tokenId
+		};
+	} else if (label == 'Create Lend | Tokens') {
+		return {
+			type: 'Loan Created',
+			role: 'Borrower',
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount: undefined,
+			tokenId: undefined
+		};
+	} else {
+		return label;
+	}
+}
+
+export function exleLowLevelRecogniser(tx: ErgoTransaction, label: string) {
 	let inServiceBox;
 	let outServiceBox;
 	let inLendBox;
