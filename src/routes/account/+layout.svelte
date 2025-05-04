@@ -3,7 +3,8 @@
 	import Button from '../../components/Button.svelte';
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
-	import { token_balance } from '../../stores/ui';
+	import { change_address, token_balance } from '../../stores/ui';
+	import { shortenAddress } from '$lib/utils';
 
 	let { children } = $props();
 
@@ -21,7 +22,7 @@
 	<div class="mb-4 mt-8 hidden items-center justify-between sm:flex">
 		<div>
 			<div class="text-xl font-medium">My Account</div>
-			<div class="text-sm text-gray-500">9eq6S...QXssg</div>
+			<div class="text-sm text-gray-500">{shortenAddress($change_address)}</div>
 		</div>
 		<div class="flex items-center gap-4">
 			{#each $token_balance as token}

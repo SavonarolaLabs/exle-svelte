@@ -1,21 +1,22 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { loans } from '../../../data/DummyLoans';
 	import LoanWidget from '../../../components/loan/LoanWidget.svelte';
 	import type { Loan } from '../../../data/DummyLoans';
-	import { change_address } from '../../../stores/ui';
+	import { change_address, repayments } from '../../../stores/ui';
 	import EmptyRepayments from '../../../components/loan/EmptyRepayments.svelte';
 
 	let activeRepayments: Loan[] = [];
 	let repaymentHistory: Loan[] = [];
-	onMount(() => {
-		activeRepayments = loans.filter(
-			(l) => l.daysLeft > 0 && !l.isRepayed && l.creator == $change_address && l.phase != 'loan'
+
+	// Reactively recalculate when change_address changes and is not empty
+	$: {
+		activeRepayments = $repayments.filter(
+			(l) => l.daysLeft > 0 && !l.isRepayed && l.creator === $change_address && l.phase !== 'loan'
 		);
-		repaymentHistory = loans.filter(
-			(l) => (l.daysLeft == 0 || l.isRepayed) && l.creator == $change_address && l.phase != 'loan'
+		repaymentHistory = $repayments.filter(
+			(l) =>
+				(l.daysLeft === 0 || l.isRepayed) && l.creator === $change_address && l.phase !== 'loan'
 		);
-	});
+	}
 </script>
 
 {#if activeRepayments.length > 0}
@@ -46,6 +47,6 @@
 	</div>
 {/if}
 
-{#if activeRepayments.length == 0 && repaymentHistory.length == 0}
-	<EmptyRepayments></EmptyRepayments>
+{#if activeRepayments.length === 0 && repaymentHistory.length === 0}
+	<EmptyRepayments />
 {/if}

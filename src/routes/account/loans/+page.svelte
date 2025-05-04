@@ -1,10 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import EmptyLoans from '../../../components/loan/EmptyLoans.svelte';
-	import { loans } from '../../../data/DummyLoans';
 	import LoanWidget from '../../../components/loan/LoanWidget.svelte';
 	import type { Loan } from '../../../data/DummyLoans';
-	import { change_address } from '../../../stores/ui';
+	import { change_address, repayments } from '../../../stores/ui';
 
 	let withdrawableLoans: Loan[] = [];
 	let activeLoanRequests: Loan[] = [];
@@ -16,10 +15,10 @@
 	$: recalculateLoans($change_address);
 
 	function recalculateLoans(address: string) {
-		withdrawableLoans = loans.filter(
+		withdrawableLoans = $repayments.filter(
 			(l) => l.isReadyForWithdrawal && l.creator === address && l.phase === 'loan'
 		);
-		activeLoanRequests = loans.filter(
+		activeLoanRequests = $repayments.filter(
 			(l) => !l.isReadyForWithdrawal && l.creator === address && l.phase === 'loan'
 		);
 	}

@@ -392,7 +392,7 @@ export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | unde
 		fundedAmount: fundedAmount + ' ' + token.ticker,
 		fundedPercentage: Number(repaymentLevel),
 		daysLeft: blocksToDays(repay.repaymentDeadlineHeight - BigInt(nodeInfo.fullHeight)), // TODO: - height
-		creator: decodeExleBorrower(box),
+		creator: ErgoAddress.fromErgoTree(decodeExleBorrower(box)).toString(),
 		isReadyForWithdrawal: lockedAmount > 0n, // TODO: handle erg
 		isRepayed: repaymentLevel == 100n
 	};
@@ -424,7 +424,7 @@ export function parseLoanBox(box: NodeBox, nodeInfo: NodeInfo): Loan | undefined
 		fundedAmount: fundedAmount + ' ' + token.ticker,
 		fundedPercentage: Number(fundingLevel),
 		daysLeft: blocksToDays(funding.deadlineHeight - BigInt(nodeInfo.fullHeight)),
-		creator: decodeExleBorrower(box),
+		creator: ErgoAddress.fromErgoTree(decodeExleBorrower(box)).toString(),
 		isReadyForWithdrawal: fundingLevel >= 100n // TODO: handle erg
 	};
 

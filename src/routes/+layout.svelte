@@ -3,22 +3,72 @@
 	import '../app.css';
 	import Footer from '../components/Footer.svelte';
 	import Navbar from '../components/navbar/Navbar.svelte';
-	import { initTheme, is_dark, loadLoansAndRepayments } from '../stores/ui';
+	import {
+		change_address,
+		connected_wallet,
+		connectWallet,
+		initTheme,
+		is_dark,
+		loadLoansAndRepayments
+	} from '../stores/ui';
+	import type { Writable } from 'svelte/store';
 
 	let { children } = $props();
 
-	let unsubscribe: () => void;
+	let unsubTheme: () => void;
+	let unsubAddress: () => void;
+	let unsubWallet: () => void;
+
+	export function persistStore<T>(key: string, store: Writable<T>, defaultValue: T) {
+		// Initialize from localStorage
+		const stored = localStorage.getItem(key);
+		if (stored !== null) {
+			try {
+				store.set(JSON.parse(stored));
+			} catch (e) {
+				console.warn(`Failed to parse localStorage key: ${key}`);
+			}
+		} else {
+			store.set(defaultValue);
+		}
+
+		// Subscribe to store and persist changes
+		const unsubscribe = store.subscribe((value) => {
+			if (
+				value === undefined ||
+				value === null ||
+				(typeof value === 'string' && value.trim() === '')
+			) {
+				localStorage.removeItem(key);
+			} else {
+				localStorage.setItem(key, JSON.stringify(value));
+			}
+		});
+
+		return unsubscribe;
+	}
 
 	onMount(() => {
 		initTheme();
-		unsubscribe = is_dark.subscribe((value) => {
+		unsubTheme = is_dark.subscribe((value) => {
 			localStorage.setItem('theme', value ? 'dark' : 'light');
 		});
+
+		unsubAddress = persistStore('change_address', change_address, '');
+		unsubWallet = persistStore('connected_wallet', connected_wallet, '');
+
+		const restoredWallet = localStorage.getItem('connected_wallet');
+		if (restoredWallet) {
+			connectWallet(restoredWallet);
+		}
+
 		loadLoansAndRepayments();
 	});
 
 	onDestroy(() => {
-		unsubscribe?.();
+		unsubTheme?.();
+		unsubAddress?.();
+		unsubWallet?.();
 	});
 </script>
 
