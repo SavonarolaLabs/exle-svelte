@@ -133,6 +133,48 @@ type ExleLendParametersErg = {
 
 type ExleFundingTokensStatus = { fundedAmount: bigint; fundingLevel: bigint };
 
+type NodeInfo = {
+	lastMemPoolUpdateTime: number;
+	currentTime: number;
+	network: string;
+	name: string;
+	stateType: string;
+	difficulty: number;
+	bestFullHeaderId: string;
+	bestHeaderId: string;
+	peersCount: number;
+	unconfirmedCount: number;
+	appVersion: string;
+	eip37Supported: boolean;
+	stateRoot: string;
+	genesisBlockId: string;
+	restApiUrl: string;
+	previousFullHeaderId: string;
+	fullHeight: number;
+	headersHeight: number;
+	stateVersion: string;
+	fullBlocksScore: number;
+	maxPeerHeight: number;
+	launchTime: number;
+	isExplorer: boolean;
+	lastSeenMessageTime: number;
+	eip27Supported: boolean;
+	headersScore: number;
+	parameters: {
+		outputCost: number;
+		tokenAccessCost: number;
+		maxBlockCost: number;
+		height: number;
+		maxBlockSize: number;
+		dataInputCost: number;
+		blockVersion: number;
+		inputCost: number;
+		storageFeeFactor: number;
+		minValuePerByte: number;
+	};
+	isMining: boolean;
+};
+
 // utils start
 export function decodeBigInt(box: NodeBox, register: string): bigint | undefined {
 	const r = box.additionalRegisters[register];
@@ -198,6 +240,30 @@ export function createCrowdfundContract(map = {}): string {
 	return tree.toAddress(Network.Mainnet).toString();
 }
 // utils end
+
+// fetch info
+export async function fetchNodeInfo(): Promise<NodeInfo | null> {
+	const baseUrl = 'http://213.239.193.208:9053';
+	const url = `${baseUrl}/info`;
+
+	try {
+		const response = await fetch(url, {
+			headers: { accept: 'application/json' }
+		});
+
+		if (!response.ok) {
+			const body = await response.text();
+			console.error(`[GET /info] HTTP Error ${response.status}: ${body}`);
+			return null;
+		}
+
+		const data = await response.json();
+		return data as NodeInfo;
+	} catch (error) {
+		console.error(`[GET /info] Request failed:`, error);
+		return null;
+	}
+}
 
 // fetch data start
 async function fetchBoxesByTokenId(tokenId: string): Promise<NodeBox[]> {
@@ -333,23 +399,21 @@ export function parseRepaymentBox(box: NodeBox): Loan | undefined {
 	return repayment;
 }
 
-export function parseLoanBox(box: NodeBox): Loan | undefined {
+export function parseLoanBox(box: NodeBox, nodeInfo: NodeInfo): Loan | undefined {
 	if (box.assets.length < 2 || !box.additionalRegisters.R7) return;
 	const token = parseLoanToken(box);
 	if (!token) return;
 
 	const funding = decodeExleFundingInfo(box);
 	const project = decodeExleProjectDetails(box);
-	const repay = decodeExleRepaymentDetailsTokens(box);
-	const { lockedAmount } = getExleRepaymentTokensStatus(box);
+	const { fundedAmount, fundingLevel } = getExleLendTokensStatus(box);
 
 	const fundingGoal = Number(Number(funding.fundingGoal) / 10 ** token.decimals).toFixed(2);
-	const fundedAmount = Number(Number(lockedAmount) / 10 ** token.decimals).toFixed(2);
 
 	const repayment = {
 		phase: 'loan' as const,
 		loanId: box.assets[0].tokenId,
-		loanType: 'Crowdloan',
+		loanType: 'Solofund',
 		loanTitle: project[0],
 		loanDescription: project.slice(1).join('\n'),
 		repaymentPeriod: '' + blocksToDays(funding.repaymentHeightLength), // TODO: - height?
@@ -357,10 +421,10 @@ export function parseLoanBox(box: NodeBox): Loan | undefined {
 		fundingGoal: fundingGoal,
 		fundingToken: token.ticker,
 		fundedAmount: fundedAmount + ' ' + token.ticker,
-		fundedPercentage: Math.floor((Number(fundedAmount) / Number(fundingGoal)) * 100),
-		daysLeft: blocksToDays(repay.repaymentDeadlineHeight), // TODO: - height
+		fundedPercentage: Number(fundingLevel),
+		daysLeft: blocksToDays(funding.deadlineHeight - BigInt(nodeInfo.fullHeight)),
 		creator: decodeExleBorrower(box),
-		isReadyForWithdrawal: lockedAmount > 0n // TODO: handle erg
+		isReadyForWithdrawal: fundingLevel >= 100n // TODO: handle erg
 	};
 
 	return repayment;

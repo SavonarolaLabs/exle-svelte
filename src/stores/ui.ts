@@ -5,6 +5,7 @@ import {
 	fetchCrowdFundBoxesByLoanId,
 	fetchLendBox,
 	fetchLoans,
+	fetchNodeInfo,
 	fetchRepayments,
 	fetchServiceBox,
 	fundCrowdFundBoxTokensTx,
@@ -77,8 +78,11 @@ export const repayments: Writable<Loan[]> = writable([]);
 
 export async function loadLoansAndRepayments() {
 	const loanBoxes = await fetchLoans();
-	console.log({ loanBoxes });
-	const loanList: Loan[] = loanBoxes.map(parseLoanBox).filter(Boolean) as Loan[];
+	const nodeInfo = await fetchNodeInfo();
+	if (!loanBoxes || !nodeInfo) return;
+	const loanList: Loan[] = loanBoxes
+		.map((b) => parseLoanBox(b, nodeInfo))
+		.filter(Boolean) as Loan[];
 
 	const repaymentBoxes = await fetchRepayments();
 	const repaymentList: Loan[] = repaymentBoxes.map(parseRepaymentBox).filter(Boolean) as Loan[];
