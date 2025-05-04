@@ -2,6 +2,9 @@ import { describe, expect, it } from 'vitest';
 import {
 	decodeExleLenderTokens,
 	decodeExleRepaymentDetailsTokens,
+	EXLE_LEND_BOX_ERGOTREE,
+	EXLE_REPAYMENT_BOX_ERGOTREE,
+	EXLE_SERVICE_BOX_ERGOTREE,
 	jsonParseBigInt,
 	parseRepaymentBox,
 	type NodeBox
@@ -25,6 +28,7 @@ import {
 	preparefundLendTokensTx,
 	prepareLendToRepaymentTokensTx
 } from './exle';
+import { loanHistoryTxs } from './loanHistory.mockdata';
 // ERG  => DEXY ???
 // DEXY => ERG
 
@@ -140,7 +144,7 @@ describe('Exle Function ', () => {
 		const enrichedTx = await enrichTxWithDataInputs(rawTx);
 		await printTxDetails(enrichedTx, txIndex);
 	});
-	it.only('CHECK CURRENT TX 9', () => {
+	it('CHECK CURRENT TX 9', () => {
 		const tx = exleMockTxes[8]; //32 partial // 8 full
 		const tx2 = exleMockTxes[32]; //32 partial // 8 full
 
@@ -253,11 +257,28 @@ describe('Exle Function ', () => {
 		// [20] - Zero TX | TOKENS // Repayment -> Empty  (After)
 		// 16 -> 21
 		// 21 -> 34
-		const txes = exleMockTxes.slice(0, 34); //16 - 21
+		//const txes = exleMockTxes.slice(0, 34); //16 - 21
+		//const txes = loanHistoryTxs;
+		const txes = loanHistoryTxs.slice(19, 20); //16 - 21
 		//const txes = exleMockTxes.slice(17, 18); //16 - 21
 
-		txes.forEach((tx) => {
+		txes.forEach((tx, i) => {
 			const label = exleHighLevelRecogniser(tx);
+			if (
+				tx.outputs.find(
+					(ii) =>
+						ii.ergoTree == EXLE_LEND_BOX_ERGOTREE ||
+						ii.ergoTree == EXLE_SERVICE_BOX_ERGOTREE ||
+						ii.ergoTree == EXLE_REPAYMENT_BOX_ERGOTREE
+				)
+			) {
+				// console.log(i);
+				console.log(tx.inputs[0].boxId);
+				// console.log(tx.inputs[1]);
+				// console.log(tx.outputs[0]);
+				// console.log(tx.outputs[1]);
+				console.log(tx.outputs[2]);
+			}
 			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
 				tx,
 				label
@@ -266,7 +287,9 @@ describe('Exle Function ', () => {
 			//console.log('Label:', label, '|', fundingLevel, '|', repaymentLevel);
 			//if (lowLevelLabel == 'Create Lend | Tokens') {
 			console.log(
-				'Label:',
+				'HIGH:',
+				label,
+				'LOW:',
 				lowLevelLabel,
 				'|',
 				fundingLevel,
