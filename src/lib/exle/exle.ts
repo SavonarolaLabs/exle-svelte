@@ -536,6 +536,10 @@ export function exleHighLevelRecogniser(tx): string {
 	const outLendBox = tx.outputs.find(isExleLendTokenBox);
 	const inRepaymentBox = tx.inputs.find(isExleRepaymentTokenBox);
 	const outRepaymentBox = tx.outputs.find(isExleRepaymentTokenBox);
+	const inProxyCreateBox = tx.inputs.find(isProxyCreateBox);
+	const outProxyCreateBox = tx.outputs.find(isProxyCreateBox);
+	const inProxyRepaymentBox = tx.inputs.find(isProxyRepaymentBox);
+	const outProxyRepaymentBox = tx.outputs.find(isProxyRepaymentBox);
 
 	let label = '';
 	if (inServiceBox && outServiceBox) {
@@ -545,8 +549,14 @@ export function exleHighLevelRecogniser(tx): string {
 			// ERG or TOKENS
 			if (outLendBox.additionalRegisters.R7) {
 				label = 'Create Lend | Tokens';
+				if (inProxyCreateBox) {
+					label = 'PROXY: Create Lend | Tokens';
+				}
 			} else {
 				label = 'Create Lend | Erg';
+				if (inProxyCreateBox) {
+					label = 'PROXY: Create Lend | Erg';
+				}
 			}
 		}
 		if (inLendBox && outRepaymentBox) {
@@ -580,6 +590,21 @@ export function exleHighLevelRecogniser(tx): string {
 			} else {
 				label = 'Repayment to Repayment | Erg';
 			}
+		}
+
+		if (inRepaymentBox && inProxyRepaymentBox && outRepaymentBox) {
+			label = 'PROXY: Repayment to Repayment';
+			if (outRepaymentBox.additionalRegisters.R9) {
+				label = 'PROXY: Repayment to Repayment | Tokens';
+			} else {
+				label = 'PROXY: Repayment to Repayment | Erg';
+			}
+		}
+		if (outProxyCreateBox) {
+			label = 'PROXY Lend Initiation';
+		}
+		if (outProxyRepaymentBox) {
+			label = 'PROXY Repayment Initiation';
 		}
 	}
 	// PROXY X
@@ -768,6 +793,15 @@ export function isProxyBox(box) {
 
 export function isMinerBox(box) {
 	if (box.address == minerAddress) return true;
+	return false;
+}
+
+export function isProxyCreateBox(box) {
+	if (box.ergoTree == EXLE_PROXY_LEND_CREATE) return true;
+	return false;
+}
+export function isProxyRepaymentBox(box) {
+	if (box.ergoTree == EXLE_PROXY_REPAYMENT) return true;
 	return false;
 }
 
