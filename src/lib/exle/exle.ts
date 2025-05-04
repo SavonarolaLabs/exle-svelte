@@ -1030,7 +1030,7 @@ export function fundLendWithCrowdBoxTokensTx(
 	return unsignedTx;
 }
 
-export type CreateLendUserInput = {
+export type CreateLendInputParams = {
 	loanType: 'Crowdloan' | 'Solofund';
 	project: string[]; //project[0] - loanTitle, project[1] - loanDescription
 	loanTokenId: null | string;
@@ -1048,7 +1048,7 @@ export type CreateLendChainContext = {
 };
 
 export function createLendTokensTx(
-	userInput: CreateLendUserInput,
+	userInput: CreateLendInputParams,
 	chainData: CreateLendChainContext
 ) {
 	const exleFundingInfo = {
@@ -1077,7 +1077,7 @@ export function createLendTokensTx(
 	return unsignedTx;
 }
 
-export function createLendCrowdfundBoxTx(signedTx: Object, userInput: CreateLendUserInput) {
+export function createLendCrowdfundBoxTx(signedTx: Object, userInput: CreateLendInputParams) {
 	const params = {
 		_MinFee: SLong(EXLE_MINING_FEE).toHex(),
 		_MaxByteBoxFee: SLong(EXLE_MAX_BYTE_BOX_FEE).toHex(),

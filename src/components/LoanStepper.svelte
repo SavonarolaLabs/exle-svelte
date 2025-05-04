@@ -1,12 +1,15 @@
 <script lang="ts">
 	import { Info } from 'lucide-svelte';
 	import Header from './loan/create/Header.svelte';
-	import { is_dark } from '../stores/ui';
+	import { createSolofundLoanTokens, is_dark } from '../stores/ui';
 	import Button from './Button.svelte';
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import Nautilus from '../icons/Nautilus.svelte';
 	import Check from '../icons/Check.svelte';
+	import type { CreateLendInputParams } from '$lib/exle/exle';
+	import { tokenByTicker } from '$lib/tokens';
+	import { BLOCKS_PER_DAY, toErgoBlocks } from '$lib/utils';
 
 	function goBack() {
 		history.length > 1 ? history.back() : goto('/');
@@ -50,8 +53,25 @@
 		}
 	}
 
-	function handleFinalizePayment() {
-		paymentConfirmed = true;
+	async function handleFinalizePayment() {
+		const token = tokenByTicker(loanToken)!;
+		const userInput: CreateLendInputParams = {
+			loanType: 'Solofund',
+			project: [loanTitle, loanDescription],
+			loanTokenId: token.tokenId,
+			fundingGoal: BigInt(Math.floor(Number(fundingGoal) * token.decimals)),
+			interestRate: BigInt(Math.floor(Number(fundingGoal) * 10)),
+
+			fundingDeadlineHeight: BigInt(toErgoBlocks(Math.floor(Number(fundingDeadline)), 'Months')),
+			repaymentHeightLength: BigInt(toErgoBlocks(Math.floor(Number(repaymentPeriod)), 'Months')),
+			borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
+		};
+
+		const submittedTxId = await createSolofundLoanTokens(userInput);
+
+		if (submittedTxId) {
+			paymentConfirmed = true;
+		}
 	}
 </script>
 
@@ -318,7 +338,8 @@
 				</div>
 				<div>
 					<div class="opacity-50">Funding Deadline:</div>
-					Around {fundingDeadline} days / {+fundingDeadline * 1000} Blocks (Time is based on block)
+					Around {fundingDeadline} months / {+fundingDeadline * BLOCKS_PER_DAY * 30} Blocks (Time is
+					based on block)
 				</div>
 				<div>
 					<div class="opacity-50">Interest Rate:</div>
@@ -326,7 +347,8 @@
 				</div>
 				<div>
 					<div class="opacity-50">Repayment Period:</div>
-					Around {repaymentPeriod} days / {+repaymentPeriod * 1000} Blocks (Time is based on block)
+					Around {repaymentPeriod} months / {+repaymentPeriod * BLOCKS_PER_DAY * 30} Blocks (Time is
+					based on block)
 				</div>
 			</div>
 

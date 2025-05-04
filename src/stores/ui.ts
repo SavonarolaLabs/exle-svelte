@@ -16,7 +16,7 @@ import {
 	prepareLendToRepaymentTokensTx,
 	prepareNewCrowdFundTx,
 	type CreateLendChainContext,
-	type CreateLendUserInput,
+	type CreateLendInputParams,
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
@@ -94,7 +94,7 @@ export async function getWeb3WalletData() {
 	return { me, utxos, height };
 }
 
-const sampleSolofundLend: CreateLendUserInput = {
+const sampleSolofundLend: CreateLendInputParams = {
 	loanType: 'Solofund',
 	project: ['Foo', 'Bar'],
 	loanTokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a', // Test SigUSD
@@ -105,8 +105,8 @@ const sampleSolofundLend: CreateLendUserInput = {
 	borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
 };
 
-export async function createSolofundLoanTokens() {
-	const userInput = sampleSolofundLend;
+export async function createSolofundLoanTokens(userInput: CreateLendInputParams) {
+	//const userInput = sampleSolofundLend;
 	const { utxos: userUtxo, height } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();
 	if (!serviceBox) {
