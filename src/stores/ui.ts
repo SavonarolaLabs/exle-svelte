@@ -26,9 +26,7 @@ import {
 import { get, writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
-export const change_address: Writable<string> = writable(
-	'9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
-);
+export const change_address: Writable<string> = writable('');
 export const is_mobile_menu_open: Writable<boolean> = writable(false);
 export const token_balance: Writable<Object[]> = writable([
 	{
@@ -47,6 +45,7 @@ async function disconnectWeb3Wallet() {
 	console.log('disconnectWeb3Wallet');
 	await window.ergoConnector[get(connected_wallet)].disconnect();
 	connected_wallet.set('');
+	change_address.set('');
 }
 
 async function connectWeb3Wallet(walletname = '') {
@@ -54,8 +53,12 @@ async function connectWeb3Wallet(walletname = '') {
 	if (wallets.length > 0) {
 		try {
 			let connected = await window.ergoConnector[wallets[0]].connect();
+			const address = await ergo.get_change_address();
 			if (connected) {
 				connected_wallet.set(wallets[0]);
+
+				change_address.set(address);
+
 				//await loadWeb3WalletTokens();
 			} else {
 				console.warn(`Connecting ${wallets[0]} failed.`);

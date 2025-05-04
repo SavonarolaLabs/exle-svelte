@@ -8,14 +8,21 @@
 
 	let withdrawableLoans: Loan[] = [];
 	let activeLoanRequests: Loan[] = [];
+
 	onMount(() => {
+		recalculateLoans($change_address);
+	});
+
+	$: recalculateLoans($change_address);
+
+	function recalculateLoans(address: string) {
 		withdrawableLoans = loans.filter(
-			(l) => l.isReadyForWithdrawal && l.creator == $change_address && l.phase == 'loan'
+			(l) => l.isReadyForWithdrawal && l.creator === address && l.phase === 'loan'
 		);
 		activeLoanRequests = loans.filter(
-			(l) => !l.isReadyForWithdrawal && l.creator == $change_address && l.phase == 'loan'
+			(l) => !l.isReadyForWithdrawal && l.creator === address && l.phase === 'loan'
 		);
-	});
+	}
 </script>
 
 {#if withdrawableLoans.length > 0}
@@ -47,5 +54,5 @@
 {/if}
 
 {#if withdrawableLoans.length == 0 && activeLoanRequests.length == 0}
-	<EmptyLoans></EmptyLoans>
+	<EmptyLoans />
 {/if}
