@@ -435,10 +435,10 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
 }
 // fetch data end
-export type HistoryType = '🎉 Loan Funded' | 'Loan Created';
+export type TxAction = '🎉 Loan Funded' | 'Loan Created' | 'Loan Repayment';
 export type LoanRole = 'Borrower' | 'Lender';
 export type HistoryItem = {
-	type: HistoryType;
+	action: TxAction;
 	role: LoanRole;
 	txId: string;
 	timestamp: number;
@@ -626,7 +626,7 @@ export function txToHistoryItem(tx: ErgoTransaction, label: string): HistoryItem
 		const { fundingGoal: amount } = decodeExleFundingInfo(inLendBox);
 
 		return {
-			type: '🎉 Loan Funded',
+			action: '🎉 Loan Funded',
 			role,
 			txId: tx.id,
 			timestamp: tx.timestamp,
@@ -635,13 +635,54 @@ export function txToHistoryItem(tx: ErgoTransaction, label: string): HistoryItem
 		};
 	} else if (label == 'Create Lend | Tokens') {
 		return {
-			type: 'Loan Created',
+			action: 'Loan Created',
 			role: 'Borrower',
 			txId: tx.id,
 			timestamp: tx.timestamp,
 			amount: undefined,
 			tokenId: undefined
 		};
+	} else if (label == 'PROXY Repayment Initiation') {
+		const outProxyRepaymentBox = tx.outputs.find(isProxyRepaymentBox);
+		return {
+			action: 'Loan Repayment',
+			role: 'Borrower',
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount: getExleProxyTokensAmount(outProxyRepaymentBox),
+			tokenId: getExleProxyTokensTokenId(outProxyRepaymentBox)
+		};
+	} else if (label == 'Repayment to Repayment | Tokens') {
+		const inRepaymentBox = tx.inputs.find(isExleRepaymentTokenBox);
+		const outRepaymentBox = tx.outputs.find(isExleRepaymentTokenBox);
+
+		const { lockedAmount: lockedIn, repaymentLevel: repaymentIn } =
+			getExleRepaymentTokensStatus(inRepaymentBox);
+		const { lockedAmount: lockedOut, repaymentLevel: repaymentOut } =
+			getExleRepaymentTokensStatus(outRepaymentBox);
+
+		if (repaymentIn < repaymentOut) {
+			const amount = lockedIn - lockedOut;
+
+			return {
+				action: 'Loan Repayment',
+				role: 'Lender',
+				txId: tx.id,
+				timestamp: tx.timestamp,
+				amount: amount,
+				tokenId: decodeExleLoanTokenId(inRepaymentBox)
+			};
+		} else {
+			const amount = (lockedIn - lockedOut) * -1n;
+			return {
+				action: 'Loan Repayment',
+				role: 'Borrower',
+				txId: tx.id,
+				timestamp: tx.timestamp,
+				amount: amount,
+				tokenId: decodeExleLoanTokenId(outRepaymentBox)
+			};
+		}
 	} else {
 		return label;
 	}
@@ -884,6 +925,23 @@ function getExleTokensAmount(box: NodeBox): bigint | undefined {
 	const amount = box.assets.find((a) => a.tokenId == tokenId)?.amount;
 	if (amount) {
 		return BigInt(amount);
+	} else {
+		return undefined;
+	}
+}
+
+function getExleProxyTokensAmount(box: NodeBox): bigint | undefined {
+	const amount = box?.assets[0]?.amount;
+	if (amount) {
+		return BigInt(amount);
+	} else {
+		return undefined;
+	}
+}
+function getExleProxyTokensTokenId(box: NodeBox): string | undefined {
+	const tokenId = box?.assets[0]?.tokenId;
+	if (tokenId) {
+		return tokenId;
 	} else {
 		return undefined;
 	}

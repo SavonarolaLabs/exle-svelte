@@ -7,6 +7,7 @@ import {
 	EXLE_SERVICE_BOX_ERGOTREE,
 	jsonParseBigInt,
 	parseRepaymentBox,
+	txToHistoryItem,
 	type NodeBox
 } from './exle';
 import { exleCrowdfundTxes, exleMockBoxesByTokenId, exleMockTxes } from './exleTx.mockdata';
@@ -302,6 +303,7 @@ describe('Exle Function ', () => {
 				lockedLevel,
 				')'
 			);
+			console.log(txToHistoryItem(tx, label));
 			//const lendBox = tx.outputs.find(isExleLendTokenBox);
 			//const funding = (lendBox);decodeExleFundingInfo
 			//	console.log(funding);

@@ -18,7 +18,7 @@
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">Type:</div>
-				<div class="font-medium">{d.type}</div>
+				<div class="font-medium">{d.action}</div>
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">My donation:</div>
@@ -39,7 +39,7 @@
 		<div class="mb-4 rounded-xl border-2 border-light-border p-2 px-4 dark:border-dark-border">
 			<div class="flex justify-between">
 				<div class="text-xs">Loan ID: {d.loan_id}</div>
-				<div class="text-xs">{d.type}</div>
+				<div class="text-xs">{d.action}</div>
 			</div>
 			<div class="text-lg font-medium">{d.name}</div>
 
