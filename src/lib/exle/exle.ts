@@ -642,6 +642,15 @@ export function txToHistoryItem(tx: ErgoTransaction, label: string): HistoryItem
 			amount: undefined,
 			tokenId: undefined
 		};
+	} else if (label == 'PROXY Lend Initiation') {
+		return {
+			action: 'Loan Created',
+			role: 'Borrower',
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount: undefined,
+			tokenId: undefined
+		};
 	} else if (label == 'PROXY Repayment Initiation') {
 		const outProxyRepaymentBox = tx.outputs.find(isProxyRepaymentBox);
 		return {
