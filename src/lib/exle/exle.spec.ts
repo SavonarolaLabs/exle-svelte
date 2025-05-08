@@ -280,7 +280,7 @@ describe('Exle Function ', () => {
 
 			if (exleTx) {
 				//console.log(tx.id);
-				console.log(txToHistoryItem(tx, label));
+				console.log(txToHistoryItem(tx));
 			}
 			// console.log(
 			// 	exleTx,

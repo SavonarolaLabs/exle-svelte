@@ -4,7 +4,9 @@
 	import Copy from '../../icons/Copy.svelte';
 	import GlobalSearch from '../../icons/GlobalSearch.svelte';
 	import More from '../../icons/More.svelte';
-
+	import { shortenAddress } from '$lib/utils';
+	import { tickerByTokenId } from '$lib/tokens';
+	import { X } from 'lucide-svelte';
 	function formatTimestamp(timestamp: string) {
 		const date = new Date(timestamp);
 		const hours = date.getHours().toString().padStart(2, '0');
@@ -66,9 +68,10 @@
 </script>
 
 <div
-	class="grid hidden grid-cols-5 gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray lg:grid"
+	class="grid hidden grid-cols-6 gap-4 border-b border-light-gray pb-2 text-xs opacity-[0.6] dark:border-dark-gray lg:grid"
 >
 	<div>Transaction Type</div>
+	<div>Role</div>
 	<div>Transaction Hash</div>
 	<div>Time & Date</div>
 	<div class="text-center">Amount</div>
@@ -77,22 +80,28 @@
 <div class="rows">
 	{#each transactions as tx}
 		<div
-			class="hidden grid-cols-5 border-light-border py-3 text-sm dark:border-dark-border lg:grid"
+			class="hidden grid-cols-6 border-light-border py-3 text-sm dark:border-dark-border lg:grid"
 		>
-			<div>{tx.transactionType}</div>
-			<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.id)}>
-				{tx.id}
+			<div>{tx.action}</div>
+			<div>{tx.role}</div>
+			<button class="flex cursor-pointer gap-1" on:click={() => copyToClipboard(tx.txId)}>
+				{shortenAddress(tx.txId)}
 				<Copy />
 			</button>
-			<div class="flex justify-start gap-1">
+
+			<div class="flex justify-start gap-1 tabular-nums">
 				<span class="w-[40px] text-right">{formatTime(tx.timestamp)}</span> | {formatDate(
 					tx.timestamp
 				)}
 			</div>
 			<div class="flex justify-end gap-1">
-				{tx.amount} <span style="width:100px">{tx.token}</span>
+				{#if tx.amount}
+					{tx.amount} <span style="width:100px">{tickerByTokenId(tx.tokenId)}</span>
+				{:else}
+					<span style="width:100px">- -</span>
+				{/if}
 			</div>
-			<a href="https://explorer.ergoplatform.com/en/transactions/{tx.id}">
+			<a href="https://explorer.ergoplatform.com/en/transactions/{tx.txId}">
 				<div class="flex justify-end gap-1 text-light-accent dark:text-dark-accent">
 					<GlobalSearch /> View on explorer
 				</div>
@@ -105,13 +114,13 @@
 	{#each transactions as tx, i}
 		<div class="relative grid grid-cols-2 py-3 text-sm">
 			<div>
-				<div class="mb-1 font-medium">{tx.transactionType}</div>
-				<div class="text-xs opacity-[0.6]">{tx.id}</div>
+				<div class="mb-1 font-medium">{tx.action}</div>
+				<div class="text-xs opacity-[0.6]">{tx.txId}</div>
 			</div>
 
 			<div class="flex items-center justify-end">
 				<div class="text-right">
-					<div class="mb-1 font-medium">{tx.amount} {tx.token}</div>
+					<div class="mb-1 font-medium">{tx.amount} {tx.tokenId}</div>
 					<div class="text-xs opacity-[0.6]">{formatTimestamp(tx.timestamp)}</div>
 				</div>
 				<div class="relative ml-3">
@@ -126,13 +135,13 @@
 						>
 							<button
 								class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-normal hover:bg-gray-100 dark:hover:bg-gray-800"
-								on:click={() => copyToClipboard(tx.id)}
+								on:click={() => copyToClipboard(tx.txId)}
 							>
 								<Copy />
 								Copy transaction hash
 							</button>
 							<a
-								href={`https://explorer.ergoplatform.com/en/transactions/${tx.id}`}
+								href={`https://explorer.ergoplatform.com/en/transactions/${tx.txId}`}
 								target="_blank"
 								on:click={closeMenu}
 								class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-normal hover:bg-gray-100 dark:hover:bg-gray-800"

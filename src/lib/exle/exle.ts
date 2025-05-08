@@ -642,7 +642,12 @@ export function exleHighLevelRecogniser(tx): string {
 	return label;
 }
 
-export function txToHistoryItem(tx: ErgoTransaction, label: string): HistoryItem {
+export function txToHistoryItem(tx: ErgoTransaction): HistoryItem {
+	const label = exleHighLevelRecogniser(tx);
+	return txToHistoryItemFromLabel(tx, label);
+}
+
+export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): HistoryItem {
 	if (label == 'Lend to Repayment | Tokens') {
 		const role = 'Borrower';
 
