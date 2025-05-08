@@ -7,13 +7,21 @@ import {
 	EXLE_PROXY_REPAYMENT,
 	EXLE_REPAYMENT_BOX_ERGOTREE,
 	EXLE_SERVICE_BOX_ERGOTREE,
+	isCrowdFundBox,
 	isExleTx,
 	jsonParseBigInt,
 	parseRepaymentBox,
 	txToHistoryItem,
 	type NodeBox
 } from './exle';
-import { exleCrowdfundTxes, exleMockBoxesByTokenId, exleMockTxes } from './exleTx.mockdata';
+import {
+	exleCrowdfundTxes,
+	exleMockBoxesByTokenId,
+	exleMockTxes,
+	exleUnspendOnRepaymentBoxes,
+	exleUnspendWithCrowdToken,
+	exleUnspendWithRepaymentToken
+} from './exleTx.mockdata';
 import {
 	decodeExleFundingInfo,
 	decodeExleLoanTokenId,
@@ -253,7 +261,7 @@ describe('Exle Function ', () => {
 		//expect(unsignedTx.outputs).toBe(tx.outputs);
 	});
 
-	it.only('High/Low Level Recogniser', () => {
+	it('High/Low Level Recogniser', () => {
 		// [16] - Zero TX | TOKENS // Create Loan
 		// [17] - Zero TX | TOKENS // Load Loan
 		// [18] - Zero TX | TOKENS // Loan => Repayment
@@ -319,11 +327,25 @@ describe('Exle Function ', () => {
 		});
 	});
 
-	it.skip('MockBoxes', () => {
-		const boxes = exleMockBoxesByTokenId.items;
-		const txes = boxes.map((b) => b.transactionId);
-		console.log(txes);
+	it.only('MockBoxes check TokenId vs ErgoTree Repayment', () => {
+		const boxesByToken = exleUnspendWithRepaymentToken;
+		const boxesByErgoTree = exleUnspendOnRepaymentBoxes;
+
+		const filteredByToken = boxesByToken.filter(isExleRepaymentTokenBox);
+		const filteredByErgoTree = exleUnspendOnRepaymentBoxes.filter(isExleRepaymentTokenBox);
+
+		expect(filteredByToken.length).toBe(filteredByErgoTree.length);
 	});
+	it.only('Boxes by id CrowdFund', () => {
+		const boxesByToken = exleUnspendWithCrowdToken;
+
+		const filteredByToken = boxesByToken.filter(isCrowdFundBox);
+		const exceptThis = boxesByToken.filter((b) => !isCrowdFundBox(b));
+		console.log(exceptThis);
+
+		expect(filteredByToken.length).toBe(boxesByToken.length);
+	});
+
 	it('High/Low Level Recogniser', () => {
 		//const txes = exleCrowdfundTxes;
 		const txes = exleMockTxes.slice(20, 21); //16 - 21
