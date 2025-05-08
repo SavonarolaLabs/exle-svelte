@@ -16,18 +16,18 @@ export const TOKENS = [
 		project: 'Test',
 		description: 'Algorithmic stablecoin',
 		defaultAmount: 10_00n
-	}
+	},
 	{
 		tokenId: '6ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
 		decimals: 0,
 		name: 'Exle: TestSigUSD',
 		ticker: 'ExleTestUSD',
 		project: 'Exle',
-		description: 'Tokens to use in place of SigUSD for testing Exle loans. This value is not pegged to anything and holds no value',
+		description:
+			'Tokens to use in place of SigUSD for testing Exle loans. This value is not pegged to anything and holds no value',
 		defaultAmount: 10_00n
 	}
 ];
-
 
 export function tokenByTicker(ticker: string) {
 	return TOKENS.find((t) => t.ticker == ticker);
