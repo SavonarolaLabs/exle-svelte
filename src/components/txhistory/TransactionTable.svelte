@@ -5,7 +5,7 @@
 	import GlobalSearch from '../../icons/GlobalSearch.svelte';
 	import More from '../../icons/More.svelte';
 	import { shortenAddress } from '$lib/utils';
-	import { tickerByTokenId } from '$lib/tokens';
+	import { decimalsByTokenId, tickerByTokenId } from '$lib/tokens';
 	import { X } from 'lucide-svelte';
 	function formatTimestamp(timestamp: string) {
 		const date = new Date(timestamp);
@@ -96,7 +96,8 @@
 			</div>
 			<div class="flex justify-end gap-1">
 				{#if tx.amount}
-					{tx.amount} <span style="width:100px">{tickerByTokenId(tx.tokenId)}</span>
+					{Number((100n * tx.amount) / BigInt(10 ** decimalsByTokenId(tx.tokenId))) / 100}
+					<span style="width:100px">{tickerByTokenId(tx.tokenId)}</span>
 				{:else}
 					<span style="width:100px">- -</span>
 				{/if}
