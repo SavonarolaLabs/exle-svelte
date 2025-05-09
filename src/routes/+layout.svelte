@@ -12,7 +12,7 @@
 		loadLoansAndRepayments
 	} from '../stores/ui';
 	import type { Writable } from 'svelte/store';
-	import { fetchAllLoanMetadata } from '$lib/exle/exle';
+	import { fetchAllExleMetadata } from '$lib/exle/exle';
 
 	let { children } = $props();
 
@@ -64,7 +64,7 @@
 		}
 
 		loadLoansAndRepayments();
-		fetchAllLoanMetadata();
+		fetchAllExleMetadata();
 	});
 
 	onDestroy(() => {

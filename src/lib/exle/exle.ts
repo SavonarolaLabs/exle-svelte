@@ -287,7 +287,7 @@ export function createCrowdfundContract(map = {}): string {
 
 // fetch info
 export async function fetchNodeInfo(): Promise<NodeInfo | null> {
-	const baseUrl = 'http://213.239.193.208:9053';
+	const baseUrl = 'http://localhost:9053';
 	const url = `${baseUrl}/info`;
 
 	try {
@@ -322,7 +322,7 @@ type TransactionsResponse = {
 };
 
 async function fetchTransactionById(txId: string): Promise<ErgoTransaction | null> {
-	const url = `http://213.239.193.208:9053/blockchain/transaction/byId/${txId}`;
+	const url = `http://localhost:9053/blockchain/transaction/byId/${txId}`;
 
 	try {
 		const response = await fetch(url, {
@@ -352,7 +352,7 @@ async function fetchTransactionsByAddress(
 	offset: number = 0,
 	limit: number = 100
 ): Promise<ErgoTransaction[]> {
-	const url = `http://213.239.193.208:9053/blockchain/transaction/byAddress?offset=${offset}&limit=${limit}`;
+	const url = `http://localhost:9053/blockchain/transaction/byAddress?offset=${offset}&limit=${limit}`;
 
 	try {
 		const response = await fetch(url, {
@@ -400,12 +400,40 @@ export async function fetchLoanHistory(
 	return fetchTransactionsByTree(EXLE_LEND_BOX_ERGOTREE, offset, limit);
 }
 
+async function fetchAllBoxesByTokenId(
+	tokenId: string,
+	offset: number = 0,
+	limit: number = 100
+): Promise<NodeBox[]> {
+	const baseUrl = 'http://localhost:9053';
+	const url = `${baseUrl}/blockchain/box/byTokenId/${tokenId}?offset=${offset}&limit=${limit}`;
+
+	try {
+		const response = await fetch(url, {
+			headers: { accept: 'application/json' }
+		});
+
+		if (!response.ok) {
+			const body = await response.text();
+			console.error(`[box/byTokenId] HTTP Error ${response.status}: ${body}`);
+			return [];
+		}
+
+		const text = await response.text();
+		const data = jsonParseBigInt(text);
+		return data.items;
+	} catch (error) {
+		console.error(`[box/byTokenId] Request failed:`, error);
+		return [];
+	}
+}
+
 async function fetchBoxesByTokenId(
 	tokenId: string,
 	offset: number = 0,
 	limit: number = 1
 ): Promise<NodeBox[]> {
-	const baseUrl = 'http://213.239.193.208:9053';
+	const baseUrl = 'http://localhost:9053';
 	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=${offset}&limit=${limit}&sortDirection=desc&includeUnconfirmed=true`;
 
 	try {
@@ -429,7 +457,7 @@ async function fetchBoxesByTokenId(
 }
 
 async function fetchUnspentBoxesByErgoTree(ergoTree: string): Promise<NodeBox[]> {
-	const baseUrl = 'http://213.239.193.208:9053';
+	const baseUrl = 'http://localhost:9053';
 	const url = `${baseUrl}/blockchain/box/unspent/byErgoTree?offset=0&limit=100&sortDirection=desc&includeUnconfirmed=true&excludeMempoolSpent=true`;
 
 	try {
@@ -484,7 +512,16 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
 }
 
-export async function fetchAllLoanMetadata() {
+type AllExleMetadata = {
+	loanBoxes: NodeBox[];
+	repaymentBoxes: NodeBox[];
+	crowdfundBoxes: NodeBox[];
+	loanIds: string[];
+	crowdfundLoanIds: string[];
+	crowdfundHistoryTxs: [];
+	loanHistoryTxs: [];
+};
+export async function fetchAllExleMetadata(): Promise<AllExleMetadata> {
 	const maybeLoanBoxes = await fetchBoxesByTokenId(EXLE_SLE_LEND_TOKEN_ID, 0, 100);
 	const maybeRepaymentBoxes = await fetchBoxesByTokenId(EXLE_SLE_REPAYMENT_TOKEN_ID, 0, 100);
 	const maybeCrowdfundBoxes = await fetchBoxesByTokenId(EXLE_SLE_CROWD, 0, 100);
@@ -498,23 +535,30 @@ export async function fetchAllLoanMetadata() {
 
 	const crowdfundIds = crowdfundBoxes.map((b) => b.assets[1].tokenId);
 	const crowdfundHistoryBoxes = (
-		await Promise.all(crowdfundIds.map((lId) => fetchBoxesByTokenId(lId, 0, 100)))
+		await Promise.all(crowdfundIds.map((lId) => fetchAllBoxesByTokenId(lId, 0, 100)))
 	).flatMap((x) => x);
+	console.log({ crowdfundHistoryBoxes });
 	const crowdfundHistoryTxIds = crowdfundHistoryBoxes.map((b) => b.transactionId);
 	const crowdfundHistoryTxs = await Promise.all(crowdfundHistoryTxIds.map(fetchTransactionById));
 
 	const loanHistoryBoxes = (
-		await Promise.all(loanIds.map((lId) => fetchBoxesByTokenId(lId, 0, 100)))
+		await Promise.all(loanIds.map((lId) => fetchAllBoxesByTokenId(lId, 0, 100)))
 	).flatMap((x) => x);
 	const loanHistoryTxIds = loanHistoryBoxes.map((b) => b.transactionId);
 	const loanHistoryTxs = await Promise.all(loanHistoryTxIds.map(fetchTransactionById));
 
-	console.log({
-		crowdfundHistoryBoxes,
-		crowdfundHistoryTxIds,
+	const allMetadata = {
+		loanBoxes,
+		repaymentBoxes,
+		crowdfundBoxes,
+		loanIds,
+		crowdfundLoanIds,
 		crowdfundHistoryTxs,
 		loanHistoryTxs
-	});
+	};
+	console.log({ allMetadata });
+
+	return allMetadata;
 }
 
 // fetch data end
