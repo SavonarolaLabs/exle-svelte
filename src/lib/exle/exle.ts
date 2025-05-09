@@ -365,9 +365,13 @@ export async function fetchLoanHistory(
 	return fetchTransactionsByTree(EXLE_LEND_BOX_ERGOTREE, offset, limit);
 }
 
-async function fetchBoxesByTokenId(tokenId: string): Promise<NodeBox[]> {
+async function fetchBoxesByTokenId(
+	tokenId: string,
+	offset: number = 0,
+	limit: number = 1
+): Promise<NodeBox[]> {
 	const baseUrl = 'http://213.239.193.208:9053';
-	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=0&limit=1&sortDirection=desc&includeUnconfirmed=true`;
+	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=${offset}&limit=${limit}&sortDirection=desc&includeUnconfirmed=true`;
 
 	try {
 		const response = await fetch(url, {
@@ -444,6 +448,20 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 	const crowdErgoTree = createCrowdBoxErgoTree(loanId);
 	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
 }
+
+export async function fetchAllActiveLends() {
+	const maybeLoanBoxes = await fetchBoxesByTokenId(EXLE_SLE_LEND_TOKEN_ID, 0, 100);
+	const maybeRepaymentBoxes = await fetchBoxesByTokenId(EXLE_SLE_REPAYMENT_TOKEN_ID, 0, 100);
+	const maybeCrowdfundBoxes = await fetchBoxesByTokenId(EXLE_SLE_CROWD, 0, 100);
+
+	const loanBoxes = maybeLoanBoxes.filter(isExleLendTokenBox);
+	const repaymentBoxes = maybeRepaymentBoxes.filter(isExleRepaymentTokenBox);
+	//const lendIds = loans.map()
+
+	console.log('fetchAllActiveXXX');
+	console.log({ loans, repayments, crowdfunds });
+}
+
 // fetch data end
 export type TxAction =
 	| '🎉 Loan Funded'

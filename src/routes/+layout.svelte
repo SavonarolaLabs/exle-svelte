@@ -12,6 +12,7 @@
 		loadLoansAndRepayments
 	} from '../stores/ui';
 	import type { Writable } from 'svelte/store';
+	import { fetchAllActiveLends } from '$lib/exle/exle';
 
 	let { children } = $props();
 
@@ -63,6 +64,7 @@
 		}
 
 		loadLoansAndRepayments();
+		fetchAllActiveLends();
 	});
 
 	onDestroy(() => {
