@@ -235,6 +235,14 @@ export function decodeBorrowerPk(box: NodeBox, register: string) {
 	}
 }
 
+export function decodeCrowdfundLoanId(box: NodeBox) {
+	const r = box.additionalRegisters['R4'];
+	if (r) {
+		const parsed = Buffer.from(parse(r)).toString('hex');
+		return parsed;
+	}
+}
+
 export function jsonParseBigInt(text: string) {
 	// Match "value" or "amount" fields with any number format, handling whitespace and newlines
 	const valueAmountRegex = /"(value|amount)"\s*:\s*(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)\s*([,\}\]])/g;
@@ -313,6 +321,32 @@ type TransactionsResponse = {
 	items: ErgoTransaction[];
 };
 
+async function fetchTransactionById(txId: string): Promise<ErgoTransaction | null> {
+	const url = `http://213.239.193.208:9053/blockchain/transaction/byId/${txId}`;
+
+	try {
+		const response = await fetch(url, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			}
+		});
+
+		if (!response.ok) {
+			const errorText = await response.text();
+			throw new Error(`HTTP ${response.status}: ${errorText}`);
+		}
+
+		const text = await response.text();
+		const data = jsonParseBigInt(text);
+		return data;
+	} catch (error) {
+		console.error(`Failed to fetch transaction by ID (${txId}):`, error);
+		return null;
+	}
+}
+
 async function fetchTransactionsByAddress(
 	address: string,
 	offset: number = 0,
@@ -335,7 +369,8 @@ async function fetchTransactionsByAddress(
 			throw new Error(`HTTP ${response.status}: ${errorText}`);
 		}
 
-		const data: TransactionsResponse = await response.json();
+		const text = await response.text();
+		const data = jsonParseBigInt(text);
 
 		if (Array.isArray(data.items)) {
 			return data.items;
@@ -449,17 +484,37 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 	return fetchUnspentBoxesByErgoTree(crowdErgoTree);
 }
 
-export async function fetchAllActiveLends() {
+export async function fetchAllLoanMetadata() {
 	const maybeLoanBoxes = await fetchBoxesByTokenId(EXLE_SLE_LEND_TOKEN_ID, 0, 100);
 	const maybeRepaymentBoxes = await fetchBoxesByTokenId(EXLE_SLE_REPAYMENT_TOKEN_ID, 0, 100);
 	const maybeCrowdfundBoxes = await fetchBoxesByTokenId(EXLE_SLE_CROWD, 0, 100);
 
 	const loanBoxes = maybeLoanBoxes.filter(isExleLendTokenBox);
 	const repaymentBoxes = maybeRepaymentBoxes.filter(isExleRepaymentTokenBox);
-	//const lendIds = loans.map()
+	const crowdfundBoxes = maybeCrowdfundBoxes.filter(isCrowdFundBox);
+	const loanIds = [...loanBoxes, ...repaymentBoxes].map((b) => b.assets[1].tokenId);
 
-	console.log('fetchAllActiveXXX');
-	console.log({ loans, repayments, crowdfunds });
+	const crowdfundLoanIds = crowdfundBoxes.map(decodeCrowdfundLoanId);
+
+	const crowdfundIds = crowdfundBoxes.map((b) => b.assets[1].tokenId);
+	const crowdfundHistoryBoxes = (
+		await Promise.all(crowdfundIds.map((lId) => fetchBoxesByTokenId(lId, 0, 100)))
+	).flatMap((x) => x);
+	const crowdfundHistoryTxIds = crowdfundHistoryBoxes.map((b) => b.transactionId);
+	const crowdfundHistoryTxs = await Promise.all(crowdfundHistoryTxIds.map(fetchTransactionById));
+
+	const loanHistoryBoxes = (
+		await Promise.all(loanIds.map((lId) => fetchBoxesByTokenId(lId, 0, 100)))
+	).flatMap((x) => x);
+	const loanHistoryTxIds = loanHistoryBoxes.map((b) => b.transactionId);
+	const loanHistoryTxs = await Promise.all(loanHistoryTxIds.map(fetchTransactionById));
+
+	console.log({
+		crowdfundHistoryBoxes,
+		crowdfundHistoryTxIds,
+		crowdfundHistoryTxs,
+		loanHistoryTxs
+	});
 }
 
 // fetch data end
