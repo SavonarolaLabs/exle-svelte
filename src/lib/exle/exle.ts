@@ -607,8 +607,8 @@ export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | unde
 	const repay = decodeExleRepaymentDetailsTokens(box);
 	const { repaymentLevel, lockedAmount } = getExleRepaymentTokensStatus(box);
 
-	const fundingGoal = Number(Number(funding.fundingGoal) / 10 ** token.decimals).toFixed(2);
-	const fundedAmount = Number(Number(repay.repaidAmount) / 10 ** token.decimals).toFixed(2);
+	const repaymentGoal = Number(Number(repay.repaymentAmount) / 10 ** token.decimals).toFixed(2);
+	const repaidAmount = Number(Number(repay.repaidAmount) / 10 ** token.decimals).toFixed(2);
 
 	const repayment = {
 		phase: 'repayment' as const,
@@ -618,9 +618,9 @@ export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | unde
 		loanDescription: project.slice(1).join('\n'),
 		repaymentPeriod: '' + blocksToDays(funding.repaymentHeightLength), // TODO: - height?
 		interestRate: `${(100 / Number(funding.interestRate)).toFixed(1)} %`,
-		fundingGoal: fundingGoal,
+		fundingGoal: repaymentGoal,
 		fundingToken: token.ticker,
-		fundedAmount: fundedAmount + ' ' + token.ticker,
+		fundedAmount: repaidAmount + ' ' + token.ticker,
 		fundedPercentage: Number(repaymentLevel),
 		daysLeft: blocksToDays(repay.repaymentDeadlineHeight - BigInt(nodeInfo.fullHeight)), // TODO: - height
 		creator: ErgoAddress.fromErgoTree(decodeExleBorrower(box)).toString(),
