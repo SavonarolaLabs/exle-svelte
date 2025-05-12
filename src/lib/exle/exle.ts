@@ -567,7 +567,8 @@ export type TxAction =
 	| 'Loan Created'
 	| 'Loan Repayment'
 	| 'Loan Funding'
-	| 'Loan Crowdfunding';
+	| 'Loan Crowdfunding'
+	| 'Repayment Crowdfunding';
 export type LoanRole = 'Borrower' | 'Lender';
 export type HistoryItem = {
 	action: TxAction;
@@ -714,7 +715,21 @@ export function exleHighLevelRecogniser(tx): string {
 		}
 	} else {
 		if (inCrowdFundBox && outCrowdFundBox) {
-			label = 'Fund CrowdFund | Tokens';
+			const inAmount = getExleCrowdFundTokensAmount(inCrowdFundBox);
+			const outAmount = getExleCrowdFundTokensAmount(outCrowdFundBox);
+			if (inAmount) {
+				if (outAmount) {
+					label = outAmount > inAmount ? 'Fund CrowdFund | Tokens' : 'Repayment CrowdFund | Tokens';
+				} else {
+					label = 'Repayment CrowdFund | Tokens';
+				}
+			} else {
+				if (outAmount) {
+					label = 'Fund CrowdFund | Tokens';
+				} else {
+					label = '';
+				}
+			}
 		}
 
 		if (inLendBox && outLendBox) {
@@ -842,7 +857,6 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 	} else if (label == 'Fund CrowdFund | Tokens') {
 		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
 		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
-
 		return {
 			action: 'Loan Crowdfunding',
 			role: 'Lender',
@@ -851,6 +865,19 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 			amount:
 				(getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n) -
 				(getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n),
+			tokenId: getExleCrowdFundTokensTokenId(outCrowdFundBox)
+		};
+	} else if (label == 'Repayment CrowdFund | Tokens') {
+		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
+		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
+		return {
+			action: 'Repayment Crowdfunding',
+			role: 'Lender',
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount:
+				(getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n) -
+				(getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n),
 			tokenId: getExleCrowdFundTokensTokenId(outCrowdFundBox)
 		};
 	} else if (label == 'Lend to Lend | Tokens') {
@@ -1032,11 +1059,7 @@ export function isProxyRepaymentBox(box) {
 }
 
 export function isExleTx(tx: ErgoTransaction) {
-	return (
-		[...tx.inputs.flatMap((x) => x.ergoTree), ...tx.outputs.flatMap((x) => x.ergoTree)].filter(
-			(b) => EXLE_ERGO_TREES.includes(b) || b.endsWith(EXLE_CWORD_TREE_POSTFIX)
-		).length > 0
-	);
+	return exleHighLevelRecogniser(tx);
 }
 
 // DECODE

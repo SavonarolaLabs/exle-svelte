@@ -12,6 +12,7 @@ import {
 	jsonParseBigInt,
 	parseRepaymentBox,
 	txToHistoryItem,
+	txToHistoryItemFromLabel,
 	type NodeBox
 } from './exle';
 import {
@@ -41,6 +42,7 @@ import {
 	prepareLendToRepaymentTokensTx
 } from './exle';
 import { loanHistoryTxs } from './loanHistory.mockdata';
+import { allMetadata } from './allMetadata.mockdata';
 // ERG  => DEXY ???
 // DEXY => ERG
 
@@ -327,7 +329,7 @@ describe('Exle Function ', () => {
 		});
 	});
 
-	it.only('MockBoxes check TokenId vs ErgoTree Repayment', () => {
+	it('MockBoxes check TokenId vs ErgoTree Repayment', () => {
 		const boxesByToken = exleUnspendWithRepaymentToken;
 		const boxesByErgoTree = exleUnspendOnRepaymentBoxes;
 
@@ -336,7 +338,7 @@ describe('Exle Function ', () => {
 
 		expect(filteredByToken.length).toBe(filteredByErgoTree.length);
 	});
-	it.only('Boxes by id CrowdFund', () => {
+	it('Boxes by id CrowdFund', () => {
 		const boxesByToken = exleUnspendWithCrowdToken;
 
 		const filteredByToken = boxesByToken.filter(isCrowdFundBox);
@@ -345,7 +347,54 @@ describe('Exle Function ', () => {
 
 		expect(filteredByToken.length).toBe(boxesByToken.length);
 	});
+	it('Recognise all Loan History', () => {
+		//const txes = exleCrowdfundTxes;
+		const txes = allMetadata.loanHistoryTxs;
 
+		txes.forEach((tx, i) => {
+			const label = exleHighLevelRecogniser(tx);
+			if (!isExleTx(tx)) {
+				return;
+			}
+			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
+				tx,
+				label
+			);
+			const action = txToHistoryItemFromLabel(tx, label);
+
+			if (!action) {
+				console.log(tx);
+			}
+		});
+	});
+	it.only('Donation From Txes', () => {
+		//const txes = exleCrowdfundTxes;
+		const loanTxes = allMetadata.loanHistoryTxs;
+		const crowdfundTxes = allMetadata.crowdfundHistoryTxs;
+		const loanIds = allMetadata.loanIds;
+		const crowdfundLoanIds = allMetadata.crowdfundLoanIds;
+		const soloFundLoanIds = loanIds.map((l) => !crowdfundLoanIds.includes(l));
+
+		// if amount < ... repayment
+
+		crowdfundTxes.forEach((tx, i) => {
+			const label = exleHighLevelRecogniser(tx);
+			if (!isExleTx(tx)) {
+				return;
+			}
+
+			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
+				tx,
+				label
+			);
+			const action = txToHistoryItemFromLabel(tx, label);
+			console.log(txToHistoryItemFromLabel(tx, label));
+
+			if (!action) {
+				console.log(tx);
+			}
+		});
+	});
 	it('High/Low Level Recogniser', () => {
 		//const txes = exleCrowdfundTxes;
 		const txes = exleMockTxes.slice(20, 21); //16 - 21
