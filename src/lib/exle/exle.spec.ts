@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	decodeCrowdfundLoanId,
 	decodeExleLenderTokens,
 	decodeExleRepaymentDetailsTokens,
 	EXLE_LEND_BOX_ERGOTREE,
@@ -7,8 +8,10 @@ import {
 	EXLE_PROXY_REPAYMENT,
 	EXLE_REPAYMENT_BOX_ERGOTREE,
 	EXLE_SERVICE_BOX_ERGOTREE,
+	getExleTokensAmount,
 	isCrowdFundBox,
 	isExleTx,
+	isUserTx,
 	jsonParseBigInt,
 	parseRepaymentBox,
 	txToHistoryItem,
@@ -375,7 +378,19 @@ describe('Exle Function ', () => {
 		const crowdfundLoanIds = allMetadata.crowdfundLoanIds;
 		const soloFundLoanIds = loanIds.map((l) => !crowdfundLoanIds.includes(l));
 
+		const me = '12312'; // <= ADD as Param to Function
 		// if amount < ... repayment
+		const myCrowdfundTxes = crowdfundTxes.filter((tx) => isUserTx(tx, me));
+		const myLoanTxes = loanTxes.filter((tx) => isUserTx(tx, me));
+
+		const myFundLoan = myLoanTxes.map((tx) => {
+			const label = exleHighLevelRecogniser(tx);
+
+			if (label == 'Lend to Lend | Tokens') {
+				// <= ADD function calculate Funding Amount to Loan (return loanId+Amount)
+			}
+		});
+		// sum for funding
 
 		crowdfundTxes.forEach((tx, i) => {
 			const label = exleHighLevelRecogniser(tx);
@@ -383,16 +398,12 @@ describe('Exle Function ', () => {
 				return;
 			}
 
-			const { fundingLevel, repaymentLevel, lowLevelLabel, lockedLevel } = exleLowLevelRecogniser(
-				tx,
-				label
-			);
-			const action = txToHistoryItemFromLabel(tx, label);
-			console.log(txToHistoryItemFromLabel(tx, label));
+			const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
+			const loanId = decodeCrowdfundLoanId(outCrowdFundBox);
+			console.log(loanId);
 
-			if (!action) {
-				console.log(tx);
-			}
+			// (or Amount CrowdFund Tokens on Address vs Amount in CrowdFundBox?)
+			//
 		});
 	});
 	it('High/Low Level Recogniser', () => {

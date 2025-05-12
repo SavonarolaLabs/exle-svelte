@@ -1062,6 +1062,15 @@ export function isExleTx(tx: ErgoTransaction) {
 	return exleHighLevelRecogniser(tx);
 }
 
+export function isUserTx(tx: ErgoTransaction, userAddress: string) {
+	if (
+		tx.inputs.flatMap((i) => i.address).includes(userAddress) ||
+		tx.outputs.flatMap((o) => o.address).includes(userAddress)
+	)
+		return true;
+	return false;
+}
+
 // DECODE
 export function decodeExleProjectDetails(box: NodeBox): string[] {
 	const parsed = parse(box.additionalRegisters?.R5 ?? '');
@@ -1136,7 +1145,7 @@ function decodeExleLenderErg(box: NodeBox): string {
 }
 
 // GET LEND/REPAYMENT TOKENS AMOUNT
-function getExleTokensAmount(box: NodeBox): bigint | undefined {
+export function getExleTokensAmount(box: NodeBox): bigint | undefined {
 	const tokenId = decodeExleLoanTokenId(box);
 	const amount = box.assets.find((a) => a.tokenId == tokenId)?.amount;
 	if (amount) {
