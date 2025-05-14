@@ -1110,14 +1110,14 @@ export function decodeExleRepaymentDetailsTokens(box: NodeBox): ExleRepaymentDet
 		repaidAmount: BigInt(raw[4])
 	};
 }
-function decodeExleBorrower(box: NodeBox): string {
+export function decodeExleBorrower(box: NodeBox): string {
 	const r = box.additionalRegisters.R6;
 	if (r) {
 		const parsed = Buffer.from(parse(r)).toString('hex');
 		return parsed;
 	}
 }
-function decodeExleLenderTokens(box: NodeBox): string {
+export function decodeExleLenderTokens(box: NodeBox): string {
 	const r = box.additionalRegisters.R8;
 	if (r) {
 		const parsed = Buffer.from(parse(r)).toString('hex');
@@ -1154,7 +1154,7 @@ export function getExleTokensAmount(box: NodeBox): bigint | undefined {
 		return undefined;
 	}
 }
-function getExleCrowdFundTokensAmount(box: NodeBox): bigint | undefined {
+export function getExleCrowdFundTokensAmount(box: NodeBox): bigint | undefined {
 	const amount = box?.assets[2]?.amount;
 	if (amount) {
 		return BigInt(amount);
@@ -1162,7 +1162,7 @@ function getExleCrowdFundTokensAmount(box: NodeBox): bigint | undefined {
 		return undefined;
 	}
 }
-function getExleCrowdFundTokensTokenId(box: NodeBox): string | undefined {
+export function getExleCrowdFundTokensTokenId(box: NodeBox): string | undefined {
 	const tokenId = box?.assets[2]?.tokenId;
 	if (tokenId) {
 		return tokenId;

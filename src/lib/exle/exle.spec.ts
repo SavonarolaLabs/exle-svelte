@@ -8,6 +8,7 @@ import {
 	EXLE_PROXY_REPAYMENT,
 	EXLE_REPAYMENT_BOX_ERGOTREE,
 	EXLE_SERVICE_BOX_ERGOTREE,
+	getExleCrowdFundTokensAmount,
 	getExleTokensAmount,
 	isCrowdFundBox,
 	isExleTx,
@@ -46,6 +47,7 @@ import {
 } from './exle';
 import { loanHistoryTxs } from './loanHistory.mockdata';
 import { allMetadata } from './allMetadata.mockdata';
+import { ErgoAddress } from '@fleet-sdk/core';
 // ERG  => DEXY ???
 // DEXY => ERG
 
@@ -376,13 +378,26 @@ describe('Exle Function ', () => {
 		const crowdfundTxes = allMetadata.crowdfundHistoryTxs;
 		const loanIds = allMetadata.loanIds;
 		const crowdfundLoanIds = allMetadata.crowdfundLoanIds;
-		const soloFundLoanIds = loanIds.map((l) => !crowdfundLoanIds.includes(l));
+		const soloFundLoanIds = loanIds.filter((l) => !crowdfundLoanIds.includes(l));
 
-		const me = '12312'; // <= ADD as Param to Function
+		//const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
+		const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn'; // <= ADD as Param to Function
+
 		// if amount < ... repayment
 		const myCrowdfundTxes = crowdfundTxes.filter((tx) => isUserTx(tx, me));
 		const myLoanTxes = loanTxes.filter((tx) => isUserTx(tx, me));
 
+		const resultLoan = calculateUserDonationsSolofund(loanTxes, soloFundLoanIds, me);
+		resultLoan.forEach(([loanId, amount]) => {
+			console.log(`SOLOLOAN ${loanId}: donated ${amount}`);
+		});
+		const resultCrowd = calculateUserDonationsCrowdfund(crowdfundTxes, crowdfundLoanIds, me);
+		// Example usage
+		resultCrowd.forEach(([loanId, amount]) => {
+			console.log(`CROWDLOAN ${loanId}: donated ${amount}`);
+		});
+
+		// SOLO LOAN CALCULATE DONATIONS:
 		const myFundLoan = myLoanTxes.map((tx) => {
 			const label = exleHighLevelRecogniser(tx);
 
@@ -390,8 +405,57 @@ describe('Exle Function ', () => {
 				// <= ADD function calculate Funding Amount to Loan (return loanId+Amount)
 			}
 		});
-		// sum for funding
 
+		function calculateUserDonationsSolofund(txes, soloFundLoanIds: string[], me: string) {
+			const soloFundAmount = new Map(soloFundLoanIds.map((c) => [c, 0n]));
+
+			// PROXY?
+			txes.forEach((tx) => {
+				const label = exleHighLevelRecogniser(tx);
+				if (label == 'Lend to Lend | Tokens') {
+					const outLendBox = tx.outputs.find(isExleLendTokenBox);
+					const amount = getExleTokensAmount(outLendBox);
+					const lender = decodeExleLenderTokens(outLendBox);
+					const loanId = outLendBox.assets[1].tokenId;
+					if (lender == ErgoAddress.fromBase58(me).ergoTree) {
+						soloFundAmount.set(loanId, soloFundAmount.get(loanId)! + amount);
+					}
+				}
+			});
+			return Array.from(soloFundAmount.entries()).filter((x) => x[1]);
+		}
+
+		function calculateUserDonationsCrowdfund(txes, crowdfundLoanIds: string[], me: string) {
+			console.log('check ');
+
+			const crowdfundAmount = new Map(crowdfundLoanIds.map((c) => [c, 0n]));
+
+			// txes.forEach((tx) => {
+			// 	const label = exleHighLevelRecogniser(tx);
+			// 	if (label == 'Fund CrowdFund | Tokens') {
+			// 		console.log(tx.inputs[1].address);
+			// 	}
+			// });
+
+			const userTxes = txes.filter((tx) => isUserTx(tx, me));
+
+			userTxes.forEach((tx) => {
+				const label = exleHighLevelRecogniser(tx);
+				if (label == 'Fund CrowdFund | Tokens') {
+					const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
+					const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
+					const inAmount = getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n;
+					const outAmount = getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n;
+					const diff = outAmount - inAmount;
+
+					const loanId = decodeCrowdfundLoanId(outCrowdFundBox)!;
+					crowdfundAmount.set(loanId, crowdfundAmount.get(loanId)! + diff);
+				}
+			});
+			return Array.from(crowdfundAmount.entries()).filter((x) => x[1]);
+		}
+
+		// DOUBLE CHECK
 		crowdfundTxes.forEach((tx, i) => {
 			const label = exleHighLevelRecogniser(tx);
 			if (!isExleTx(tx)) {
@@ -400,11 +464,31 @@ describe('Exle Function ', () => {
 
 			const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
 			const loanId = decodeCrowdfundLoanId(outCrowdFundBox);
-			console.log(loanId);
+			//console.log(loanId);
 
 			// (or Amount CrowdFund Tokens on Address vs Amount in CrowdFundBox?)
 			//
 		});
+		// DOUBLE CHECK--------
+
+		// STATUSES
+		// Fully Repaid
+		// Partialy Repaid
+		// In repayment
+		// Funding
+		// Cancelled
+
+		// Fully Repaid
+		// Partialy Repaid (Blocks =0, Repaid = Y < X)
+		// Q? (Blocks =0 , Repaid = 0 )
+
+		// Ready for Withdrawl (Blocks?, X)
+		// In repayment (Blocks !=0, Repaid = Y < X)
+
+		// Await Repaiment (Blocks !=0, Repaid = 0 )
+
+		// Funding (X/X)
+		// Cancelled
 	});
 	it('High/Low Level Recogniser', () => {
 		//const txes = exleCrowdfundTxes;
