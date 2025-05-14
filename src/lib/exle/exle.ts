@@ -1125,6 +1125,10 @@ export function decodeExleLenderTokens(box: NodeBox): string {
 	}
 }
 
+export function getExleLoanId(box: NodeBox): string {
+	return box.assets[1]?.tokenId;
+}
+
 export function decodeExleServiceFee(box: NodeBox): bigint {
 	return decodeBigInt(box, 'R8')[1];
 }

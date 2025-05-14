@@ -9,6 +9,7 @@ import {
 	EXLE_REPAYMENT_BOX_ERGOTREE,
 	EXLE_SERVICE_BOX_ERGOTREE,
 	getExleCrowdFundTokensAmount,
+	getExleLoanId,
 	getExleTokensAmount,
 	isCrowdFundBox,
 	isExleTx,
@@ -405,6 +406,31 @@ describe('Exle Function ', () => {
 				// <= ADD function calculate Funding Amount to Loan (return loanId+Amount)
 			}
 		});
+
+		// userLoans
+		const loanBoxes = allMetadata.loanBoxes; //'funding'
+		const repaymentBoxes = allMetadata.repaymentBoxes; //''
+		//
+
+		const crowdfundBoxes = allMetadata.crowdfundBoxes;
+
+		function getLoanDonationStatus(
+			loanId: string,
+			repaymentBoxes: NodeBox[],
+			loanBoxes: NodeBox[]
+		) {
+			const repaymentBox = repaymentBoxes.find((b) => getExleLoanId(b) == loanId);
+			const loanBox = loanBoxes.find((b) => getExleLoanId(b) == loanId);
+			if (!repaymentBox) {
+				if (!loanBox) {
+					return 'Cancelled';
+				} else {
+					return 'Funding';
+				}
+			} else {
+				console.log('ADD FUNCTION');
+			}
+		}
 
 		function calculateUserDonationsSolofund(txes, soloFundLoanIds: string[], me: string) {
 			const soloFundAmount = new Map(soloFundLoanIds.map((c) => [c, 0n]));
