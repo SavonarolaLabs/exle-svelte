@@ -79,6 +79,25 @@ const LENDING_TOKENS: TokenInfo[] = [
 		project: 'Sigma USD',
 		description: 'Algorithmic stablecoin',
 		defaultAmount: 10_00n
+	},
+	{
+		tokenId: 'f60bff91f7ae3f3a5f0c2d35b46ef8991f213a61d7f7e453d344fa52a42d9f9a',
+		decimals: 2,
+		name: 'Test SigUSD',
+		ticker: 'TestUSD',
+		project: 'Test',
+		description: 'Algorithmic stablecoin',
+		defaultAmount: 10_00n
+	},
+	{
+		tokenId: '6ba45eb59947c2b7a19ec6cff038080776e2303c328b321832d32924dfc297c2',
+		decimals: 0,
+		name: 'Exle: TestSigUSD',
+		ticker: 'ExleTestUSD',
+		project: 'Exle',
+		description:
+			'Tokens to use in place of SigUSD for testing Exle loans. This value is not pegged to anything and holds no value',
+		defaultAmount: 10_00n
 	}
 ];
 
@@ -603,6 +622,8 @@ export interface Loan {
 export function parseRepaymentBox(box: NodeBox, nodeInfo: NodeInfo): Loan | undefined {
 	if (box.assets.length < 2 || !box.additionalRegisters.R7) return;
 	const token = parseLoanToken(box);
+	console.log('token?', token);
+	console.log('R7', box.additionalRegisters.R7);
 	if (!token) return;
 
 	const funding = decodeExleFundingInfo(box);

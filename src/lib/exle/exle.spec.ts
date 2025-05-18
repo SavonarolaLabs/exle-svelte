@@ -384,39 +384,51 @@ describe('Exle Function ', () => {
 		const soloFundLoanIds = loanIds.filter((l) => !crowdfundLoanIds.includes(l));
 		const nodeInfo = allMetadata.nodeInfo;
 
-		//const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
-		const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn'; // <= ADD as Param to Function
+		const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
+		//const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn'; // <= ADD as Param to Function
 
 		// if amount < ... repayment
 		const myCrowdfundTxes = crowdfundTxes.filter((tx) => isUserTx(tx, me));
 		const myLoanTxes = loanTxes.filter((tx) => isUserTx(tx, me));
 
-		const resultLoan = calculateUserDonationsSolofund(loanTxes, soloFundLoanIds, me);
-		resultLoan.forEach(([loanId, amount]) => {
-			console.log(`SOLOLOAN ${loanId}: donated ${amount}`);
-		});
-		const resultCrowd = calculateUserDonationsCrowdfund(crowdfundTxes, crowdfundLoanIds, me);
-		// Example usage
-		resultCrowd.forEach(([loanId, amount]) => {
-			console.log(`CROWDLOAN ${loanId}: donated ${amount}`);
+		// JOIN resultLoan + resultCrowd
+		function getCombinedDonations(loanTxes, soloFundLoanIds, crowdfundTxes, crowdfundLoanIds, me) {
+			const resultLoan = calculateUserDonationsSolofund(loanTxes, soloFundLoanIds, me);
+			const resultCrowd = calculateUserDonationsCrowdfund(crowdfundTxes, crowdfundLoanIds, me);
+
+			const combined = [];
+
+			resultLoan.forEach(([loanId, amount]) => {
+				combined.push({ loanId: loanId, type: 'Sololoan', amount: amount });
+			});
+
+			resultCrowd.forEach(([loanId, amount]) => {
+				combined.push({ loanId: loanId, type: 'Crowdloan', amount: amount });
+			});
+
+			return combined;
+		}
+
+		// Example usage:
+		const donations = getCombinedDonations(
+			loanTxes,
+			soloFundLoanIds,
+			crowdfundTxes,
+			crowdfundLoanIds,
+			me
+		);
+
+		// userLoans + allBoxes
+		const loanBoxes = allMetadata.loanBoxes;
+		const repaymentBoxes = allMetadata.repaymentBoxes;
+
+		donations.forEach((d) => {
+			const status = getLoanDonationStatus(d.loanId, repaymentBoxes, loanBoxes, nodeInfo);
+
+			d.status = status;
 		});
 
-		// SOLO LOAN CALCULATE DONATIONS:
-		const myFundLoan = myLoanTxes.map((tx) => {
-			const label = exleHighLevelRecogniser(tx);
-
-			if (label == 'Lend to Lend | Tokens') {
-				// <= ADD function calculate Funding Amount to Loan (return loanId+Amount)
-			}
-		});
-
-		// userLoans
-		const loanBoxes = allMetadata.loanBoxes; //'funding'
-		const repaymentBoxes = allMetadata.repaymentBoxes; //''
-		//
-		loanIds.forEach((l) => {
-			console.log(getLoanDonationStatus(l,repaymentBoxes,loanBoxes nodeInfo));
-		});
+		console.log(donations);
 
 		const crowdfundBoxes = allMetadata.crowdfundBoxes;
 
@@ -438,12 +450,14 @@ describe('Exle Function ', () => {
 				const repayment = parseRepaymentBox(repaymentBox, nodeInfo);
 
 				if (repayment?.isRepayed) {
-					return 'Fully Repaid';
+					return { status: 'Fully Repaid', title: repayment.loanTitle };
 				} else {
 					if (repayment?.daysLeft != 0) {
-						return 'In repayment';
+						//console.log('here?', repaymentBox);
+						console.log('here?', repayment);
+						return { status: 'In repayment', title: repayment.loanTitle };
 					} else {
-						return 'Partialy Repaid';
+						return { status: 'Partialy Repaid', title: repayment.loanTitle };
 					}
 				}
 			}

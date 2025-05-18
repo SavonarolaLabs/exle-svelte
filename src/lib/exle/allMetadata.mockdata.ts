@@ -33319,5 +33319,44 @@ export const allMetadata = {
 			],
 			size: 3125
 		}
-	]
+	],
+	nodeInfo: {
+		currentTime: 1747567078093,
+		network: 'mainnet',
+		name: 'ergo-mainnet-5.0.24',
+		stateType: 'utxo',
+		difficulty: 799276233916416,
+		bestFullHeaderId: 'bcf081d1aded61c539644a635a9dbd2ce6e58971af73faa439801f7164ad5fea',
+		bestHeaderId: 'bcf081d1aded61c539644a635a9dbd2ce6e58971af73faa439801f7164ad5fea',
+		peersCount: 30,
+		unconfirmedCount: 10,
+		appVersion: '5.0.24',
+		eip37Supported: true,
+		stateRoot: '05161852d1b255c2f216231e0ad1e867cbd74492bec6ebdb32d8b73bb9062a591a',
+		genesisBlockId: 'b0244dfc267baca974a4caee06120321562784303a8a688976ae56170e4d175b',
+		previousFullHeaderId: '23aa42dfeab1d19d917337558466bf9ad7b673a2d66abc84e8b2c03c040998c2',
+		fullHeight: 1527628,
+		headersHeight: 1527628,
+		stateVersion: 'bcf081d1aded61c539644a635a9dbd2ce6e58971af73faa439801f7164ad5fea',
+		fullBlocksScore: 2619533766167533453312,
+		maxPeerHeight: 1527628,
+		launchTime: 1747565768063,
+		isExplorer: true,
+		lastSeenMessageTime: 1747567070592,
+		eip27Supported: true,
+		headersScore: 2619533766167533453312,
+		parameters: {
+			outputCost: 298,
+			tokenAccessCost: 100,
+			maxBlockCost: 8001091,
+			height: 1526784,
+			maxBlockSize: 1271009,
+			dataInputCost: 100,
+			blockVersion: 3,
+			inputCost: 2407,
+			storageFeeFactor: 1250000,
+			minValuePerByte: 360
+		},
+		isMining: false
+	}
 };
