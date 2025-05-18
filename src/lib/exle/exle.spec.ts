@@ -10,6 +10,7 @@ import {
 	EXLE_SERVICE_BOX_ERGOTREE,
 	getExleCrowdFundTokensAmount,
 	getExleLoanId,
+	getExleRepaymentTokensStatus,
 	getExleTokensAmount,
 	isCrowdFundBox,
 	isExleTx,
@@ -380,6 +381,7 @@ describe('Exle Function ', () => {
 		const loanIds = allMetadata.loanIds;
 		const crowdfundLoanIds = allMetadata.crowdfundLoanIds;
 		const soloFundLoanIds = loanIds.filter((l) => !crowdfundLoanIds.includes(l));
+		const nodeInfo = allMetadata.nodeInfo;
 
 		//const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
 		const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn'; // <= ADD as Param to Function
@@ -428,8 +430,15 @@ describe('Exle Function ', () => {
 					return 'Funding';
 				}
 			} else {
+				const status = parseRepaymentBox(repaymentBox, nodeInfo);
+
 				console.log('ADD FUNCTION');
 			}
+		}
+
+		function returnRepaymentStatus(box: NodeBox) {
+			const status = 'OK';
+			return status;
 		}
 
 		function calculateUserDonationsSolofund(txes, soloFundLoanIds: string[], me: string) {
@@ -512,7 +521,6 @@ describe('Exle Function ', () => {
 		// In repayment (Blocks !=0, Repaid = Y < X)
 
 		// Await Repaiment (Blocks !=0, Repaid = 0 )
-
 		// Funding (X/X)
 		// Cancelled
 	});

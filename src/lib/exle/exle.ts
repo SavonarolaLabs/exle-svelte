@@ -513,6 +513,7 @@ export function fetchCrowdFundBoxesByLoanId(loanId: string) {
 }
 
 type AllExleMetadata = {
+	nodeInfo: NodeInfo;
 	loanBoxes: NodeBox[];
 	repaymentBoxes: NodeBox[];
 	crowdfundBoxes: NodeBox[];
@@ -522,6 +523,7 @@ type AllExleMetadata = {
 	loanHistoryTxs: [];
 };
 export async function fetchAllExleMetadata(): Promise<AllExleMetadata> {
+	const nodeInfo = await fetchNodeInfo();
 	const maybeLoanBoxes = await fetchBoxesByTokenId(EXLE_SLE_LEND_TOKEN_ID, 0, 100);
 	const maybeRepaymentBoxes = await fetchBoxesByTokenId(EXLE_SLE_REPAYMENT_TOKEN_ID, 0, 100);
 	const maybeCrowdfundBoxes = await fetchBoxesByTokenId(EXLE_SLE_CROWD, 0, 100);
@@ -548,6 +550,7 @@ export async function fetchAllExleMetadata(): Promise<AllExleMetadata> {
 	const loanHistoryTxs = await Promise.all(loanHistoryTxIds.map(fetchTransactionById));
 
 	const allMetadata = {
+		nodeInfo,
 		loanBoxes,
 		repaymentBoxes,
 		crowdfundBoxes,
@@ -1192,7 +1195,7 @@ function getExleProxyTokensTokenId(box: NodeBox): string | undefined {
 	}
 }
 
-function getExleRepaymentTokensStatus(box: NodeBox): ExleRepaymentTokensStatus {
+export function getExleRepaymentTokensStatus(box: NodeBox): ExleRepaymentTokensStatus {
 	let lockedAmount = 0n,
 		lockedLevel = 0n;
 
@@ -1207,7 +1210,7 @@ function getExleRepaymentTokensStatus(box: NodeBox): ExleRepaymentTokensStatus {
 	return { lockedAmount, lockedLevel, repaymentLevel };
 }
 
-function getExleLendTokensStatus(box: NodeBox): ExleFundingTokensStatus {
+export function getExleLendTokensStatus(box: NodeBox): ExleFundingTokensStatus {
 	let fundingLevel = 0n;
 	let fundedAmount = 0n;
 
