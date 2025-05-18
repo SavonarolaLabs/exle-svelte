@@ -113,6 +113,10 @@ export function decimalsByTokenId(tokenId: string): number {
 	return LENDING_TOKENS.find((t) => t.tokenId == tokenId)!.decimals;
 }
 
+export function decimalsByTicker(ticker: string): number {
+	return LENDING_TOKENS.find((t) => t.ticker == ticker)!.decimals;
+}
+
 // TYPES
 type TokenInfo = {
 	tokenId: string;
@@ -549,6 +553,7 @@ export type Donation = {
 	amount: bigint;
 	status: DonationStatus;
 	title: string;
+	ticker: string;
 };
 
 export type LoanType = 'Crowdloan' | 'Solofund';
@@ -1323,9 +1328,7 @@ export function donationsFromExleMetadata(allMetadata: AllExleMetadata, me: stri
 	const repaymentBoxes = allMetadata.repaymentBoxes;
 
 	donations.forEach((d) => {
-		const status = getLoanDonationStatus(d.loanId, repaymentBoxes, loanBoxes, nodeInfo);
-		d.status = status.status;
-		d.title = status.title;
+		Object.assign(d, getLoanDonationStatus(d.loanId, repaymentBoxes, loanBoxes, nodeInfo));
 	});
 
 	const crowdfundBoxes = allMetadata.crowdfundBoxes;
@@ -1345,12 +1348,12 @@ export function donationsFromExleMetadata(allMetadata: AllExleMetadata, me: stri
 				const loan = parseLoanBox(loanBox, nodeInfo);
 
 				if (loan?.isReadyForWithdrawal) {
-					return { status: 'Fully Funded', title: loan.loanTitle };
+					return { status: 'Fully Funded', title: loan.loanTitle, ticker: loan.fundingToken };
 				} else {
 					if (loan?.daysLeft != 0) {
-						return { status: 'Funding', title: loan.loanTitle };
+						return { status: 'Funding', title: loan.loanTitle, ticker: loan.fundingToken };
 					} else {
-						return { status: 'Cancelled', title: loan.loanTitle };
+						return { status: 'Cancelled', title: loan.loanTitle, ticker: loan.fundingToken };
 					}
 				}
 			}
@@ -1358,12 +1361,24 @@ export function donationsFromExleMetadata(allMetadata: AllExleMetadata, me: stri
 			const repayment = parseRepaymentBox(repaymentBox, nodeInfo);
 
 			if (repayment?.isRepayed) {
-				return { status: 'Fully Repaid', title: repayment.loanTitle };
+				return {
+					status: 'Fully Repaid',
+					title: repayment.loanTitle,
+					ticker: repayment.fundingToken
+				};
 			} else {
 				if (repayment?.daysLeft != 0) {
-					return { status: 'In repayment', title: repayment.loanTitle };
+					return {
+						status: 'In repayment',
+						title: repayment.loanTitle,
+						ticker: repayment.fundingToken
+					};
 				} else {
-					return { status: 'Partialy Repaid', title: repayment.loanTitle };
+					return {
+						status: 'Partialy Repaid',
+						title: repayment.loanTitle,
+						ticker: repayment.fundingToken
+					};
 				}
 			}
 		}

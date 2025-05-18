@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { decimalsByTicker } from '$lib/exle/exle';
 	import { shortenAddress } from '$lib/utils';
 	import { my_donations } from '../../stores/ui';
 
@@ -25,7 +26,8 @@
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">My donation:</div>
-				<div class="font-medium">{d.amount}</div>
+				{Number((100n * d.amount) / BigInt(10 ** decimalsByTicker(d.ticker))) / 100}
+				<span style="width:100px">{d.ticker}</span>
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">Status:</div>
@@ -41,14 +43,17 @@
 	{#each $my_donations as d}
 		<div class="mb-4 rounded-xl border-2 border-light-border p-2 px-4 dark:border-dark-border">
 			<div class="flex justify-between">
-				<div class="text-xs">Loan ID: {d.loan_id}</div>
-				<div class="text-xs">{d.action}</div>
+				<div class="text-xs">Loan ID: {shortenAddress(d.loanId)}</div>
+				<div class="text-xs">{d.type}</div>
 			</div>
-			<div class="text-lg font-medium">{d.name}</div>
+			<div class="text-lg font-medium">{d.title}</div>
 
 			<div class="my-2 flex justify-between">
 				<div class="text-xs opacity-[0.6]">My donation:</div>
-				<div class="font-medium">{d.donation}</div>
+				<div>
+					{Number((100n * d.amount) / BigInt(10 ** decimalsByTicker(d.ticker))) / 100}
+					<span style="width:100px">{d.ticker}</span>
+				</div>
 			</div>
 			<div class="flex justify-between">
 				<div class="text-xs opacity-[0.6]">Status:</div>
