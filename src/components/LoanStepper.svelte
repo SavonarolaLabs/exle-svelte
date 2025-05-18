@@ -7,8 +7,8 @@
 	import { goto } from '$app/navigation';
 	import Nautilus from '../icons/Nautilus.svelte';
 	import Check from '../icons/Check.svelte';
-	import type { CreateLendInputParams } from '$lib/exle/exle';
-	import { tokenByTicker } from '$lib/tokens';
+	import { tokenByTicker, type CreateLendInputParams } from '$lib/exle/exle';
+
 	import { BLOCKS_PER_DAY, toErgoBlocks } from '$lib/utils';
 
 	function goBack() {

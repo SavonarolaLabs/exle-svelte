@@ -25,7 +25,7 @@ import {
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
-import { decimalsByTokenId } from '$lib/tokens';
+import { decimalsByTokenId } from '$lib/exle/exle';
 import { get, writable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');

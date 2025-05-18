@@ -5,7 +5,7 @@
 	import GlobalSearch from '../../icons/GlobalSearch.svelte';
 	import More from '../../icons/More.svelte';
 	import { shortenAddress } from '$lib/utils';
-	import { decimalsByTokenId, tickerByTokenId } from '$lib/tokens';
+	import { decimalsByTokenId, tickerByTokenId } from '$lib/exle/exle';
 	import { X } from 'lucide-svelte';
 	function formatTimestamp(timestamp: string) {
 		const date = new Date(timestamp);

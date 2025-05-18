@@ -3,6 +3,7 @@ import {
 	decodeCrowdfundLoanId,
 	decodeExleLenderTokens,
 	decodeExleRepaymentDetailsTokens,
+	donationsFromExleMetadata,
 	EXLE_LEND_BOX_ERGOTREE,
 	EXLE_PROXY_LEND_CREATE,
 	EXLE_PROXY_REPAYMENT,
@@ -16,9 +17,13 @@ import {
 	isExleTx,
 	isUserTx,
 	jsonParseBigInt,
+	parseLoanBox,
 	parseRepaymentBox,
 	txToHistoryItem,
 	txToHistoryItemFromLabel,
+	type AllExleMetadata,
+	type Donation,
+	type LoanType,
 	type NodeBox,
 	type NodeInfo
 } from './exle';
@@ -376,159 +381,12 @@ describe('Exle Function ', () => {
 		});
 	});
 	it.only('Donation From Txes', () => {
-		//const txes = exleCrowdfundTxes;
-		const loanTxes = allMetadata.loanHistoryTxs;
-		const crowdfundTxes = allMetadata.crowdfundHistoryTxs;
-		const loanIds = allMetadata.loanIds;
-		const crowdfundLoanIds = allMetadata.crowdfundLoanIds;
-		const soloFundLoanIds = loanIds.filter((l) => !crowdfundLoanIds.includes(l));
-		const nodeInfo = allMetadata.nodeInfo;
-
-		const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
-		//const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn'; // <= ADD as Param to Function
-
-		// if amount < ... repayment
-		const myCrowdfundTxes = crowdfundTxes.filter((tx) => isUserTx(tx, me));
-		const myLoanTxes = loanTxes.filter((tx) => isUserTx(tx, me));
-
-		// JOIN resultLoan + resultCrowd
-		function getCombinedDonations(loanTxes, soloFundLoanIds, crowdfundTxes, crowdfundLoanIds, me) {
-			const resultLoan = calculateUserDonationsSolofund(loanTxes, soloFundLoanIds, me);
-			const resultCrowd = calculateUserDonationsCrowdfund(crowdfundTxes, crowdfundLoanIds, me);
-
-			const combined = [];
-
-			resultLoan.forEach(([loanId, amount]) => {
-				combined.push({ loanId: loanId, type: 'Sololoan', amount: amount });
-			});
-
-			resultCrowd.forEach(([loanId, amount]) => {
-				combined.push({ loanId: loanId, type: 'Crowdloan', amount: amount });
-			});
-
-			return combined;
-		}
-
-		// Example usage:
-		const donations = getCombinedDonations(
-			loanTxes,
-			soloFundLoanIds,
-			crowdfundTxes,
-			crowdfundLoanIds,
-			me
-		);
-
-		// userLoans + allBoxes
-		const loanBoxes = allMetadata.loanBoxes;
-		const repaymentBoxes = allMetadata.repaymentBoxes;
-
-		donations.forEach((d) => {
-			const status = getLoanDonationStatus(d.loanId, repaymentBoxes, loanBoxes, nodeInfo);
-
-			d.status = status;
-		});
-
-		console.log(donations);
-
-		const crowdfundBoxes = allMetadata.crowdfundBoxes;
-
-		function getLoanDonationStatus(
-			loanId: string,
-			repaymentBoxes: NodeBox[],
-			loanBoxes: NodeBox[],
-			nodeInfo: NodeInfo
-		) {
-			const repaymentBox = repaymentBoxes.find((b) => getExleLoanId(b) == loanId);
-			const loanBox = loanBoxes.find((b) => getExleLoanId(b) == loanId);
-			if (!repaymentBox) {
-				if (!loanBox) {
-					return 'Cancelled';
-				} else {
-					return 'Funding';
-				}
-			} else {
-				const repayment = parseRepaymentBox(repaymentBox, nodeInfo);
-
-				if (repayment?.isRepayed) {
-					return { status: 'Fully Repaid', title: repayment.loanTitle };
-				} else {
-					if (repayment?.daysLeft != 0) {
-						//console.log('here?', repaymentBox);
-						console.log('here?', repayment);
-						return { status: 'In repayment', title: repayment.loanTitle };
-					} else {
-						return { status: 'Partialy Repaid', title: repayment.loanTitle };
-					}
-				}
-			}
-		}
-
-		function calculateUserDonationsSolofund(txes, soloFundLoanIds: string[], me: string) {
-			const soloFundAmount = new Map(soloFundLoanIds.map((c) => [c, 0n]));
-
-			// PROXY?
-			txes.forEach((tx) => {
-				const label = exleHighLevelRecogniser(tx);
-				if (label == 'Lend to Lend | Tokens') {
-					const outLendBox = tx.outputs.find(isExleLendTokenBox);
-					const amount = getExleTokensAmount(outLendBox);
-					const lender = decodeExleLenderTokens(outLendBox);
-					const loanId = outLendBox.assets[1].tokenId;
-					if (lender == ErgoAddress.fromBase58(me).ergoTree) {
-						soloFundAmount.set(loanId, soloFundAmount.get(loanId)! + amount);
-					}
-				}
-			});
-			return Array.from(soloFundAmount.entries()).filter((x) => x[1]);
-		}
-
-		function calculateUserDonationsCrowdfund(txes, crowdfundLoanIds: string[], me: string) {
-			console.log('check ');
-
-			const crowdfundAmount = new Map(crowdfundLoanIds.map((c) => [c, 0n]));
-
-			// txes.forEach((tx) => {
-			// 	const label = exleHighLevelRecogniser(tx);
-			// 	if (label == 'Fund CrowdFund | Tokens') {
-			// 		console.log(tx.inputs[1].address);
-			// 	}
-			// });
-
-			const userTxes = txes.filter((tx) => isUserTx(tx, me));
-
-			userTxes.forEach((tx) => {
-				const label = exleHighLevelRecogniser(tx);
-				if (label == 'Fund CrowdFund | Tokens') {
-					const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
-					const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
-					const inAmount = getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n;
-					const outAmount = getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n;
-					const diff = outAmount - inAmount;
-
-					const loanId = decodeCrowdfundLoanId(outCrowdFundBox)!;
-					crowdfundAmount.set(loanId, crowdfundAmount.get(loanId)! + diff);
-				}
-			});
-			return Array.from(crowdfundAmount.entries()).filter((x) => x[1]);
-		}
-
-		// STATUSES
-		// Fully Repaid
-		// Partialy Repaid
-		// In repayment
-		// Funding
-		// Cancelled
-
-		// Fully Repaid
-		// Partialy Repaid (Blocks =0, Repaid = Y < X)
-		// Q? (Blocks =0 , Repaid = 0 )
-
-		// Ready for Withdrawl (Blocks?, X)
-		// In repayment (Blocks !=0, Repaid = Y < X)
-
-		// Await Repaiment (Blocks !=0, Repaid = 0 )
-		// Funding (X/X)
-		// Cancelled
+		const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn';
+		//const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
+		const donations = donationsFromExleMetadata(allMetadata, me);
+		//console.log(donations);
+		expect(donations).toBeTruthy();
+		expect(donations.length).toBe(5);
 	});
 	it('High/Low Level Recogniser', () => {
 		//const txes = exleCrowdfundTxes;
