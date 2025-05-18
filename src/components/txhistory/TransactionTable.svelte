@@ -116,12 +116,19 @@
 		<div class="relative grid grid-cols-2 py-3 text-sm">
 			<div>
 				<div class="mb-1 font-medium">{tx.action}</div>
-				<div class="text-xs opacity-[0.6]">{tx.txId}</div>
+				<div class="text-xs opacity-[0.6]">{tx.role}</div>
 			</div>
 
 			<div class="flex items-center justify-end">
 				<div class="text-right">
-					<div class="mb-1 font-medium">{tx.amount} {tx.tokenId}</div>
+					<div class="mb-1 font-medium">
+						{#if tx.amount}
+							{Number((100n * tx.amount) / BigInt(10 ** decimalsByTokenId(tx.tokenId))) / 100}
+							<span style="width:100px">{tickerByTokenId(tx.tokenId)}</span>
+						{:else}
+							<span style="width:100px">- -</span>
+						{/if}
+					</div>
 					<div class="text-xs opacity-[0.6]">{formatTimestamp(tx.timestamp)}</div>
 				</div>
 				<div class="relative ml-3">
