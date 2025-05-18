@@ -1,12 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { transactions } from '../../data/TxHistory';
 	import Copy from '../../icons/Copy.svelte';
 	import GlobalSearch from '../../icons/GlobalSearch.svelte';
 	import More from '../../icons/More.svelte';
 	import { shortenAddress } from '$lib/utils';
 	import { decimalsByTokenId, tickerByTokenId } from '$lib/exle/exle';
 	import { X } from 'lucide-svelte';
+	import { transactions } from '../../stores/ui';
 	function formatTimestamp(timestamp: string) {
 		const date = new Date(timestamp);
 		const hours = date.getHours().toString().padStart(2, '0');
@@ -78,7 +78,7 @@
 </div>
 
 <div class="rows">
-	{#each transactions as tx}
+	{#each $transactions as tx}
 		<div
 			class="hidden grid-cols-6 border-light-border py-3 text-sm dark:border-dark-border lg:grid"
 		>
@@ -112,7 +112,7 @@
 </div>
 
 <div class="lg:hidden">
-	{#each transactions as tx, i}
+	{#each $transactions as tx, i}
 		<div class="relative grid grid-cols-2 py-3 text-sm">
 			<div>
 				<div class="mb-1 font-medium">{tx.action}</div>

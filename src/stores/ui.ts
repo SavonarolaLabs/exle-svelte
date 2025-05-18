@@ -16,16 +16,20 @@ import {
 	fundLendWithCrowdBoxTokensTx,
 	fundRepaymentTokensSruProxyTx,
 	fundRepaymentTokensTx,
+	isExleTx,
 	parseLoanBox,
 	parseRepaymentBox,
 	prepareCrowdFundFromLendTx,
 	preparefundLendTokensTx,
 	prepareLendToRepaymentTokensTx,
 	prepareNewCrowdFundTx,
+	txToHistoryItem,
 	type AllExleMetadata,
 	type CreateLendChainContext,
 	type CreateLendInputParams,
 	type Donation,
+	type ErgoTransaction,
+	type HistoryItem,
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
@@ -139,6 +143,22 @@ export const my_donations: Readable<Donation[]> = derived<
 		set(donations);
 	},
 	[] as Donation[]
+);
+
+export const transactions: Readable<HistoryItem[]> = derived<
+	[typeof exle_metadata, typeof change_address],
+	HistoryItem[]
+>(
+	[exle_metadata, change_address],
+	([$exle_metadata, $change_address], set) => {
+		if (!$exle_metadata || !$change_address) return;
+		const transactions = [...$exle_metadata.crowdfundHistoryTxs, ...$exle_metadata.loanHistoryTxs]
+			.filter((tx) => isExleTx(tx))
+			.map((tx) => txToHistoryItem(tx));
+		console.log({ transactions });
+		set(transactions);
+	},
+	[] as HistoryItem[]
 );
 
 export async function loadExleHistory() {

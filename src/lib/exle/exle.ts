@@ -345,7 +345,7 @@ export async function fetchNodeInfo(): Promise<NodeInfo | null> {
 }
 
 // fetch data start
-type ErgoTransaction = {
+export type ErgoTransaction = {
 	id: string;
 	inputs: any[];
 	outputs: any[];
