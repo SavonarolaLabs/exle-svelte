@@ -19,7 +19,8 @@ import {
 	parseRepaymentBox,
 	txToHistoryItem,
 	txToHistoryItemFromLabel,
-	type NodeBox
+	type NodeBox,
+	type NodeInfo
 } from './exle';
 import {
 	exleCrowdfundTxes,
@@ -413,13 +414,17 @@ describe('Exle Function ', () => {
 		const loanBoxes = allMetadata.loanBoxes; //'funding'
 		const repaymentBoxes = allMetadata.repaymentBoxes; //''
 		//
+		loanIds.forEach((l) => {
+			console.log(getLoanDonationStatus(l,repaymentBoxes,loanBoxes nodeInfo));
+		});
 
 		const crowdfundBoxes = allMetadata.crowdfundBoxes;
 
 		function getLoanDonationStatus(
 			loanId: string,
 			repaymentBoxes: NodeBox[],
-			loanBoxes: NodeBox[]
+			loanBoxes: NodeBox[],
+			nodeInfo: NodeInfo
 		) {
 			const repaymentBox = repaymentBoxes.find((b) => getExleLoanId(b) == loanId);
 			const loanBox = loanBoxes.find((b) => getExleLoanId(b) == loanId);
@@ -430,15 +435,18 @@ describe('Exle Function ', () => {
 					return 'Funding';
 				}
 			} else {
-				const status = parseRepaymentBox(repaymentBox, nodeInfo);
+				const repayment = parseRepaymentBox(repaymentBox, nodeInfo);
 
-				console.log('ADD FUNCTION');
+				if (repayment?.isRepayed) {
+					return 'Fully Repaid';
+				} else {
+					if (repayment?.daysLeft != 0) {
+						return 'In repayment';
+					} else {
+						return 'Partialy Repaid';
+					}
+				}
 			}
-		}
-
-		function returnRepaymentStatus(box: NodeBox) {
-			const status = 'OK';
-			return status;
 		}
 
 		function calculateUserDonationsSolofund(txes, soloFundLoanIds: string[], me: string) {
@@ -489,22 +497,6 @@ describe('Exle Function ', () => {
 			});
 			return Array.from(crowdfundAmount.entries()).filter((x) => x[1]);
 		}
-
-		// DOUBLE CHECK
-		crowdfundTxes.forEach((tx, i) => {
-			const label = exleHighLevelRecogniser(tx);
-			if (!isExleTx(tx)) {
-				return;
-			}
-
-			const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
-			const loanId = decodeCrowdfundLoanId(outCrowdFundBox);
-			//console.log(loanId);
-
-			// (or Amount CrowdFund Tokens on Address vs Amount in CrowdFundBox?)
-			//
-		});
-		// DOUBLE CHECK--------
 
 		// STATUSES
 		// Fully Repaid

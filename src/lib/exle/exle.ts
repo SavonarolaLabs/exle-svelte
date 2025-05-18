@@ -149,7 +149,7 @@ type ExleLendParametersErg = {
 
 type ExleFundingTokensStatus = { fundedAmount: bigint; fundingLevel: bigint };
 
-type NodeInfo = {
+export type NodeInfo = {
 	lastMemPoolUpdateTime: number;
 	currentTime: number;
 	network: string;
