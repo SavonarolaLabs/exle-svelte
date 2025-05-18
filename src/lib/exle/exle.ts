@@ -622,7 +622,7 @@ export async function fetchAllExleMetadata(): Promise<AllExleMetadata> {
 export type TxAction =
 	| '🎉 Loan Funded'
 	| 'Loan Created'
-	| 'CrowdFund created'
+	| 'Crowdfund Created'
 	| 'Loan Repayment'
 	| 'Loan Funding'
 	| 'Loan Crowdfunding'
@@ -767,7 +767,7 @@ export function exleHighLevelRecogniser(tx): string {
 		if (inLendBox && outLendBox && outCrowdFundBox) {
 			if (tx.outputs[2]?.assets[1]) {
 				if (tx.outputs[2].assets[0].tokenId == EXLE_SLE_CROWD) {
-					label = 'Create CrowdFund | Tokens';
+					label = 'Create Crowdfund | Tokens';
 				}
 			}
 		}
@@ -777,13 +777,13 @@ export function exleHighLevelRecogniser(tx): string {
 			const outAmount = getExleCrowdFundTokensAmount(outCrowdFundBox);
 			if (inAmount) {
 				if (outAmount) {
-					label = outAmount > inAmount ? 'Fund CrowdFund | Tokens' : 'Repayment CrowdFund | Tokens';
+					label = outAmount > inAmount ? 'Fund Crowdfund | Tokens' : 'Repayment Crowdfund | Tokens';
 				} else {
-					label = 'Repayment CrowdFund | Tokens';
+					label = 'Repayment Crowdfund | Tokens';
 				}
 			} else {
 				if (outAmount) {
-					label = 'Fund CrowdFund | Tokens';
+					label = 'Fund Crowdfund | Tokens';
 				} else {
 					label = '';
 				}
@@ -837,7 +837,10 @@ export function txToHistoryItem(tx: ErgoTransaction): HistoryItem {
 	return txToHistoryItemFromLabel(tx, label);
 }
 
-export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): HistoryItem {
+export function txToHistoryItemFromLabel(
+	tx: ErgoTransaction,
+	label: string
+): HistoryItem | undefined {
 	if (label == 'Lend to Repayment | Tokens') {
 		const role = 'Borrower';
 
@@ -912,7 +915,7 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 				tokenId: decodeExleLoanTokenId(outRepaymentBox)
 			};
 		}
-	} else if (label == 'Fund CrowdFund | Tokens') {
+	} else if (label == 'Fund Crowdfund | Tokens') {
 		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
 		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
 		return {
@@ -925,7 +928,7 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 				(getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n),
 			tokenId: getExleCrowdFundTokensTokenId(outCrowdFundBox)
 		};
-	} else if (label == 'Repayment CrowdFund | Tokens') {
+	} else if (label == 'Repayment Crowdfund | Tokens') {
 		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
 		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
 		return {
@@ -938,12 +941,12 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 				(getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n),
 			tokenId: getExleCrowdFundTokensTokenId(outCrowdFundBox)
 		};
-	} else if (label == 'Create CrowdFund | Tokens') {
+	} else if (label == 'Create Crowdfund | Tokens') {
 		// o/ o/ o/ o/ o/
 		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
 		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
 		return {
-			action: 'CrowdFund created',
+			action: 'Crowdfund Created',
 			role: 'Borrower',
 			txId: tx.id,
 			timestamp: tx.timestamp,
@@ -961,8 +964,6 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 			amount: getExleTokensAmount(outLendBox),
 			tokenId: decodeExleLoanTokenId(outLendBox)
 		};
-	} else {
-		return label;
 	}
 }
 
@@ -1000,11 +1001,11 @@ export function exleLowLevelRecogniser(tx: ErgoTransaction, label: string) {
 		lowLevelLabel = 'Create Lend | Tokens';
 	}
 
-	if (label == 'Create CrowdFund | Tokens') {
+	if (label == 'Create Crowdfund | Tokens') {
 		outLendBox = tx.outputs.find(isExleLendTokenBox);
 		fundingLevel = 0n;
 		repaymentLevel = 0n;
-		lowLevelLabel = 'Create CrowdFund | Tokens';
+		lowLevelLabel = 'Create Crowdfund | Tokens';
 	}
 
 	if (label == 'Lend to Repayment | Tokens') {
@@ -1423,7 +1424,7 @@ export function donationsFromExleMetadata(allMetadata: AllExleMetadata, me: stri
 
 		userTxes.forEach((tx) => {
 			const label = exleHighLevelRecogniser(tx);
-			if (label == 'Fund CrowdFund | Tokens') {
+			if (label == 'Fund Crowdfund | Tokens') {
 				const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
 				const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
 				const inAmount = getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n;

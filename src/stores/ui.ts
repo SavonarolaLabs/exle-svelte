@@ -154,7 +154,8 @@ export const transactions: Readable<HistoryItem[]> = derived<
 		if (!$exle_metadata || !$change_address) return;
 		const transactions = [...$exle_metadata.crowdfundHistoryTxs, ...$exle_metadata.loanHistoryTxs]
 			.filter((tx) => isExleTx(tx))
-			.map((tx) => txToHistoryItem(tx));
+			.map((tx) => txToHistoryItem(tx))
+			.filter(Boolean);
 		console.log({ transactions });
 		set(transactions);
 	},
