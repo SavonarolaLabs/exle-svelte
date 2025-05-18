@@ -380,7 +380,29 @@ describe('Exle Function ', () => {
 			}
 		});
 	});
-	it.only('Donation From Txes', () => {
+	it.only('Recognise real TX History', () => {
+		//const txes = exleCrowdfundTxes;
+		const txes = [...allMetadata.loanHistoryTxs, ...allMetadata.crowdfundHistoryTxs];
+
+		txes.forEach((tx, i) => {
+			if (!isExleTx(tx)) {
+				return;
+			}
+			const action = txToHistoryItem(tx);
+
+			// PROXY: Repayment to Repayment | Tokens
+			// PROXY: Create Lend | Tokens
+			// Create CrowdFund | Tokens
+
+			if (typeof action === 'string') {
+				console.log(action);
+			}
+		});
+	});
+
+	//loanHistoryTxs
+
+	it('Donation From Txes', () => {
 		const me = '9f83nJY4x9QkHmeek6PJMcTrf2xcaHAT3j5HD5sANXibXjMUixn';
 		//const me = '9gJa6Mict6TVu9yipUX5aRUW87Yv8J62bbPEtkTje28sh5i3Lz8'; // <= ADD as Param to Function
 		const donations = donationsFromExleMetadata(allMetadata, me);

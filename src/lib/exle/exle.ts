@@ -622,6 +622,7 @@ export async function fetchAllExleMetadata(): Promise<AllExleMetadata> {
 export type TxAction =
 	| '🎉 Loan Funded'
 	| 'Loan Created'
+	| 'CrowdFund created'
 	| 'Loan Repayment'
 	| 'Loan Funding'
 	| 'Loan Crowdfunding'
@@ -936,6 +937,18 @@ export function txToHistoryItemFromLabel(tx: ErgoTransaction, label: string): Hi
 				(getExleCrowdFundTokensAmount(inCrowdFundBox) ?? 0n) -
 				(getExleCrowdFundTokensAmount(outCrowdFundBox) ?? 0n),
 			tokenId: getExleCrowdFundTokensTokenId(outCrowdFundBox)
+		};
+	} else if (label == 'Create CrowdFund | Tokens') {
+		// o/ o/ o/ o/ o/
+		const inCrowdFundBox = tx.inputs.find(isCrowdFundBox);
+		const outCrowdFundBox = tx.outputs.find(isCrowdFundBox);
+		return {
+			action: 'CrowdFund created',
+			role: 'Borrower',
+			txId: tx.id,
+			timestamp: tx.timestamp,
+			amount: undefined,
+			tokenId: undefined
 		};
 	} else if (label == 'Lend to Lend | Tokens') {
 		const outLendBox = tx.outputs.find(isExleLendTokenBox);
