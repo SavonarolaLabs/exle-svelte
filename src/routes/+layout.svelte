@@ -9,10 +9,10 @@
 		connectWallet,
 		initTheme,
 		is_dark,
+		loadExleHistory,
 		loadLoansAndRepayments
 	} from '../stores/ui';
 	import type { Writable } from 'svelte/store';
-	import { fetchAllExleMetadata } from '$lib/exle/exle';
 
 	let { children } = $props();
 
@@ -49,7 +49,7 @@
 		return unsubscribe;
 	}
 
-	onMount(() => {
+	onMount(async () => {
 		initTheme();
 		unsubTheme = is_dark.subscribe((value) => {
 			localStorage.setItem('theme', value ? 'dark' : 'light');
@@ -64,7 +64,7 @@
 		}
 
 		loadLoansAndRepayments();
-		fetchAllExleMetadata();
+		loadExleHistory();
 	});
 
 	onDestroy(() => {

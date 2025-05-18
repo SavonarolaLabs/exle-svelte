@@ -3,7 +3,9 @@ import {
 	createLendTokensTx,
 	decodeExleFundingInfo,
 	decodeExleLoanTokenId,
+	donationsFromExleMetadata,
 	EXLE_MINING_FEE,
+	fetchAllExleMetadata,
 	fetchCrowdFundBoxesByLoanId,
 	fetchLendBox,
 	fetchLoans,
@@ -20,13 +22,15 @@ import {
 	preparefundLendTokensTx,
 	prepareLendToRepaymentTokensTx,
 	prepareNewCrowdFundTx,
+	type AllExleMetadata,
 	type CreateLendChainContext,
 	type CreateLendInputParams,
+	type Donation,
 	type Loan,
 	type NodeBox
 } from '$lib/exle/exle';
 import { decimalsByTokenId } from '$lib/exle/exle';
-import { get, writable, type Writable } from 'svelte/store';
+import { derived, get, writable, type Readable, type Writable } from 'svelte/store';
 
 export const connected_wallet: Writable<string> = writable('nautilus');
 export const change_address: Writable<string> = writable('');
@@ -106,6 +110,7 @@ export function toggleTheme() {
 
 // fetch chain data
 export const repayments: Writable<Loan[]> = writable([]);
+export const exle_metadata: Writable<AllExleMetadata> = writable();
 
 export async function loadLoansAndRepayments() {
 	const loanBoxes = await fetchLoans();
@@ -121,6 +126,26 @@ export async function loadLoansAndRepayments() {
 		.filter(Boolean) as Loan[];
 
 	repayments.set([...loanList, ...repaymentList]);
+}
+
+export const my_donations: Readable<Donation[]> = derived<
+	[typeof exle_metadata, typeof change_address],
+	Donation[]
+>(
+	[exle_metadata, change_address],
+	([$exle_metadata, $change_address], set) => {
+		if (!$exle_metadata || !$change_address) return;
+		const donations = donationsFromExleMetadata($exle_metadata, $change_address);
+		set(donations);
+	},
+	[] as Donation[]
+);
+
+export async function loadExleHistory() {
+	const meta = await fetchAllExleMetadata();
+	if (meta) {
+		exle_metadata.set(meta);
+	}
 }
 
 export async function getWeb3WalletData() {

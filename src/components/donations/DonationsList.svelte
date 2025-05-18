@@ -1,28 +1,31 @@
 <script lang="ts">
-	export let donations = [];
+	import { shortenAddress } from '$lib/utils';
+	import { my_donations } from '../../stores/ui';
+
+	//export let donations = [];
 </script>
 
 <div class="mb-4 text-lg font-medium">
 	My donations <span class="ml-1 text-sm font-light opacity-[0.6]"
-		>({donations.length} donation{donations.length == 1 ? '' : 's'})</span
+		>({$my_donations.length} donation{$my_donations.length == 1 ? '' : 's'})</span
 	>
 </div>
 <div class="hidden lg:block">
-	{#each donations as d}
+	{#each $my_donations as d}
 		<div
 			class="mb-4 grid grid-cols-4 rounded-xl border-2 border-light-border p-2 px-4 dark:border-dark-border"
 		>
 			<div>
-				<div class="text-xs opacity-[0.6]">Loan ID: {d.loan_id}</div>
-				<div class="text-lg font-medium">{d.name}</div>
+				<div class="text-xs opacity-[0.6]">Loan ID: {shortenAddress(d.loanId)}</div>
+				<div class="text-lg font-medium">{d.title}</div>
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">Type:</div>
-				<div class="font-medium">{d.action}</div>
+				<div class="font-medium">{d.type}</div>
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">My donation:</div>
-				<div class="font-medium">{d.donation}</div>
+				<div class="font-medium">{d.amount}</div>
 			</div>
 			<div>
 				<div class="text-xs opacity-[0.6]">Status:</div>
@@ -35,7 +38,7 @@
 </div>
 
 <div class="block lg:hidden">
-	{#each donations as d}
+	{#each $my_donations as d}
 		<div class="mb-4 rounded-xl border-2 border-light-border p-2 px-4 dark:border-dark-border">
 			<div class="flex justify-between">
 				<div class="text-xs">Loan ID: {d.loan_id}</div>
