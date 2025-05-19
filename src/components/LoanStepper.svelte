@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Info } from 'lucide-svelte';
 	import Header from './loan/create/Header.svelte';
-	import { createSolofundLoanTokens, is_dark } from '../stores/ui';
+	import { change_address, createSolofundLoanTokens, is_dark } from '../stores/ui';
 	import Button from './Button.svelte';
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
@@ -9,13 +9,13 @@
 	import Check from '../icons/Check.svelte';
 	import { tokenByTicker, type CreateLendInputParams } from '$lib/exle/exle';
 
-	import { BLOCKS_PER_DAY, toErgoBlocks } from '$lib/utils';
+	import { BLOCKS_PER_DAY, shortenAddress, toErgoBlocks } from '$lib/utils';
 
 	function goBack() {
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	let currentStep = 1;
+	let currentStep = 4;
 	let selectedLoanType: 'Crowdloan' | 'Solofund' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';
@@ -64,7 +64,7 @@
 
 			fundingDeadlineLength: BigInt(toErgoBlocks(Math.floor(Number(fundingDeadline)), 'Months')),
 			repaymentHeightLength: BigInt(toErgoBlocks(Math.floor(Number(repaymentPeriod)), 'Months')),
-			borrowerAddress: '9euvZDx78vhK5k1wBXsNvVFGc5cnoSasnXCzANpaawQveDCHLbU'
+			borrowerAddress: $change_address
 		};
 
 		const submittedTxId = await createSolofundLoanTokens(userInput);
@@ -127,7 +127,7 @@
 						<span>
 							I confirm this is my wallet address:<br />
 							<div class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap font-bold">
-								9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
+								{shortenAddress($change_address)}
 							</div>
 							(Loaned funds will be sent to this address)
 						</span>
@@ -160,7 +160,7 @@
 
 	{#if currentStep === 2}
 		<!-- Step 2 Content -->
-		<div>
+		<div class="w-full">
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
@@ -200,7 +200,7 @@
 
 	{#if currentStep === 3}
 		<!-- Step 3 Content -->
-		<div>
+		<div class="w-full">
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">
@@ -309,7 +309,7 @@
 
 	{#if currentStep === 4}
 		<!-- Step 4 Content -->
-		<div>
+		<div class="w-full">
 			<Header {currentStep}></Header>
 
 			<div class="mb-6 space-y-4">
@@ -324,7 +324,7 @@
 				<div>
 					<div class="opacity-50">Borrower’s Address:</div>
 					<div class="max-w-full overflow-hidden text-ellipsis whitespace-nowrap">
-						9fVx8HL3trmJ27ARGhibDVX13PssroaUMN1DH2reyS4daEXDrL
+						{shortenAddress($change_address)}
 					</div>
 				</div>
 				<div>
@@ -400,7 +400,7 @@
 
 	{#if currentStep === 5 && !paymentConfirmed}
 		<!-- Payment & Finalize -->
-		<div>
+		<div class="w-full">
 			<Header {currentStep}></Header>
 
 			<div class="mb-6">

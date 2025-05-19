@@ -2,7 +2,7 @@
 	import ThemeToggle from '../ThemeToggle.svelte';
 	import { base } from '$app/paths';
 	import ExleSvg from '../ExleSvg.svelte';
-	import { closeMobileMenu, connected_wallet, is_dark } from '../../stores/ui';
+	import { change_address, closeMobileMenu, connected_wallet, is_dark } from '../../stores/ui';
 	import MyAccountButton from './MyAccountButton.svelte';
 	import ConnectWalletButton from './ConnectWalletButton.svelte';
 	import Hamburger from './Hamburger.svelte';
@@ -33,7 +33,7 @@
 		</div>
 		<div class="hidden items-center space-x-3 md:flex">
 			<ThemeToggle />
-			{#if $connected_wallet}
+			{#if $change_address}
 				<MyAccountButton />
 			{:else}
 				<ConnectWalletButton />

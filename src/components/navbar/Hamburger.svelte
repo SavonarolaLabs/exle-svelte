@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Menu, X } from 'lucide-svelte';
 	import {
+		change_address,
 		closeMobileMenu,
 		connectWallet,
+		is_dark,
 		is_mobile_menu_open,
 		logout,
 		toggleMobileMenu,
@@ -10,10 +12,11 @@
 	} from '../../stores/ui';
 	import LogOut from '../../icons/LogOut.svelte';
 	import { slide } from 'svelte/transition';
-	import { browser } from '$app/environment';
-	import { connected_wallet } from '../../stores/ui';
 	import ExleSvg from '../ExleSvg.svelte';
 	import { base } from '$app/paths';
+	import { isErgoAddress } from '$lib/exle/exle';
+	import { shortenAddress } from '$lib/utils';
+	import { goto } from '$app/navigation';
 
 	function handleLogout() {
 		logout();
@@ -23,6 +26,18 @@
 	function handleConnect() {
 		connectWallet();
 		toggleMobileMenu();
+	}
+
+	function addressChanged(e) {
+		const address = e.target.value?.trim();
+		if (isErgoAddress(address)) {
+			const oldAddress = $change_address;
+			if (address != oldAddress) {
+				change_address.set(address);
+				goto('/account/loans');
+				toggleMobileMenu();
+			}
+		}
 	}
 </script>
 
@@ -66,14 +81,14 @@
 
 			<div class="my-4 h-px w-full bg-gray-200 dark:bg-dark-gray"></div>
 
-			{#if $connected_wallet}
+			{#if $change_address}
 				<button
 					on:click={handleLogout}
 					class="flex w-full items-center justify-between gap-2 text-red-500"
 				>
 					<div class="text-left text-dark-textNeutral">
 						My Account
-						<div class="text-sm opacity-50">9eq6S...QXssg</div>
+						<div class="text-sm opacity-50">{shortenAddress($change_address)}</div>
 					</div>
 					<div class="flex items-center gap-2">
 						Log out
@@ -86,12 +101,14 @@
 				<a href="{base}/account/donations" on:click={closeMobileMenu} class="">My Donations</a>
 				<a href="{base}/transactions" on:click={closeMobileMenu} class="">Transactions History</a>
 			{:else}
-				<button
-					on:click={handleConnect}
-					class="w-full rounded-full bg-dark-accent py-2 text-center text-white"
-				>
-					Connect wallet
-				</button>
+				<input
+					type="text"
+					on:input={addressChanged}
+					class="rounded-md border-2"
+					placeholder="Wallet Address"
+					class:border-light-border={!$is_dark}
+					class:border-dark-border={$is_dark}
+				/>
 			{/if}
 
 			<div class="flex items-center justify-between">

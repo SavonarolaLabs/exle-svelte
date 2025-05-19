@@ -55,7 +55,11 @@ export const token_balance: Writable<Object[]> = writable([
 
 async function disconnectWeb3Wallet() {
 	console.log('disconnectWeb3Wallet');
-	await window.ergoConnector[get(connected_wallet)].disconnect();
+	try {
+		await window.ergoConnector[get(connected_wallet)].disconnect();
+	} catch {
+		// Gotta catch em all!
+	}
 	connected_wallet.set('');
 	change_address.set('');
 }

@@ -295,7 +295,11 @@ function blocksToDays(blocks: bigint): number {
 	return left < 0 ? 0 : left;
 }
 
-function isPK(checkString: string): boolean {
+export function isErgoAddress(checkString: string): boolean {
+	return ErgoAddress.fromBase58(checkString).getPublicKeys().length > 0;
+}
+
+export function isPK(checkString: string): boolean {
 	return ErgoAddress.fromErgoTree(checkString).getPublicKeys().length > 0;
 }
 
