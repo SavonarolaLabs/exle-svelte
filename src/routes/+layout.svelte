@@ -9,6 +9,7 @@
 		connectWallet,
 		initTheme,
 		is_dark,
+		is_mobile,
 		loadExleHistory,
 		loadLoansAndRepayments
 	} from '../stores/ui';
@@ -65,6 +66,9 @@
 
 		loadLoansAndRepayments();
 		loadExleHistory();
+
+		const isMobile = /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent);
+		is_mobile.set(isMobile);
 	});
 
 	onDestroy(() => {

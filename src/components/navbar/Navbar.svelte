@@ -2,7 +2,13 @@
 	import ThemeToggle from '../ThemeToggle.svelte';
 	import { base } from '$app/paths';
 	import ExleSvg from '../ExleSvg.svelte';
-	import { change_address, closeMobileMenu, connected_wallet, is_dark } from '../../stores/ui';
+	import {
+		change_address,
+		closeMobileMenu,
+		connected_wallet,
+		is_dark,
+		is_mobile
+	} from '../../stores/ui';
 	import MyAccountButton from './MyAccountButton.svelte';
 	import ConnectWalletButton from './ConnectWalletButton.svelte';
 	import Hamburger from './Hamburger.svelte';

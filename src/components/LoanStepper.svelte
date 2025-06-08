@@ -15,7 +15,7 @@
 		history.length > 1 ? history.back() : goto('/');
 	}
 
-	let currentStep = 4;
+	let currentStep = 5;
 	let selectedLoanType: 'Crowdloan' | 'Solofund' | null = null;
 	let isWalletConfirmed = false;
 	let loanTitle = '';

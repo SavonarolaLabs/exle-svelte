@@ -37,6 +37,7 @@ import {
 import { decimalsByTokenId } from '$lib/exle/exle';
 import { derived, get, writable, type Readable, type Writable } from 'svelte/store';
 
+export let is_mobile: Writable<Boolean> = writable(false);
 export const connected_wallet: Writable<string> = writable('nautilus');
 export const change_address: Writable<string> = writable('');
 export const is_mobile_menu_open: Writable<boolean> = writable(false);
@@ -64,7 +65,7 @@ async function disconnectWeb3Wallet() {
 	change_address.set('');
 }
 
-async function connectWeb3Wallet(walletname = '') {
+async function connectWeb3Wallet() {
 	const wallets = window.ergoConnector ? Object.keys(window.ergoConnector) : [];
 	if (wallets.length > 0) {
 		try {
