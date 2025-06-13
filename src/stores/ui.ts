@@ -497,3 +497,4 @@ async function wait() {
 	await delay(500); // задержка 200 мс
 	console.log('После задержки');
 }
+

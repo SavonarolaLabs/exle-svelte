@@ -1,7 +1,7 @@
 import { writable, get } from 'svelte/store';
 import { change_address } from '../stores/ui';
 
-export const AUTH_URL = 'https://crystalpool.cc:7777/auth';
+export const AUTH_URL = 'https://crystalpool.cc:8443/auth';
 
 export const sessionId = writable<string | null>(null);
 
