@@ -17,6 +17,7 @@
 	import { isErgoAddress } from '$lib/exle/exle';
 	import { shortenAddress } from '$lib/utils';
 	import { goto } from '$app/navigation';
+	import ConnectMobileWalletButton from './ConnectMobileWalletButton.svelte';
 
 	function handleLogout() {
 		logout();
@@ -104,11 +105,12 @@
 				<input
 					type="text"
 					on:input={addressChanged}
-					class="rounded-md border-2"
+					class="hidden rounded-md border-2"
 					placeholder="Wallet Address"
 					class:border-light-border={!$is_dark}
 					class:border-dark-border={$is_dark}
 				/>
+				<ConnectMobileWalletButton></ConnectMobileWalletButton>
 			{/if}
 
 			<div class="flex items-center justify-between">
