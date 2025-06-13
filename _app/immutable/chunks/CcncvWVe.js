@@ -1,0 +1,1 @@
+function t(e){return e?e.slice(0,5)+"-"+e.slice(-5):""}const s=720;function n(e,r){switch(r){case"Days":return e*s;case"Weeks":return e*7*s;case"Months":return e*30*s;default:throw new Error(`Unsupported time unit: ${r}`)}}export{s as B,t as s,n as t};
