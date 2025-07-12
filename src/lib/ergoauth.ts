@@ -29,8 +29,8 @@ export function waitForWalletAuth(
         const text = await res.text();
         const data = JSON.parse(text);
 
-        if (data?.address?.length > 1) {
-          change_address.set(data.address[0]);
+        if (typeof data?.address === 'string' && data.address.length > 1) {
+          change_address.set(data.address);
           resolve(data.address);
           return;
         }
