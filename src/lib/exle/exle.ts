@@ -5,7 +5,8 @@ import { Network } from '@fleet-sdk/common';
 import { compile } from '@fleet-sdk/compiler';
 import { CROWDFUND_CONTRACT } from './CROWDFUND_CONTRACT';
 
-const NODE_BASE_URL = 'http://localhost:9053';
+//const NODE_BASE_URL = 'http://localhost:9053';
+const NODE_BASE_URL = 'http://crystalpool.cc:9053';
 
 export const SCALA_MAX_LONG = 9223372036854775807n;
 
