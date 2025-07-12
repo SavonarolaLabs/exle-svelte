@@ -7,7 +7,12 @@
 	import { base } from '$app/paths';
 	import { goto } from '$app/navigation';
 	import TickCircle from '../../icons/TickCircle.svelte';
-	import { fundLoanSolobyId, repayLoanByIdTokens } from '../../stores/ui';
+	import {
+		change_address,
+		fundLoanSolobyId,
+		repayLoanByIdTokens,
+		withdrawLendTokensTx
+	} from '../../stores/ui';
 	import { shortenAddress } from '$lib/utils';
 	export let loan: Loan;
 
@@ -29,6 +34,8 @@
 	async function onButtonClick() {
 		if (loan.isReadyForWithdrawal) {
 			console.log('Withdrawing loan:', loan.loanId);
+			//await withdrawLendTokensTx(loan.loanId);
+			//console.log('Withdrawing loan:');
 			return;
 		}
 
@@ -160,7 +167,13 @@
 			{/if}
 
 			{#if loan.isReadyForWithdrawal}
-				<Button onClick={onButtonClick} label={'Withdraw loan'} variant="primary" w100={true} />
+				<Button
+					onClick={onButtonClick}
+					disabled={loan.creator != $change_address}
+					label={'Withdraw loan'}
+					variant="primary"
+					w100={true}
+				/>
 			{:else}
 				<Button
 					onClick={onButtonClick}

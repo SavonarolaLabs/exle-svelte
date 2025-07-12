@@ -219,16 +219,17 @@ export async function createSolofundLoanTokens(userInput: CreateLendInputParams)
 //prepareNewCrowdFundTx
 // serviceBox: 9d5a69629b999312d1971ba10d185c914eea72505a0206f16ea52aa3a9f8f871
 // lendBox:
-export async function createCrowdfundLoanTokens() {
+export async function createCrowdfundLoanTokens(
+	loanId: string = '9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+) {
 	const { utxos: utxo, height, me } = await getWeb3WalletData();
 	const serviceBox = await fetchServiceBox();
 	if (!serviceBox) {
 		throw new Error('Failed to fetch service box');
 	}
 
-	const lendbox = await fetchLendBox(
-		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
-	);
+	const lendbox = await fetchLendBox(loanId);
+
 	if (!lendbox) {
 		throw new Error('Failed to fetch lend box');
 	}
@@ -304,12 +305,13 @@ export async function fundCrowdfundLoanTokens() {
 	console.log({ sumbited });
 }
 
-export async function withdrawLendTokensTx() {
+export async function withdrawLendTokensTx(
+	loanId: string = '9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
+) {
+	console.log(loanId);
 	const { height, me } = await getWeb3WalletData();
 
-	const lendbox = await fetchLendBox(
-		'9f42a7457d48f34495d8c0c0aa7b5ac99b478e1638e47946077f05476e23a885'
-	);
+	const lendbox = await fetchLendBox(loanId);
 	if (!lendbox) {
 		throw new Error('Failed to fetch lend box');
 	}
@@ -317,7 +319,6 @@ export async function withdrawLendTokensTx() {
 	if (!serviceBox) {
 		throw new Error('Failed to fetch service box');
 	}
-
 	const unsignedTx = prepareLendToRepaymentTokensTx(
 		height,
 		serviceBox,
@@ -497,4 +498,3 @@ async function wait() {
 	await delay(500); // задержка 200 мс
 	console.log('После задержки');
 }
-

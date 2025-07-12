@@ -41,11 +41,14 @@
 	<div
 		class="flex w-full flex-col justify-center space-y-4 px-3 md:flex-row md:space-x-4 md:space-y-0 md:px-0"
 	>
-		<Button onClick={createSolofundLoanTokens} label="Create Solofund Loan (TOKENS)" />
-		<Button onClick={createCrowdfundLoanTokens} label="Create Crowdfund Loan (TOKENS)" />
+		<Button onClick={() => createSolofundLoanTokens()} label="Create Solofund Loan (TOKENS)" />
+		<Button onClick={() => createCrowdfundLoanTokens()} label="Create Crowdfund Loan (TOKENS)" />
 		<Button onClick={fundCrowdfundLoanTokens} label="FUND Crowdfund Loan (TOKENS)" />
 		<Button onClick={fundLoanWithCrowdBoxTokens} label="FUND Loan with CrowdFundBox (TOKENS)" />
-		<Button onClick={withdrawLendTokensTx} label="Withdraw Lend (+ Lend => Repayment)(TOKENS)" />
+		<Button
+			onClick={() => withdrawLendTokensTx()}
+			label="Withdraw Lend (+ Lend => Repayment)(TOKENS)"
+		/>
 		<Button onClick={fundRepaymentTokens} label="Fund Repayment(TOKENS)" />
 	</div>
 

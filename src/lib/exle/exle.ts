@@ -1454,9 +1454,12 @@ export function prepareLendToRepaymentTokensTx(
 	changeAddress: string
 ) {
 	const lendingInfo = decodeBigInt(lendBox, 'R4');
+	console.log('lendingINfo', lendingInfo);
+	console.log('interest', lendingInfo[2]);
+
 	const borrowerErgoTree = decodeBorrowerPk(lendBox, 'R6');
-	const loanTokenId = decodeBorrowerPk(lendBox, 'R7');
-	const lenderPk = decodeBorrowerPk(lendBox, 'R8');
+	//const loanTokenId = decodeBorrowerPk(lendBox, 'R7');
+	//const lenderPk = decodeBorrowerPk(lendBox, 'R8');
 
 	const fundingGoal = BigInt(lendingInfo[0]);
 	const interestRate = BigInt(lendingInfo[2]);
