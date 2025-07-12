@@ -18,7 +18,7 @@
 	let currentStep = 5;
 	let selectedLoanType: 'Crowdloan' | 'Solofund' | null = null;
 	let isWalletConfirmed = false;
-	let loanTitle = '';
+	let loanTitle = 'SolofundTest';
 	let loanDescription = '';
 	let loanToken = 'SigUSD';
 	let fundingGoal = '';
