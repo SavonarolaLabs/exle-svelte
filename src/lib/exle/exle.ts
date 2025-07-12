@@ -5,6 +5,8 @@ import { Network } from '@fleet-sdk/common';
 import { compile } from '@fleet-sdk/compiler';
 import { CROWDFUND_CONTRACT } from './CROWDFUND_CONTRACT';
 
+const NODE_BASE_URL = 'http://localhost:9053';
+
 export const SCALA_MAX_LONG = 9223372036854775807n;
 
 export const EXLE_MINING_FEE = 1_000_000n;
@@ -326,8 +328,7 @@ export function createCrowdfundContract(map = {}): string {
 
 // fetch info
 export async function fetchNodeInfo(): Promise<NodeInfo | null> {
-	const baseUrl = 'http://localhost:9053';
-	const url = `${baseUrl}/info`;
+	const url = `${NODE_BASE_URL}/info`;
 
 	try {
 		const response = await fetch(url, {
@@ -444,8 +445,7 @@ async function fetchAllBoxesByTokenId(
 	offset: number = 0,
 	limit: number = 100
 ): Promise<NodeBox[]> {
-	const baseUrl = 'http://localhost:9053';
-	const url = `${baseUrl}/blockchain/box/byTokenId/${tokenId}?offset=${offset}&limit=${limit}`;
+	const url = `${NODE_BASE_URL}/blockchain/box/byTokenId/${tokenId}?offset=${offset}&limit=${limit}`;
 
 	try {
 		const response = await fetch(url, {
@@ -472,8 +472,7 @@ async function fetchBoxesByTokenId(
 	offset: number = 0,
 	limit: number = 1
 ): Promise<NodeBox[]> {
-	const baseUrl = 'http://localhost:9053';
-	const url = `${baseUrl}/blockchain/box/unspent/byTokenId/${tokenId}?offset=${offset}&limit=${limit}&sortDirection=desc&includeUnconfirmed=true`;
+	const url = `${NODE_BASE_URL}/blockchain/box/unspent/byTokenId/${tokenId}?offset=${offset}&limit=${limit}&sortDirection=desc&includeUnconfirmed=true`;
 
 	try {
 		const response = await fetch(url, {
@@ -496,8 +495,7 @@ async function fetchBoxesByTokenId(
 }
 
 async function fetchUnspentBoxesByErgoTree(ergoTree: string): Promise<NodeBox[]> {
-	const baseUrl = 'http://localhost:9053';
-	const url = `${baseUrl}/blockchain/box/unspent/byErgoTree?offset=0&limit=100&sortDirection=desc&includeUnconfirmed=true&excludeMempoolSpent=true`;
+	const url = `${NODE_BASE_URL}/blockchain/box/unspent/byErgoTree?offset=0&limit=100&sortDirection=desc&includeUnconfirmed=true&excludeMempoolSpent=true`;
 
 	try {
 		const response = await fetch(url, {
