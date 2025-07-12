@@ -363,7 +363,7 @@ type TransactionsResponse = {
 };
 
 async function fetchTransactionById(txId: string): Promise<ErgoTransaction | null> {
-	const url = `http://localhost:9053/blockchain/transaction/byId/${txId}`;
+	const url = `${NODE_BASE_URL}/blockchain/transaction/byId/${txId}`;
 
 	try {
 		const response = await fetch(url, {
@@ -393,7 +393,7 @@ async function fetchTransactionsByAddress(
 	offset: number = 0,
 	limit: number = 100
 ): Promise<ErgoTransaction[]> {
-	const url = `http://localhost:9053/blockchain/transaction/byAddress?offset=${offset}&limit=${limit}`;
+	const url = `${NODE_BASE_URL}/blockchain/transaction/byAddress?offset=${offset}&limit=${limit}`;
 
 	try {
 		const response = await fetch(url, {
